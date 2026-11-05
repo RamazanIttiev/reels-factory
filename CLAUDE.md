@@ -97,7 +97,9 @@ Fonts: Unbounded (headings), Onest (text), JetBrains Mono (code). All support Cy
 - `npm run frames -- <slug> --lang ru --ids hook,lock,fixes` key frames into `frames/` (default 3 evenly spread)
 - `npm run render -- <slug> --lang ru|en` final mp4 to `out/`
 - `npm run check -- <slug>` word budget per language
-- `npm run publish -- <slug>` stub, ASK OWNER FIRST
+- `npm run publish:dry -- <slug> --lang ru|en` checks env, file, caption and video URL, sends nothing
+- `npm run publish -- <slug> --lang ru|en` uploads to R2 and publishes to Instagram, ASK OWNER FIRST
+- `npm run next` next todo episode brief; `npm run status -- <id> <status>`; `npm run plan:check`; `npm run typecheck`
 
 ## External services (keys in `.env`, never read or print them)
 - TTS: ElevenLabs or MiniMax (`TTS_PROVIDER`). Compare voices on one phrase before choosing.

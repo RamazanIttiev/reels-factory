@@ -6,8 +6,10 @@
     "studio": "remotion studio src/index.ts",
     "preview": "tsx scripts/render.ts --scale 0.25",
     "frames": "tsx scripts/frames.ts",
+    "cover": "tsx scripts/cover.ts",
     "render": "tsx scripts/render.ts",
     "publish": "tsx scripts/publish.ts",
+    "publish:dry": "tsx scripts/publish.ts --dry-run",
     "check": "tsx scripts/check-words.ts",
     "next": "tsx scripts/next.ts",
     "status": "tsx scripts/status.ts",
@@ -15,6 +17,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.1162.0",
     "@remotion/captions": "^4.0.0",
     "@remotion/cli": "^4.0.0",
     "@remotion/google-fonts": "^4.0.0",

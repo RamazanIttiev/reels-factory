@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { WORDS_PER_SECOND, narrationTokens, uniformSpans } from "../src/timeline";
 import type { NarrationToken, WordSpan } from "../src/timeline";
+import { requireEnv } from "./env";
 import { silentWav } from "./wav";
 
 export type SynthesisInput = { text: string; voiceId: string; lang: string };
@@ -23,17 +24,6 @@ const isRecord = (value: unknown): value is Record<string, unknown> =>
 
 const isNumberArray = (value: unknown): value is number[] =>
   Array.isArray(value) && value.every((item) => typeof item === "number");
-
-const requireEnv = (name: string): string => {
-  try {
-    process.loadEnvFile();
-  } catch {
-    // .env is optional; variables may come from the shell
-  }
-  const value = process.env[name];
-  if (!value) throw new Error(`${name} is not set (see .env.example)`);
-  return value;
-};
 
 const mock: TtsProvider = {
   name: "mock",

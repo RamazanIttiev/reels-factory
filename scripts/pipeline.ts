@@ -3,6 +3,7 @@ import { narrations } from "../src/episode";
 import type { Episode } from "../src/episode";
 import { buildTimeline, narrationTokens } from "../src/timeline";
 import type { AudioInfo, ReelProps } from "../src/timeline";
+import { loadEnv } from "./env";
 import { loadEpisode } from "./load-episode";
 import { providerByName, synthesizeCached } from "./tts";
 import { wordSpans } from "./timings";
@@ -13,6 +14,7 @@ const PUBLIC_AUDIO_DIR = "public/audio";
 const PROPS_DIR = ".cache/props";
 
 export const prepare = async (slug: string, lang: string): Promise<Prepared> => {
+  loadEnv();
   const episode = loadEpisode(slug, lang);
   const provider = providerByName(process.env.TTS_PROVIDER ?? "mock");
   mkdirSync(PUBLIC_AUDIO_DIR, { recursive: true });

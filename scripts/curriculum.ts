@@ -13,23 +13,18 @@ export type PlanEpisode = {
   indexInModule: number;
   moduleTotal: number;
   title_ru: string;
-  title_en: string;
   key_idea: string;
   shop_example: string;
   hook_ru: string;
-  hook_en: string;
   scene_types: string[];
   prerequisites: number[];
   references: number[];
   introduces: string[];
-  teaser_ru: string;
-  teaser_en: string;
   comment_question_ru?: string;
-  comment_question_en?: string;
   status: Status;
 };
 
-export type PlanModule = { id: number; title_ru: string; title_en: string; users: string; problem_ru: string };
+export type PlanModule = { id: number; title_ru: string; users: string; problem_ru: string };
 
 export type Curriculum = { modules: PlanModule[]; episodes: PlanEpisode[] };
 

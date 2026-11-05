@@ -10,7 +10,7 @@ const { values, positionals } = parseArgs({
 
 const slug = positionals[0];
 if (!slug) {
-  console.error("Usage: frames <episode> --lang ru|en [--count 3] [--ids hook,lock,fixes]");
+  console.error("Usage: frames <episode> --lang ru [--count 3] [--ids hook,lock,fixes]");
   process.exit(1);
 }
 

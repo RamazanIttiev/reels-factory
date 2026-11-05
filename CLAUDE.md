@@ -30,8 +30,8 @@ to produce a new episode. If a scene type is missing, add it once in `src/scenes
 
 ## Architecture
 ```
-episodes/<slug>/visual.json   language-free scenes: id, type, code, diagram nodes/edges (English)
-episodes/<slug>/<lang>.json   per language: narration + labels per scene id, hook, outro, voiceId, ui
+episodes/<slug>/visual.json   scenes: id, type, code, diagram nodes/edges (labels in Russian, tech names in English)
+episodes/<slug>/ru.json       narration + labels per scene id, hook, outro, voiceId, ui
 episodes/_template/           copy this folder for a new episode
 src/types.ts, episode.ts      data model, visual + lang -> Episode
 src/timeline.ts               Episode + audio info -> ReelProps (segment lengths from voice duration)
@@ -50,7 +50,7 @@ Status of scripts: check `package.json` scripts to see which exist. Do not assum
 ## Episode JSON contract
 See `episodes/_template/`. Visual is shared, language files only carry text. Rules:
 - `visual.json` `scenes[].id` links to `<lang>.json` `scenes[id]`. Missing id = error.
-- `scenes[].type`: `diagram | code | checklist | browser`. Tech names, code, node labels stay English.
+- `scenes[].type`: `diagram | code | checklist | browser`. On-screen labels are in Russian; tech names and code stay English. Reels are Russian only.
 - `<lang>.json` `labels`: short on-screen text (`caption`, `result`, checklist item ids). Optional.
 - `hook`: question or bold claim, max 8 words, first 2 seconds, `accent` = word in orange.
 - `narration`: short sentences. Scene length = audio length (no audio: words / 2.5 s).
@@ -63,15 +63,17 @@ See `episodes/_template/`. Visual is shared, language files only carry text. Rul
 ## Episode workflow (curriculum: 51 episodes, 9 modules)
 The plan lives in `plan/curriculum.json`. NEVER read the whole file; get the brief only through `npm run next`.
 1. `npm run next` prints the next `todo` episode, the 2 previous ones, terms already introduced and terms not to use yet.
-2. Create `episodes/<slug>/visual.json`, `ru.json`, `en.json` from the brief (copy `episodes/_template/`).
+2. Create `episodes/<slug>/visual.json`, `ru.json` from the brief (copy `episodes/_template/`).
 3. `npm run check -- <slug>` (word budget). Then run the `double-check` skill on the episode (facts, code, numbers,
    plain language, caption). Fix what both agents agree on. Only then `npm run status -- <id> drafted`.
 4. `npm run preview -- <slug> --lang ru`, then `npm run frames -- <slug> --lang ru --count 3`, read only those PNGs, fix overflow.
-5. After the owner approves frames: `npm run render -- <slug> --lang ru|en` (sets status `rendered` by itself).
+5. After the owner approves frames: `npm run render -- <slug> --lang ru` (sets status `rendered` by itself).
 6. `npm run publish -- <slug>` only on the owner's explicit command (sets `published` after success; stub for now).
 Manual status change: `npm run status -- <id> todo|drafted|rendered|published`. Plan sanity check: `npm run plan:check`.
-Series logic: each episode = one idea, ends with the `teaser` of the next one (last phrase of the outro);
-the last episode of a module ends with its `comment_question`. Counter "closed N of M" = `indexInModule` of `moduleTotal`.
+Every outro is a friendly call to subscribe to scalelab to learn system design better
+("Подписывайся на scalelab — вместе разберёмся в system design." / "Subscribe to scalelab, let's learn system design together.").
+No teaser of the next episode: it is not voiced and not shown.
+Series logic: each episode = one idea; the last episode of a module ends with its `comment_question`. Counter "closed N of M" = `indexInModule` of `moduleTotal`.
 Terms from `introduces` are explained once, in that episode. Use `references` as "мы уже разобрали...".
 
 ## Content rules
@@ -93,12 +95,12 @@ Fonts: Unbounded (headings), Onest (text), JetBrains Mono (code). All support Cy
 
 ## Commands
 - `npm run studio` Remotion studio for manual checks
-- `npm run preview -- <slug> --lang ru|en` low-res preview
+- `npm run preview -- <slug> --lang ru` low-res preview
 - `npm run frames -- <slug> --lang ru --ids hook,lock,fixes` key frames into `frames/` (default 3 evenly spread)
-- `npm run render -- <slug> --lang ru|en` final mp4 to `out/`
+- `npm run render -- <slug> --lang ru` final mp4 to `out/`
 - `npm run check -- <slug>` word budget per language
-- `npm run publish:dry -- <slug> --lang ru|en` checks env, file, caption and video URL, sends nothing
-- `npm run publish -- <slug> --lang ru|en` uploads to R2 and publishes to Instagram, ASK OWNER FIRST
+- `npm run publish:dry -- <slug> --lang ru` checks env, file, caption and video URL, sends nothing
+- `npm run publish -- <slug> --lang ru` uploads to R2 and publishes to Instagram, ASK OWNER FIRST
 - `npm run next` next todo episode brief; `npm run status -- <id> <status>`; `npm run plan:check`; `npm run typecheck`
 
 ## External services (keys in `.env`, never read or print them)

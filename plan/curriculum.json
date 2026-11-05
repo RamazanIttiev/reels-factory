@@ -3,63 +3,54 @@
     {
       "id": 1,
       "title_ru": "Как думать",
-      "title_en": "How to think",
       "users": "100",
       "problem_ru": "У shop.example 100 покупателей и один сервер. Владелец спрашивает: что сломается, когда придёт больше, и с чего вообще начинать думать?"
     },
     {
       "id": 2,
       "title_ru": "Сеть и API",
-      "title_en": "Network and API",
       "users": "1 000",
       "problem_ru": "У магазина появилось мобильное приложение и первые боты. Запросы приходят отовсюду, и нужно понять, как они устроены и как их держать под контролем."
     },
     {
       "id": 3,
       "title_ru": "Данные",
-      "title_en": "Data",
       "users": "5 000",
       "problem_ru": "Заказов тысячи. Поиск заказа тормозит, а деньги терять нельзя ни при каком сбое."
     },
     {
       "id": 4,
       "title_ru": "Скорость чтения",
-      "title_en": "Read speed",
       "users": "10 000",
       "problem_ru": "Главная страница тормозит: база отвечает на одни и те же вопросы снова и снова."
     },
     {
       "id": 5,
       "title_ru": "Масштабирование записи",
-      "title_en": "Scaling writes",
       "users": "100 000",
       "problem_ru": "Заказов столько, что одна база не успевает их записывать."
     },
     {
       "id": 6,
       "title_ru": "Согласованность",
-      "title_en": "Consistency",
       "users": "300 000",
       "problem_ru": "Данные лежат на нескольких серверах и иногда расходятся. А последний товар на складе покупают сразу двое."
     },
     {
       "id": 7,
       "title_ru": "Надёжность",
-      "title_en": "Reliability",
       "users": "500 000",
       "problem_ru": "У магазина десятки сервисов, и любой может упасть. Нужно, чтобы покупатель этого не заметил."
     },
     {
       "id": 8,
       "title_ru": "Реалтайм и тяжёлые данные",
-      "title_en": "Realtime and heavy data",
       "users": "700 000",
       "problem_ru": "Покупатели хотят видеть статус заказа сразу, загружать видео-отзывы и быстро искать товары."
     },
     {
       "id": 9,
       "title_ru": "Разбор систем",
-      "title_en": "System walkthroughs",
       "users": "1 000 000",
       "problem_ru": "У магазина миллион покупателей. Теперь мы собираем из изученных кирпичиков целые системы."
     }
@@ -72,11 +63,9 @@
       "indexInModule": 1,
       "moduleTotal": 4,
       "title_ru": "Шесть шагов решения задачи system design",
-      "title_en": "Six steps to solve a system design problem",
       "key_idea": "Любую задачу system design можно пройти по шести шагам: требования, прикидка нагрузки, API, данные, общая схема, узкие места.",
       "shop_example": "Владелец просит «сделай, чтобы магазин выдержал рост», и мы по шагам превращаем это в план.",
       "hook_ru": "Пустая доска на собеседовании. С чего начать?",
-      "hook_en": "Blank whiteboard. Where do you even start?",
       "scene_types": [
         "diagram",
         "checklist"
@@ -88,9 +77,7 @@
         "требования",
         "узкое место"
       ],
-      "teaser_ru": "Дальше: что магазин обязан уметь и как быстро.",
-      "teaser_en": "Next: what the shop must do, and how fast.",
-      "status": "todo"
+      "status": "rendered"
     },
     {
       "id": 2,
@@ -99,11 +86,9 @@
       "indexInModule": 2,
       "moduleTotal": 4,
       "title_ru": "Функциональные и нефункциональные требования",
-      "title_en": "Functional and non-functional requirements",
       "key_idea": "Функциональные требования говорят, что система делает, а нефункциональные говорят, насколько быстро, надёжно и безопасно она это делает.",
       "shop_example": "Магазин принимает заказы (что делает), но страница оплаты грузится 8 секунд, и покупатели уходят (как делает).",
       "hook_ru": "Магазин работает. Почему покупатели всё равно уходят?",
-      "hook_en": "The shop works. Why do buyers still leave?",
       "scene_types": [
         "checklist",
         "diagram"
@@ -120,8 +105,6 @@
         "latency",
         "availability"
       ],
-      "teaser_ru": "Дальше: считаем, сколько запросов придёт в чёрную пятницу.",
-      "teaser_en": "Next: we count how many requests Black Friday brings.",
       "status": "todo"
     },
     {
@@ -131,11 +114,9 @@
       "indexInModule": 3,
       "moduleTotal": 4,
       "title_ru": "Прикидка нагрузки: QPS, хранилище, трафик",
-      "title_en": "Back-of-the-envelope load estimation: QPS, storage, traffic",
       "key_idea": "Нагрузку можно прикинуть на салфетке: умножаем пользователей на их действия, делим на секунды и получаем запросы в секунду.",
       "shop_example": "100 000 покупателей в чёрную пятницу, у каждого по 20 просмотров, и мы считаем, сколько запросов в секунду это даёт.",
       "hook_ru": "Сколько запросов выдержит магазин в чёрную пятницу?",
-      "hook_en": "How many requests hit you on Black Friday?",
       "scene_types": [
         "diagram",
         "code"
@@ -153,8 +134,6 @@
         "оценка хранилища",
         "оценка трафика"
       ],
-      "teaser_ru": "Дальше: числа, которые стоит помнить наизусть.",
-      "teaser_en": "Next: the numbers worth remembering.",
       "status": "todo"
     },
     {
@@ -164,11 +143,9 @@
       "indexInModule": 4,
       "moduleTotal": 4,
       "title_ru": "Числа, которые надо знать",
-      "title_en": "Numbers every engineer should know",
       "key_idea": "Память, диск и сеть отличаются по скорости на порядки, и эти порядки помогают быстро понять, где система будет тормозить.",
       "shop_example": "Прочитать товар из памяти сервера, с диска или из базы в другом дата-центре: считаем, во сколько раз это дольше.",
       "hook_ru": "Память быстрее сети в тысячи раз",
-      "hook_en": "Memory is thousands of times faster than network",
       "scene_types": [
         "checklist",
         "diagram"
@@ -185,10 +162,7 @@
         "латентность сети",
         "порядок величины"
       ],
-      "teaser_ru": "Дальше: что происходит, когда вы открываете ссылку.",
-      "teaser_en": "Next: what happens when you open a link.",
       "comment_question_ru": "Какую цифру из этого модуля вы раньше не знали?",
-      "comment_question_en": "Which number from this module surprised you most?",
       "status": "todo"
     },
     {
@@ -198,11 +172,9 @@
       "indexInModule": 1,
       "moduleTotal": 6,
       "title_ru": "Что происходит при открытии URL",
-      "title_en": "What happens when you open a URL",
       "key_idea": "Пока страница открывается, браузер узнаёт адрес сервера через DNS, соединяется по TCP, договаривается о шифровании в TLS и только потом просит страницу по HTTP.",
       "shop_example": "Покупатель вводит shop.example, и мы идём по цепочке до первой картинки.",
       "hook_ru": "Вы нажали Enter. Что происходит дальше?",
-      "hook_en": "You press Enter. What happens next?",
       "scene_types": [
         "diagram",
         "checklist"
@@ -219,8 +191,6 @@
         "TLS",
         "HTTP"
       ],
-      "teaser_ru": "Дальше: три способа общаться с сервером.",
-      "teaser_en": "Next: three ways to talk to a server.",
       "status": "todo"
     },
     {
@@ -230,11 +200,9 @@
       "indexInModule": 2,
       "moduleTotal": 6,
       "title_ru": "REST, gRPC, GraphQL",
-      "title_en": "REST, gRPC, GraphQL",
       "key_idea": "REST, gRPC и GraphQL по-разному отвечают на вопрос, как клиенту попросить данные, и у каждого свои сильные места.",
       "shop_example": "Мобильному приложению магазина нужны товар, цена и отзывы, и мы смотрим, как их получить тремя способами.",
       "hook_ru": "Три способа спросить сервер. Какой выбрать?",
-      "hook_en": "Three ways to ask a server. Which one?",
       "scene_types": [
         "checklist",
         "code"
@@ -251,8 +219,6 @@
         "gRPC",
         "GraphQL"
       ],
-      "teaser_ru": "Дальше: как не списать деньги дважды.",
-      "teaser_en": "Next: how not to charge twice.",
       "status": "todo"
     },
     {
@@ -262,11 +228,9 @@
       "indexInModule": 3,
       "moduleTotal": 6,
       "title_ru": "Идемпотентность",
-      "title_en": "Idempotency",
       "key_idea": "Идемпотентная операция при повторе даёт тот же результат, поэтому её безопасно повторять после сбоя сети.",
       "shop_example": "Покупатель дважды нажал «Оплатить» из-за медленной сети, и с ключом идемпотентности деньги спишутся один раз.",
       "hook_ru": "Покупатель нажал «Оплатить» дважды. Спишем два раза?",
-      "hook_en": "Buyer pays twice by accident. Charged twice?",
       "scene_types": [
         "diagram",
         "code"
@@ -283,8 +247,6 @@
         "ключ идемпотентности",
         "повтор запроса"
       ],
-      "teaser_ru": "Дальше: почему длинный список ломает страницу.",
-      "teaser_en": "Next: why a long list breaks a page.",
       "status": "todo"
     },
     {
@@ -294,11 +256,9 @@
       "indexInModule": 4,
       "moduleTotal": 6,
       "title_ru": "Пагинация: offset против cursor",
-      "title_en": "Pagination: offset vs cursor",
       "key_idea": "Offset заставляет базу пропускать все предыдущие строки, а cursor продолжает с запомненного места, поэтому он не замедляется на дальних страницах.",
       "shop_example": "Список из миллиона заказов в админке: страница 5000 открывается секунды, а через cursor мгновенно.",
       "hook_ru": "Страница 5000 грузится секунды. Виноват offset?",
-      "hook_en": "Page 5000 takes seconds. Blame offset?",
       "scene_types": [
         "diagram",
         "code"
@@ -314,8 +274,6 @@
         "offset",
         "cursor"
       ],
-      "teaser_ru": "Дальше: как остановить бота, который заваливает запросами.",
-      "teaser_en": "Next: how to stop a bot flooding you with requests.",
       "status": "todo"
     },
     {
@@ -325,11 +283,9 @@
       "indexInModule": 5,
       "moduleTotal": 6,
       "title_ru": "Rate limiting и token bucket",
-      "title_en": "Rate limiting and the token bucket",
       "key_idea": "Rate limiting не даёт одному клиенту съесть все ресурсы, а token bucket позволяет короткие всплески и при этом держит средний темп.",
       "shop_example": "Бот опрашивает цены тысячу раз в секунду, и мы ограничиваем его так, чтобы живые покупатели ничего не заметили.",
       "hook_ru": "Один бот съел весь магазин. Как его притормозить?",
-      "hook_en": "One bot is eating your shop. Stop it.",
       "scene_types": [
         "diagram",
         "code"
@@ -345,8 +301,6 @@
         "token bucket",
         "код 429"
       ],
-      "teaser_ru": "Дальше: как раздать запросы по серверам.",
-      "teaser_en": "Next: how to spread requests across servers.",
       "status": "todo"
     },
     {
@@ -356,11 +310,9 @@
       "indexInModule": 6,
       "moduleTotal": 6,
       "title_ru": "Load balancer: L4 против L7",
-      "title_en": "Load balancer: L4 vs L7",
       "key_idea": "Балансировщик раздаёт запросы по серверам: L4 смотрит только на адреса и порты, а L7 понимает содержимое запроса и может выбирать сервер по пути или заголовку.",
       "shop_example": "Три сервера магазина, один из них упал, и балансировщик перестаёт слать на него запросы.",
       "hook_ru": "Один сервер упал. Покупатели этого не заметили?",
-      "hook_en": "A server died. Buyers never noticed.",
       "scene_types": [
         "diagram",
         "checklist"
@@ -378,10 +330,7 @@
         "L7",
         "round robin"
       ],
-      "teaser_ru": "Дальше: где хранить заказы: таблицы или документы.",
-      "teaser_en": "Next: where to keep orders: tables or documents.",
       "comment_question_ru": "Какой тип API вы бы выбрали для мобильного приложения магазина и почему?",
-      "comment_question_en": "Which API style would you pick for the shop's mobile app, and why?",
       "status": "todo"
     },
     {
@@ -391,11 +340,9 @@
       "indexInModule": 1,
       "moduleTotal": 6,
       "title_ru": "SQL или NoSQL",
-      "title_en": "SQL or NoSQL",
       "key_idea": "SQL хорош, когда данные связаны и важна точность, а NoSQL удобен, когда данных очень много или их форма часто меняется.",
       "shop_example": "Заказы с деньгами лежат в SQL, а каталог товаров с разными характеристиками удобно держать документами.",
       "hook_ru": "Таблицы или документы: где жить заказам?",
-      "hook_en": "Tables or documents: where do orders live?",
       "scene_types": [
         "checklist",
         "diagram"
@@ -411,8 +358,6 @@
         "NoSQL",
         "схема данных"
       ],
-      "teaser_ru": "Дальше: как найти заказ среди миллионов за миг.",
-      "teaser_en": "Next: how to find one order among millions instantly.",
       "status": "todo"
     },
     {
@@ -422,11 +367,9 @@
       "indexInModule": 2,
       "moduleTotal": 6,
       "title_ru": "Индексы и B-tree",
-      "title_en": "Indexes and the B-tree",
       "key_idea": "Индекс похож на оглавление книги: база ищет по дереву за несколько шагов вместо чтения всей таблицы.",
       "shop_example": "Поиск заказа по почте покупателя в таблице на миллион строк: без индекса долго, с индексом мгновенно.",
       "hook_ru": "Поиск заказа тормозит. Помогает одна строка.",
-      "hook_en": "Order search is slow. One line fixes it.",
       "scene_types": [
         "diagram",
         "code"
@@ -442,8 +385,6 @@
         "B-tree",
         "полное сканирование таблицы"
       ],
-      "teaser_ru": "Дальше: как не потерять деньги при сбое.",
-      "teaser_en": "Next: how not to lose money in a crash.",
       "status": "todo"
     },
     {
@@ -453,11 +394,9 @@
       "indexInModule": 3,
       "moduleTotal": 6,
       "title_ru": "Транзакции и ACID",
-      "title_en": "Transactions and ACID",
       "key_idea": "Транзакция объединяет несколько действий в одно: либо выполнятся все, либо ни одно, а ACID описывает гарантии, которые это обеспечивают.",
       "shop_example": "Списать деньги и создать заказ должны вместе, иначе покупатель заплатит и ничего не получит.",
       "hook_ru": "Деньги списались, а заказа нет. Как так?",
-      "hook_en": "Money charged, no order created. How?",
       "scene_types": [
         "diagram",
         "code"
@@ -474,8 +413,6 @@
         "ACID",
         "откат"
       ],
-      "teaser_ru": "Дальше: что видит покупатель, пока заказ ещё меняется.",
-      "teaser_en": "Next: what a buyer sees while an order is changing.",
       "status": "todo"
     },
     {
@@ -485,11 +422,9 @@
       "indexInModule": 4,
       "moduleTotal": 6,
       "title_ru": "Уровни изоляции и аномалии",
-      "title_en": "Isolation levels and anomalies",
       "key_idea": "Когда транзакции идут одновременно, они могут увидеть данные друг друга в неожиданном виде, и уровни изоляции решают, какие такие «странности» разрешены.",
       "shop_example": "Пока один покупатель оформляет последний товар, другой смотрит остаток и видит «1 в наличии».",
       "hook_ru": "Два покупателя читают остаток. Кто прав?",
-      "hook_en": "Two buyers read the same stock. Who's right?",
       "scene_types": [
         "diagram",
         "checklist"
@@ -506,8 +441,6 @@
         "неповторяемое чтение",
         "фантомное чтение"
       ],
-      "teaser_ru": "Дальше: почему копия базы иногда отстаёт.",
-      "teaser_en": "Next: why a database copy sometimes falls behind.",
       "status": "todo"
     },
     {
@@ -517,11 +450,9 @@
       "indexInModule": 5,
       "moduleTotal": 6,
       "title_ru": "Репликация и лаг",
-      "title_en": "Replication and lag",
       "key_idea": "Реплика — копия базы для чтения, и она получает изменения с небольшой задержкой, поэтому сразу после записи может показать старые данные.",
       "shop_example": "Покупатель оформил заказ и открыл «Мои заказы», но список читается с отстающей реплики, и заказа там пока нет.",
       "hook_ru": "Заказ оформлен, а в списке его нет.",
-      "hook_en": "Order placed. Order list says no.",
       "scene_types": [
         "diagram",
         "checklist"
@@ -537,8 +468,6 @@
         "лидер и фолловер",
         "лаг репликации"
       ],
-      "teaser_ru": "Дальше: когда дублировать данные полезно.",
-      "teaser_en": "Next: when duplicating data helps.",
       "status": "todo"
     },
     {
@@ -548,11 +477,9 @@
       "indexInModule": 6,
       "moduleTotal": 6,
       "title_ru": "Денормализация",
-      "title_en": "Denormalization",
       "key_idea": "Денормализация намеренно дублирует данные, чтобы читать быстрее, но взамен приходится следить, чтобы копии не разошлись.",
       "shop_example": "Хранить имя покупателя прямо в заказе, чтобы не делать лишнее соединение таблиц при каждом показе списка.",
       "hook_ru": "Иногда копировать данные — это правильно.",
-      "hook_en": "Sometimes copying data is the right call.",
       "scene_types": [
         "diagram",
         "checklist"
@@ -571,10 +498,7 @@
         "денормализация",
         "JOIN"
       ],
-      "teaser_ru": "Дальше: где хранить готовые ответы, чтобы не считать заново.",
-      "teaser_en": "Next: where to keep ready answers instead of recomputing.",
       "comment_question_ru": "В каком месте вашего проекта вы бы денормализовали данные?",
-      "comment_question_en": "Where in your project would you denormalize data?",
       "status": "todo"
     },
     {
@@ -584,11 +508,9 @@
       "indexInModule": 1,
       "moduleTotal": 6,
       "title_ru": "Где кэшировать",
-      "title_en": "Where to cache",
       "key_idea": "Кэш хранит готовый ответ рядом с тем, кто спрашивает, и его можно поставить в браузере, на сервере или перед базой.",
       "shop_example": "Главная страница магазина одинакова для тысяч людей, и считать её заново для каждого незачем.",
       "hook_ru": "Самый быстрый запрос — тот, которого нет.",
-      "hook_en": "The fastest request is the one never made.",
       "scene_types": [
         "diagram",
         "checklist"
@@ -606,8 +528,6 @@
         "cache miss",
         "hit ratio"
       ],
-      "teaser_ru": "Дальше: кто и когда пишет в кэш.",
-      "teaser_en": "Next: who writes to the cache, and when.",
       "status": "todo"
     },
     {
@@ -617,11 +537,9 @@
       "indexInModule": 2,
       "moduleTotal": 6,
       "title_ru": "Cache-aside, write-through, write-behind",
-      "title_en": "Cache-aside, write-through, write-behind",
       "key_idea": "Три схемы отличаются тем, кто и когда кладёт данные в кэш: само приложение при чтении, при каждой записи или позже пачкой.",
       "shop_example": "Остаток товара: читаем через кэш, а при покупке решаем, обновлять кэш сразу или чуть позже.",
       "hook_ru": "Кто пишет в кэш: приложение или база?",
-      "hook_en": "Who writes to the cache: app or database?",
       "scene_types": [
         "diagram",
         "checklist"
@@ -637,8 +555,6 @@
         "write-through",
         "write-behind"
       ],
-      "teaser_ru": "Дальше: что выбрасывать, когда кэш полон.",
-      "teaser_en": "Next: what to evict when the cache is full.",
       "status": "todo"
     },
     {
@@ -648,11 +564,9 @@
       "indexInModule": 3,
       "moduleTotal": 6,
       "title_ru": "Вытеснение: LRU, LFU, TTL",
-      "title_en": "Eviction: LRU, LFU, TTL",
       "key_idea": "Память кэша ограничена, поэтому нужно правило, что выбросить: давно не использованное (LRU), редко используемое (LFU) или просроченное (TTL).",
       "shop_example": "В кэше места на 1000 товаров из миллиона, и мы выбираем, какие карточки оставить.",
       "hook_ru": "Кэш переполнен. Что выбросить первым?",
-      "hook_en": "Cache is full. What gets thrown out?",
       "scene_types": [
         "diagram",
         "checklist"
@@ -669,8 +583,6 @@
         "LFU",
         "TTL"
       ],
-      "teaser_ru": "Дальше: что будет, если популярный ключ исчезнет.",
-      "teaser_en": "Next: what happens when a popular key disappears.",
       "status": "todo"
     },
     {
@@ -680,11 +592,9 @@
       "indexInModule": 4,
       "moduleTotal": 6,
       "title_ru": "Cache stampede",
-      "title_en": "Cache stampede",
       "key_idea": "Когда популярный ключ в кэше истекает, тысячи запросов одновременно идут в базу за одним и тем же, и лечится это блокировкой на ключ, случайным сдвигом TTL и ранним обновлением.",
       "shop_example": "Карточка самого популярного товара истекает в кэше в разгар распродажи, и база получает тысячи одинаковых запросов.",
       "hook_ru": "Почему один ключ кэша убивает базу?",
-      "hook_en": "Why one expired key kills your database",
       "scene_types": [
         "diagram",
         "code",
@@ -704,8 +614,6 @@
         "jitter",
         "раннее обновление"
       ],
-      "teaser_ru": "Дальше: как не показывать устаревшую цену.",
-      "teaser_en": "Next: how to avoid showing a stale price.",
       "status": "published"
     },
     {
@@ -715,11 +623,9 @@
       "indexInModule": 5,
       "moduleTotal": 6,
       "title_ru": "Инвалидация кэша",
-      "title_en": "Cache invalidation",
       "key_idea": "Инвалидация решает, когда выбросить устаревший ответ из кэша: по таймеру, по событию изменения или по новой версии ключа.",
       "shop_example": "Цену товара поменяли в админке, а на сайте ещё час показывается старая.",
       "hook_ru": "Цену поменяли. На сайте всё ещё старая.",
-      "hook_en": "Price changed. Site still shows the old one.",
       "scene_types": [
         "diagram",
         "checklist"
@@ -737,8 +643,6 @@
         "инвалидация по событию",
         "версия ключа"
       ],
-      "teaser_ru": "Дальше: как раздавать картинки быстро по всему миру.",
-      "teaser_en": "Next: how to serve images fast worldwide.",
       "status": "todo"
     },
     {
@@ -748,11 +652,9 @@
       "indexInModule": 6,
       "moduleTotal": 6,
       "title_ru": "CDN",
-      "title_en": "CDN",
       "key_idea": "CDN хранит копии файлов на серверах по всему миру, и покупатель получает их из ближайшей точки, а не из далёкого дата-центра.",
       "shop_example": "Фото товаров лежат на одном сервере в Европе, а покупатель в Азии ждёт их секунды.",
       "hook_ru": "Почему фото товаров грузятся мгновенно?",
-      "hook_en": "Why do product photos load instantly?",
       "scene_types": [
         "diagram",
         "checklist"
@@ -770,10 +672,7 @@
         "edge-сервер",
         "origin"
       ],
-      "teaser_ru": "Дальше: что делать, когда база не влезает на сервер.",
-      "teaser_en": "Next: what to do when the database outgrows a server.",
       "comment_question_ru": "Что вы кэшируете в своём проекте, а что побоялись бы?",
-      "comment_question_en": "What do you cache in your project, and what would you be afraid to cache?",
       "status": "todo"
     },
     {
@@ -783,11 +682,9 @@
       "indexInModule": 1,
       "moduleTotal": 6,
       "title_ru": "Шардинг и выбор ключа",
-      "title_en": "Sharding and choosing the key",
       "key_idea": "Шардинг делит данные между несколькими серверами по ключу, и от выбора ключа зависит, будет ли нагрузка ровной.",
       "shop_example": "Таблица заказов не помещается на один сервер, и мы решаем, делить её по id покупателя или по дате.",
       "hook_ru": "База не влезает на один сервер. Режем?",
-      "hook_en": "Database won't fit one server. Slice it?",
       "scene_types": [
         "diagram",
         "checklist"
@@ -804,8 +701,6 @@
         "ключ шардирования",
         "горизонтальное масштабирование"
       ],
-      "teaser_ru": "Дальше: что, если один шард загружен сильнее других.",
-      "teaser_en": "Next: what if one shard gets all the load.",
       "status": "todo"
     },
     {
@@ -815,11 +710,9 @@
       "indexInModule": 2,
       "moduleTotal": 6,
       "title_ru": "Hot shard и hot key",
-      "title_en": "Hot shard and hot key",
       "key_idea": "Если одному ключу или шарду достаётся непропорционально много запросов, он перегружается, даже когда остальные простаивают.",
       "shop_example": "Распродажа одного товара: все покупатели бьют в один и тот же ключ, и один шард захлёбывается.",
       "hook_ru": "Один шард горит, остальные скучают.",
-      "hook_en": "One shard burns while the rest idle.",
       "scene_types": [
         "diagram",
         "checklist"
@@ -837,8 +730,6 @@
         "hot key",
         "разделение горячего ключа"
       ],
-      "teaser_ru": "Дальше: как добавлять серверы, не двигая все данные.",
-      "teaser_en": "Next: how to add servers without moving all the data.",
       "status": "todo"
     },
     {
@@ -848,11 +739,9 @@
       "indexInModule": 3,
       "moduleTotal": 6,
       "title_ru": "Consistent hashing",
-      "title_en": "Consistent hashing",
       "key_idea": "При обычном хешировании добавление сервера переносит почти все данные, а consistent hashing двигает только небольшую часть.",
       "shop_example": "К четырём серверам кэша добавили пятый, и мы сравниваем, сколько ключей придётся переложить.",
       "hook_ru": "Добавили сервер, и все данные поехали?",
-      "hook_en": "Add one server, move half the data?",
       "scene_types": [
         "diagram",
         "code"
@@ -868,8 +757,6 @@
         "хеш-кольцо",
         "виртуальные узлы"
       ],
-      "teaser_ru": "Дальше: как не заставлять покупателя ждать письмо.",
-      "teaser_en": "Next: how not to make a buyer wait for an email.",
       "status": "todo"
     },
     {
@@ -879,11 +766,9 @@
       "indexInModule": 4,
       "moduleTotal": 6,
       "title_ru": "Очереди сообщений",
-      "title_en": "Message queues",
       "key_idea": "Очередь позволяет принять работу сразу и выполнить её позже, поэтому медленные задачи не задерживают ответ пользователю.",
       "shop_example": "После заказа нужно отправить письмо и обновить склад, и покупатель не должен ждать этого на странице.",
       "hook_ru": "Заказ принят. Письмо уйдёт потом.",
-      "hook_en": "Order accepted. The email can wait.",
       "scene_types": [
         "diagram",
         "checklist"
@@ -900,8 +785,6 @@
         "consumer",
         "асинхронность"
       ],
-      "teaser_ru": "Дальше: очередь, которая хранит историю.",
-      "teaser_en": "Next: a queue that keeps history.",
       "status": "todo"
     },
     {
@@ -911,11 +794,9 @@
       "indexInModule": 5,
       "moduleTotal": 6,
       "title_ru": "Kafka на пальцах",
-      "title_en": "Kafka in plain words",
       "key_idea": "Kafka хранит сообщения в журнале, разбитом на партиции, и каждый читатель помнит, до какого места дочитал, поэтому сообщения можно перечитывать.",
       "shop_example": "События «заказ создан» читают и склад, и аналитика, и каждый идёт в своём темпе.",
       "hook_ru": "Очередь, которая помнит всё. Зачем?",
-      "hook_en": "A queue that remembers everything. Why?",
       "scene_types": [
         "diagram",
         "checklist"
@@ -934,8 +815,6 @@
         "partition",
         "consumer group"
       ],
-      "teaser_ru": "Дальше: что делать, когда очередь растёт.",
-      "teaser_en": "Next: what to do when the queue keeps growing.",
       "status": "todo"
     },
     {
@@ -945,11 +824,9 @@
       "indexInModule": 6,
       "moduleTotal": 6,
       "title_ru": "Backpressure и dead letter queue",
-      "title_en": "Backpressure and the dead letter queue",
       "key_idea": "Если сообщения приходят быстрее, чем обрабатываются, нужно притормозить источник (backpressure), а «ядовитые» сообщения отложить в отдельную очередь (DLQ).",
       "shop_example": "В чёрную пятницу заказы летят быстрее, чем склад их разбирает, а одно сообщение с битыми данными всё время падает.",
       "hook_ru": "Очередь растёт быстрее, чем её разбирают.",
-      "hook_en": "The queue grows faster than it drains.",
       "scene_types": [
         "diagram",
         "checklist"
@@ -967,10 +844,7 @@
         "dead letter queue",
         "ядовитое сообщение"
       ],
-      "teaser_ru": "Дальше: что на самом деле говорит теорема CAP.",
-      "teaser_en": "Next: what the CAP theorem really says.",
       "comment_question_ru": "Как вы решаете, когда сообщение пора отправлять в DLQ?",
-      "comment_question_en": "How do you decide when a message belongs in the DLQ?",
       "status": "todo"
     },
     {
@@ -980,11 +854,9 @@
       "indexInModule": 1,
       "moduleTotal": 6,
       "title_ru": "CAP без мифов",
-      "title_en": "CAP without myths",
       "key_idea": "CAP говорит, что при разрыве связи между серверами система вынуждена выбирать между согласованностью и доступностью, а не «два из трёх» в обычное время.",
       "shop_example": "Связь между двумя дата-центрами магазина оборвалась, и нужно решить: принимать заказы или отказывать, чтобы не разойтись в данных.",
       "hook_ru": "«Выбери два из трёх» — это неточно.",
-      "hook_en": "Pick two of three? That's misleading.",
       "scene_types": [
         "diagram",
         "checklist"
@@ -1001,8 +873,6 @@
         "согласованность",
         "доступность"
       ],
-      "teaser_ru": "Дальше: почему данные сходятся не сразу.",
-      "teaser_en": "Next: why data converges with a delay.",
       "status": "todo"
     },
     {
@@ -1012,11 +882,9 @@
       "indexInModule": 2,
       "moduleTotal": 6,
       "title_ru": "Eventual consistency",
-      "title_en": "Eventual consistency",
       "key_idea": "При eventual consistency копии данных могут какое-то время различаться, но если новых изменений нет, в итоге все копии становятся одинаковыми.",
       "shop_example": "Счётчик «в корзине у 120 человек» на разных серверах показывает разные числа, но через секунду они совпадают.",
       "hook_ru": "Данные сойдутся. Но не прямо сейчас.",
-      "hook_en": "The data will match. Just not yet.",
       "scene_types": [
         "diagram",
         "checklist"
@@ -1033,8 +901,6 @@
         "eventual consistency",
         "strong consistency"
       ],
-      "teaser_ru": "Дальше: сколько реплик достаточно спросить.",
-      "teaser_en": "Next: how many replicas are enough to ask.",
       "status": "todo"
     },
     {
@@ -1044,11 +910,9 @@
       "indexInModule": 3,
       "moduleTotal": 6,
       "title_ru": "Кворум: R + W > N",
-      "title_en": "Quorum: R + W > N",
       "key_idea": "Если при записи подтверждают W реплик, при чтении опрашивают R, и R + W больше числа реплик N, то чтение всегда пересечётся с последней записью.",
       "shop_example": "Остаток товара хранится в трёх репликах, и мы выбираем, сколько из них спрашивать при чтении и записи.",
       "hook_ru": "Три реплики. Сколько нужно спросить?",
-      "hook_en": "Three replicas. How many must you ask?",
       "scene_types": [
         "diagram",
         "code"
@@ -1064,8 +928,6 @@
         "кворум",
         "R + W > N"
       ],
-      "teaser_ru": "Дальше: что, если двое покупают последний товар.",
-      "teaser_en": "Next: what if two people buy the last item.",
       "status": "todo"
     },
     {
@@ -1075,11 +937,9 @@
       "indexInModule": 4,
       "moduleTotal": 6,
       "title_ru": "Race condition и оптимистичные блокировки",
-      "title_en": "Race conditions and optimistic locking",
       "key_idea": "Гонка возникает, когда два запроса читают одно значение и пишут своё, а оптимистичная блокировка проверяет номер версии и отклоняет того, кто опоздал.",
       "shop_example": "Двое одновременно покупают последнюю пару кроссовок, и без проверки версии продастся обоим.",
       "hook_ru": "Двое купили последний товар. Кто получит?",
-      "hook_en": "Two buyers, one last item. Who wins?",
       "scene_types": [
         "diagram",
         "code"
@@ -1096,8 +956,6 @@
         "оптимистичная блокировка",
         "версия строки"
       ],
-      "teaser_ru": "Дальше: что делать, когда блокировка истекла.",
-      "teaser_en": "Next: what to do when a lock expires.",
       "status": "todo"
     },
     {
@@ -1107,11 +965,9 @@
       "indexInModule": 5,
       "moduleTotal": 6,
       "title_ru": "Распределённая блокировка и fencing token",
-      "title_en": "Distributed locks and fencing tokens",
       "key_idea": "Блокировка с таймером может истечь, пока владелец ещё работает, поэтому каждому владельцу выдают растущий номер (fencing token), а хранилище отвергает записи со старым номером.",
       "shop_example": "Воркер, который пересчитывает остатки, завис, его блокировка истекла, и второй воркер уже пишет те же данные.",
       "hook_ru": "Блокировка истекла, а воркер ещё работает.",
-      "hook_en": "The lock expired. The worker didn't know.",
       "scene_types": [
         "diagram",
         "code"
@@ -1129,8 +985,6 @@
         "lease",
         "fencing token"
       ],
-      "teaser_ru": "Дальше: как не продать один билет дважды.",
-      "teaser_en": "Next: how not to sell one ticket twice.",
       "status": "todo"
     },
     {
@@ -1140,11 +994,9 @@
       "indexInModule": 6,
       "moduleTotal": 6,
       "title_ru": "Двойное бронирование билета",
-      "title_en": "Double booking a ticket",
       "key_idea": "Чтобы не продать одно место дважды, место сначала временно удерживают за покупателем, а потом подтверждают оплатой или отпускают по таймеру.",
       "shop_example": "Магазин продаёт места на офлайн-мастер-класс, и последнее место выбрали сразу двое.",
       "hook_ru": "Один билет — два владельца. Как не допустить?",
-      "hook_en": "One ticket, two owners. How to prevent it?",
       "scene_types": [
         "diagram",
         "code",
@@ -1163,10 +1015,7 @@
         "удержание места (hold)",
         "таймер брони"
       ],
-      "teaser_ru": "Дальше: когда повторять запрос, а когда нет.",
-      "teaser_en": "Next: when to retry and when not to.",
       "comment_question_ru": "Какой способ защиты от двойной брони вы бы выбрали и почему?",
-      "comment_question_en": "Which double-booking protection would you choose, and why?",
       "status": "todo"
     },
     {
@@ -1176,11 +1025,9 @@
       "indexInModule": 1,
       "moduleTotal": 6,
       "title_ru": "Retries и backoff с jitter",
-      "title_en": "Retries and backoff with jitter",
       "key_idea": "Повтор запроса помогает при кратком сбое, но если все повторяют сразу, они добивают сервис, поэтому паузы увеличивают и добавляют случайный разброс.",
       "shop_example": "Платёжный сервис моргнул на секунду, и тысячи повторов в один момент валят его снова.",
       "hook_ru": "Повторить запрос: спасение или ловушка?",
-      "hook_en": "Retry: a rescue or a trap?",
       "scene_types": [
         "diagram",
         "code"
@@ -1197,8 +1044,6 @@
         "exponential backoff",
         "jitter запросов"
       ],
-      "teaser_ru": "Дальше: как перестать стучаться в упавший сервис.",
-      "teaser_en": "Next: how to stop knocking on a dead service.",
       "status": "todo"
     },
     {
@@ -1208,11 +1053,9 @@
       "indexInModule": 2,
       "moduleTotal": 6,
       "title_ru": "Circuit breaker",
-      "title_en": "Circuit breaker",
       "key_idea": "Circuit breaker замечает, что соседний сервис отвечает ошибками, перестаёт его вызывать на время и периодически проверяет, не ожил ли он.",
       "shop_example": "Сервис рекомендаций упал, и страница товара не должна ждать его, а просто показывается без рекомендаций.",
       "hook_ru": "Как сервису перестать добивать упавшего соседа?",
-      "hook_en": "How to stop hammering a dying service?",
       "scene_types": [
         "diagram",
         "code"
@@ -1228,8 +1071,6 @@
         "состояния closed, open, half-open",
         "fallback"
       ],
-      "teaser_ru": "Дальше: как один медленный сервис роняет остальные.",
-      "teaser_en": "Next: how one slow service drags the rest down.",
       "status": "todo"
     },
     {
@@ -1239,11 +1080,9 @@
       "indexInModule": 3,
       "moduleTotal": 6,
       "title_ru": "Таймауты и каскадные отказы",
-      "title_en": "Timeouts and cascading failures",
       "key_idea": "Без таймаута запросы к медленному сервису копятся и занимают все потоки, и тогда падают даже здоровые части системы.",
       "shop_example": "Сервис доставки отвечает по минуте, потоки магазина заканчиваются, и перестаёт открываться даже главная.",
       "hook_ru": "Один медленный сервис положил весь магазин.",
-      "hook_en": "One slow service took down the shop.",
       "scene_types": [
         "diagram",
         "checklist"
@@ -1259,8 +1098,6 @@
         "каскадный отказ",
         "bulkhead"
       ],
-      "teaser_ru": "Дальше: как откатить заказ, прошедший через три сервиса.",
-      "teaser_en": "Next: how to undo an order that crossed three services.",
       "status": "todo"
     },
     {
@@ -1270,11 +1107,9 @@
       "indexInModule": 4,
       "moduleTotal": 6,
       "title_ru": "Saga",
-      "title_en": "Saga",
       "key_idea": "Когда одна операция проходит через несколько сервисов, saga выполняет шаги по очереди, а при ошибке запускает обратные действия, которые отменяют уже сделанное.",
       "shop_example": "Заказ резервирует товар, списывает деньги и создаёт доставку, и если доставка не удалась, деньги возвращаются.",
       "hook_ru": "Заказ на три сервиса. Как откатить один шаг?",
-      "hook_en": "Order spans three services. Undo one step?",
       "scene_types": [
         "diagram",
         "checklist"
@@ -1290,8 +1125,6 @@
         "saga",
         "компенсирующее действие"
       ],
-      "teaser_ru": "Дальше: как не потерять событие после сохранения заказа.",
-      "teaser_en": "Next: how not to lose an event after saving an order.",
       "status": "todo"
     },
     {
@@ -1301,11 +1134,9 @@
       "indexInModule": 5,
       "moduleTotal": 6,
       "title_ru": "Outbox pattern",
-      "title_en": "Outbox pattern",
       "key_idea": "Outbox записывает событие в ту же транзакцию, что и данные, а отдельный процесс потом отправляет его в очередь, так что событие не теряется между двумя системами.",
       "shop_example": "Заказ сохранился в базе, но сообщение о нём в очередь не ушло, и склад ничего не узнал.",
       "hook_ru": "Сохранили заказ, а событие потеряли.",
-      "hook_en": "Order saved. The event vanished.",
       "scene_types": [
         "diagram",
         "code"
@@ -1323,8 +1154,6 @@
         "dual write",
         "at-least-once доставка"
       ],
-      "teaser_ru": "Дальше: что значат «девятки» в доступности.",
-      "teaser_en": "Next: what the \"nines\" in uptime mean.",
       "status": "todo"
     },
     {
@@ -1334,11 +1163,9 @@
       "indexInModule": 6,
       "moduleTotal": 6,
       "title_ru": "Health checks, failover и «девятки» SLA",
-      "title_en": "Health checks, failover and the nines of SLA",
       "key_idea": "Health check проверяет, что сервис жив, failover переключает на запасной, а «девятки» показывают, сколько простоя в год допустимо: 99,9% — это около 9 часов.",
       "shop_example": "Главный сервер оплаты завис, проверка это замечает, и трафик уходит на запасной.",
       "hook_ru": "99,9% — это сколько часов простоя в год?",
-      "hook_en": "99.9% uptime means how much downtime?",
       "scene_types": [
         "diagram",
         "checklist"
@@ -1357,10 +1184,7 @@
         "SLA",
         "SLO"
       ],
-      "teaser_ru": "Дальше: как показать статус заказа без перезагрузки.",
-      "teaser_en": "Next: how to show order status without a refresh.",
       "comment_question_ru": "Что в вашем проекте упадёт первым и почему?",
-      "comment_question_en": "What would fail first in your project, and why?",
       "status": "todo"
     },
     {
@@ -1370,11 +1194,9 @@
       "indexInModule": 1,
       "moduleTotal": 5,
       "title_ru": "Polling, long polling, SSE, WebSocket",
-      "title_en": "Polling, long polling, SSE, WebSocket",
       "key_idea": "Есть четыре способа получать новости с сервера: спрашивать снова и снова, держать вопрос открытым, получать поток от сервера или общаться в обе стороны.",
       "shop_example": "Покупатель смотрит статус заказа, и страница должна обновиться без перезагрузки.",
       "hook_ru": "Статус заказа без перезагрузки страницы?",
-      "hook_en": "Order status without refreshing the page?",
       "scene_types": [
         "diagram",
         "checklist"
@@ -1393,8 +1215,6 @@
         "SSE",
         "WebSocket"
       ],
-      "teaser_ru": "Дальше: как рассказать об изменении всем, кому нужно.",
-      "teaser_en": "Next: how to tell everyone who needs to know.",
       "status": "todo"
     },
     {
@@ -1404,11 +1224,9 @@
       "indexInModule": 2,
       "moduleTotal": 5,
       "title_ru": "Pub/sub и уведомления",
-      "title_en": "Pub/sub and notifications",
       "key_idea": "В pub/sub отправитель публикует событие в тему, а все подписчики получают его сами, и отправитель не знает, сколько их.",
       "shop_example": "Заказ отправлен, и об этом должны узнать покупатель, склад и служба аналитики.",
       "hook_ru": "Заказ изменился. Кто об этом узнает?",
-      "hook_en": "Order changed. Who needs to know?",
       "scene_types": [
         "diagram",
         "checklist"
@@ -1426,8 +1244,6 @@
         "подписчик",
         "fan-out"
       ],
-      "teaser_ru": "Дальше: как загрузить большой файл и не уронить сервер.",
-      "teaser_en": "Next: how to upload a big file without crashing the server.",
       "status": "todo"
     },
     {
@@ -1437,11 +1253,9 @@
       "indexInModule": 3,
       "moduleTotal": 5,
       "title_ru": "Загрузка больших файлов: presigned URL и чанки",
-      "title_en": "Large uploads: presigned URLs and chunks",
       "key_idea": "Большой файл лучше грузить напрямую в хранилище по временной ссылке и по частям, чтобы он не проходил через наш сервер.",
       "shop_example": "Покупатель загружает видео-отзыв на гигабайт, и мы не хотим, чтобы он занимал наш сервер.",
       "hook_ru": "Видео-отзыв на гигабайт. Грузим через сервер?",
-      "hook_en": "A gigabyte review video. Upload through your server?",
       "scene_types": [
         "diagram",
         "checklist"
@@ -1459,8 +1273,6 @@
         "чанк",
         "multipart upload"
       ],
-      "teaser_ru": "Дальше: как вынести тяжёлую работу в фон.",
-      "teaser_en": "Next: how to move heavy work to the background.",
       "status": "todo"
     },
     {
@@ -1470,11 +1282,9 @@
       "indexInModule": 4,
       "moduleTotal": 5,
       "title_ru": "Фоновые задачи и воркеры",
-      "title_en": "Background jobs and workers",
       "key_idea": "Долгую работу кладут в очередь задач, воркеры берут её по мере сил, а пользователь получает номер задачи и смотрит её статус.",
       "shop_example": "Выгрузка отчёта по продажам строится минуту, и покупатель или менеджер не должны всё это время смотреть на загрузку.",
       "hook_ru": "Отчёт строится минуту. Пусть все ждут?",
-      "hook_en": "The report takes a minute. Make them wait?",
       "scene_types": [
         "diagram",
         "checklist"
@@ -1492,8 +1302,6 @@
         "воркер",
         "статус задачи"
       ],
-      "teaser_ru": "Дальше: как искать товар по словам.",
-      "teaser_en": "Next: how to search products by words.",
       "status": "todo"
     },
     {
@@ -1503,11 +1311,9 @@
       "indexInModule": 5,
       "moduleTotal": 5,
       "title_ru": "Поиск и инвертированный индекс",
-      "title_en": "Search and the inverted index",
       "key_idea": "Инвертированный индекс хранит для каждого слова список документов, где оно встречается, поэтому поиск по словам не читает все документы.",
       "shop_example": "Найти «красные кроссовки» среди миллиона товаров, не перебирая все описания.",
       "hook_ru": "Как найти «красные кроссовки» среди миллиона товаров?",
-      "hook_en": "Find red sneakers among a million products?",
       "scene_types": [
         "diagram",
         "code"
@@ -1523,10 +1329,7 @@
         "токенизация",
         "релевантность"
       ],
-      "teaser_ru": "Дальше: собираем целые системы, начиная с короткой ссылки.",
-      "teaser_en": "Next: we build whole systems, starting with a short link.",
       "comment_question_ru": "Какой способ доставки событий на экран вы используете у себя?",
-      "comment_question_en": "Which way of pushing updates to the screen do you use in your project?",
       "status": "todo"
     },
     {
@@ -1536,11 +1339,9 @@
       "indexInModule": 1,
       "moduleTotal": 6,
       "title_ru": "Разбор: сокращатель ссылок",
-      "title_en": "Walkthrough: URL shortener",
       "key_idea": "Короткая ссылка — это короткий код, который по таблице превращается в длинный адрес и перенаправляет туда пользователя.",
       "shop_example": "Магазин рассылает акции, и длинные ссылки с метками превращаются в короткие, по которым ещё считаются клики.",
       "hook_ru": "Как сделать короткую ссылку для рассылки?",
-      "hook_en": "How do you build a short link?",
       "scene_types": [
         "diagram",
         "code",
@@ -1562,8 +1363,6 @@
         "base62",
         "редирект"
       ],
-      "teaser_ru": "Дальше: лента новинок для миллиона покупателей.",
-      "teaser_en": "Next: a feed of new items for a million buyers.",
       "status": "todo"
     },
     {
@@ -1573,11 +1372,9 @@
       "indexInModule": 2,
       "moduleTotal": 6,
       "title_ru": "Разбор: лента новостей",
-      "title_en": "Walkthrough: news feed",
       "key_idea": "Ленту можно собирать заранее при публикации (fan-out on write) или в момент открытия (fan-out on read), и у каждого способа свои плюсы.",
       "shop_example": "Лента новинок и акций любимых брендов для каждого из миллиона покупателей.",
       "hook_ru": "Лента для миллиона покупателей. Как собрать?",
-      "hook_en": "A feed for a million buyers. How?",
       "scene_types": [
         "diagram",
         "checklist"
@@ -1597,8 +1394,6 @@
         "fan-out on read",
         "лента"
       ],
-      "teaser_ru": "Дальше: чат покупателя с поддержкой.",
-      "teaser_en": "Next: a buyer–support chat.",
       "status": "todo"
     },
     {
@@ -1608,11 +1403,9 @@
       "indexInModule": 3,
       "moduleTotal": 6,
       "title_ru": "Разбор: мессенджер",
-      "title_en": "Walkthrough: messenger",
       "key_idea": "Чат держит открытое соединение, хранит сообщения по порядку и подтверждает доставку, чтобы ничего не терялось и не повторялось.",
       "shop_example": "Чат покупателя со службой поддержки: сообщения приходят сразу и не пропадают, если связь моргнула.",
       "hook_ru": "Как устроен чат покупателя с поддержкой?",
-      "hook_en": "How does a support chat work?",
       "scene_types": [
         "diagram",
         "checklist"
@@ -1631,8 +1424,6 @@
         "подтверждение доставки",
         "офлайн-доставка"
       ],
-      "teaser_ru": "Дальше: система уведомлений.",
-      "teaser_en": "Next: a notification system.",
       "status": "todo"
     },
     {
@@ -1642,11 +1433,9 @@
       "indexInModule": 4,
       "moduleTotal": 6,
       "title_ru": "Разбор: система уведомлений",
-      "title_en": "Walkthrough: notification system",
       "key_idea": "Система уведомлений принимает событие, решает, кому и по какому каналу отправить, и делает это через очереди с повторами, чтобы пережить сбои и пики.",
       "shop_example": "Начало распродажи: миллиону покупателей нужно отправить пуши, письма и СМС, не перегрузив провайдеров.",
       "hook_ru": "Миллион уведомлений за раз. Как не сломаться?",
-      "hook_en": "Send a million notifications without melting?",
       "scene_types": [
         "diagram",
         "checklist"
@@ -1668,8 +1457,6 @@
         "предпочтения пользователя",
         "дедупликация уведомлений"
       ],
-      "teaser_ru": "Дальше: платёжный сервис.",
-      "teaser_en": "Next: a payment service.",
       "status": "todo"
     },
     {
@@ -1679,11 +1466,9 @@
       "indexInModule": 5,
       "moduleTotal": 6,
       "title_ru": "Разбор: платёжный сервис",
-      "title_en": "Walkthrough: payment service",
       "key_idea": "Платёж проходит несколько шагов, и чтобы деньги не потерялись и не списались дважды, нужны идемпотентные запросы, транзакции, компенсации и сверка с банком.",
       "shop_example": "Покупатель оплачивает заказ картой, банк отвечает с задержкой, а приложение уже повторило запрос.",
       "hook_ru": "Как не потерять и не задвоить платёж?",
-      "hook_en": "How to avoid lost and doubled payments?",
       "scene_types": [
         "diagram",
         "checklist"
@@ -1706,8 +1491,6 @@
         "статусы платежа",
         "платёжный провайдер"
       ],
-      "teaser_ru": "Дальше: поиск ближайшего пункта выдачи.",
-      "teaser_en": "Next: finding the nearest pickup point.",
       "status": "todo"
     },
     {
@@ -1717,11 +1500,9 @@
       "indexInModule": 6,
       "moduleTotal": 6,
       "title_ru": "Разбор: геопоиск (geohash, quadtree)",
-      "title_en": "Walkthrough: geosearch (geohash, quadtree)",
       "key_idea": "Чтобы быстро найти ближайшие точки, карту делят на ячейки (geohash) или на вложенные квадраты (quadtree) и ищут только в соседних ячейках.",
       "shop_example": "Покупатель выбирает ближайший пункт выдачи среди тысяч по всей стране.",
       "hook_ru": "Как быстро найти ближайший пункт выдачи?",
-      "hook_en": "Nearest pickup point, found fast. How?",
       "scene_types": [
         "diagram",
         "code",
@@ -1744,10 +1525,7 @@
         "quadtree",
         "поиск ближайших соседей"
       ],
-      "teaser_ru": "Это был последний выпуск серии. Что разобрать дальше — пишите в комментариях.",
-      "teaser_en": "That was the last episode. Tell us what to cover next in the comments.",
       "comment_question_ru": "Какую систему вы бы разобрали следующей?",
-      "comment_question_en": "Which system would you want us to walk through next?",
       "status": "todo"
     }
   ]

@@ -7,7 +7,7 @@ const { values, positionals } = parseArgs({ allowPositionals: true, options: { l
 
 const slug = positionals[0];
 if (!slug) {
-  console.error("Usage: cover <episode> --lang ru|en");
+  console.error("Usage: cover <episode> --lang ru");
   process.exit(1);
 }
 

@@ -7,7 +7,9 @@ import { theme } from "../theme";
 type ChecklistProps = { scene: Extract<ResolvedScene, { type: "checklist" }>; context: SceneContext };
 
 const ROW_TOP = 340;
-const ROW_STEP = 220;
+const ROW_BOTTOM_LIMIT = 1380;
+const MAX_ROW_STEP = 220;
+const ROW_GAP = 40;
 const INTRO_FRAMES = 12;
 const ENTER_FRAMES = 10;
 const CHECK_DELAY_FRAMES = 8;
@@ -16,6 +18,7 @@ const clamp01 = (value: number): number => Math.min(1, Math.max(0, value));
 
 export const Checklist = ({ scene, context }: ChecklistProps) => {
   const frame = useCurrentFrame();
+  const rowStep = Math.min(MAX_ROW_STEP, Math.floor((ROW_BOTTOM_LIMIT - ROW_TOP) / scene.items.length));
   const interval = (context.duration * 0.7 - INTRO_FRAMES) / scene.items.length;
   const startOf = (index: number): number => INTRO_FRAMES + index * interval;
   const closed = scene.items.filter((_, index) => frame >= startOf(index) + CHECK_DELAY_FRAMES).length;
@@ -45,10 +48,10 @@ export const Checklist = ({ scene, context }: ChecklistProps) => {
             key={item.id}
             style={{
               position: "absolute",
-              top: ROW_TOP + index * ROW_STEP,
+              top: ROW_TOP + index * rowStep,
               left: theme.spacing.page,
               right: theme.spacing.page,
-              height: 180,
+              height: rowStep - ROW_GAP,
               boxSizing: "border-box",
               padding: "0 36px",
               display: "flex",

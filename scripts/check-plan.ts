@@ -12,7 +12,6 @@ const problems = plan.episodes.flatMap((episode, index) => [
     .filter((id) => !ids.has(id) || id >= episode.id)
     .map((id) => `#${episode.id}: link to #${id} is not an earlier episode`),
   ...(words(episode.hook_ru) > MAX_HOOK_WORDS ? [`#${episode.id}: hook_ru over ${MAX_HOOK_WORDS} words`] : []),
-  ...(words(episode.hook_en) > MAX_HOOK_WORDS ? [`#${episode.id}: hook_en over ${MAX_HOOK_WORDS} words`] : []),
   ...(episode.indexInModule === episode.moduleTotal && !episode.comment_question_ru
     ? [`#${episode.id}: last in module without comment question`]
     : []),

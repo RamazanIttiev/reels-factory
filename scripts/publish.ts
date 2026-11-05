@@ -91,7 +91,7 @@ const { values, positionals } = parseArgs({
 
 const slug = positionals[0];
 if (!slug) {
-  console.error("Usage: publish <slug> --lang ru|en [--dry-run]");
+  console.error("Usage: publish <slug> --lang ru [--dry-run]");
   process.exit(1);
 }
 

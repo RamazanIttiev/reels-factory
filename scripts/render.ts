@@ -12,7 +12,7 @@ const { values, positionals } = parseArgs({
 
 const slug = positionals[0];
 if (!slug) {
-  console.error("Usage: render <episode> --lang ru|en [--scale 0.25] [--out file.mp4]");
+  console.error("Usage: render <episode> --lang ru [--scale 0.25] [--out file.mp4]");
   process.exit(1);
 }
 

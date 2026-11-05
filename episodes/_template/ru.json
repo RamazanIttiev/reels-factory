@@ -1,0 +1,16 @@
+{
+  "lang": "ru",
+  "voiceId": "atlHNo226HxPBYaOVQi4",
+  "caption": "ONE_SENTENCE_POST_CAPTION",
+  "ui": { "closed": "закрыто {n} из {m}" },
+  "hook": { "text": "Вопрос или смелое утверждение", "accent": "смелое" },
+  "scenes": {
+    "problem": { "narration": "Проблема в двух-трёх коротких предложениях.", "labels": { "caption": "Что ломается" } },
+    "fix": { "narration": "Как это лечится, коротко.", "labels": { "caption": "Решение", "result": "Итог" } },
+    "summary": {
+      "narration": "Три способа одной строкой.",
+      "labels": { "caption": "3 способа", "one": "Первый", "two": "Второй", "three": "Третий" }
+    }
+  },
+  "outro": { "text": "Подписывайся", "narration": "Подписывайся на следующий выпуск." }
+}

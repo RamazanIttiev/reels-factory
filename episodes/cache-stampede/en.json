@@ -1,0 +1,22 @@
+{
+  "lang": "en",
+  "voiceId": "VOICE_ID",
+  "caption": "When one expired cache key sends a thousand requests to your database",
+  "ui": { "closed": "closed {n} of {m}" },
+  "hook": { "text": "Why one expired key kills your database", "accent": "database" },
+  "scenes": {
+    "problem": {
+      "narration": "A popular key expires. The cache is empty for a moment. Thousands of requests miss together and ask the database for the same row. The database drowns.",
+      "labels": { "caption": "Cache miss: everyone hits the DB" }
+    },
+    "lock": {
+      "narration": "Fix one: a lock per key. One request rebuilds the value, the others wait and read it from the cache. Fix two: a random offset on the TTL, so keys expire apart.",
+      "labels": { "caption": "Lock + TTL jitter", "result": "One DB query, not thousands" }
+    },
+    "fixes": {
+      "narration": "Fix three: refresh early, before the value dies. Lock, jitter, early refresh. Use them together.",
+      "labels": { "caption": "3 defenses", "lock": "Lock per key", "jitter": "TTL jitter", "early": "Early refresh" }
+    }
+  },
+  "outro": { "text": "Follow for the next failure mode", "narration": "Follow for the next failure mode." }
+}

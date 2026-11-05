@@ -1,0 +1,30 @@
+{
+  "name": "reels-factory",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "preview": "tsx scripts/render.ts --scale 0.25",
+    "frames": "tsx scripts/frames.ts",
+    "render": "tsx scripts/render.ts",
+    "publish": "tsx scripts/publish.ts",
+    "check": "tsx scripts/check-words.ts",
+    "next": "tsx scripts/next.ts",
+    "status": "tsx scripts/status.ts",
+    "plan:check": "tsx scripts/check-plan.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@remotion/captions": "^4.0.0",
+    "@remotion/cli": "^4.0.0",
+    "@remotion/google-fonts": "^4.0.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "remotion": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.5.0"
+  }
+}

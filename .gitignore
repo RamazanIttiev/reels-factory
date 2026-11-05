@@ -1,0 +1,10 @@
+node_modules/
+out/
+.cache/
+public/audio/
+.env
+*.mp4
+*.wav
+frames/
+.DS_Store
+.idea/

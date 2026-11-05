@@ -11,6 +11,7 @@ export type Synthesis = { audio: Buffer; durationSec: number; spans?: WordSpan[]
 
 export type TtsProvider = {
   name: string;
+  cacheId?: string;
   ext: string;
   synthesize: (input: SynthesisInput) => Promise<Synthesis>;
 };
@@ -61,8 +62,11 @@ const spansFromCharacters = (text: string, tokens: NarrationToken[], alignment: 
     { spans: [], cursor: 0 },
   ).spans;
 
+const ELEVENLABS_MODEL = "eleven_v4";
+
 const elevenLabs: TtsProvider = {
   name: "elevenlabs",
+  cacheId: `elevenlabs-${ELEVENLABS_MODEL}`,
   ext: "mp3",
   synthesize: async ({ text, voiceId }) => {
     const key = requireEnv("ELEVENLABS_API_KEY");
@@ -71,10 +75,10 @@ const elevenLabs: TtsProvider = {
       {
         method: "POST",
         headers: { "xi-api-key": key, "content-type": "application/json" },
-        body: JSON.stringify({ text, model_id: "eleven_multilingual_v2" }),
+        body: JSON.stringify({ text, model_id: ELEVENLABS_MODEL }),
       },
     );
-    if (!response.ok) throw new Error(`ElevenLabs HTTP ${response.status}`);
+    if (!response.ok) throw new Error(`ElevenLabs HTTP ${response.status}: ${(await response.text()).slice(0, 300)}`);
     const body: unknown = await response.json();
     const alignment = isRecord(body) ? parseAlignment(body.alignment) : undefined;
     if (!isRecord(body) || typeof body.audio_base64 !== "string" || !alignment) {
@@ -124,7 +128,7 @@ export const providerByName = (name: string): TtsProvider => {
 };
 
 export const audioHash = (provider: TtsProvider, { text, voiceId, lang }: SynthesisInput): string =>
-  createHash("sha256").update([text, voiceId, provider.name, lang].join("\u0000")).digest("hex");
+  createHash("sha256").update([text, voiceId, provider.cacheId ?? provider.name, lang].join("\u0000")).digest("hex");
 
 const isCachedMeta = (value: unknown): value is { durationSec: number; spans?: WordSpan[] } =>
   isRecord(value) && typeof value.durationSec === "number";

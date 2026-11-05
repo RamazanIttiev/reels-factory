@@ -6,8 +6,8 @@ export const FPS = 30;
 export const WIDTH = 1080;
 export const HEIGHT = 1920;
 export const WORDS_PER_SECOND = 2.5;
+export const PLAYBACK_SPEED = 1.15;
 
-const HOOK_FRAMES = 60;
 const TAIL_FRAMES = 15;
 const MIN_SEGMENT_FRAMES = 60;
 const LAST_WORD_MIN_FRAMES = 6;
@@ -88,8 +88,13 @@ const spokenSegment = (
   content: SegmentContent,
 ): Segment => {
   const tokens = narrationTokens(narration);
-  const durationSec = audio?.durationSec ?? tokens.length / WORDS_PER_SECOND;
-  const spans = audio?.spans ? alignSpans(tokens, audio.spans, durationSec) : uniformSpans(tokens, durationSec);
+  const audioSec = audio?.durationSec ?? tokens.length / WORDS_PER_SECOND;
+  const audioSpans = audio?.spans ? alignSpans(tokens, audio.spans, audioSec) : uniformSpans(tokens, audioSec);
+  const spans = audioSpans.map((span) => ({
+    startSec: span.startSec / PLAYBACK_SPEED,
+    endSec: span.endSec / PLAYBACK_SPEED,
+  }));
+  const durationSec = audioSec / PLAYBACK_SPEED;
   return {
     id,
     closed,
@@ -105,7 +110,10 @@ export const buildTimeline = (episode: Episode, audio: Record<string, AudioInfo>
   total: episode.total,
   ui: episode.ui,
   segments: [
-    { id: "hook", duration: HOOK_FRAMES, closed: 0, words: [], content: { kind: "hook", hook: episode.hook } },
+    {
+      ...spokenSegment("hook", episode.hook.text, audio.hook, 0, { kind: "hook", hook: episode.hook }),
+      words: [],
+    },
     ...episode.scenes.map((scene) =>
       spokenSegment(scene.id, scene.narration, audio[scene.id], "closed" in scene ? (scene.closed ?? 0) : 0, {
         kind: "scene",

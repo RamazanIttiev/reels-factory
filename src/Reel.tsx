@@ -7,6 +7,7 @@ import { Code } from "./scenes/Code";
 import { Diagram } from "./scenes/Diagram";
 import { Hook } from "./scenes/Hook";
 import { Outro } from "./scenes/Outro";
+import { PLAYBACK_SPEED } from "./timeline";
 import type { ReelProps, Segment } from "./timeline";
 
 const renderContent = ({ content }: Segment, context: SceneContext) => {
@@ -39,7 +40,7 @@ export const Reel = (props: ReelProps) => {
           <Sequence key={segment.id} from={starts[index]} durationInFrames={segment.duration}>
             {renderContent(segment, context)}
             <Captions words={segment.words} />
-            {segment.audio && <Audio src={staticFile(`audio/${segment.audio}`)} />}
+            {segment.audio && <Audio src={staticFile(`audio/${segment.audio}`)} playbackRate={PLAYBACK_SPEED} />}
           </Sequence>
         );
       })}

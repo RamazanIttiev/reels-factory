@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { parseArgs } from "node:util";
-import { requireEnv } from "./env";
+import { instagramEnvNames, requireEnv } from "./env";
 import { readMetrics } from "./scoring";
 import { appendJsonl, isRecord, metricsPath, readVideos } from "./state";
 import type { VideoRecord } from "./state";
@@ -25,10 +25,10 @@ const FIELDS = ["reach", "views", "likes", "comments", "shares", "saves", "follo
 
 const NOT_EXPOSED_FOR_REELS = ["follows"];
 
-const fetchMetric = async (mediaId: string, metric: string): Promise<number | undefined> => {
+const fetchMetric = async (token: string, mediaId: string, metric: string): Promise<number | undefined> => {
   const version = process.env.GRAPH_API_VERSION ?? "v27.0";
   const response = await fetch(`${GRAPH_HOST}/${version}/${mediaId}/insights?metric=${metric}`, {
-    headers: { Authorization: `Bearer ${requireEnv("INSTAGRAM_ACCESS_TOKEN")}` },
+    headers: { Authorization: `Bearer ${token}` },
   });
   const json: unknown = await response.json();
   if (!response.ok || !isRecord(json) || !Array.isArray(json.data)) return undefined;
@@ -53,7 +53,8 @@ const derive = (values: Record<string, number | null>, lengthS: number): Record<
 
 const snapshot = async (video: VideoRecord, windowH: number): Promise<Record<string, unknown>> => {
   const mediaId = String(video.ig_media_id);
-  const results = await Promise.all(API_METRICS.map(async (metric) => ({ metric, value: await fetchMetric(mediaId, metric.api) })));
+  const token = requireEnv(instagramEnvNames(lang).token);
+  const results = await Promise.all(API_METRICS.map(async (metric) => ({ metric, value: await fetchMetric(token, mediaId, metric.api) })));
   const values: Record<string, number | null> = {
     ...Object.fromEntries(FIELDS.map((field) => [field, null])),
     ...Object.fromEntries(results.map(({ metric, value }) => [metric.field, value === undefined ? null : value * metric.scale])),

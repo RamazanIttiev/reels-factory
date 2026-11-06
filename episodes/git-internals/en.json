@@ -1,0 +1,58 @@
+{
+  "lang": "en",
+  "voiceId": "DODLEQrClDo8wCz460ld",
+  "caption": "What a Git commit really stores: snapshots, trees and blobs, not diffs.",
+  "hook": {
+    "text": "Git does not store diffs",
+    "accent": "diffs",
+    "icon": "git",
+    "claims": [
+      "c1",
+      "c3"
+    ]
+  },
+  "scenes": {
+    "problem": {
+      "narration": "At the core of Git is a simple key-value data store. A commit does not hold a diff. It specifies the top-level tree for the snapshot of the project at that point. Trees match folders, and blobs hold file contents. So each commit points to a full picture of the project, not a list of changes.",
+      "labels": {
+        "caption": "Inside a commit",
+        "result": "Snapshot"
+      },
+      "claims": [
+        "c1",
+        "c2",
+        "c3"
+      ]
+    },
+    "fix": {
+      "narration": "So where do deltas come from? Only from saving space. Conceptually there are only four object types: commit, tree, tag and blob. But to save space, an object can be stored as a delta of another base object. That happens in pack files.",
+      "labels": {
+        "caption": "Schematic: storage",
+        "result": "Deltas only in packs"
+      },
+      "claims": [
+        "c1",
+        "c3",
+        "c4"
+      ]
+    },
+    "summary": {
+      "narration": "Three objects. A commit is a snapshot of the project. A tree is a folder. A blob is the content of a file.",
+      "labels": {
+        "caption": "Three objects",
+        "commit": "Project snapshot",
+        "tree": "Folder",
+        "blob": "File content"
+      },
+      "claims": [
+        "c1",
+        "c2",
+        "c3"
+      ]
+    }
+  },
+  "outro": {
+    "text": "More breakdowns on elvaric",
+    "narration": "If you wondered how Git works inside, there are more breakdowns on elvaric."
+  }
+}

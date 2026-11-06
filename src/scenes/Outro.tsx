@@ -30,7 +30,7 @@ export const Outro = ({ outro, context }: OutroProps) => {
           {outro.text}
         </div>
         <div style={{ marginTop: 48, fontFamily: theme.fonts.text, fontWeight: 600, fontSize: 44, color: theme.colors.sun }}>
-          {theme.series.handle}
+          {context.handle}
         </div>
       </AbsoluteFill>
     </Frame>

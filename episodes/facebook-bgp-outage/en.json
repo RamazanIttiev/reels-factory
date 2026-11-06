@@ -1,0 +1,55 @@
+{
+  "lang": "en",
+  "voiceId": "DODLEQrClDo8wCz460ld",
+  "caption": "How one maintenance command cut Facebook off the internet, according to the company's own report.",
+  "hook": {
+    "text": "One command took Facebook off the internet",
+    "accent": "took",
+    "icon": "network",
+    "claims": [
+      "c2",
+      "c3"
+    ]
+  },
+  "scenes": {
+    "chain": {
+      "narration": "According to the company's own report, engineers ran a command meant to assess the availability of backbone capacity. Instead, it unintentionally took down all the connections in the backbone network. Facebook data centers were effectively disconnected globally. A safety check should have stopped it, but there was a bug in that audit tool.",
+      "labels": {
+        "caption": "What happened"
+      },
+      "claims": [
+        "c1",
+        "c2",
+        "c3",
+        "c4"
+      ]
+    },
+    "rule": {
+      "narration": "Then a rule kicked in. BGP tells the internet where to find your servers. The DNS servers disable those BGP advertisements if they can not speak to the data centers. So the addresses vanished. And the total loss of DNS broke many of the internal tools too.",
+      "labels": {
+        "caption": "Schematic: why the addresses vanished",
+        "result": "No addresses"
+      },
+      "claims": [
+        "c5",
+        "c6"
+      ]
+    },
+    "summary": {
+      "narration": "Three lessons. Review dangerous commands, and test the reviewer. Keep a backup way into the network. And design systems to fail safely.",
+      "labels": {
+        "caption": "Three lessons",
+        "one": "Check commands",
+        "two": "Backup access",
+        "three": "Safe failure"
+      },
+      "claims": [
+        "c4"
+      ]
+    }
+  },
+  "outro": {
+    "text": "More breakdowns on elvaric",
+    "narration": "If the Facebook outage finally made sense, there are many more breakdowns on elvaric."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "slug": "index-not-used",
+  "scenes": [
+    {
+      "id": "problem",
+      "type": "code",
+      "file": "query.sql",
+      "provenance": "quoted",
+      "resultTone": "bad",
+      "code": "SELECT * FROM test1\nWHERE lower(col1) = 'value';"
+    },
+    {
+      "id": "fix",
+      "type": "code",
+      "file": "index.sql",
+      "provenance": "quoted",
+      "resultTone": "good",
+      "code": "CREATE INDEX test1_lower_col1_idx\nON test1 (lower(col1));"
+    },
+    {
+      "id": "explain",
+      "type": "code",
+      "file": "explain.sql",
+      "provenance": "schematic",
+      "resultTone": "good",
+      "code": "EXPLAIN SELECT * FROM tenk1\nWHERE unique1 = 42;"
+    }
+  ]
+}

@@ -10,12 +10,14 @@ import { isRecord, readVideos } from "./state";
 
 type Schedule = { timezone: string; slots: string[]; slot_window_minutes: number; low_queue_alert_below: number };
 
-const loadSchedule = (): Schedule => {
+const loadSchedule = (lang = "ru"): Schedule => {
   const raw: unknown = JSON.parse(readFileSync("config/schedule.json", "utf8"));
   if (!isRecord(raw) || typeof raw.timezone !== "string" || !Array.isArray(raw.slots)) throw new Error("Invalid config/schedule.json");
+  const languages = isRecord(raw.languages) ? raw.languages : {};
+  const override = isRecord(languages[lang]) ? languages[lang] : {};
   return {
-    timezone: raw.timezone,
-    slots: raw.slots.map(String),
+    timezone: typeof override.timezone === "string" ? override.timezone : raw.timezone,
+    slots: (Array.isArray(override.slots) ? override.slots : raw.slots).map(String),
     slot_window_minutes: Number(raw.slot_window_minutes ?? 90),
     low_queue_alert_below: Number(raw.low_queue_alert_below ?? 3),
   };
@@ -41,7 +43,7 @@ const toMinutes = (slot: string): number => {
 const { values } = parseArgs({ options: { lang: { type: "string" }, "dry-run": { type: "boolean" }, now: { type: "string" } } });
 const lang = values.lang ?? "ru";
 const dry = values["dry-run"] ?? false;
-const schedule = loadSchedule();
+const schedule = loadSchedule(lang);
 const now = values.now ? new Date(values.now) : new Date();
 const clock = localClock(now, schedule.timezone);
 

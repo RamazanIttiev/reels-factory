@@ -1,3 +1,4 @@
+import { seriesFor } from "../src/series";
 import { spawnSync } from "node:child_process";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { parseArgs } from "node:util";
@@ -18,7 +19,7 @@ mkdirSync(".cache/props", { recursive: true });
 mkdirSync("covers", { recursive: true });
 const propsPath = `.cache/props/${slug}.${lang}.cover.json`;
 const output = `covers/${slug}.${lang}.jpg`;
-writeFileSync(propsPath, JSON.stringify({ hook: episode.hook }));
+writeFileSync(propsPath, JSON.stringify({ hook: episode.hook, handle: seriesFor(lang).handle, avatar: seriesFor(lang).avatar }));
 
 const result = spawnSync(
   "npx",

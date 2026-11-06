@@ -3,7 +3,7 @@ import { AbsoluteFill, staticFile } from "remotion";
 import { theme } from "./theme";
 import type { Tone } from "./types";
 
-export type SceneContext = { step: number; total: number; duration: number };
+export type SceneContext = { step: number; total: number; duration: number; handle: string; avatar: string };
 
 export const toneColor = (tone: Tone | undefined): string =>
   tone === "bad" ? theme.colors.bad : tone === "good" ? theme.colors.good : theme.colors.cardBorder;
@@ -36,7 +36,7 @@ export const Frame = ({ context, children }: FrameProps) => (
             width: 64,
             height: 64,
             borderRadius: 999,
-            backgroundImage: `url(${staticFile("avatar.jpg")})`,
+            backgroundImage: `url(${staticFile(context.avatar)})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             border: `3px solid ${theme.colors.sun}`,
@@ -44,7 +44,7 @@ export const Frame = ({ context, children }: FrameProps) => (
           }}
         />
         <div style={{ fontFamily: theme.fonts.text, fontWeight: 600, fontSize: 30, color: theme.colors.text }}>
-          {theme.series.handle}
+          {context.handle}
         </div>
       </div>
       {context.step > 0 && (

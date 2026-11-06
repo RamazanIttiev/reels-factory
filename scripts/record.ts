@@ -6,7 +6,7 @@ import { wordCount } from "./check-words";
 import { loadExperiment, phaseFor } from "./experiment";
 import { factSheetHash } from "./facts";
 import { loadLang } from "./load-episode";
-import { appendJsonl, readVideos, videosPath } from "./state";
+import { appendJsonl, readVideos, videosPath, isRecord } from "./state";
 import { findTopic, isTopicLang, loadTopics } from "./topics";
 
 export type RecordInput = {
@@ -19,11 +19,16 @@ export type RecordInput = {
   manual?: boolean;
 };
 
-const AUDIENCE_TZ = process.env.AUDIENCE_TZ ?? "Europe/Moscow";
+const audienceTz = (lang: string): string => {
+  const raw: unknown = JSON.parse(readFileSync("config/schedule.json", "utf8"));
+  const languages = isRecord(raw) && isRecord(raw.languages) ? raw.languages : {};
+  const entry = languages[lang];
+  return isRecord(entry) && typeof entry.timezone === "string" ? entry.timezone : (process.env.AUDIENCE_TZ ?? "Europe/Moscow");
+};
 const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-const localParts = (iso: string): { hour: number; weekday: number } => {
-  const parts = new Intl.DateTimeFormat("en-US", { timeZone: AUDIENCE_TZ, hour: "numeric", hourCycle: "h23", weekday: "short" }).formatToParts(new Date(iso));
+const localParts = (iso: string, lang: string): { hour: number; weekday: number } => {
+  const parts = new Intl.DateTimeFormat("en-US", { timeZone: audienceTz(lang), hour: "numeric", hourCycle: "h23", weekday: "short" }).formatToParts(new Date(iso));
   const hour = Number(parts.find((part) => part.type === "hour")?.value ?? 0);
   const weekday = WEEKDAYS.indexOf(parts.find((part) => part.type === "weekday")?.value ?? "Sun");
   return { hour, weekday };
@@ -50,7 +55,7 @@ export const recordVideo = (input: RecordInput): Record<string, unknown> => {
 
   const language = loadLang(slug, lang);
   const publishedAt = input.publishedAt ?? new Date().toISOString();
-  const { hour, weekday } = localParts(publishedAt);
+  const { hour, weekday } = localParts(publishedAt, lang);
   const lengthS = input.lengthS ?? propsLength(slug, lang);
   if (lengthS === undefined) throw new Error(`No length: render first or pass --length-s`);
   const hash = factSheetHash(slug);

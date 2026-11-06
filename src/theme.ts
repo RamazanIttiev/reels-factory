@@ -9,7 +9,6 @@ const text = loadOnest("normal", { weights: ["400", "600"], subsets: [...subsets
 const mono = loadMono("normal", { weights: ["500", "700"], subsets: [...subsets] });
 
 export const theme = {
-  series: { name: "scalelab.dev", handle: "@scalelab.dev", initials: "SL" },
   colors: {
     background: "#05182D",
     backgroundShade: "radial-gradient(ellipse 75% 55% at 50% 45%, rgb(18 70 120 / 0.42) 0%, rgb(5 20 40 / 0.62) 55%, rgb(2 10 22 / 0.82) 100%)",

@@ -23,11 +23,14 @@ export const sendAlert = async (lang: string, message: string): Promise<void> =>
 const isMain = process.argv[1]?.endsWith("alert.ts") ?? false;
 
 if (isMain) {
-  const message = process.argv.slice(2).join(" ");
+  const args = process.argv.slice(2);
+  const langAt = args.indexOf("--lang");
+  const alertLang = langAt >= 0 ? (args[langAt + 1] ?? "ru") : "ru";
+  const message = (langAt >= 0 ? args.filter((_, index) => index !== langAt && index !== langAt + 1) : args).join(" ");
   if (!message) {
     console.error('Usage: alert "text"');
     process.exit(1);
   }
-  await sendAlert("ru", message);
-  console.log("alert sent (see state/ru/alerts.log)");
+  await sendAlert(alertLang, message);
+  console.log(`alert sent (see state/${alertLang}/alerts.log)`);
 }

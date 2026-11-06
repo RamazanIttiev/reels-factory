@@ -41,7 +41,7 @@ export const pushReviewAssets = async (lang: string, slug: string): Promise<void
     caption: language.caption,
     narration: Object.values(language.scenes).map((scene) => scene.narration),
     words,
-    seconds: estimatedSeconds(words),
+    seconds: estimatedSeconds(words, lang),
     frames: files.map((name) => name.slice(prefix.length)),
   };
   await putText(reviewKey(slug, lang, "meta.json"), JSON.stringify(meta));

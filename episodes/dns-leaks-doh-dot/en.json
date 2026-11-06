@@ -1,0 +1,48 @@
+{
+  "lang": "en",
+  "voiceId": "DODLEQrClDo8wCz460ld",
+  "caption": "How DNS queries leak your browsing, and how DNS over TLS and DNS over HTTPS close the gap.",
+  "hook": {
+    "text": "Tunnel is on, but DNS is open?",
+    "accent": "DNS",
+    "icon": "wifi",
+    "claims": [
+      "c1"
+    ]
+  },
+  "scenes": {
+    "problem": {
+      "narration": "A page visit starts with a DNS lookup: your device asks where a name lives. By default that question often travels unencrypted, so the network between you and the resolver can see which sites you ask for. A standard describes the privacy issues of using the DNS, and this leak is the main one.",
+      "labels": {
+        "caption": "DNS leak"
+      },
+      "claims": [
+        "c1"
+      ]
+    },
+    "dot": {
+      "narration": "One fix is DNS over TLS. Encryption provided by TLS eliminates opportunities for eavesdropping and on-path tampering with DNS queries in the network. By default, a server that supports it listens on port 853.",
+      "labels": {
+        "caption": "DNS over TLS"
+      },
+      "claims": [
+        "c2",
+        "c4"
+      ]
+    },
+    "doh": {
+      "narration": "The other is DNS over HTTPS. This protocol sends DNS queries and responses over HTTPS. Each query and response pair is mapped into an HTTP exchange, so it usually travels like ordinary web traffic.",
+      "labels": {
+        "caption": "DNS over HTTPS"
+      },
+      "claims": [
+        "c3",
+        "c5"
+      ]
+    }
+  },
+  "outro": {
+    "text": "More breakdowns on elvaric",
+    "narration": "You now know how DNS leaks happen. More breakdowns like this on elvaric."
+  }
+}

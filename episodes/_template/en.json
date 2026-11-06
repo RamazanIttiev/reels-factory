@@ -1,0 +1,42 @@
+{
+  "lang": "en",
+  "voiceId": "DODLEQrClDo8wCz460ld",
+  "caption": "ONE_SENTENCE_POST_CAPTION",
+  "hook": {
+    "text": "A question or a bold claim",
+    "accent": "bold",
+    "icon": "code",
+    "claims": []
+  },
+  "scenes": {
+    "problem": {
+      "narration": "The problem in two or three short sentences.",
+      "labels": {
+        "caption": "What breaks"
+      },
+      "claims": []
+    },
+    "fix": {
+      "narration": "How it gets fixed, briefly.",
+      "labels": {
+        "caption": "Schematic of the fix",
+        "result": "Result"
+      },
+      "claims": []
+    },
+    "summary": {
+      "narration": "Three ways, one line each.",
+      "labels": {
+        "caption": "3 ways",
+        "one": "First",
+        "two": "Second",
+        "three": "Third"
+      },
+      "claims": []
+    }
+  },
+  "outro": {
+    "text": "More breakdowns on elvaric",
+    "narration": "<soft call tied to the episode topic; see CLAUDE.md, Outro>"
+  }
+}

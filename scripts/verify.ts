@@ -8,7 +8,7 @@ import { findTopic, loadTopics } from "./topics";
 export type Verdict = { errors: string[]; warnings: string[]; skipped?: string };
 
 const ATTRIBUTION = /по данным|по версии|по словам|по информации|в отч[её]те|в своём разборе|в своем разборе|сообщил|сообщила|заявил|заявила|according to|reportedly/i;
-const ABSOLUTES = /\b(всегда|никогда|любой|любая|любое|любые|лучший|лучшая|лучшее|все без исключения)\b/i;
+const ABSOLUTES = /\b(всегда|никогда|любой|любая|любое|любые|лучший|лучшая|лучшее|все без исключения)\b|\b(always|never|every|best|worst|guaranteed)\b/i;
 
 const numbersIn = (text: string): string[] =>
   (
@@ -17,8 +17,17 @@ const numbersIn = (text: string): string[] =>
       .match(/\d+(?:[.,]\d+)?/g) ?? []
   ).map((token) => token.replace(",", "."));
 
+const isNameLike = (token: string): boolean => /^[A-Z]/.test(token) && token.length > 1;
+
+const isSentenceStart = (text: string, index: number): boolean => index === 0 || /[.!?]\s+$/.test(text.slice(0, index));
+
+const hasInnerCapsOrDigits = (token: string): boolean => /[A-Z0-9]/.test(token.slice(1));
+
 const latinNamesIn = (text: string): string[] =>
-  (text.match(/[A-Za-z][A-Za-z0-9.+-]*/g) ?? []).filter((token) => /^[A-Z]/.test(token) && token.length > 1);
+  [...text.matchAll(/[A-Za-z][A-Za-z0-9.+-]*/g)]
+    .filter((match) => isNameLike(match[0].replace(/[.+-]+$/, "")))
+    .filter((match) => !isSentenceStart(text, match.index ?? 0) || hasInnerCapsOrDigits(match[0]))
+    .map((match) => match[0].replace(/[.+-]+$/, ""));
 
 const cyrillicNamesIn = (text: string): string[] =>
   text
@@ -40,7 +49,7 @@ const checkPiece = (label: string, texts: string[], claims: Claim[]): Verdict =>
       ...numbersIn(text)
         .filter((number) => !knownNumbers.has(number))
         .map((number) => `${label}: number "${number}" is not in the quotes of its claims`),
-      ...latinNamesIn(text)
+      ...texts.flatMap(latinNamesIn)
         .filter((name) => !haystack.includes(name.toLowerCase()))
         .map((name) => `${label}: name "${name}" is not in the quotes of its claims`),
     ],
@@ -91,7 +100,7 @@ export const verifyEpisode = (slug: string, lang: string): Verdict => {
     if (scene.type !== "code") return [];
     const caption = language.scenes[scene.id]?.labels?.caption ?? "";
     if (scene.provenance === "schematic") {
-      return /схем/i.test(caption) ? [] : [`scene ${scene.id}: schematic code needs "схема" in labels.caption so the screen says it is simplified`];
+      return /схем|schematic|simplified/i.test(caption) ? [] : [`scene ${scene.id}: schematic code needs "схема" (ru) or "schematic" (en) in labels.caption so the screen says it is simplified`];
     }
     if (scene.provenance !== "quoted") return [`scene ${scene.id}: code scene needs provenance "quoted" or "schematic"`];
     const claims = (language.scenes[scene.id]?.claims ?? []).flatMap((id) => byId.get(id) ?? []);

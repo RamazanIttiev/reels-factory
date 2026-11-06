@@ -1,0 +1,35 @@
+{
+  "slug": "csrf-samesite",
+  "scenes": [
+    {
+      "id": "problem",
+      "type": "diagram",
+      "nodes": [
+        { "id": "a", "label": "You", "x": 0.14, "y": 0.5, "step": 1 },
+        { "id": "b", "label": "Other site", "x": 0.5, "y": 0.5, "step": 2 },
+        { "id": "c", "label": "Bank", "x": 0.86, "y": 0.5, "step": 4, "badge": { "text": "THINKS IT IS YOU", "step": 5, "tone": "bad" } }
+      ],
+      "edges": [
+        { "from": "a", "to": "b", "step": 2 },
+        { "from": "b", "to": "c", "step": 3, "tone": "bad", "label": "cookie" }
+      ]
+    },
+    {
+      "id": "fix",
+      "type": "code",
+      "file": "response.http",
+      "provenance": "schematic",
+      "resultTone": "good",
+      "code": "Set-Cookie: session=abc;\n  SameSite=Strict"
+    },
+    {
+      "id": "summary",
+      "type": "checklist",
+      "items": [
+        { "id": "site", "tag": "csrf" },
+        { "id": "cookie", "tag": "cookie" },
+        { "id": "samesite", "tag": "samesite" }
+      ]
+    }
+  ]
+}

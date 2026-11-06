@@ -1,0 +1,53 @@
+{
+  "lang": "en",
+  "voiceId": "DODLEQrClDo8wCz460ld",
+  "caption": "Why a database index sits unused when the query wraps the column in a function, and how an expression index fixes it.",
+  "hook": {
+    "text": "Index exists, but the query ignores it?",
+    "accent": "ignores",
+    "icon": "database",
+    "claims": [
+      "c2"
+    ]
+  },
+  "scenes": {
+    "problem": {
+      "narration": "You have an index on a column. Then your query wraps that column in a function, like lower. The plain index on col1 does not match lower of col1, so the database may read the whole table instead.",
+      "labels": {
+        "caption": "Query with a function",
+        "result": "Index does not match"
+      },
+      "claims": [
+        "c1",
+        "c2"
+      ]
+    },
+    "fix": {
+      "narration": "The fix is an expression index. An index column need not be just a column of the table. It can be a function computed from one or more columns. Create the index on lower of col1, and this query can use it.",
+      "labels": {
+        "caption": "Expression index",
+        "result": "Index matches"
+      },
+      "claims": [
+        "c1",
+        "c2"
+      ]
+    },
+    "explain": {
+      "narration": "To check, run EXPLAIN before the query. The planner shows its choice. With no WHERE clause, it must scan all the rows, so it picks a sequential scan. Fetching rows by index is cheaper when not all pages have to be visited.",
+      "labels": {
+        "caption": "Schematic: checking the plan",
+        "result": "Read the plan"
+      },
+      "claims": [
+        "c3",
+        "c4",
+        "c5"
+      ]
+    }
+  },
+  "outro": {
+    "text": "More breakdowns on elvaric",
+    "narration": "Now you know why the index was skipped. More breakdowns like this on elvaric."
+  }
+}

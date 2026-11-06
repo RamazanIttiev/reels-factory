@@ -87,7 +87,9 @@ Check the last used pattern in `state/ru/videos.jsonl`/recent episodes and pick 
 - Security topics: vulnerable pattern plus fix, textbook payloads only. VPN topics: mechanisms only, no evasion instructions.
 
 ## Languages
-Russian only now. English will be a separate product: own visuals (`visual.en.json`), own account, `state/en/`, own phase counters.
+English setup: copy `_template/en.json` + `visual.en.json`, set `voiceId` (ElevenLabs), word budget 135-160 (~0.38 s/word, `check-words.ts` PACE),
+`state/en/` is created on first `record`. `config/rules.json` `publishing.languages` must list `en` (owner edits by hand).
+Russian only until then. English will be a separate product: own visuals (`visual.en.json`), own account, `state/en/`, own phase counters.
 Nothing learned in one language is applied to another without the owner's promotion. Topic status is per language.
 
 ## Visual style

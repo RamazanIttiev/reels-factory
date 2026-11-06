@@ -1,0 +1,53 @@
+{
+  "lang": "en",
+  "voiceId": "DODLEQrClDo8wCz460ld",
+  "caption": "How a cross-site request forgery works, and how the SameSite cookie attribute helps against it.",
+  "hook": {
+    "text": "Another site can act as you",
+    "accent": "act",
+    "icon": "shield",
+    "claims": [
+      "c1"
+    ]
+  },
+  "scenes": {
+    "problem": {
+      "narration": "In a cross-site request forgery attack, an attacker tricks your browser into making a request to a site you are logged in to. Imagine a random page quietly asking your bank to move money. The request includes your credentials, so the server carries out some harmful action, thinking that you intended it.",
+      "labels": {
+        "caption": "How CSRF works"
+      },
+      "claims": [
+        "c1",
+        "c2"
+      ]
+    },
+    "fix": {
+      "narration": "The fix lives in the cookie. The SameSite attribute controls when a browser is allowed to include the cookie in a cross-site request. With the Strict value, the browser will not include the cookie in any cross-site request. It provides some protection against CSRF attacks, though not a complete answer.",
+      "labels": {
+        "caption": "Schematic: the server response",
+        "result": "Other site, no cookie"
+      },
+      "claims": [
+        "c3",
+        "c4",
+        "c5"
+      ]
+    },
+    "summary": {
+      "narration": "Three steps. Another site sends a request. The browser attaches the cookie. And SameSite cuts the cookie off.",
+      "labels": {
+        "caption": "Three steps",
+        "site": "Other site sends request",
+        "cookie": "Browser sends the cookie",
+        "samesite": "SameSite cuts the cookie"
+      },
+      "claims": [
+        "c5"
+      ]
+    }
+  },
+  "outro": {
+    "text": "More breakdowns on elvaric",
+    "narration": "If SameSite finally clicked, there are many more breakdowns on elvaric."
+  }
+}

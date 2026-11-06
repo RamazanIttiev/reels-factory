@@ -3,7 +3,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { parseArgs } from "node:util";
 import { DeleteObjectCommand, PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { isLang } from "../src/types";
-import { missingEnv, requireEnv } from "./env";
+import { instagramEnvNames, missingEnv, requireEnv } from "./env";
 import { recordVideo } from "./record";
 import { advanceStatus } from "./topics";
 
@@ -13,8 +13,6 @@ const REQUIRED_ENV = [
   "R2_SECRET_ACCESS_KEY",
   "R2_BUCKET",
   "PUBLIC_VIDEO_BASE_URL",
-  "INSTAGRAM_ACCESS_TOKEN",
-  "INSTAGRAM_USER_ID",
 ];
 
 const GRAPH_HOST = "https://graph.facebook.com";
@@ -32,12 +30,12 @@ const readCaption = (slug: string, lang: string): string => {
   return raw.caption;
 };
 
-const graph = async (path: string, method: "GET" | "POST", body?: Record<string, unknown>): Promise<Record<string, unknown>> => {
+const graph = async (token: string, path: string, method: "GET" | "POST", body?: Record<string, unknown>): Promise<Record<string, unknown>> => {
   const version = process.env.GRAPH_API_VERSION ?? "v27.0";
   const response = await fetch(`${GRAPH_HOST}/${version}/${path}`, {
     method,
     headers: {
-      Authorization: `Bearer ${requireEnv("INSTAGRAM_ACCESS_TOKEN")}`,
+      Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     },
     body: body ? JSON.stringify(body) : undefined,
@@ -76,7 +74,7 @@ const uploadToR2 = async (uploads: Upload[]): Promise<S3Client> => {
 
 const waitUntilReady = async (containerId: string): Promise<void> => {
   for (let attempt = 0; attempt < POLL_ATTEMPTS; attempt++) {
-    const status = (await graph(`${containerId}?fields=status_code`, "GET")).status_code;
+    const status = (await graph(account.token, `${containerId}?fields=status_code`, "GET")).status_code;
     console.log(`instagram status: ${String(status)} (${attempt + 1}/${POLL_ATTEMPTS})`);
     if (status === "FINISHED") return;
     if (status === "ERROR" || status === "EXPIRED") throw new Error(`Instagram container status: ${String(status)}`);
@@ -107,11 +105,13 @@ if (!existsSync(file)) {
   process.exit(1);
 }
 
-const missing = missingEnv(REQUIRED_ENV);
+const accountEnv = instagramEnvNames(lang);
+const missing = missingEnv([...REQUIRED_ENV, accountEnv.token, accountEnv.userId]);
 if (missing.length > 0) {
   console.error(`Missing in .env: ${missing.join(", ")}`);
   process.exit(1);
 }
+const account = { token: requireEnv(accountEnv.token), userId: requireEnv(accountEnv.userId) };
 
 const caption = readCaption(slug, lang);
 const baseUrl = requireEnv("PUBLIC_VIDEO_BASE_URL");
@@ -137,7 +137,7 @@ const r2 = await uploadToR2([
 console.log(`uploaded ${videoUrl} and ${coverUrl}`);
 
 const containerId = idOf(
-  await graph(`${requireEnv("INSTAGRAM_USER_ID")}/media`, "POST", {
+  await graph(account.token, `${account.userId}/media`, "POST", {
     media_type: "REELS",
     video_url: videoUrl,
     caption,
@@ -147,7 +147,7 @@ const containerId = idOf(
   "container",
 );
 await waitUntilReady(containerId);
-const mediaId = idOf(await graph(`${requireEnv("INSTAGRAM_USER_ID")}/media_publish`, "POST", { creation_id: containerId }), "media");
+const mediaId = idOf(await graph(account.token, `${account.userId}/media_publish`, "POST", { creation_id: containerId }), "media");
 
 for (const objectKey of [key, coverKey]) {
   await r2.send(new DeleteObjectCommand({ Bucket: requireEnv("R2_BUCKET"), Key: objectKey }));

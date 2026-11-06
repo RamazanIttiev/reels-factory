@@ -18,7 +18,7 @@ const card = (slug: string): string => {
     .map((path) => `<img src="${path}" loading="lazy">`)
     .join("");
   return `<section><h2>${escape(slug)}</h2><p><b>${escape(language.hook.text)}</b></p><p>${escape(language.caption)}</p>
-<p class="meta">${words} слов, ~${estimatedSeconds(words)} с. Одобрить: <code>npm run approve -- ${escape(slug)}</code> · Отклонить: <code>npm run reject -- ${escape(slug)} --note "причина"</code></p>
+<p class="meta">${words} слов, ~${estimatedSeconds(words, lang)} с. Одобрить: <code>npm run approve -- ${escape(slug)}</code> · Отклонить: <code>npm run reject -- ${escape(slug)} --note "причина"</code></p>
 <div class="frames">${frames}</div>
 <details><summary>Текст</summary>${Object.values(language.scenes).map((scene) => `<p>${escape(scene.narration)}</p>`).join("")}</details></section>`;
 };

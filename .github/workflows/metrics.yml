@@ -20,6 +20,8 @@ jobs:
       GRAPH_API_VERSION: ${{ vars.GRAPH_API_VERSION }}
       INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
       INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
+      INSTAGRAM_ACCESS_TOKEN_EN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN_EN }}
+      INSTAGRAM_USER_ID_EN: ${{ secrets.INSTAGRAM_USER_ID_EN }}
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
     steps:
@@ -31,6 +33,8 @@ jobs:
       - run: npm ci
       - run: npm run metrics -- --lang ru
       - run: npm run analyze -- --lang ru
+      - run: npm run metrics -- --lang en
+      - run: npm run analyze -- --lang en
       - name: Save state
         run: |
           git config user.name "reels-factory bot"

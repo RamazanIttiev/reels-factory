@@ -5,13 +5,14 @@ import { Cover } from "./Cover";
 import type { CoverProps } from "./Cover";
 import { resolveEpisode } from "./episode";
 import { Reel } from "./Reel";
+import { seriesFor } from "./series";
 import { FPS, HEIGHT, WIDTH, buildTimeline, totalFrames } from "./timeline";
 import { isLang, isVisual } from "./types";
 
 const defaultProps = isVisual(visual) && isLang(ru) ? buildTimeline(resolveEpisode(visual, ru)) : undefined;
 
 const coverProps: CoverProps | undefined =
-  isVisual(visual) && isLang(ru) ? { hook: ru.hook } : undefined;
+  isVisual(visual) && isLang(ru) ? { hook: ru.hook, handle: seriesFor("ru").handle, avatar: seriesFor("ru").avatar } : undefined;
 
 export const RemotionRoot = () => (
   <>

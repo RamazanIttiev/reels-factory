@@ -1,0 +1,77 @@
+{
+  "slug": "episode-slug",
+  "scenes": [
+    {
+      "id": "problem",
+      "type": "diagram",
+      "nodes": [
+        {
+          "id": "a",
+          "label": "Client",
+          "x": 0.14,
+          "y": 0.5,
+          "step": 1
+        },
+        {
+          "id": "b",
+          "label": "Service",
+          "x": 0.5,
+          "y": 0.5,
+          "step": 2,
+          "badge": {
+            "text": "ERROR",
+            "step": 3,
+            "tone": "bad"
+          }
+        },
+        {
+          "id": "c",
+          "label": "Database",
+          "x": 0.86,
+          "y": 0.5,
+          "step": 4
+        }
+      ],
+      "edges": [
+        {
+          "from": "a",
+          "to": "b",
+          "step": 2
+        },
+        {
+          "from": "b",
+          "to": "c",
+          "step": 4,
+          "tone": "bad",
+          "label": "x1000"
+        }
+      ]
+    },
+    {
+      "id": "fix",
+      "type": "code",
+      "file": "fix.ts",
+      "provenance": "schematic",
+      "resultTone": "good",
+      "code": "async function fix(id) {\n  return await safe(id);\n}"
+    },
+    {
+      "id": "summary",
+      "type": "checklist",
+      "items": [
+        {
+          "id": "one",
+          "tag": "tag-one"
+        },
+        {
+          "id": "two",
+          "tag": "tag-two"
+        },
+        {
+          "id": "three",
+          "tag": "tag-three"
+        }
+      ]
+    }
+  ]
+}

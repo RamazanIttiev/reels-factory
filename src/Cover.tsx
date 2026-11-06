@@ -4,9 +4,9 @@ import { HookIcon } from "./HookIcon";
 import { theme } from "./theme";
 import type { HookText } from "./types";
 
-export type CoverProps = { hook: HookText };
+export type CoverProps = { hook: HookText; handle: string; avatar: string };
 
-export const Cover = ({ hook }: CoverProps) => {
+export const Cover = ({ hook, handle, avatar }: CoverProps) => {
   const parts = hook.text.split(hook.accent);
 
   return (
@@ -28,7 +28,7 @@ export const Cover = ({ hook }: CoverProps) => {
             width: 140,
             height: 140,
             borderRadius: 999,
-            backgroundImage: `url(${staticFile("avatar.jpg")})`,
+            backgroundImage: `url(${staticFile(avatar)})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             border: `5px solid ${theme.colors.accent}`,
@@ -36,7 +36,7 @@ export const Cover = ({ hook }: CoverProps) => {
           }}
         />
         <div style={{ fontFamily: theme.fonts.text, fontWeight: 600, fontSize: 48, color: theme.colors.text }}>
-          {theme.series.handle}
+          {handle}
         </div>
       </div>
       <HookIcon name={hook.icon} size={320} />

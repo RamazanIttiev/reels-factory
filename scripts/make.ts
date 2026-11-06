@@ -1,6 +1,7 @@
 import { spawnSync } from "node:child_process";
 import { existsSync } from "node:fs";
 import { parseArgs } from "node:util";
+import { paceOf } from "./check-words";
 import { upsert } from "./queue";
 import { pushQueue, pushReviewAssets } from "./queue-sync";
 import { findTopic, loadTopics } from "./topics";
@@ -26,7 +27,7 @@ const claude = (prompt: string): boolean => {
 
 const stop = (message: string): never => {
   console.error(`STOP: ${message}`);
-  spawnSync("npm", ["run", "-s", "alert", "--", `make stopped on ${String(slug)}: ${message.split("\n")[0].slice(0, 200)}`], { stdio: "ignore" });
+  spawnSync("npm", ["run", "-s", "alert", "--", "--lang", lang, `make stopped on ${String(slug)}: ${message.split("\n")[0].slice(0, 200)}`], { stdio: "ignore" });
   const failed = findTopic(loadTopics(), String(slug));
   if (failed) upsert(lang, { slug: failed.slug, category: failed.category, hook_type: failed.hook_type, state: "failed", note: message.split("\n")[0].slice(0, 160) });
   process.exit(1);
@@ -41,7 +42,7 @@ const target = String(slug);
 const draftPrompt = (problem: string): string =>
   `Работай по CLAUDE.md в этом проекте. Тема: ${target}, язык ${lang}. ${problem} ` +
   `Сделай шаги: facts (источники только с разрешённых доменов, claims с точными цитатами), создай или исправь episodes/${target}/visual.${lang}.json и ${lang}.json с claims, ` +
-  `добейся прохождения npm run verify -- ${target} --lang ${lang} и npm run check -- ${target}. Длина не больше 40 секунд: не более 85 слов (npm run check считает оценку). Код в сцене: provenance "quoted" (только то, что есть в цитатах) или "schematic" (тогда в labels.caption слово «схема»). ` +
+  `добейся прохождения npm run verify -- ${target} --lang ${lang} и npm run check -- ${target}. Длина 50-60 секунд: ${paceOf(lang).min}-${paceOf(lang).max} слов для языка ${lang} (npm run check -- ${target} --lang ${lang} считает оценку). Для en пиши естественный английский, не перевод по слову; не используй слова always/never/every/best без цитаты. Код в сцене: provenance "quoted" (только то, что есть в цитатах) или "schematic" (тогда в labels.caption слово «схема»). ` +
   `Не публикуй, не рендери полностью, не читай .env, не меняй config/rules.json.`;
 
 if (values["dry-run"]) {
@@ -54,7 +55,7 @@ if (needsDraft && !claude(draftPrompt(`Скопируй episodes/_template. Бр
 
 const gate = (): { ok: boolean; output: string } => {
   const verify = run(["verify", "--", target, "--lang", lang]);
-  const words = run(["check", "--", target]);
+  const words = run(["check", "--", target, "--lang", lang]);
   const layout = run(["layout", "--", target, "--lang", lang]);
   return { ok: verify.ok && layout.ok && !words.output.includes("WARN"), output: `${verify.output}\n${words.output}\n${layout.output}` };
 };

@@ -26,6 +26,8 @@ jobs:
       PUBLIC_VIDEO_BASE_URL: ${{ secrets.PUBLIC_VIDEO_BASE_URL }}
       INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
       INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
+      INSTAGRAM_ACCESS_TOKEN_EN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN_EN }}
+      INSTAGRAM_USER_ID_EN: ${{ secrets.INSTAGRAM_USER_ID_EN }}
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
     steps:
@@ -44,6 +46,9 @@ jobs:
           restore-keys: reels-cache-
       - name: Render approved videos and upload them to R2
         run: npm run render:approved -- --lang ru
+      - name: Render approved English videos and upload them to R2
+        if: always()
+        run: npm run render:approved -- --lang en
       - name: Save state
         if: always()
         run: |

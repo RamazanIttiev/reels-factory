@@ -8,7 +8,8 @@
     "ai_label_required": true,
     "kill_switch_file": "PAUSE",
     "languages": [
-      "ru"
+      "ru",
+      "en"
     ],
     "always_require_human_approval_tags": [
       "needs_legal_check"

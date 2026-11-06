@@ -1,10 +1,10 @@
 import { readFileSync } from "node:fs";
 import { parseArgs } from "node:util";
-import { requireEnv } from "./env";
+import { instagramEnvNames, requireEnv } from "./env";
 import { appendJsonl, isRecord, readJsonl, readVideos, requestsPath } from "./state";
 
 const GRAPH_HOST = "https://graph.facebook.com";
-const REQUEST_PATTERN = /разбер|расскаж|сделай|сделайте|объясн|покаж|хочу|хотелось бы|про\s|can you|please (do|make|explain)|more on/i;
+const REQUEST_PATTERN = /разбер|расскаж|сделай|сделайте|объясн|покаж|хочу|хотелось бы|про\s|can you|could you|please (do|make|explain|cover)|more on|explain|how does|how do|what is|i want|would love/i;
 
 const knownIds = (lang: string): Set<string> =>
   new Set(readJsonl(requestsPath(lang)).flatMap((row) => (isRecord(row) && typeof row.comment_id === "string" ? [row.comment_id] : [])));
@@ -44,7 +44,7 @@ if (values.import) {
 }
 
 const version = process.env.GRAPH_API_VERSION ?? "v27.0";
-const token = requireEnv("INSTAGRAM_ACCESS_TOKEN");
+const token = requireEnv(instagramEnvNames(lang).token);
 const total = await videos.filter((video) => video.ig_media_id).reduce(async (previous, video) => {
   const count = await previous;
   const response = await fetch(`${GRAPH_HOST}/${version}/${String(video.ig_media_id)}/comments?fields=id,text`, {

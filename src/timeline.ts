@@ -1,3 +1,4 @@
+import { seriesFor } from "./series";
 import { isSpoken, stripAudioTags } from "./episode";
 import type { Episode, ResolvedScene } from "./episode";
 import type { HookText, OutroText } from "./types";
@@ -34,7 +35,7 @@ export type Segment = {
   content: SegmentContent;
 };
 
-export type ReelProps = { total: number; segments: Segment[] };
+export type ReelProps = { total: number; handle: string; avatar: string; segments: Segment[] };
 
 const stripPunctuation = (word: string): string => word.replace(/[.,!?;:«»"]+/g, "");
 
@@ -108,6 +109,8 @@ const spokenSegment = (
 
 export const buildTimeline = (episode: Episode, audio: Record<string, AudioInfo> = {}): ReelProps => ({
   total: episode.scenes.length,
+  handle: seriesFor(episode.lang).handle,
+  avatar: seriesFor(episode.lang).avatar,
   segments: [
     {
       ...spokenSegment("hook", episode.hook.text, audio.hook, 0, { kind: "hook", hook: episode.hook }),

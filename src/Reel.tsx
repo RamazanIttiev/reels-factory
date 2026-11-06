@@ -33,6 +33,8 @@ export const Reel = (props: ReelProps) => {
           step: segment.step,
           total: props.total,
           duration: segment.duration,
+          handle: props.handle,
+          avatar: props.avatar,
         };
         return (
           <Sequence key={segment.id} from={starts[index]} durationInFrames={segment.duration}>

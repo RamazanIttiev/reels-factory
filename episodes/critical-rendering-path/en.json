@@ -1,0 +1,42 @@
+{
+  "lang": "en",
+  "voiceId": "DODLEQrClDo8wCz460ld",
+  "caption": "How a browser turns HTML and CSS into the pixels you see on screen.",
+  "hook": {
+    "text": "From HTML to pixels: what the browser does",
+    "accent": "pixels",
+    "icon": "browser",
+    "claims": [
+      "c1",
+      "c5"
+    ]
+  },
+  "scenes": {
+    "build": {
+      "narration": "Before it can draw anything, the browser has to construct the DOM and CSSOM trees. The HTML becomes the DOM, a tree of page elements. The CSS becomes the CSSOM, a tree of styles. Think of it as two blueprints that must exist before any painting starts. Two inputs, two trees. Nothing appears on screen until both are built.",
+      "labels": {
+        "caption": "Two trees"
+      },
+      "claims": [
+        "c1",
+        "c5"
+      ]
+    },
+    "render": {
+      "narration": "Next, the two trees are combined into a render tree. It contains only the nodes required to render the page. Then comes layout, which computes the exact position and size of each object. The last step is paint, which renders the pixels to the screen. So pixels appear only after the tree, the layout and the paint are all done.",
+      "labels": {
+        "caption": "From tree to pixels"
+      },
+      "claims": [
+        "c2",
+        "c3",
+        "c4",
+        "c6"
+      ]
+    }
+  },
+  "outro": {
+    "text": "More breakdowns on elvaric",
+    "narration": "Now you know how a browser draws a page. More breakdowns like this on elvaric."
+  }
+}

@@ -28,7 +28,10 @@ export const resolveEpisode = (visual: Visual, lang: Lang): Episode => ({
 
 export const isSpoken = (word: string): boolean => /[\p{L}\p{N}]/u.test(word);
 
-export const spokenWordCount = (text: string): number => text.split(/\s+/).filter(isSpoken).length;
+export const stripAudioTags = (text: string): string => text.replace(/\[[^\]]*\]/g, " ");
+
+export const spokenWordCount = (text: string): number =>
+  stripAudioTags(text).split(/\s+/).filter(isSpoken).length;
 
 export const narrations = (episode: Episode): { id: string; text: string }[] => [
   { id: "hook", text: episode.hook.text },

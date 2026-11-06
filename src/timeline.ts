@@ -1,4 +1,4 @@
-import { isSpoken } from "./episode";
+import { isSpoken, stripAudioTags } from "./episode";
 import type { Episode, ResolvedScene } from "./episode";
 import type { HookText, OutroText } from "./types";
 
@@ -46,7 +46,8 @@ const longestIndex = (words: string[]): number =>
   );
 
 export const narrationTokens = (narration: string): NarrationToken[] =>
-  narration
+  stripAudioTags(narration)
+    .trim()
     .split(/(?<=[.!?])\s+/)
     .filter(Boolean)
     .flatMap((sentence) => {

@@ -3,8 +3,8 @@ import { existsSync, readFileSync } from "node:fs";
 import { listLangs, loadEpisode } from "./load-episode";
 import { isRecord } from "./state";
 
-export const MIN_WORDS = 70;
-export const MAX_WORDS = 110;
+export const MIN_WORDS = 108;
+export const MAX_WORDS = 125;
 
 export const SECONDS_PER_WORD = 0.47;
 
@@ -12,7 +12,7 @@ const lengthLimits = (): [number, number] => {
   const raw: unknown = JSON.parse(readFileSync("config/rules.json", "utf8"));
   const content = isRecord(raw) ? raw.content : undefined;
   const range = isRecord(content) ? content.length_seconds : undefined;
-  return Array.isArray(range) && typeof range[0] === "number" && typeof range[1] === "number" ? [range[0], range[1]] : [30, 40];
+  return Array.isArray(range) && typeof range[0] === "number" && typeof range[1] === "number" ? [range[0], range[1]] : [50, 60];
 };
 
 export const estimatedSeconds = (count: number): number => Math.round(count * SECONDS_PER_WORD * 10) / 10;

@@ -54,7 +54,7 @@ See `episodes/_template/`. Visual and text are per language. Rules:
 - `hook`: question or bold claim, max 8 words, first 2 seconds, `accent` = word in orange.
 - `narration`: short sentences. Scene length = audio length (no audio: words / 2.5 s).
 - `caption`: Instagram post text. One sentence, no hashtags, no emoji.
-- Total narration 70-110 words (`npm run check -- <slug>`).
+- Total narration 108-125 words (`npm run check -- <slug>`).
 - `TTS_PROVIDER` env picks the voice (default `mock` = silence, no keys needed).
 - Incident topics: attribute to the operator ("по данным отчёта компании"); hedge what is not confirmed.
 
@@ -111,7 +111,7 @@ Fonts: Unbounded (headings), Onest (text), JetBrains Mono (code). All support Cy
 ## Definition of done for an episode
 1. JSON valid, narration within word budget.
 2. 3 frames reviewed, no text overflow on 1080x1920.
-3. Final mp4 in `out/`, under 90s, audio and captions in sync.
+3. Final mp4 in `out/`, 50-60s, audio and captions in sync.
 4. Reply: file path, duration, one suggestion. Nothing else.
 
 ## Learning loop

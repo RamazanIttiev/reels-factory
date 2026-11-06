@@ -29,12 +29,12 @@
   "content": {
     "level": "middle and middle+ developers",
     "length_seconds": [
-      30,
-      40
+      50,
+      60
     ],
     "narration_words": [
-      70,
-      110
+      108,
+      125
     ],
     "security_topics": "show the vulnerable pattern and the fix; textbook payloads only; nothing that works as a ready attack on a live service",
     "vpn_topics": "explain mechanisms; no step-by-step instructions to evade a specific censorship system; check local law for the audience",

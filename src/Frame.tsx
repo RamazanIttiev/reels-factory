@@ -14,7 +14,7 @@ export const Frame = ({ context, children }: FrameProps) => (
   <AbsoluteFill
     style={{
       backgroundColor: theme.colors.background,
-      backgroundImage: `linear-gradient(${theme.colors.backgroundShade}, ${theme.colors.backgroundShade}), url(${staticFile("bg.jpg")})`,
+      backgroundImage: `${theme.colors.backgroundShade}, url(${staticFile("bg.jpg")})`,
       backgroundSize: "cover",
       backgroundPosition: "center",
     }}
@@ -39,7 +39,7 @@ export const Frame = ({ context, children }: FrameProps) => (
             backgroundImage: `url(${staticFile("avatar.jpg")})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
-            border: `3px solid ${theme.colors.accent}`,
+            border: `3px solid ${theme.colors.sun}`,
             boxSizing: "border-box",
           }}
         />
@@ -54,7 +54,7 @@ export const Frame = ({ context, children }: FrameProps) => (
             fontWeight: 700,
             fontSize: 30,
             color: theme.colors.background,
-            backgroundColor: theme.colors.accent,
+            backgroundColor: theme.colors.sun,
             padding: "10px 24px",
             borderRadius: 999,
           }}

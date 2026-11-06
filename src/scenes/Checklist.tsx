@@ -76,7 +76,7 @@ export const Checklist = ({ scene, context }: ChecklistProps) => {
               <div style={{ fontFamily: theme.fonts.heading, fontWeight: 700, fontSize: 40, lineHeight: 1.2, color: theme.colors.text, overflowWrap: "anywhere" }}>
                 {scene.labels[item.id]}
               </div>
-              <div style={{ marginTop: 14, fontFamily: theme.fonts.mono, fontWeight: 700, fontSize: 28, color: theme.colors.accent }}>
+              <div style={{ marginTop: 14, fontFamily: theme.fonts.mono, fontWeight: 700, fontSize: 28, color: theme.colors.lime }}>
                 {item.tag}
               </div>
             </div>

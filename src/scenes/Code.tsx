@@ -12,7 +12,7 @@ type Token = { text: string; color: string };
 const tokenPattern =
   /(\/\/.*$)|("[^"]*"|'[^']*'|`[^`]*`)|\b(async|function|const|let|return|await|if|new|throw)\b|\b(\d+)\b/g;
 
-const colors = [theme.colors.muted, theme.colors.string, theme.colors.keyword, theme.colors.accent];
+const colors = [theme.colors.muted, theme.colors.string, theme.colors.keyword, theme.colors.lime];
 
 const tokenize = (line: string): Token[] => {
   const matches = [...line.matchAll(tokenPattern)];
@@ -64,7 +64,7 @@ export const Code = ({ scene, context }: CodeProps) => {
         }}
       >
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 24 }}>
-          <div style={{ fontFamily: theme.fonts.mono, fontWeight: 700, fontSize: 30, color: theme.colors.accent }}>
+          <div style={{ fontFamily: theme.fonts.mono, fontWeight: 700, fontSize: 30, color: theme.colors.lime }}>
             {scene.file}
           </div>
           <div style={{ fontFamily: theme.fonts.text, fontWeight: 600, fontSize: 32, color: theme.colors.muted, textAlign: "right" }}>

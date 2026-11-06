@@ -39,7 +39,7 @@ export const Hook = ({ hook, context }: HookProps) => {
           {parts.map((part, index) => (
             <Fragment key={index}>
               {part}
-              {index < parts.length - 1 && <span style={{ color: theme.colors.accent }}>{hook.accent}</span>}
+              {index < parts.length - 1 && <span style={{ color: theme.colors.hot }}>{hook.accent}</span>}
             </Fragment>
           ))}
         </div>

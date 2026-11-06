@@ -86,7 +86,7 @@ Nothing learned in one language is applied to another without the owner's promot
 
 ## Visual style
 Dark photo background (`public/bg.jpg`, darkened by an overlay in `src/theme.ts`), rounded browser/code cards, monospace code,
-white heavy wide sans captions (one word at a time, accent words in teal `#299a8d`), series handle `@scalelab.dev`; header shows the channel and a step counter n/N. Reuse the look, but use our own series name, avatar and accent color
+white heavy wide sans captions (one word at a time, accent words in teal `#2fd5c0`, hook accent orange, step pill yellow, numbers lime, lighter blue-tinted center of the background), series handle `@scalelab.dev`; header shows the channel and a step counter n/N. Reuse the look, but use our own series name, avatar and accent color
 (set in `src/theme.ts`). Do not copy another creator's branding.
 Fonts: Unbounded (headings), Onest (text), JetBrains Mono (code). All support Cyrillic.
 

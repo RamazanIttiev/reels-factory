@@ -2,6 +2,7 @@ import { spawnSync } from "node:child_process";
 import { existsSync } from "node:fs";
 import { parseArgs } from "node:util";
 import { upsert } from "./queue";
+import { pushQueue, pushReviewAssets } from "./queue-sync";
 import { findTopic, loadTopics } from "./topics";
 
 const MAX_FIX_ROUNDS = 2;
@@ -78,4 +79,8 @@ if (!frames.ok) stop(`frames failed:\n${frames.output.split("\n").slice(-10).joi
 
 const readyTopic = findTopic(loadTopics(), target);
 if (readyTopic) upsert(lang, { slug: target, category: readyTopic.category, hook_type: readyTopic.hook_type, state: "awaiting_approval" });
+if (readyTopic) {
+  await pushQueue(lang);
+  await pushReviewAssets(lang, target);
+}
 console.log(`READY for approval: ${target}\n${frames.output}\nApprove: npm run approve -- ${target} (then npm run render:approved)`);

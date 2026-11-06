@@ -3,6 +3,8 @@ import { existsSync, readFileSync } from "node:fs";
 import { parseArgs } from "node:util";
 import { sendAlert } from "./alert";
 import { loadQueue, setState } from "./queue";
+import { pullQueue, pushQueue } from "./queue-sync";
+import { getFile, r2Configured, readyCoverKey, readyVideoKey } from "./r2";
 import { slotOf } from "./record";
 import { isRecord, readVideos } from "./state";
 
@@ -67,6 +69,7 @@ if (todays.some((video) => video.post_slot === slotLabel)) {
   process.exit(0);
 }
 
+if (!dry) await pullQueue(lang);
 const eligible = loadQueue(lang).filter((item) => item.state === "approved" || item.state === "rendered");
 const next = eligible[0];
 if (eligible.length - (next ? 1 : 0) < schedule.low_queue_alert_below && !dry) {
@@ -87,11 +90,18 @@ const run = (args: string[]): { ok: boolean; output: string } => {
   return { ok: result.status === 0, output };
 };
 
-const needsRender = !existsSync(`out/${next.slug}.${lang}.mp4`);
+const videoFile = `out/${next.slug}.${lang}.mp4`;
+if (!existsSync(videoFile) && r2Configured()) {
+  const gotVideo = await getFile(readyVideoKey(next.slug, lang), videoFile);
+  if (gotVideo) await getFile(readyCoverKey(next.slug, lang), `covers/${next.slug}.${lang}.jpg`);
+  say(gotVideo ? `downloaded ready video for ${next.slug} from R2` : `no ready video in R2 for ${next.slug}, will render`);
+}
+const needsRender = !existsSync(videoFile);
 if (needsRender) {
   const rendered = run(["render", "--", next.slug, "--lang", lang]);
   if (!rendered.ok) {
     setState(lang, next.slug, "failed", "render failed or blocked by the fact gate");
+    await pushQueue(lang);
     await sendAlert(lang, `render failed for ${next.slug}: ${rendered.output.trim().split("\n").slice(-3).join(" | ")}`);
     process.exit(1);
   }
@@ -106,9 +116,11 @@ const final = first.published ? first : attempt();
 
 if (final.published) {
   setState(lang, next.slug, "published");
+  await pushQueue(lang);
   await sendAlert(lang, `published ${next.slug} in slot ${slotLabel}`);
   process.exit(0);
 }
 setState(lang, next.slug, "failed", "publish failed twice");
+await pushQueue(lang);
 await sendAlert(lang, `publish failed for ${next.slug}: ${final.output.trim().split("\n").slice(-3).join(" | ")}`);
 process.exit(1);

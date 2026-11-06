@@ -1,0 +1,57 @@
+{
+  "slug": "dns-leaks-doh-dot",
+  "topic_id": 77,
+  "created": "2026-11-06",
+  "claims": [
+    {
+      "id": "c1",
+      "text": "RFC 7626 describes privacy issues of DNS use by Internet users",
+      "url": "https://datatracker.ietf.org/doc/html/rfc7626",
+      "tier": 1,
+      "quote": "This document describes the privacy issues associated with the use of the DNS by Internet users.",
+      "accessed": "2026-11-06",
+      "source_date": "2015-08",
+      "version": null
+    },
+    {
+      "id": "c2",
+      "text": "DoT: TLS removes eavesdropping and on-path tampering with DNS queries",
+      "url": "https://datatracker.ietf.org/doc/html/rfc7858",
+      "tier": 1,
+      "quote": "Encryption provided by TLS eliminates opportunities for eavesdropping and on-path tampering with DNS queries in the network",
+      "accessed": "2026-11-06",
+      "source_date": "2016-05",
+      "version": null
+    },
+    {
+      "id": "c3",
+      "text": "DoH sends DNS queries and responses over HTTPS",
+      "url": "https://datatracker.ietf.org/doc/html/rfc8484",
+      "tier": 1,
+      "quote": "This document defines a protocol for sending DNS queries and getting DNS responses over HTTPS.",
+      "accessed": "2026-11-06",
+      "source_date": "2018-10",
+      "version": null
+    },
+    {
+      "id": "c4",
+      "text": "DoT standard port 853",
+      "url": "https://datatracker.ietf.org/doc/html/rfc7858",
+      "tier": 1,
+      "quote": "By default, a DNS server that supports DNS over TLS MUST listen for and accept TCP connections on port 853",
+      "accessed": "2026-11-06",
+      "source_date": "2016-05",
+      "version": null
+    },
+    {
+      "id": "c5",
+      "text": "DoH uses HTTPS and the DNS message media type",
+      "url": "https://datatracker.ietf.org/doc/html/rfc8484",
+      "tier": 1,
+      "quote": "Each DNS query-response pair is mapped into an HTTP exchange.",
+      "accessed": "2026-11-06",
+      "source_date": "2018-10",
+      "version": null
+    }
+  ]
+}

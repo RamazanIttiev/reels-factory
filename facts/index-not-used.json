@@ -1,0 +1,57 @@
+{
+  "slug": "index-not-used",
+  "topic_id": 10,
+  "created": "2026-11-06",
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Index can be built on a function or expression of columns",
+      "url": "https://www.postgresql.org/docs/current/indexes-expressional.html",
+      "tier": 1,
+      "quote": "An index column need not be just a column of the underlying table, but can be a function or scalar expression computed from one or more columns of the table.",
+      "accessed": "2026-11-06",
+      "source_date": "2026-08-13T12:52:54.741344",
+      "version": null
+    },
+    {
+      "id": "c2",
+      "text": "lower(col1) query can use an index defined on lower(col1)",
+      "url": "https://www.postgresql.org/docs/current/indexes-expressional.html",
+      "tier": 1,
+      "quote": "SELECT * FROM test1 WHERE lower(col1) = 'value'; This query can use an index if one has been defined on the result of the lower(col1) function: CREATE INDEX test1_lower_col1_idx ON test1 (lower(col1));",
+      "accessed": "2026-11-06",
+      "source_date": "2026-08-13T12:52:54.741344",
+      "version": null
+    },
+    {
+      "id": "c3",
+      "text": "Fetching rows separately via index is more expensive than sequential reading",
+      "url": "https://www.postgresql.org/docs/current/using-explain.html",
+      "tier": 1,
+      "quote": "Fetching rows separately is much more expensive than reading them sequentially, but because not all the pages of the table have to be visited, this is still cheaper than a sequential scan.",
+      "accessed": "2026-11-06",
+      "source_date": "2026-08-13T12:52:54.741344",
+      "version": null
+    },
+    {
+      "id": "c4",
+      "text": "Without a WHERE clause the planner uses a sequential scan",
+      "url": "https://www.postgresql.org/docs/current/using-explain.html",
+      "tier": 1,
+      "quote": "Since this query has no WHERE clause, it must scan all the rows of the table, so the planner has chosen to use a simple sequential scan plan.",
+      "accessed": "2026-11-06",
+      "source_date": "2026-08-13T12:52:54.741344",
+      "version": null
+    },
+    {
+      "id": "c5",
+      "text": "EXPLAIN shows the chosen plan, e.g. a simple index scan",
+      "url": "https://www.postgresql.org/docs/current/using-explain.html",
+      "tier": 1,
+      "quote": "EXPLAIN SELECT * FROM tenk1 WHERE unique1 = 42;",
+      "accessed": "2026-11-06",
+      "source_date": "2026-08-13T12:52:54.741344",
+      "version": null
+    }
+  ]
+}

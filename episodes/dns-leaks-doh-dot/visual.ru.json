@@ -1,0 +1,46 @@
+{
+  "slug": "dns-leaks-doh-dot",
+  "scenes": [
+    {
+      "id": "problem",
+      "type": "diagram",
+      "nodes": [
+        { "id": "a", "label": "Телефон", "x": 0.14, "y": 0.5, "step": 1 },
+        { "id": "b", "label": "VPN", "x": 0.5, "y": 0.3, "step": 2 },
+        { "id": "c", "label": "Провайдер", "x": 0.5, "y": 0.72, "step": 3, "badge": { "text": "ВИДНО", "step": 4, "tone": "bad" } },
+        { "id": "d", "label": "Сайт", "x": 0.86, "y": 0.3, "step": 2 }
+      ],
+      "edges": [
+        { "from": "a", "to": "b", "step": 2 },
+        { "from": "b", "to": "d", "step": 2 },
+        { "from": "a", "to": "c", "step": 3, "tone": "bad", "label": "адрес сайта?" }
+      ]
+    },
+    {
+      "id": "dot",
+      "type": "diagram",
+      "nodes": [
+        { "id": "a", "label": "Клиент", "x": 0.14, "y": 0.5, "step": 1 },
+        { "id": "b", "label": "TLS", "x": 0.5, "y": 0.5, "step": 2, "badge": { "text": "853", "step": 3, "tone": "good" } },
+        { "id": "c", "label": "Сервер", "x": 0.86, "y": 0.5, "step": 4 }
+      ],
+      "edges": [
+        { "from": "a", "to": "b", "step": 2 },
+        { "from": "b", "to": "c", "step": 4, "tone": "good", "label": "DNS" }
+      ]
+    },
+    {
+      "id": "doh",
+      "type": "diagram",
+      "nodes": [
+        { "id": "a", "label": "Браузер", "x": 0.14, "y": 0.5, "step": 1 },
+        { "id": "b", "label": "HTTPS", "x": 0.5, "y": 0.5, "step": 2 },
+        { "id": "c", "label": "Сервер", "x": 0.86, "y": 0.5, "step": 3, "badge": { "text": "HTTPS", "step": 4, "tone": "good" } }
+      ],
+      "edges": [
+        { "from": "a", "to": "b", "step": 2 },
+        { "from": "b", "to": "c", "step": 3, "tone": "good", "label": "DNS" }
+      ]
+    }
+  ]
+}

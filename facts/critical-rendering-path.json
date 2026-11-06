@@ -1,0 +1,67 @@
+{
+  "slug": "critical-rendering-path",
+  "topic_id": 33,
+  "created": "2026-11-06",
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Before rendering, the browser constructs DOM and CSSOM trees",
+      "url": "https://web.dev/articles/critical-rendering-path/constructing-the-object-model",
+      "tier": 1,
+      "quote": "Before the browser can render the page, it needs to construct the DOM and CSSOM trees.",
+      "accessed": "2026-11-06",
+      "source_date": "2020",
+      "version": null
+    },
+    {
+      "id": "c2",
+      "text": "DOM and CSSOM combine into a render tree used for layout and paint",
+      "url": "https://web.dev/articles/critical-rendering-path/render-tree-construction",
+      "tier": 1,
+      "quote": "The CSSOM and DOM trees are combined into a render tree, which is then used to compute the layout of each visible element and serves as an input to the paint process that renders the pixels to screen.",
+      "accessed": "2026-11-06",
+      "source_date": "2020",
+      "version": null
+    },
+    {
+      "id": "c3",
+      "text": "Layout computes position and size of each object",
+      "url": "https://web.dev/articles/critical-rendering-path/render-tree-construction",
+      "tier": 1,
+      "quote": "Layout computes the exact position and size of each object.",
+      "accessed": "2026-11-06",
+      "source_date": "2020",
+      "version": null
+    },
+    {
+      "id": "c4",
+      "text": "Paint renders the pixels to the screen",
+      "url": "https://web.dev/articles/critical-rendering-path/render-tree-construction",
+      "tier": 1,
+      "quote": "The last step is paint, which takes in the final render tree and renders the pixels to the screen.",
+      "accessed": "2026-11-06",
+      "source_date": "2020",
+      "version": null
+    },
+    {
+      "id": "c5",
+      "text": "DOM and CSSOM are built from HTML and CSS input",
+      "url": "https://web.dev/articles/critical-rendering-path/render-tree-construction",
+      "tier": 1,
+      "quote": "we built the DOM and the CSSOM trees based on the HTML and CSS input.",
+      "accessed": "2026-11-06",
+      "source_date": "2020",
+      "version": null
+    },
+    {
+      "id": "c6",
+      "text": "Render tree contains only nodes required to render the page",
+      "url": "https://web.dev/articles/critical-rendering-path/render-tree-construction",
+      "tier": 1,
+      "quote": "Render tree contains only the nodes required to render the page.",
+      "accessed": "2026-11-06",
+      "source_date": "2020",
+      "version": null
+    }
+  ]
+}

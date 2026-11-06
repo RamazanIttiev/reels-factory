@@ -1,0 +1,57 @@
+{
+  "slug": "csrf-samesite",
+  "topic_id": 41,
+  "created": "2026-11-06",
+  "claims": [
+    {
+      "id": "c1",
+      "text": "CSRF: attacker tricks browser into making a request to the target site from a malicious site",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/Security/Attacks/CSRF",
+      "tier": 1,
+      "quote": "In a cross-site request forgery (CSRF) attack, an attacker tricks the user or the browser into making an HTTP request to the target site from a malicious site.",
+      "accessed": "2026-11-06",
+      "source_date": "2026-09-29T07:02:43.000Z",
+      "version": null
+    },
+    {
+      "id": "c2",
+      "text": "The request carries the user's credentials and the server thinks the user intended it",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/Security/Attacks/CSRF",
+      "tier": 1,
+      "quote": "The request includes the user's credentials and causes the server to carry out some harmful action, thinking that the user intended it.",
+      "accessed": "2026-11-06",
+      "source_date": "2026-09-29T07:02:43.000Z",
+      "version": null
+    },
+    {
+      "id": "c3",
+      "text": "SameSite controls cookies in cross-site requests, three values",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/Security/Attacks/CSRF",
+      "tier": 1,
+      "quote": "This attribute controls when a browser is allowed to include the cookie in a cross-site request.",
+      "accessed": "2026-11-06",
+      "source_date": "2026-09-29T07:02:43.000Z",
+      "version": null
+    },
+    {
+      "id": "c4",
+      "text": "Strict: cookie is not sent in any cross-site request",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/Security/Attacks/CSRF",
+      "tier": 1,
+      "quote": "The Strict value offers the most protection: if this attribute is set, the browser will not include the cookie in any cross-site request.",
+      "accessed": "2026-11-06",
+      "source_date": "2026-09-29T07:02:43.000Z",
+      "version": null
+    },
+    {
+      "id": "c5",
+      "text": "SameSite gives some protection against CSRF",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/Security/Attacks/CSRF",
+      "tier": 1,
+      "quote": "The SameSite cookie attribute provides some protection against CSRF attacks.",
+      "accessed": "2026-11-06",
+      "source_date": "2026-09-29T07:02:43.000Z",
+      "version": null
+    }
+  ]
+}

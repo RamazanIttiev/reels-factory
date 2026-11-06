@@ -240,10 +240,10 @@
    ],
    "sources_status": "unverified",
    "status": {
-    "ru": "todo",
+    "ru": "rendered",
     "en": "todo"
    },
-   "fact_sheet": null,
+   "fact_sheet": "facts/index-not-used.json",
    "scene_types": [
     "code"
    ]
@@ -812,10 +812,10 @@
    ],
    "sources_status": "unverified",
    "status": {
-    "ru": "todo",
+    "ru": "rendered",
     "en": "todo"
    },
-   "fact_sheet": null,
+   "fact_sheet": "facts/critical-rendering-path.json",
    "scene_types": [
     "diagram"
    ]
@@ -1010,10 +1010,10 @@
    ],
    "sources_status": "unverified",
    "status": {
-    "ru": "todo",
+    "ru": "rendered",
     "en": "todo"
    },
-   "fact_sheet": null,
+   "fact_sheet": "facts/csrf-samesite.json",
    "scene_types": [
     "diagram"
    ]
@@ -1412,10 +1412,10 @@
    ],
    "sources_status": "unverified",
    "status": {
-    "ru": "todo",
+    "ru": "rendered",
     "en": "todo"
    },
-   "fact_sheet": null,
+   "fact_sheet": "facts/git-internals.json",
    "scene_types": [
     "diagram"
    ]
@@ -1913,10 +1913,10 @@
    ],
    "sources_status": "unverified",
    "status": {
-    "ru": "todo",
+    "ru": "rendered",
     "en": "todo"
    },
-   "fact_sheet": null,
+   "fact_sheet": "facts/dns-leaks-doh-dot.json",
    "needs_legal_check": true,
    "scene_types": [
     "diagram"

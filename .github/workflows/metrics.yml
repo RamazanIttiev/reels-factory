@@ -1,0 +1,39 @@
+name: metrics
+
+on:
+  schedule:
+    - cron: "30 7 * * *"
+  workflow_dispatch: {}
+
+concurrency:
+  group: reels-state
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  metrics:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 15
+    env:
+      GRAPH_API_VERSION: ${{ vars.GRAPH_API_VERSION }}
+      INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+      INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run metrics -- --lang ru
+      - run: npm run analyze -- --lang ru
+      - name: Save state
+        run: |
+          git config user.name "reels-factory bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add state
+          git diff --cached --quiet || (git commit -m "state: metrics and observations" && git pull --rebase origin main && git push origin HEAD:main)

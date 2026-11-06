@@ -2,7 +2,7 @@ import { existsSync, readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { dirname } from "node:path";
 import { isRecord, stateDir } from "./state";
 
-export const QUEUE_STATES = ["awaiting_approval", "approved", "rejected", "rendered", "failed"] as const;
+export const QUEUE_STATES = ["awaiting_approval", "approved", "rejected", "rendered", "published", "failed"] as const;
 
 export type QueueState = (typeof QUEUE_STATES)[number];
 

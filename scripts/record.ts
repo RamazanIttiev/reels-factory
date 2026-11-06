@@ -29,7 +29,7 @@ const localParts = (iso: string): { hour: number; weekday: number } => {
   return { hour, weekday };
 };
 
-const slotOf = (hour: number): string =>
+export const slotOf = (hour: number): string =>
   hour >= 5 && hour < 11 ? "morning" : hour >= 11 && hour < 17 ? "midday" : hour >= 17 && hour < 23 ? "evening" : "night";
 
 const propsLength = (slug: string, lang: string): number | undefined => {

@@ -22,6 +22,8 @@
     "next": "tsx scripts/next.ts",
     "make": "tsx scripts/make.ts",
     "batch": "tsx scripts/batch.ts",
+    "schedule": "tsx scripts/schedule.ts",
+    "alert": "tsx scripts/alert.ts",
     "review": "tsx scripts/review.ts",
     "queue": "tsx scripts/queue-cli.ts",
     "approve": "tsx scripts/queue-cli.ts approve",

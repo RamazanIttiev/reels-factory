@@ -25,6 +25,7 @@ const claude = (prompt: string): boolean => {
 
 const stop = (message: string): never => {
   console.error(`STOP: ${message}`);
+  spawnSync("npm", ["run", "-s", "alert", "--", `make stopped on ${String(slug)}: ${message.split("\n")[0].slice(0, 200)}`], { stdio: "ignore" });
   const failed = findTopic(loadTopics(), String(slug));
   if (failed) upsert(lang, { slug: failed.slug, category: failed.category, hook_type: failed.hook_type, state: "failed", note: message.split("\n")[0].slice(0, 160) });
   process.exit(1);

@@ -1,0 +1,7 @@
+{
+  "timezone": "Europe/Moscow",
+  "slots": ["09:00", "14:00", "20:00"],
+  "slot_window_minutes": 90,
+  "low_queue_alert_below": 3,
+  "_note": "Cron may start late; a slot is usable for slot_window_minutes after its time. Missed slots are skipped, never caught up. max_posts_per_day comes from rules.json."
+}

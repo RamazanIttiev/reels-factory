@@ -70,7 +70,13 @@ Each episode is standalone; order comes from the scheduler (`config/experiment.j
 6. After the owner approves frames: `npm run render -- <slug> --lang ru` (sets `rendered`).
 7. `npm run publish -- <slug> --lang ru` only on the owner's explicit command; it then runs `record` (state/ru/videos.jsonl with ig_media_id).
 Manual: `npm run status -- <slug> <lang> <status>`, `npm run plan:check`.
-Outro: friendly subscribe call to scalelab, no teaser: "Подписывайся на scalelab — разбираем, как всё устроено."
+Outro: soft call tied to the episode topic, never an imperative and never the same phrase twice in a row. On-screen text: "Больше разборов на scalelab".
+Narration rotates these patterns, with the topic in 1-3 words (about 10 words, counted in the word budget):
+- "Если было полезно про <тема> — на scalelab таких разборов много."
+- "Теперь понятно, <что стало понятно>. Другие разборы — на scalelab."
+- "Про <тема> теперь знаешь. Такие разборы выходят на scalelab."
+- "Если интересно, как устроен <X>, загляни на scalelab — там есть ещё разборы."
+Check the last used pattern in `state/ru/videos.jsonl`/recent episodes and pick a different one.
 
 ## Content rules
 - Plain language first. Explain like to a smart friend: short sentences, one idea, each term explained once.

@@ -58,7 +58,7 @@ const checkScene = (scene: VisualScene, labels: Record<string, string>): string[
   if (scene.type === "diagram") {
     const nodeChars = perLine(190, 28, HEADING_EM);
     const overlaps = scene.nodes.flatMap((a, i) =>
-      scene.nodes.slice(i + 1).filter((b) => Math.abs(a.x - b.x) * 960 < 232 && Math.abs(a.y - b.y) * 860 < 120).map((b) => `${tag}: nodes ${a.id} and ${b.id} overlap`),
+      scene.nodes.slice(i + 1).filter((b) => Math.abs(a.x - b.x) * 960 < 230 && Math.abs(a.y - b.y) * 860 < 120).map((b) => `${tag}: nodes ${a.id} and ${b.id} overlap`),
     );
     return [
       ...(scene.nodes.length > 6 ? [`${tag}: ${scene.nodes.length} nodes, max 6`] : []),

@@ -2,6 +2,7 @@ import { interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import type { ResolvedScene } from "../episode";
 import { Frame, toneColor } from "../Frame";
 import type { SceneContext } from "../Frame";
+import { Sfx } from "../Sfx";
 import { theme } from "../theme";
 
 type CodeProps = { scene: Extract<ResolvedScene, { type: "code" }>; context: SceneContext };
@@ -46,6 +47,8 @@ export const Code = ({ scene, context }: CodeProps) => {
 
   return (
     <Frame context={context}>
+      <Sfx name="swish" at={0} />
+      <Sfx name="knock" at={context.duration * 0.65} />
       <div
         style={{
           position: "absolute",

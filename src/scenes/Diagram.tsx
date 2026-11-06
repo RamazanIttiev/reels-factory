@@ -2,6 +2,7 @@ import { useCurrentFrame } from "remotion";
 import type { ResolvedScene } from "../episode";
 import { Frame, toneColor } from "../Frame";
 import type { SceneContext } from "../Frame";
+import { Sfx } from "../Sfx";
 import { theme } from "../theme";
 import type { DiagramEdge, DiagramNode } from "../types";
 
@@ -66,6 +67,10 @@ export const Diagram = ({ scene, context }: DiagramProps) => {
 
   return (
     <Frame context={context}>
+      <Sfx name="swish" at={0} />
+      {Array.from({ length: lastStep(scene) }, (_, index) => (
+        <Sfx key={index} name="click" at={INTRO_FRAMES + index * stepFrames} />
+      ))}
       <div
         style={{
           position: "absolute",

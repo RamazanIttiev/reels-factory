@@ -2,6 +2,7 @@ import { useCurrentFrame } from "remotion";
 import type { ResolvedScene } from "../episode";
 import { Frame } from "../Frame";
 import type { SceneContext } from "../Frame";
+import { Sfx } from "../Sfx";
 import { theme } from "../theme";
 
 type ChecklistProps = { scene: Extract<ResolvedScene, { type: "checklist" }>; context: SceneContext };
@@ -24,6 +25,10 @@ export const Checklist = ({ scene, context }: ChecklistProps) => {
 
   return (
     <Frame context={context}>
+      <Sfx name="swish" at={0} />
+      {scene.items.map((item, index) => (
+        <Sfx key={item.id} name="tick" at={startOf(index) + CHECK_DELAY_FRAMES} />
+      ))}
       <div
         style={{
           position: "absolute",

@@ -1,6 +1,7 @@
 import { AbsoluteFill, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { Frame } from "../Frame";
 import type { SceneContext } from "../Frame";
+import { Sfx } from "../Sfx";
 import { theme } from "../theme";
 import type { OutroText } from "../types";
 
@@ -13,6 +14,7 @@ export const Outro = ({ outro, context }: OutroProps) => {
 
   return (
     <Frame context={context}>
+      <Sfx name="chime" at={0} />
       <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", padding: theme.spacing.page, opacity: enter }}>
         <div
           style={{

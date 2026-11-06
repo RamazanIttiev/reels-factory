@@ -2,6 +2,7 @@ import { interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import type { ResolvedScene } from "../episode";
 import { Frame } from "../Frame";
 import type { SceneContext } from "../Frame";
+import { Sfx } from "../Sfx";
 import { theme } from "../theme";
 import type { BrowserVisual } from "../types";
 
@@ -23,6 +24,7 @@ export const Browser = ({ scene, context }: BrowserProps) => {
 
   return (
     <Frame context={context}>
+      <Sfx name="swish" at={0} />
       <div
         style={{
           position: "absolute",

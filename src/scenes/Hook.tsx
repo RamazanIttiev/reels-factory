@@ -6,6 +6,8 @@ import { HookIcon } from "../HookIcon";
 import { theme } from "../theme";
 import type { HookText } from "../types";
 
+import { Sfx } from "../Sfx";
+
 type HookProps = { hook: HookText; context: SceneContext };
 
 export const Hook = ({ hook, context }: HookProps) => {
@@ -16,6 +18,7 @@ export const Hook = ({ hook, context }: HookProps) => {
 
   return (
     <Frame context={context}>
+      <Sfx name="thud" at={0} />
       <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", padding: theme.spacing.page, gap: 80 }}>
         <div style={{ transform: `scale(${0.6 + 0.4 * scale})`, opacity: scale }}>
           <HookIcon name={hook.icon} size={340} />

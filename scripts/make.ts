@@ -17,7 +17,7 @@ const run = (args: string[]): { ok: boolean; output: string } => {
 const claude = (prompt: string): boolean => {
   const result = spawnSync(
     "claude",
-    ["-p", prompt, "--permission-mode", "acceptEdits", "--allowedTools", "Read", "Write", "Edit", "Grep", "Glob", "Bash(npm run *)", "Bash(curl *)"],
+    ["-p", prompt, "--model", process.env.MAKE_MODEL ?? "sonnet", "--permission-mode", "acceptEdits", "--allowedTools", "Read", "Write", "Edit", "Grep", "Glob", "Bash(npm run *)", "Bash(curl *)"],
     { stdio: "inherit" },
   );
   return result.status === 0;

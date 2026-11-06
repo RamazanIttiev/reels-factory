@@ -1,6 +1,6 @@
-import type { HookText, Lang, OutroText, Ui, Visual, VisualScene } from "./types";
+import type { HookText, Lang, OutroText, Visual, VisualScene } from "./types";
 
-type Narrated = { narration: string; labels: Record<string, string> };
+type Narrated = { narration: string; labels: Record<string, string>; claims: string[] };
 
 export type ResolvedScene = VisualScene & Narrated;
 
@@ -8,9 +8,6 @@ export type Episode = {
   slug: string;
   lang: string;
   voiceId: string;
-  item: number;
-  total: number;
-  ui: Ui;
   hook: HookText;
   scenes: ResolvedScene[];
   outro: OutroText;
@@ -20,15 +17,12 @@ export const resolveEpisode = (visual: Visual, lang: Lang): Episode => ({
   slug: visual.slug,
   lang: lang.lang,
   voiceId: lang.voiceId,
-  item: visual.item,
-  total: visual.total,
-  ui: lang.ui,
   hook: lang.hook,
   outro: lang.outro,
   scenes: visual.scenes.map((scene) => {
     const entry = lang.scenes[scene.id];
     if (!entry) throw new Error(`${lang.lang}: missing scene "${scene.id}"`);
-    return { ...scene, narration: entry.narration, labels: entry.labels ?? {} };
+    return { ...scene, narration: entry.narration, labels: entry.labels ?? {}, claims: entry.claims };
   }),
 });
 

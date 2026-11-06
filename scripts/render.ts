@@ -2,8 +2,9 @@ import { spawnSync } from "node:child_process";
 import { parseArgs } from "node:util";
 import { FPS, totalFrames } from "../src/timeline";
 import { wordCount, wordWarning } from "./check-words";
-import { advanceStatusBySlug } from "./curriculum";
 import { prepare } from "./pipeline";
+import { advanceStatus } from "./topics";
+import { verifyEpisode } from "./verify";
 
 const { values, positionals } = parseArgs({
   allowPositionals: true,
@@ -22,6 +23,17 @@ const output = values.out ?? `out/${slug}.${lang}${values.scale ? ".preview" : "
 const warning = wordWarning(lang, wordCount(slug, lang));
 if (warning) console.warn(warning);
 
+const verdict = verifyEpisode(slug, lang);
+verdict.warnings.forEach((line) => console.warn(`WARN ${line}`));
+if (verdict.errors.length > 0) {
+  const prefix = values.scale ? "WARN (preview)" : "BLOCKED";
+  verdict.errors.forEach((line) => console.error(`${prefix} ${line}`));
+  if (!values.scale) {
+    console.error("Full render blocked by the fact gate. Fix claims, then: npm run verify -- " + slug + " --lang " + lang);
+    process.exit(1);
+  }
+}
+
 const { props, propsPath } = await prepare(slug, lang);
 
 const result = spawnSync(
@@ -31,5 +43,5 @@ const result = spawnSync(
 );
 
 if (result.status !== 0) process.exit(result.status ?? 1);
-if (!values.scale) advanceStatusBySlug(slug, "rendered");
+if (!values.scale) advanceStatus(slug, lang, "rendered");
 console.log(`${output} ${(totalFrames(props) / FPS).toFixed(1)}s`);

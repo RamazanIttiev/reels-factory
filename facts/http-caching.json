@@ -1,0 +1,57 @@
+{
+  "slug": "http-caching",
+  "topic_id": 22,
+  "created": "2026-11-06",
+  "claims": [
+    {
+      "id": "c1",
+      "text": "A fresh cached response reduces latency and network overhead",
+      "url": "https://www.rfc-editor.org/rfc/rfc9111.txt",
+      "tier": 1,
+      "quote": "A fresh response can therefore reduce both latency and network overhead each time the cache reuses it.",
+      "accessed": "2026-11-06",
+      "source_date": "2022-06",
+      "version": "RFC 9111"
+    },
+    {
+      "id": "c2",
+      "text": "max-age marks a response stale after the given number of seconds",
+      "url": "https://www.rfc-editor.org/rfc/rfc9111.txt",
+      "tier": 1,
+      "quote": "The max-age response directive indicates that the response is to be considered stale after its age is greater than the specified number of seconds.",
+      "accessed": "2026-11-06",
+      "source_date": "2022-06",
+      "version": "RFC 9111"
+    },
+    {
+      "id": "c3",
+      "text": "no-cache requires validation before reuse",
+      "url": "https://www.rfc-editor.org/rfc/rfc9111.txt",
+      "tier": 1,
+      "quote": "The no-cache response directive, in its unqualified form (without an argument), indicates that the response MUST NOT be used to satisfy any other request without forwarding it for validation and receiving a successful response",
+      "accessed": "2026-11-06",
+      "source_date": "2022-06",
+      "version": "RFC 9111"
+    },
+    {
+      "id": "c4",
+      "text": "no-store forbids storing the response",
+      "url": "https://www.rfc-editor.org/rfc/rfc9111.txt",
+      "tier": 1,
+      "quote": "The no-store response directive indicates that a cache MUST NOT store any part of either the immediate request or the response and MUST NOT use the response to satisfy any other request.",
+      "accessed": "2026-11-06",
+      "source_date": "2022-06",
+      "version": "RFC 9111"
+    },
+    {
+      "id": "c5",
+      "text": "Cache-Control lists directives for caches",
+      "url": "https://www.rfc-editor.org/rfc/rfc9111.txt",
+      "tier": 1,
+      "quote": "The \"Cache-Control\" header field is used to list directives for caches along the request/response chain.",
+      "accessed": "2026-11-06",
+      "source_date": "2022-06",
+      "version": "RFC 9111"
+    }
+  ]
+}

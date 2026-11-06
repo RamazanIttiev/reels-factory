@@ -3,8 +3,9 @@ import { existsSync, readFileSync } from "node:fs";
 import { parseArgs } from "node:util";
 import { DeleteObjectCommand, PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { isLang } from "../src/types";
-import { advanceStatusBySlug } from "./curriculum";
 import { missingEnv, requireEnv } from "./env";
+import { recordVideo } from "./record";
+import { advanceStatus } from "./topics";
 
 const REQUIRED_ENV = [
   "R2_ACCOUNT_ID",
@@ -151,5 +152,12 @@ const mediaId = idOf(await graph(`${requireEnv("INSTAGRAM_USER_ID")}/media_publi
 for (const objectKey of [key, coverKey]) {
   await r2.send(new DeleteObjectCommand({ Bucket: requireEnv("R2_BUCKET"), Key: objectKey }));
 }
-advanceStatusBySlug(slug, "published");
+advanceStatus(slug, lang, "published");
 console.log(`${slug} (${lang}) published, media id ${mediaId}`);
+try {
+  recordVideo({ slug, lang, igMediaId: mediaId });
+  console.log(`recorded in state/${lang}/videos.jsonl`);
+} catch (error) {
+  console.error(`Published, but record failed: ${error instanceof Error ? error.message : String(error)}`);
+  console.error(`Run by hand: npm run record -- ${slug} --lang ${lang} --ig-media-id ${mediaId}`);
+}

@@ -1,0 +1,67 @@
+{
+  "slug": "facebook-bgp-outage",
+  "topic_id": 1,
+  "created": "2026-11-06",
+  "claims": [
+    {
+      "id": "c1",
+      "text": "По данным Meta, команда должна была оценить доступную ёмкость глобальной магистрали",
+      "url": "https://engineering.fb.com/2021/10/05/networking-traffic/outage-details/",
+      "tier": 1,
+      "quote": "assess the availability of global backbone capacity",
+      "accessed": "2026-11-06",
+      "source_date": "2021-10-05T17:26:45+00:00",
+      "version": null
+    },
+    {
+      "id": "c2",
+      "text": "По данным Meta, команда непреднамеренно отключила все соединения магистральной сети",
+      "url": "https://engineering.fb.com/2021/10/05/networking-traffic/outage-details/",
+      "tier": 1,
+      "quote": "unintentionally took down all the connections in our backbone network",
+      "accessed": "2026-11-06",
+      "source_date": "2021-10-05T17:26:45+00:00",
+      "version": null
+    },
+    {
+      "id": "c3",
+      "text": "По данным Meta, дата-центры Facebook оказались отключены по всему миру",
+      "url": "https://engineering.fb.com/2021/10/05/networking-traffic/outage-details/",
+      "tier": 1,
+      "quote": "effectively disconnecting Facebook data centers globally",
+      "accessed": "2026-11-06",
+      "source_date": "2021-10-05T17:26:45+00:00",
+      "version": null
+    },
+    {
+      "id": "c4",
+      "text": "По данным Meta, баг в инструменте аудита не дал остановить команду",
+      "url": "https://engineering.fb.com/2021/10/05/networking-traffic/outage-details/",
+      "tier": 1,
+      "quote": "a bug in that audit tool",
+      "accessed": "2026-11-06",
+      "source_date": "2021-10-05T17:26:45+00:00",
+      "version": null
+    },
+    {
+      "id": "c5",
+      "text": "По данным Meta, DNS-серверы снимают BGP-анонсы, если не видят дата-центры",
+      "url": "https://engineering.fb.com/2021/10/05/networking-traffic/outage-details/",
+      "tier": 1,
+      "quote": "disable those BGP advertisements if they themselves can not speak to our data centers",
+      "accessed": "2026-11-06",
+      "source_date": "2021-10-05T17:26:45+00:00",
+      "version": null
+    },
+    {
+      "id": "c6",
+      "text": "По данным Meta, полная потеря DNS сломала внутренние инструменты",
+      "url": "https://engineering.fb.com/2021/10/05/networking-traffic/outage-details/",
+      "tier": 1,
+      "quote": "total loss of DNS broke many of the internal tools",
+      "accessed": "2026-11-06",
+      "source_date": "2021-10-05T17:26:45+00:00",
+      "version": null
+    }
+  ]
+}

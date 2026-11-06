@@ -1,18 +1,14 @@
-import { isStatus, loadPlan, savePlan, STATUSES, withStatus } from "./curriculum";
+import { isStatus, isTopicLang, setStatus, STATUSES } from "./topics";
 
-const [idArg, statusArg] = process.argv.slice(2);
-const id = Number(idArg);
-const plan = loadPlan();
+const [slug, lang, status] = process.argv.slice(2);
 
-if (!Number.isInteger(id) || !statusArg || !isStatus(statusArg)) {
-  console.error(`Usage: status <id> <${STATUSES.join("|")}>`);
+if (!slug || !lang || !status || !isTopicLang(lang) || !isStatus(status)) {
+  console.error(`Usage: status <slug> <ru|en> <${STATUSES.join("|")}>`);
   process.exit(1);
 }
 
-if (!plan.episodes.some((episode) => episode.id === id)) {
-  console.error(`No episode with id ${id}`);
+if (!setStatus(slug, lang, status)) {
+  console.error(`No topic with slug ${slug}`);
   process.exit(1);
 }
-
-savePlan(withStatus(plan, id, statusArg));
-console.log(`#${id} -> ${statusArg}`);
+console.log(`${slug} ${lang} -> ${status}`);

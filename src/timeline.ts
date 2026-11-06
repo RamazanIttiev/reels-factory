@@ -1,6 +1,6 @@
 import { isSpoken } from "./episode";
 import type { Episode, ResolvedScene } from "./episode";
-import type { HookText, OutroText, Ui } from "./types";
+import type { HookText, OutroText } from "./types";
 
 export const FPS = 30;
 export const WIDTH = 1080;
@@ -28,13 +28,13 @@ export type SegmentContent =
 export type Segment = {
   id: string;
   duration: number;
-  closed: number;
+  step: number;
   words: TimedWord[];
   audio?: string;
   content: SegmentContent;
 };
 
-export type ReelProps = { item: number; total: number; ui: Ui; segments: Segment[] };
+export type ReelProps = { total: number; segments: Segment[] };
 
 const stripPunctuation = (word: string): string => word.replace(/[.,!?;:«»"]+/g, "");
 
@@ -84,7 +84,7 @@ const spokenSegment = (
   id: string,
   narration: string,
   audio: AudioInfo | undefined,
-  closed: number,
+  step: number,
   content: SegmentContent,
 ): Segment => {
   const tokens = narrationTokens(narration);
@@ -97,7 +97,7 @@ const spokenSegment = (
   const durationSec = audioSec / PLAYBACK_SPEED;
   return {
     id,
-    closed,
+    step,
     content,
     audio: audio?.file,
     words: toWords(tokens, spans),
@@ -106,21 +106,19 @@ const spokenSegment = (
 };
 
 export const buildTimeline = (episode: Episode, audio: Record<string, AudioInfo> = {}): ReelProps => ({
-  item: episode.item,
-  total: episode.total,
-  ui: episode.ui,
+  total: episode.scenes.length,
   segments: [
     {
       ...spokenSegment("hook", episode.hook.text, audio.hook, 0, { kind: "hook", hook: episode.hook }),
       words: [],
     },
-    ...episode.scenes.map((scene) =>
-      spokenSegment(scene.id, scene.narration, audio[scene.id], "closed" in scene ? (scene.closed ?? 0) : 0, {
+    ...episode.scenes.map((scene, index) =>
+      spokenSegment(scene.id, scene.narration, audio[scene.id], index + 1, {
         kind: "scene",
         scene,
       }),
     ),
-    spokenSegment("outro", episode.outro.narration, audio.outro, episode.total, {
+    spokenSegment("outro", episode.outro.narration, audio.outro, episode.scenes.length, {
       kind: "outro",
       outro: episode.outro,
     }),

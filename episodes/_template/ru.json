@@ -2,15 +2,40 @@
   "lang": "ru",
   "voiceId": "nkvv6waLzFah2jTNUZGT",
   "caption": "ONE_SENTENCE_POST_CAPTION",
-  "ui": { "closed": "закрыто {n} из {m}" },
-  "hook": { "text": "Вопрос или смелое утверждение", "accent": "смелое" },
+  "hook": {
+    "text": "Вопрос или смелое утверждение",
+    "accent": "смелое",
+    "claims": []
+  },
   "scenes": {
-    "problem": { "narration": "Проблема в двух-трёх коротких предложениях.", "labels": { "caption": "Что ломается" } },
-    "fix": { "narration": "Как это лечится, коротко.", "labels": { "caption": "Решение", "result": "Итог" } },
+    "problem": {
+      "narration": "Проблема в двух-трёх коротких предложениях.",
+      "labels": {
+        "caption": "Что ломается"
+      },
+      "claims": []
+    },
+    "fix": {
+      "narration": "Как это лечится, коротко.",
+      "labels": {
+        "caption": "Решение",
+        "result": "Итог"
+      },
+      "claims": []
+    },
     "summary": {
       "narration": "Три способа одной строкой.",
-      "labels": { "caption": "3 способа", "one": "Первый", "two": "Второй", "three": "Третий" }
+      "labels": {
+        "caption": "3 способа",
+        "one": "Первый",
+        "two": "Второй",
+        "three": "Третий"
+      },
+      "claims": []
     }
   },
-  "outro": { "text": "Подписывайся на scalelab", "narration": "Подписывайся на scalelab — вместе разберёмся в system design." }
+  "outro": {
+    "text": "Подписывайся на scalelab",
+    "narration": "Подписывайся на scalelab — разбираем, как всё устроено."
+  }
 }

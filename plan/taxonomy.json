@@ -1,0 +1,162 @@
+{
+  "version": 1,
+  "_note": "Every published video is tagged with these attributes BEFORE publishing. The learning loop can only learn about attributes that are recorded. Add new values here first, never invent them ad hoc.",
+  "series": {
+    "postmortems": {
+      "name_en": "Postmortem",
+      "name_ru": "Разбор аварии",
+      "promise": "How one mistake broke a big system, in 40 seconds"
+    },
+    "security": {
+      "name_en": "Attack and Fix",
+      "name_ru": "Атака и защита",
+      "promise": "How it's exploited, how it's fixed"
+    },
+    "databases": {
+      "name_en": "Under the Query",
+      "name_ru": "Под капотом базы",
+      "promise": "What your database does when you hit enter"
+    },
+    "networking": {
+      "name_en": "On the Wire",
+      "name_ru": "По проводам",
+      "promise": "What really travels between client and server"
+    },
+    "browser": {
+      "name_en": "Inside the Browser",
+      "name_ru": "Внутри браузера",
+      "promise": "What the browser does with your code"
+    },
+    "systems": {
+      "name_en": "How It Works",
+      "name_ru": "Как это устроено",
+      "promise": "Popular tools, explained from the inside"
+    },
+    "vpn": {
+      "name_en": "Tunnel Vision",
+      "name_ru": "Как работает VPN",
+      "promise": "VPN and privacy mechanics, no marketing"
+    },
+    "_note": "Series names are placeholders until the channel name is chosen. A recurring format helps viewers know what to expect and follow.",
+    "system-design": {
+      "name_en": "System Design",
+      "name_ru": "System Design",
+      "promise": "How big systems are built, one idea at a time"
+    }
+  },
+  "attributes": {
+    "category": [
+      "postmortems",
+      "databases",
+      "networking",
+      "browser",
+      "security",
+      "systems",
+      "vpn",
+      "system-design"
+    ],
+    "level": [
+      "mid",
+      "mid+"
+    ],
+    "kind": [
+      "incident",
+      "evergreen"
+    ],
+    "hook_type": {
+      "question": "Opens with a question the viewer wants answered",
+      "bold_claim": "Opens with a surprising statement that the video then proves",
+      "number": "Opens with a concrete number or quantity (must be verified)",
+      "story": "Opens as a short story of an event",
+      "myth_bust": "Opens by attacking a common belief",
+      "mystery": "Opens with an unexplained effect, answer comes later",
+      "mistake": "Opens with a mistake the viewer may be making",
+      "howto": "Opens with a promise to explain a process step by step"
+    },
+    "visual": [
+      "timeline",
+      "diagram",
+      "code",
+      "browser",
+      "terminal",
+      "split",
+      "checklist"
+    ],
+    "opening_frame": [
+      "text_hook",
+      "code",
+      "diagram",
+      "browser",
+      "terminal"
+    ],
+    "cta_type": [
+      "none",
+      "follow",
+      "save",
+      "share",
+      "comment_question"
+    ],
+    "length_bucket": [
+      "<=30s",
+      "31-40s",
+      ">40s"
+    ],
+    "post_slot": [
+      "morning",
+      "midday",
+      "evening",
+      "night"
+    ],
+    "language": [
+      "ru",
+      "en"
+    ],
+    "caption_style": [
+      "one_word",
+      "two_words",
+      "phrase"
+    ]
+  },
+  "derived_fields": {
+    "hook_words": "word count of the hook text",
+    "hook_has_number": "true if the hook contains a digit",
+    "hook_is_question": "true if the hook ends with a question mark",
+    "weekday": "0-6 from published_at in the audience time zone",
+    "avg_watch_pct": "avg_watch_time_s / length_s",
+    "shares_per_1k_reach": "shares / reach * 1000",
+    "saves_per_1k_reach": "saves / reach * 1000",
+    "follows_per_1k_reach": "follows / reach * 1000"
+  },
+  "controlled_in_explore_phase": [
+    "voice_id",
+    "caption_style",
+    "length_bucket",
+    "post_slot"
+  ],
+  "_controlled_note": "During the explore phase these stay fixed so that differences come from topic and hook, not from five things changing at once.",
+  "visual_to_scene_types": {
+    "timeline": [
+      "diagram"
+    ],
+    "diagram": [
+      "diagram"
+    ],
+    "code": [
+      "code"
+    ],
+    "browser": [
+      "browser"
+    ],
+    "terminal": [
+      "code"
+    ],
+    "split": [
+      "diagram",
+      "checklist"
+    ],
+    "checklist": [
+      "checklist"
+    ]
+  },
+  "_visual_note": "visual is a descriptive tag; render uses only existing scene types (diagram, code, checklist, browser). Add a new scene type in src/scenes/ only when a topic truly needs it."
+}

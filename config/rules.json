@@ -1,0 +1,52 @@
+{
+  "agent_may_edit": false,
+  "_note": "Hard rules. The learning loop may edit state/lessons.md but can NEVER override anything here. Make this file read-only (chmod 444) and review changes to it only by hand.",
+  "publishing": {
+    "mode": "manual_approval",
+    "auto_publish_after_approved_videos": 20,
+    "max_posts_per_day": 3,
+    "ai_label_required": true,
+    "kill_switch_file": "PAUSE",
+    "languages": [
+      "ru"
+    ],
+    "always_require_human_approval_tags": [
+      "needs_legal_check"
+    ],
+    "_languages_note": "Russian only for now. English will be a separate product (own visuals, account, state/en/) added later."
+  },
+  "facts": {
+    "every_claim_needs_source": true,
+    "min_source_tier": 1,
+    "block_render_on_unsupported_claim": true,
+    "numbers_dates_names_need_exact_passage": true,
+    "store_source_date_and_version": true,
+    "recheck_after_days": 180,
+    "unconfirmed_wording": "hedged ('according to', 'reportedly'), never 'will' or 'always'",
+    "hook_must_be_answered_in_video": true,
+    "hook_numbers_must_be_verified_before_use": true
+  },
+  "content": {
+    "level": "middle and middle+ developers",
+    "length_seconds": [
+      30,
+      40
+    ],
+    "narration_words": [
+      70,
+      110
+    ],
+    "security_topics": "show the vulnerable pattern and the fix; textbook payloads only; nothing that works as a ready attack on a live service",
+    "vpn_topics": "explain mechanisms; no step-by-step instructions to evade a specific censorship system; check local law for the audience",
+    "no_invented_screens_or_quotes": true,
+    "no_other_creators_branding": true
+  },
+  "learning": {
+    "agent_may_edit": [
+      "state/lessons.md",
+      "state/observations.md"
+    ],
+    "lessons_cannot_override_rules": true,
+    "lesson_requires_human_yes": true
+  }
+}

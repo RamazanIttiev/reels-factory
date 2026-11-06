@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "_note": "How the system decides what to make next and how it learns. Numbers below are starting guesses, not facts about Instagram. Revisit after the explore phase.",
+  "phases": [
+    {
+      "name": "explore",
+      "videos": "1-30",
+      "goal": "Measure demand across categories and hook types with everything else fixed",
+      "scheduler": "balanced rotation",
+      "min_videos_per_category": 4,
+      "min_videos_per_hook_type": 3,
+      "same_category_twice_in_a_row": false,
+      "change_one_variable_at_a_time": true,
+      "lessons_allowed": false
+    },
+    {
+      "name": "learn",
+      "videos": "31-80",
+      "goal": "Confirm patterns and start varying format variables (length, slot, CTA)",
+      "scheduler": "70 percent best-performing categories, 30 percent exploration",
+      "lessons_allowed": true
+    },
+    {
+      "name": "exploit",
+      "videos": "81+",
+      "goal": "Weight topics by demand; keep a 20 percent exploration share so the system keeps learning",
+      "scheduler": "80 percent weighted by demand, 20 percent exploration",
+      "lessons_allowed": true
+    }
+  ],
+  "measurement_windows_hours": [
+    24,
+    72,
+    168
+  ],
+  "primary_metrics": [
+    "avg_watch_pct",
+    "shares_per_1k_reach",
+    "saves_per_1k_reach",
+    "follows_per_1k_reach"
+  ],
+  "composite_score": {
+    "method": "percentile rank within the trailing window, weighted average",
+    "window_videos": 30,
+    "weights": {
+      "avg_watch_pct": 0.3,
+      "shares_per_1k_reach": 0.3,
+      "saves_per_1k_reach": 0.2,
+      "follows_per_1k_reach": 0.2
+    },
+    "_note": "Percentile ranks avoid arbitrary scaling between metrics. Weights are an initial guess."
+  },
+  "promotion_rule": {
+    "min_videos_per_attribute_value": 10,
+    "min_values_compared": 2,
+    "method": "bootstrap difference of composite score",
+    "confidence": 0.8,
+    "must_hold_in_windows": [
+      72,
+      168
+    ],
+    "must_survive_removing_best_video": true,
+    "requires_human_yes": true
+  },
+  "demand_signals": {
+    "quantitative": [
+      "shares_per_1k_reach",
+      "saves_per_1k_reach",
+      "follows_per_1k_reach"
+    ],
+    "qualitative": "comments asking for a topic go to state/requests.jsonl with the topic text; counted by category",
+    "note": "Reach is shaped by the algorithm, so compare per-1k-reach rates, not raw views"
+  },
+  "hook_ab_testing": {
+    "preferred": "trial reels, if the API supports publishing them (verify in current Meta docs)",
+    "fallback": "same topic, two hook types, published in different weeks and different languages are NOT comparable; only compare within one language",
+    "min_hooks_per_topic": 1,
+    "variants_generated_per_topic": 3
+  },
+  "per_language": {
+    "enabled": true,
+    "note": "Phases, video counters, balanced rotation, composite score window and lessons are computed separately for each language (separate audience, separate account). Nothing learned in one language is applied to the other unless the owner promotes it by hand.",
+    "state_dirs": {
+      "ru": "state/ru/",
+      "en": "state/en/"
+    }
+  }
+}

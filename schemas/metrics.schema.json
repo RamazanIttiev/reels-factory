@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Metrics snapshot (one line in state/metrics.jsonl, one per video per window)",
+  "type": "object",
+  "required": ["video_id","window_h","fetched_at","source"],
+  "properties": {
+    "video_id": { "type": "string" },
+    "platform": { "enum": ["instagram","youtube_shorts","tiktok"], "default": "instagram" },
+    "window_h": { "enum": [24, 72, 168, 672] },
+    "fetched_at": { "type": "string", "format": "date-time" },
+    "source": { "enum": ["api","manual"], "description": "manual = pasted from the app when the API doesn't expose a metric" },
+    "reach": { "type": ["integer","null"] },
+    "views": { "type": ["integer","null"] },
+    "likes": { "type": ["integer","null"] },
+    "comments": { "type": ["integer","null"] },
+    "shares": { "type": ["integer","null"] },
+    "saves": { "type": ["integer","null"] },
+    "follows": { "type": ["integer","null"], "description": "new followers attributed to this video, if exposed" },
+    "avg_watch_time_s": { "type": ["number","null"] },
+    "total_watch_time_s": { "type": ["number","null"] },
+    "avg_watch_pct": { "type": ["number","null"], "description": "derived: avg_watch_time_s / length_s" },
+    "shares_per_1k_reach": { "type": ["number","null"] },
+    "saves_per_1k_reach": { "type": ["number","null"] },
+    "follows_per_1k_reach": { "type": ["number","null"] },
+    "unavailable": { "type": "array", "items": { "type": "string" }, "description": "metric names the API did not return; never guess them" }
+  },
+  "_note": "Metric names exposed by the Instagram API change over time. Verify against current Meta insights docs before relying on any of them; leave unavailable metrics null."
+}

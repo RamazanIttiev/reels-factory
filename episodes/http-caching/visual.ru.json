@@ -1,0 +1,33 @@
+{
+  "slug": "http-caching",
+  "scenes": [
+    {
+      "id": "problem",
+      "type": "diagram",
+      "nodes": [
+        { "id": "browser", "label": "Браузер", "x": 0.16, "y": 0.5, "step": 1 },
+        { "id": "server", "label": "Сервер", "x": 0.84, "y": 0.5, "step": 2, "badge": { "text": "снова и снова", "step": 4, "tone": "bad" } }
+      ],
+      "edges": [
+        { "from": "browser", "to": "server", "step": 2, "label": "тот же файл", "tone": "bad" },
+        { "from": "server", "to": "browser", "step": 3, "label": "тот же ответ" }
+      ]
+    },
+    {
+      "id": "directives",
+      "type": "code",
+      "file": "response headers",
+      "resultTone": "good",
+      "code": "Cache-Control: max-age=...\nCache-Control: no-cache\nCache-Control: no-store"
+    },
+    {
+      "id": "summary",
+      "type": "checklist",
+      "items": [
+        { "id": "age", "tag": "max-age" },
+        { "id": "check", "tag": "no-cache" },
+        { "id": "never", "tag": "no-store" }
+      ]
+    }
+  ]
+}

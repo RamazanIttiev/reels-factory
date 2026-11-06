@@ -8,9 +8,11 @@ const episodeDir = (slug: string): string => `episodes/${slug}`;
 
 const readJson = (path: string): unknown => JSON.parse(readFileSync(path, "utf8"));
 
-export const loadVisual = (slug: string): Visual => {
-  const parsed = readJson(`${episodeDir(slug)}/visual.json`);
-  if (!isVisual(parsed)) throw new Error(`Invalid ${episodeDir(slug)}/visual.json`);
+export const loadVisual = (slug: string, lang: string): Visual => {
+  const path = `${episodeDir(slug)}/visual.${lang}.json`;
+  if (!existsSync(path)) throw new Error(`Missing ${path}`);
+  const parsed = readJson(path);
+  if (!isVisual(parsed)) throw new Error(`Invalid ${path}`);
   return parsed;
 };
 
@@ -23,9 +25,10 @@ export const loadLang = (slug: string, lang: string): Lang => {
 };
 
 export const loadEpisode = (slug: string, lang: string): Episode =>
-  resolveEpisode(loadVisual(slug), loadLang(slug, lang));
+  resolveEpisode(loadVisual(slug, lang), loadLang(slug, lang));
 
 export const listLangs = (slug: string): string[] =>
   readdirSync(episodeDir(slug))
     .filter((file) => /^[a-z]{2}\.json$/.test(file))
-    .map((file) => file.replace(".json", ""));
+    .map((file) => file.replace(".json", ""))
+    .filter((lang) => existsSync(`${episodeDir(slug)}/visual.${lang}.json`));

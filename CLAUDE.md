@@ -30,66 +30,63 @@ to produce a new episode. If a scene type is missing, add it once in `src/scenes
 
 ## Architecture
 ```
-episodes/<slug>/visual.json   scenes: id, type, code, diagram nodes/edges (labels in Russian, tech names in English)
-episodes/<slug>/ru.json       narration + labels per scene id, hook, outro, voiceId, ui
+plan/topics.json              121+ standalone topics, status.ru/status.en, hook hypotheses, sources (titles). Never read whole.
+plan/taxonomy.json            allowed categories, hook types, visuals; plan/legacy/curriculum.json = old course, unused
+config/{rules,sources,experiment}.json   hard rules (never edit rules.json), domain allowlist, phases and scoring
+episodes/<slug>/visual.<lang>.json   scenes: id, type, code, diagram nodes/edges (own visuals per language)
+episodes/<slug>/<lang>.json   hook, narration, labels, claims per scene id, voiceId, caption, outro
 episodes/_template/           copy this folder for a new episode
-src/types.ts, episode.ts      data model, visual + lang -> Episode
-src/timeline.ts               Episode + audio info -> ReelProps (segment lengths from voice duration)
-src/theme.ts                  colors, fonts, series name/handle/avatar placeholders
-src/scenes/*.tsx              Hook, Browser, Code, Diagram, Checklist, Outro
-src/Captions.tsx, Frame.tsx   one-word captions, grid background + header
-scripts/tts.ts                providers mock | elevenlabs | minimax, cache .cache/audio/<sha256>
-scripts/timings.ts            word timings: provider timestamps, else local Whisper, else uniform
-scripts/pipeline.ts           audio + timings -> .cache/props/<slug>.<lang>.json
-scripts/check-words.ts        70-110 word budget warning per language
-scripts/render.ts, frames.ts  render mp4, extract key frames into frames/
-scripts/publish.ts            stub, TODO, no network calls
+facts/<slug>.json             one fact sheet per topic: claims with exact quotes, tier, dates (facts/fetch.log.jsonl = fetch log)
+state/<lang>/                 videos.jsonl, metrics.jsonl, requests.jsonl, observations.md
+src/                          types, episode, timeline, Frame (header: channel + step n/N), scenes/*.tsx, Captions
+scripts/topics.ts             topics load/save, status per (slug, lang); next.ts picks the next topic by phase rules
+scripts/facts.ts, verify.ts   fact gate; record.ts, metrics.ts, analyze.ts, requests.ts = learning loop
+scripts/tts.ts, timings.ts, pipeline.ts, render.ts, frames.ts, cover.ts, publish.ts (R2 + Instagram, then record)
 ```
 Status of scripts: check `package.json` scripts to see which exist. Do not assume.
 
 ## Episode JSON contract
-See `episodes/_template/`. Visual is shared, language files only carry text. Rules:
-- `visual.json` `scenes[].id` links to `<lang>.json` `scenes[id]`. Missing id = error.
-- `scenes[].type`: `diagram | code | checklist | browser`. On-screen labels are in Russian; tech names and code stay English. Reels are Russian only.
-- `<lang>.json` `labels`: short on-screen text (`caption`, `result`, checklist item ids). Optional.
+See `episodes/_template/`. Visual and text are per language. Rules:
+- `visual.<lang>.json` `scenes[].id` links to `<lang>.json` `scenes[id]`. Missing id = error.
+- `scenes[].type`: `diagram | code | checklist | browser`. Reels are Russian only for now; tech names and code stay English.
+- `<lang>.json` `labels`: short on-screen text (`caption`, `result`, checklist item ids). Write counts as words unless a claim has the digit.
+- `claims`: the hook and every scene list ids of claims from `facts/<slug>.json`. Numbers, dates, Latin names in text must occur in those quotes.
 - `hook`: question or bold claim, max 8 words, first 2 seconds, `accent` = word in orange.
 - `narration`: short sentences. Scene length = audio length (no audio: words / 2.5 s).
-- `caption`: text of the Instagram post. One sentence or phrase on the topic of the episode, no hashtags, no emoji.
-- Total narration 70–110 words per language (`npm run check -- <slug>`).
+- `caption`: Instagram post text. One sentence, no hashtags, no emoji.
+- Total narration 70-110 words (`npm run check -- <slug>`).
 - `TTS_PROVIDER` env picks the voice (default `mock` = silence, no keys needed).
-- Every technical claim must be correct. Verify code, outputs and numbers before writing them in a scene.
-  If unsure, search the web once, do not guess.
+- Incident topics: attribute to the operator ("по данным отчёта компании"); hedge what is not confirmed.
 
-## Episode workflow (curriculum: 51 episodes, 9 modules)
-The plan lives in `plan/curriculum.json`. NEVER read the whole file; get the brief only through `npm run next`.
-1. `npm run next` prints the next `todo` episode, the 2 previous ones, terms already introduced and terms not to use yet.
-2. Create `episodes/<slug>/visual.json`, `ru.json` from the brief (copy `episodes/_template/`).
-3. `npm run check -- <slug>` (word budget). Then run the `double-check` skill on the episode (facts, code, numbers,
-   plain language, caption). Fix what both agents agree on. Only then `npm run status -- <id> drafted`.
-4. `npm run preview -- <slug> --lang ru`, then `npm run frames -- <slug> --lang ru --count 3`, read only those PNGs, fix overflow.
-5. After the owner approves frames: `npm run render -- <slug> --lang ru` (sets status `rendered` by itself).
-6. `npm run publish -- <slug>` only on the owner's explicit command (sets `published` after success; stub for now).
-Manual status change: `npm run status -- <id> todo|drafted|rendered|published`. Plan sanity check: `npm run plan:check`.
-Every outro is a friendly call to subscribe to scalelab to learn system design better
-("Подписывайся на scalelab — вместе разберёмся в system design." / "Subscribe to scalelab, let's learn system design together.").
-No teaser of the next episode: it is not voiced and not shown.
-Series logic: each episode = one idea; the last episode of a module ends with its `comment_question`. Counter "closed N of M" = `indexInModule` of `moduleTotal`.
-Terms from `introduces` are explained once, in that episode. Use `references` as "мы уже разобрали...".
+## Episode workflow
+Each episode is standalone; order comes from the scheduler (`config/experiment.json`).
+1. `npm run next -- --lang ru` prints one brief (topic, hook hypothesis, sources, tags, imbalance).
+2. `npm run facts -- <slug>`: find primary sources on allowed domains (`config/sources.json`), save claims with exact quotes
+   (`--add-file claims.json`). Fresh fact sheets are not re-read.
+3. Write `episodes/<slug>/visual.ru.json` + `ru.json` from `_template`, with claims on hook and every scene.
+4. `npm run verify -- <slug> --lang ru` (blocks full render; preview only warns), then the `double-check` skill as the meaning pass.
+   `npm run check -- <slug>` for the word budget. Then `npm run status -- <slug> ru drafted`.
+5. `npm run preview -- <slug> --lang ru`, `npm run frames -- <slug> --lang ru --count 3`, read only those PNGs, fix overflow.
+6. After the owner approves frames: `npm run render -- <slug> --lang ru` (sets `rendered`).
+7. `npm run publish -- <slug> --lang ru` only on the owner's explicit command; it then runs `record` (state/ru/videos.jsonl with ig_media_id).
+Manual: `npm run status -- <slug> <lang> <status>`, `npm run plan:check`.
+Outro: friendly subscribe call to scalelab, no teaser: "Подписывайся на scalelab — разбираем, как всё устроено."
 
 ## Content rules
-- Plain language first. Explain like to a smart friend who has not done backend: short sentences, one idea,
-  every term gets a one-phrase explanation the first time it appears, no jargon for its own sake.
-- Verify technical facts (search the web once if unsure). Round numbers honestly ("около", "порядка"), never invent precision.
-- No "always" / "never" / "all" / "best" without grounds; prefer "обычно", "чаще всего", "в таком случае".
-- Exactly one running example per episode, from the shop.example story. Module 9 mapping:
-  URL shortener = short links for mailings, messenger = buyer–support chat, geosearch = nearest pickup point.
-- All explanations and examples are written from scratch. Do not retell other courses, articles or their structure.
-- The shop grows with the course: 100 users in module 1, 1 000 000 by module 9. Each module opens with its problem.
+- Plain language first. Explain like to a smart friend: short sentences, one idea, each term explained once.
+- One concrete example per video, from any area. No shared storyline between videos.
+- Verify technical facts via the fact gate; round numbers honestly ("около"), never invent precision.
+- No "always" / "never" / "all" / "best" without grounds; prefer "обычно", "чаще всего".
+- All explanations and examples are written from scratch; do not retell other courses or articles.
+- Security topics: vulnerable pattern plus fix, textbook payloads only. VPN topics: mechanisms only, no evasion instructions.
+
+## Languages
+Russian only now. English will be a separate product: own visuals (`visual.en.json`), own account, `state/en/`, own phase counters.
+Nothing learned in one language is applied to another without the owner's promotion. Topic status is per language.
 
 ## Visual style
 Dark photo background (`public/bg.jpg`, darkened by an overlay in `src/theme.ts`), rounded browser/code cards, monospace code,
-white heavy wide sans captions (one word at a time, accent words in teal `#299a8d`), series handle `@scalelab.dev`, progress counter
-in the header ("closed N of M"). Reuse the look, but use our own series name, avatar and accent color
+white heavy wide sans captions (one word at a time, accent words in teal `#299a8d`), series handle `@scalelab.dev`; header shows the channel and a step counter n/N. Reuse the look, but use our own series name, avatar and accent color
 (set in `src/theme.ts`). Do not copy another creator's branding.
 Fonts: Unbounded (headings), Onest (text), JetBrains Mono (code). All support Cyrillic.
 
@@ -101,7 +98,9 @@ Fonts: Unbounded (headings), Onest (text), JetBrains Mono (code). All support Cy
 - `npm run check -- <slug>` word budget per language
 - `npm run publish:dry -- <slug> --lang ru` checks env, file, caption and video URL, sends nothing
 - `npm run publish -- <slug> --lang ru` uploads to R2 and publishes to Instagram, ASK OWNER FIRST
-- `npm run next` next todo episode brief; `npm run status -- <id> <status>`; `npm run plan:check`; `npm run typecheck`
+- `npm run next -- --lang ru`, `npm run status -- <slug> <lang> <status>`, `npm run plan:check`, `npm run typecheck`
+- `npm run facts -- <slug>`, `npm run verify -- <slug> --lang ru`, `npm run record -- <slug> --lang ru`
+- `npm run metrics -- --lang ru`, `npm run metrics:import -- file.csv`, `npm run analyze -- --lang ru`, `npm run requests -- --lang ru`
 
 ## External services (keys in `.env`, never read or print them)
 - TTS: ElevenLabs or MiniMax (`TTS_PROVIDER`). Compare voices on one phrase before choosing.
@@ -115,6 +114,9 @@ Fonts: Unbounded (headings), Onest (text), JetBrains Mono (code). All support Cy
 3. Final mp4 in `out/`, under 90s, audio and captions in sync.
 4. Reply: file path, duration, one suggestion. Nothing else.
 
-## Metrics loop
-After publishing, the owner pastes views / retention / shares into `metrics/<slug>.md`.
-Read only the latest 5 files, compare with previous, propose max 3 concrete changes to hook or pacing.
+## Learning loop
+Hard limits live in `config/rules.json` (never edit). Phases: explore (videos 1-30, balanced rotation, no lessons), learn, exploit.
+1. After publish, `record` writes the video with tags. `npm run metrics -- --lang ru` snapshots 24/72/168h via Graph API (unavailable metrics stay null, e.g. follows for reels). Manual: `metrics:import`.
+2. `npm run analyze -- --lang ru` prints composite score and ranks per attribute. In explore it only appends observations to `state/ru/observations.md`.
+3. A lesson goes to `state/lessons.md` only if `promotion_rule` holds AND the owner says "да". Lessons never override rules.json.
+4. Comment requests: `npm run requests -- --lang ru` (or `--import file.csv`).

@@ -1,50 +1,78 @@
-import { loadPlan } from "./curriculum";
-import type { PlanEpisode } from "./curriculum";
+import { parseArgs } from "node:util";
+import { loadExperiment, phaseFor } from "./experiment";
+import { attributeStats, loadScored } from "./scoring";
+import { readVideos } from "./state";
+import { isTopicLang, loadTopics } from "./topics";
+import type { Topic } from "./topics";
 
-const plan = loadPlan();
-const next = plan.episodes.find((episode) => episode.status === "todo");
+const { values } = parseArgs({ options: { lang: { type: "string" } } });
+const lang = values.lang ?? "ru";
+if (!isTopicLang(lang)) {
+  console.error("Usage: next --lang ru");
+  process.exit(1);
+}
 
-if (!next) {
-  console.log("All episodes are done.");
+const experiment = loadExperiment();
+const file = loadTopics();
+const videos = readVideos(lang);
+const videoNumber = videos.length + 1;
+const phase = phaseFor(experiment, videoNumber);
+const minCategory = phase.min_videos_per_category ?? 0;
+const minHook = phase.min_videos_per_hook_type ?? 0;
+
+const countBy = (attribute: "category" | "hook_type"): Map<string, number> =>
+  videos.reduce((acc, video) => acc.set(video[attribute], (acc.get(video[attribute]) ?? 0) + 1), new Map<string, number>());
+
+const categoryCounts = countBy("category");
+const hookCounts = countBy("hook_type");
+const lastCategory = videos.at(-1)?.category;
+
+const todo = file.topics.filter((topic) => topic.status[lang] === "todo" && !topic.legacy);
+const allowed = phase.same_category_twice_in_a_row === false ? todo.filter((topic) => topic.category !== lastCategory) : todo;
+const pool = allowed.length ? allowed : todo;
+
+const balanced = (topics: Topic[]): Topic[] =>
+  [...topics].sort(
+    (a, b) =>
+      (categoryCounts.get(a.category) ?? 0) - (categoryCounts.get(b.category) ?? 0) ||
+      (hookCounts.get(a.hook_type) ?? 0) - (hookCounts.get(b.hook_type) ?? 0) ||
+      a.id - b.id,
+  );
+
+const exploitShare = phase.name === "learn" ? 7 : phase.name === "exploit" ? 8 : 0;
+const ranked = attributeStats(loadScored(experiment, lang), "category").flatMap((stat) =>
+  stat.meanScore === undefined ? [] : [stat.value],
+);
+const exploiting = exploitShare > 0 && ranked.length > 0 && videoNumber % 10 < exploitShare;
+const bestPool = ranked.flatMap((category) => pool.filter((topic) => topic.category === category));
+const chosen = (exploiting && bestPool.length ? bestPool : balanced(pool))[0];
+
+if (!chosen) {
+  console.log(`No todo topics for ${lang}.`);
   process.exit(0);
 }
 
-const byId = new Map(plan.episodes.map((episode) => [episode.id, episode]));
-const module = plan.modules.find((candidate) => candidate.id === next.module);
-const previous = [next.id - 2, next.id - 1].flatMap((id) => byId.get(id) ?? []);
-const referenced = next.references.flatMap((id) => byId.get(id) ?? []);
-const ready = plan.episodes.filter((episode) => episode.status !== "todo" && episode.id < next.id);
-const later = plan.episodes.filter((episode) => episode.id > next.id);
+const imbalance = (label: string, counts: Map<string, number>, all: string[], min: number): string =>
+  `${label}: ${all.map((key) => `${key} ${counts.get(key) ?? 0}${(counts.get(key) ?? 0) < min ? "!" : ""}`).join(", ")}`;
 
-const describe = (episode: PlanEpisode): string =>
-  `#${episode.id} ${episode.slug} [${episode.status}] ${episode.title_ru}: ${episode.key_idea}`;
+const categories = [...new Set(file.topics.map((topic) => topic.category))];
+const hookTypes = [...new Set(file.topics.map((topic) => topic.hook_type))];
+const hook = lang === "ru" ? chosen.hook_ru : chosen.hook_en;
 
-const lines = [
-  `NEXT EPISODE #${next.id}  ${next.slug}`,
-  `module ${next.module} "${module?.title_ru}" (${next.indexInModule} of ${next.moduleTotal}), shop users: ${module?.users}`,
-  ...(next.indexInModule === 1 ? [`module problem: ${module?.problem_ru}`] : []),
-  `title_ru: ${next.title_ru}`,
-  `key_idea: ${next.key_idea}`,
-  `shop_example: ${next.shop_example}`,
-  `hook_ru: ${next.hook_ru}`,
-  `scene_types: ${next.scene_types.join(", ")}`,
-  `prerequisites: ${next.prerequisites.join(", ") || "none"}`,
-  `introduces (explain once, here): ${next.introduces.join("; ")}`,
-  ...(next.comment_question_ru
-    ? [`LAST IN MODULE, end with a comment question: ${next.comment_question_ru}`]
-    : []),
-  `episode files: episodes/${next.slug}/visual.json, ru.json`,
-  ``,
-  `can reference ("мы уже разобрали..."):`,
-  ...(referenced.length ? referenced.map((episode) => `  #${episode.id} ${episode.title_ru}`) : ["  nothing"]),
-  ``,
-  `previous episodes for context:`,
-  ...(previous.length ? previous.map((episode) => `  ${describe(episode)}`) : ["  none"]),
-  ``,
-  `terms already introduced (do not explain again): ${ready.flatMap((episode) => episode.introduces).join("; ") || "none"}`,
-  `terms introduced LATER (do not use yet): ${later.flatMap((episode) => episode.introduces).join("; ")}`,
-  ``,
-  `Style: plain language, explain like to a smart friend who has not done backend. One idea, one shop.example case.`,
-];
-
-console.log(lines.join("\n"));
+console.log(
+  [
+    `NEXT ${lang} #${chosen.id} ${chosen.slug}`,
+    `phase: ${phase.name}, video ${videoNumber}${exploiting ? " (exploit slot)" : phase.name === "explore" ? "" : " (exploration slot)"}`,
+    `topic: ${chosen.title_en}`,
+    `hook hypothesis (${chosen.hook_type}): ${hook}`,
+    `sources to verify: ${chosen.sources.join(" | ") || "none listed"} [${chosen.sources_status}]`,
+    `tags: category=${chosen.category} level=${chosen.level} kind=${chosen.kind} hook_type=${chosen.hook_type} visual=${chosen.visual}`,
+    `scene_types: ${chosen.scene_types.join(", ")}`,
+    ...(chosen.needs_legal_check ? ["needs_legal_check: human approval required before publish"] : []),
+    ...(chosen.kind === "incident" ? ["incident: attribute claims to the operator's own report"] : []),
+    `last published category: ${lastCategory ?? "none"} (not repeated in a row)`,
+    imbalance(`category counts (min ${minCategory}, ! = below)`, categoryCounts, categories, minCategory),
+    imbalance(`hook_type counts (min ${minHook}, ! = below)`, hookCounts, hookTypes, minHook),
+    `files: episodes/${chosen.slug}/visual.${lang}.json, ${lang}.json (copy episodes/_template)`,
+  ].join("\n"),
+);

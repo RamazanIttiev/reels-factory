@@ -17,7 +17,6 @@ export type DiagramEdge = { from: string; to: string; step: number; tone?: Tone;
 export type DiagramVisual = {
   id: string;
   type: "diagram";
-  closed?: number;
   nodes: DiagramNode[];
   edges: DiagramEdge[];
 };
@@ -25,7 +24,6 @@ export type DiagramVisual = {
 export type CodeVisual = {
   id: string;
   type: "code";
-  closed?: number;
   file: string;
   code: string;
   resultTone?: Tone;
@@ -40,28 +38,24 @@ export type ChecklistVisual = {
 export type BrowserVisual = {
   id: string;
   type: "browser";
-  closed?: number;
   url: string;
   input: string;
 };
 
 export type VisualScene = DiagramVisual | CodeVisual | ChecklistVisual | BrowserVisual;
 
-export type Visual = { slug: string; item: number; total: number; scenes: VisualScene[] };
+export type Visual = { slug: string; scenes: VisualScene[] };
 
-export type HookText = { text: string; accent: string };
+export type HookText = { text: string; accent: string; claims: string[] };
 
 export type OutroText = { text: string; narration: string };
 
-export type LangScene = { narration: string; labels?: Record<string, string> };
-
-export type Ui = { closed: string };
+export type LangScene = { narration: string; labels?: Record<string, string>; claims: string[] };
 
 export type Lang = {
   lang: string;
   voiceId: string;
   caption: string;
-  ui: Ui;
   hook: HookText;
   scenes: Record<string, LangScene>;
   outro: OutroText;
@@ -70,6 +64,9 @@ export type Lang = {
 const isRecord = (value: unknown): value is Record<string, unknown> =>
   typeof value === "object" && value !== null;
 
+const isClaimList = (value: unknown): value is string[] =>
+  Array.isArray(value) && value.every((item) => typeof item === "string");
+
 export const isVisual = (value: unknown): value is Visual =>
   isRecord(value) && typeof value.slug === "string" && Array.isArray(value.scenes);
 
@@ -77,7 +74,8 @@ export const isLang = (value: unknown): value is Lang =>
   isRecord(value) &&
   typeof value.lang === "string" &&
   typeof value.caption === "string" &&
-  isRecord(value.ui) &&
   isRecord(value.hook) &&
+  isClaimList(value.hook.claims) &&
   isRecord(value.scenes) &&
+  Object.values(value.scenes).every((scene) => isRecord(scene) && isClaimList(scene.claims)) &&
   isRecord(value.outro);

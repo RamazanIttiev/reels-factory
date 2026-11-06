@@ -3,9 +3,9 @@ import { AbsoluteFill, staticFile } from "remotion";
 import { theme } from "./theme";
 import type { HookText } from "./types";
 
-export type CoverProps = { hook: HookText; item: number };
+export type CoverProps = { hook: HookText };
 
-export const Cover = ({ hook, item }: CoverProps) => {
+export const Cover = ({ hook }: CoverProps) => {
   const parts = hook.text.split(hook.accent);
 
   return (
@@ -36,9 +36,6 @@ export const Cover = ({ hook, item }: CoverProps) => {
         />
         <div style={{ fontFamily: theme.fonts.text, fontWeight: 600, fontSize: 48, color: theme.colors.text }}>
           {theme.series.handle}
-        </div>
-        <div style={{ fontFamily: theme.fonts.mono, fontWeight: 700, fontSize: 48, color: theme.colors.accent }}>
-          #{item}
         </div>
       </div>
       <div

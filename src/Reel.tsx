@@ -30,10 +30,8 @@ export const Reel = (props: ReelProps) => {
     <AbsoluteFill>
       {props.segments.map((segment, index) => {
         const context: SceneContext = {
-          item: props.item,
+          step: segment.step,
           total: props.total,
-          ui: props.ui,
-          closed: segment.closed,
           duration: segment.duration,
         };
         return (

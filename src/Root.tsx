@@ -1,6 +1,6 @@
 import { Composition } from "remotion";
 import ru from "../episodes/cache-stampede/ru.json";
-import visual from "../episodes/cache-stampede/visual.json";
+import visual from "../episodes/cache-stampede/visual.ru.json";
 import { Cover } from "./Cover";
 import type { CoverProps } from "./Cover";
 import { resolveEpisode } from "./episode";
@@ -11,7 +11,7 @@ import { isLang, isVisual } from "./types";
 const defaultProps = isVisual(visual) && isLang(ru) ? buildTimeline(resolveEpisode(visual, ru)) : undefined;
 
 const coverProps: CoverProps | undefined =
-  isVisual(visual) && isLang(ru) ? { hook: ru.hook, item: visual.item } : undefined;
+  isVisual(visual) && isLang(ru) ? { hook: ru.hook } : undefined;
 
 export const RemotionRoot = () => (
   <>

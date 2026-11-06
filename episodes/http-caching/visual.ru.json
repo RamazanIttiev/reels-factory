@@ -17,6 +17,7 @@
       "id": "directives",
       "type": "code",
       "file": "response headers",
+      "provenance": "quoted",
       "resultTone": "good",
       "code": "Cache-Control: max-age=...\nCache-Control: no-cache\nCache-Control: no-store"
     },

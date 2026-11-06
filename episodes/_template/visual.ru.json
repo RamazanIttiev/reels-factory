@@ -51,6 +51,7 @@
       "id": "fix",
       "type": "code",
       "file": "fix.ts",
+      "provenance": "schematic",
       "resultTone": "good",
       "code": "async function fix(id) {\n  return await safe(id);\n}"
     },

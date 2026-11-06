@@ -18,7 +18,7 @@
     "fix": {
       "narration": "Как это лечится, коротко.",
       "labels": {
-        "caption": "Решение",
+        "caption": "Схема решения",
         "result": "Итог"
       },
       "claims": []

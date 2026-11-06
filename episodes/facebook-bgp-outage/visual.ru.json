@@ -25,6 +25,7 @@
       "id": "rule",
       "type": "code",
       "file": "dns.ts",
+      "provenance": "schematic",
       "resultTone": "bad",
       "code": "if (!canReachDataCenters()) {\n  withdrawBgpRoutes();\n}"
     },

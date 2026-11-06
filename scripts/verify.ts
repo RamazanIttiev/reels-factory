@@ -1,7 +1,7 @@
 import { parseArgs } from "node:util";
 import { ageDays, loadFactSheet, normalizeText } from "./facts";
 import type { Claim } from "./facts";
-import { listLangs, loadLang } from "./load-episode";
+import { listLangs, loadLang, loadVisual } from "./load-episode";
 import { loadFactRules, loadSources, tierOf } from "./sources";
 import { findTopic, loadTopics } from "./topics";
 
@@ -87,6 +87,18 @@ export const verifyEpisode = (slug: string, lang: string): Verdict => {
     return checkPiece(label, texts, ids.flatMap((id) => byId.get(id) ?? []));
   });
 
+  const codeErrors = loadVisual(slug, lang).scenes.flatMap((scene) => {
+    if (scene.type !== "code") return [];
+    const caption = language.scenes[scene.id]?.labels?.caption ?? "";
+    if (scene.provenance === "schematic") {
+      return /схем/i.test(caption) ? [] : [`scene ${scene.id}: schematic code needs "схема" in labels.caption so the screen says it is simplified`];
+    }
+    if (scene.provenance !== "quoted") return [`scene ${scene.id}: code scene needs provenance "quoted" or "schematic"`];
+    const claims = (language.scenes[scene.id]?.claims ?? []).flatMap((id) => byId.get(id) ?? []);
+    const known = quoteNumbers(claims);
+    return numbersIn(scene.code).filter((n) => !known.has(n)).map((n) => `scene ${scene.id}: number "${n}" in quoted code is not in the claim quotes`);
+  });
+
   const spoken = [language.hook.text, ...Object.values(language.scenes).map((scene) => scene.narration)].join(" ");
   const attribution =
     topic.kind === "incident" && !ATTRIBUTION.test(spoken)
@@ -97,7 +109,7 @@ export const verifyEpisode = (slug: string, lang: string): Verdict => {
   const unused = sheet.claims.filter((claim) => !used.has(claim.id)).map((claim) => `claim ${claim.id} is not used by any scene`);
 
   return {
-    errors: [...sheetErrors, ...results.flatMap((r) => r.errors), ...attribution],
+    errors: [...sheetErrors, ...codeErrors, ...results.flatMap((r) => r.errors), ...attribution],
     warnings: [...stale, ...unused, ...results.flatMap((r) => r.warnings)],
   };
 };

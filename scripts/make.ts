@@ -35,7 +35,7 @@ const target = String(slug);
 const draftPrompt = (problem: string): string =>
   `Работай по CLAUDE.md в этом проекте. Тема: ${target}, язык ${lang}. ${problem} ` +
   `Сделай шаги: facts (источники только с разрешённых доменов, claims с точными цитатами), создай или исправь episodes/${target}/visual.${lang}.json и ${lang}.json с claims, ` +
-  `добейся прохождения npm run verify -- ${target} --lang ${lang} и npm run check -- ${target}. Длина 30-40 секунд (70-110 слов). ` +
+  `добейся прохождения npm run verify -- ${target} --lang ${lang} и npm run check -- ${target}. Длина не больше 40 секунд: не более 85 слов (npm run check считает оценку). Код в сцене: provenance "quoted" (только то, что есть в цитатах) или "schematic" (тогда в labels.caption слово «схема»). ` +
   `Не публикуй, не рендери полностью, не читай .env, не меняй config/rules.json.`;
 
 if (values["dry-run"]) {

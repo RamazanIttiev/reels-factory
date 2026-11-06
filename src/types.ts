@@ -25,6 +25,7 @@ export type CodeVisual = {
   id: string;
   type: "code";
   file: string;
+  provenance?: "quoted" | "schematic";
   code: string;
   resultTone?: Tone;
 };

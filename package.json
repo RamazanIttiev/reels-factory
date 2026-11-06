@@ -11,6 +11,7 @@
     "publish": "tsx scripts/publish.ts",
     "publish:dry": "tsx scripts/publish.ts --dry-run",
     "check": "tsx scripts/check-words.ts",
+    "layout": "tsx scripts/layout.ts",
     "facts": "tsx scripts/facts.ts",
     "verify": "tsx scripts/verify.ts",
     "record": "tsx scripts/record.ts",

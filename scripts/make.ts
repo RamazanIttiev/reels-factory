@@ -49,7 +49,8 @@ if (needsDraft && !claude(draftPrompt(`Скопируй episodes/_template. Бр
 const gate = (): { ok: boolean; output: string } => {
   const verify = run(["verify", "--", target, "--lang", lang]);
   const words = run(["check", "--", target]);
-  return { ok: verify.ok && !words.output.includes("WARN"), output: `${verify.output}\n${words.output}` };
+  const layout = run(["layout", "--", target, "--lang", lang]);
+  return { ok: verify.ok && layout.ok && !words.output.includes("WARN"), output: `${verify.output}\n${words.output}\n${layout.output}` };
 };
 
 const fixed = Array.from({ length: MAX_FIX_ROUNDS + 1 }).reduce<{ ok: boolean; output: string }>(

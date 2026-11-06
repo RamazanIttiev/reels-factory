@@ -5,7 +5,9 @@ import type { NarrationToken, WordSpan } from "../src/timeline";
 import { requireEnv } from "./env";
 import { silentWav } from "./wav";
 
-export type SynthesisInput = { text: string; voiceId: string; lang: string };
+export type VoiceSettings = { stability?: number; style?: number; speed?: number };
+
+export type SynthesisInput = { text: string; voiceId: string; lang: string; voiceSettings?: VoiceSettings };
 
 export type Synthesis = { audio: Buffer; durationSec: number; spans?: WordSpan[] };
 
@@ -64,18 +66,25 @@ const spansFromCharacters = (text: string, tokens: NarrationToken[], alignment: 
 
 const ELEVENLABS_MODEL = "eleven_v4";
 
+export const elevenLabsBody = ({ text, voiceSettings }: SynthesisInput) => ({
+  text,
+  model_id: ELEVENLABS_MODEL,
+  ...(voiceSettings ? { voice_settings: voiceSettings } : {}),
+});
+
 const elevenLabs: TtsProvider = {
   name: "elevenlabs",
   cacheId: `elevenlabs-${ELEVENLABS_MODEL}`,
   ext: "mp3",
-  synthesize: async ({ text, voiceId }) => {
+  synthesize: async (input) => {
+    const { text, voiceId } = input;
     const key = requireEnv("ELEVENLABS_API_KEY");
     const response = await fetch(
       `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}/with-timestamps?output_format=mp3_44100_128`,
       {
         method: "POST",
         headers: { "xi-api-key": key, "content-type": "application/json" },
-        body: JSON.stringify({ text, model_id: ELEVENLABS_MODEL }),
+        body: JSON.stringify(elevenLabsBody(input)),
       },
     );
     if (!response.ok) throw new Error(`ElevenLabs HTTP ${response.status}: ${(await response.text()).slice(0, 300)}`);
@@ -127,8 +136,12 @@ export const providerByName = (name: string): TtsProvider => {
   return provider;
 };
 
-export const audioHash = (provider: TtsProvider, { text, voiceId, lang }: SynthesisInput): string =>
-  createHash("sha256").update([text, voiceId, provider.cacheId ?? provider.name, lang].join("\u0000")).digest("hex");
+export const audioHash = (provider: TtsProvider, { text, voiceId, lang, voiceSettings }: SynthesisInput): string =>
+  createHash("sha256")
+    .update(
+      [text, voiceId, provider.cacheId ?? provider.name, lang, ...(voiceSettings ? [JSON.stringify(voiceSettings)] : [])].join("\u0000"),
+    )
+    .digest("hex");
 
 const isCachedMeta = (value: unknown): value is { durationSec: number; spans?: WordSpan[] } =>
   isRecord(value) && typeof value.durationSec === "number";

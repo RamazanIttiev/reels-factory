@@ -21,7 +21,7 @@ export const prepare = async (slug: string, lang: string): Promise<Prepared> => 
 
   const audio: Record<string, AudioInfo> = {};
   for (const { id, text } of narrations(episode)) {
-    const result = await synthesizeCached(provider, { text, voiceId: episode.voiceId, lang });
+    const result = await synthesizeCached(provider, { text, voiceId: episode.voiceId, lang, voiceSettings: episode.voiceSettings });
     const spans = await wordSpans({
       audioPath: result.path,
       tokens: narrationTokens(text),

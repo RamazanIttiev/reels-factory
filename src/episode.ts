@@ -8,6 +8,7 @@ export type Episode = {
   slug: string;
   lang: string;
   voiceId: string;
+  voiceSettings?: Lang["voiceSettings"];
   hook: HookText;
   scenes: ResolvedScene[];
   outro: OutroText;
@@ -17,6 +18,7 @@ export const resolveEpisode = (visual: Visual, lang: Lang): Episode => ({
   slug: visual.slug,
   lang: lang.lang,
   voiceId: lang.voiceId,
+  voiceSettings: lang.voiceSettings,
   hook: lang.hook,
   outro: lang.outro,
   scenes: visual.scenes.map((scene) => {

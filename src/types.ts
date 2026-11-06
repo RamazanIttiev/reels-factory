@@ -55,6 +55,7 @@ export type LangScene = { narration: string; labels?: Record<string, string>; cl
 export type Lang = {
   lang: string;
   voiceId: string;
+  voiceSettings?: { stability?: number; style?: number; speed?: number };
   caption: string;
   hook: HookText;
   scenes: Record<string, LangScene>;

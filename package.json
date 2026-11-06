@@ -21,6 +21,12 @@
     "requests": "tsx scripts/requests.ts",
     "next": "tsx scripts/next.ts",
     "make": "tsx scripts/make.ts",
+    "batch": "tsx scripts/batch.ts",
+    "review": "tsx scripts/review.ts",
+    "queue": "tsx scripts/queue-cli.ts",
+    "approve": "tsx scripts/queue-cli.ts approve",
+    "reject": "tsx scripts/queue-cli.ts reject",
+    "render:approved": "tsx scripts/queue-cli.ts render",
     "status": "tsx scripts/status.ts",
     "plan:check": "tsx scripts/check-plan.ts",
     "typecheck": "tsc --noEmit"

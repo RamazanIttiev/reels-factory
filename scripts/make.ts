@@ -1,6 +1,8 @@
 import { spawnSync } from "node:child_process";
 import { existsSync } from "node:fs";
 import { parseArgs } from "node:util";
+import { upsert } from "./queue";
+import { findTopic, loadTopics } from "./topics";
 
 const MAX_FIX_ROUNDS = 2;
 
@@ -23,6 +25,8 @@ const claude = (prompt: string): boolean => {
 
 const stop = (message: string): never => {
   console.error(`STOP: ${message}`);
+  const failed = findTopic(loadTopics(), String(slug));
+  if (failed) upsert(lang, { slug: failed.slug, category: failed.category, hook_type: failed.hook_type, state: "failed", note: message.split("\n")[0].slice(0, 160) });
   process.exit(1);
 };
 
@@ -71,4 +75,6 @@ if (!preview.ok) stop(`preview failed:\n${preview.output.split("\n").slice(-10).
 const frames = run(["frames", "--", target, "--lang", lang, "--count", "3"]);
 if (!frames.ok) stop(`frames failed:\n${frames.output.split("\n").slice(-10).join("\n")}`);
 
-console.log(`READY for approval: ${target}\n${frames.output}\nApprove: npm run render -- ${target} --lang ${lang}`);
+const readyTopic = findTopic(loadTopics(), target);
+if (readyTopic) upsert(lang, { slug: target, category: readyTopic.category, hook_type: readyTopic.hook_type, state: "awaiting_approval" });
+console.log(`READY for approval: ${target}\n${frames.output}\nApprove: npm run approve -- ${target} (then npm run render:approved)`);

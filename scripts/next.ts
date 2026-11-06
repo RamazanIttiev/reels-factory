@@ -1,6 +1,7 @@
 import { parseArgs } from "node:util";
 import { loadExperiment, phaseFor } from "./experiment";
 import { attributeStats, loadScored } from "./scoring";
+import { loadQueue } from "./queue";
 import { readVideos } from "./state";
 import { isTopicLang, loadTopics } from "./topics";
 import type { Topic } from "./topics";
@@ -14,8 +15,13 @@ if (!isTopicLang(lang)) {
 
 const experiment = loadExperiment();
 const file = loadTopics();
-const videos = readVideos(lang);
-const videoNumber = videos.length + 1;
+const published = readVideos(lang);
+const queued = loadQueue(lang);
+const videos = [
+  ...published,
+  ...queued.filter((item) => item.state !== "failed" && item.state !== "rejected" && !published.some((video) => video.slug === item.slug)).map((item) => ({ category: item.category, hook_type: item.hook_type })),
+];
+const videoNumber = published.length + 1;
 const phase = phaseFor(experiment, videoNumber);
 const minCategory = phase.min_videos_per_category ?? 0;
 const minHook = phase.min_videos_per_hook_type ?? 0;
@@ -27,7 +33,8 @@ const categoryCounts = countBy("category");
 const hookCounts = countBy("hook_type");
 const lastCategory = videos.at(-1)?.category;
 
-const todo = file.topics.filter((topic) => topic.status[lang] === "todo" && !topic.legacy);
+const skipped = new Set(queued.filter((item) => item.state === "failed" || item.state === "rejected").map((item) => item.slug));
+const todo = file.topics.filter((topic) => topic.status[lang] === "todo" && !topic.legacy && !skipped.has(topic.slug));
 const allowed = phase.same_category_twice_in_a_row === false ? todo.filter((topic) => topic.category !== lastCategory) : todo;
 const pool = allowed.length ? allowed : todo;
 

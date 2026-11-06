@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { AbsoluteFill, staticFile } from "remotion";
+import { HookIcon } from "./HookIcon";
 import { theme } from "./theme";
 import type { HookText } from "./types";
 
@@ -38,6 +39,7 @@ export const Cover = ({ hook }: CoverProps) => {
           {theme.series.handle}
         </div>
       </div>
+      <HookIcon name={hook.icon} size={320} />
       <div
         style={{
           fontFamily: theme.fonts.heading,

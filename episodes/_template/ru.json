@@ -5,6 +5,7 @@
   "hook": {
     "text": "Вопрос или смелое утверждение",
     "accent": "смелое",
+    "icon": "code",
     "claims": []
   },
   "scenes": {

@@ -5,6 +5,7 @@
   "hook": {
     "text": "Одна команда убрала Facebook из интернета",
     "accent": "убрала",
+    "icon": "network",
     "claims": [
       "c2",
       "c3"

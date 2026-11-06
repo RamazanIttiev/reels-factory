@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import { AbsoluteFill, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { Frame } from "../Frame";
 import type { SceneContext } from "../Frame";
+import { HookIcon } from "../HookIcon";
 import { theme } from "../theme";
 import type { HookText } from "../types";
 
@@ -15,7 +16,10 @@ export const Hook = ({ hook, context }: HookProps) => {
 
   return (
     <Frame context={context}>
-      <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", padding: theme.spacing.page }}>
+      <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", padding: theme.spacing.page, gap: 80 }}>
+        <div style={{ transform: `scale(${0.6 + 0.4 * scale})`, opacity: scale }}>
+          <HookIcon name={hook.icon} size={340} />
+        </div>
         <div
           style={{
             transform: `scale(${0.6 + 0.4 * scale})`,

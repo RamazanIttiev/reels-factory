@@ -1,0 +1,25 @@
+
+## 2026-11-07
+- en: 5 videos, 0 with metrics, phase explore, lessons NOT allowed
+- category:
+-   -. browser: 1 videos (0 scored), composite n/a
+-   -. security: 1 videos (0 scored), composite n/a
+-   -. vpn: 1 videos (0 scored), composite n/a
+-   -. systems: 1 videos (0 scored), composite n/a
+-   -. databases: 1 videos (0 scored), composite n/a
+- hook_type:
+-   -. howto: 1 videos (0 scored), composite n/a
+-   -. mystery: 1 videos (0 scored), composite n/a
+-   -. mistake: 1 videos (0 scored), composite n/a
+-   -. myth_bust: 1 videos (0 scored), composite n/a
+-   -. question: 1 videos (0 scored), composite n/a
+- kind:
+-   -. evergreen: 5 videos (0 scored), composite n/a
+- level:
+-   -. mid: 5 videos (0 scored), composite n/a
+- post_slot:
+-   -. midday: 5 videos (0 scored), composite n/a
+- visual:
+-   -. timeline: 2 videos (0 scored), composite n/a
+-   -. diagram: 2 videos (0 scored), composite n/a
+-   -. code: 1 videos (0 scored), composite n/a

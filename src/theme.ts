@@ -30,5 +30,5 @@ export const theme = {
     text: text.fontFamily,
     mono: mono.fontFamily,
   },
-  spacing: { page: 60, gridCell: 60, radius: 36 },
+  spacing: { page: 100, gridCell: 60, radius: 36 },
 } as const;

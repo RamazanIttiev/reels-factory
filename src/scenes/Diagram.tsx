@@ -8,8 +8,8 @@ import type { DiagramEdge, DiagramNode } from "../types";
 
 type DiagramProps = { scene: Extract<ResolvedScene, { type: "diagram" }>; context: SceneContext };
 
-const AREA = { top: 330, width: 960, height: 860 };
-const NODE = { width: 230, height: 110 };
+const AREA = { top: 330, width: 880, height: 860 };
+const NODE = { width: 250, height: 110 };
 const STEP_ANIMATION_FRAMES = 12;
 const INTRO_FRAMES = 10;
 const ARROW = 20;

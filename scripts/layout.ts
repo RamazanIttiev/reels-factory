@@ -1,3 +1,4 @@
+import { isKnownIcon } from "../src/icons";
 import { parseArgs } from "node:util";
 import { loadLang, loadVisual } from "./load-episode";
 import type { VisualScene } from "../src/types";
@@ -77,6 +78,9 @@ const checkScene = (scene: VisualScene, labels: Record<string, string>): string[
       ...(scene.title.length > 36 ? [`${tag}: title ${scene.title.length} chars, max 36`] : []),
       ...(scene.layers.filter((layer) => layer.kind !== "flyer").length > 3 ? [`${tag}: more than 3 layers`] : []),
       ...((scene.badge?.text.length ?? 0) > 14 ? [`${tag}: badge over 14 chars`] : []),
+      ...[scene.badge?.icon, ...scene.layers.map((layer) => ("icon" in layer ? layer.icon : undefined))]
+        .filter((icon): icon is string => icon !== undefined && !isKnownIcon(icon))
+        .map((icon) => `${tag}: unknown icon "${icon}" (find one: npm run icons -- <word>)`),
     ];
   }
   return [

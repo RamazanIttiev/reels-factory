@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { theme } from "./theme";
 import { isHookIcon, type HookIconName } from "./hookIcons";
+import { brandIcon, isKnownIcon, lucideComponent } from "./icons";
 
 const paths: Record<HookIconName, ReactNode> = {
   database: (
@@ -110,15 +111,26 @@ const paths: Record<HookIconName, ReactNode> = {
 
 type GlyphProps = { name: string; size: number; color: string; stroke?: number };
 
-export const Glyph = ({ name, size, color, stroke = 1.8 }: GlyphProps) =>
-  isHookIcon(name) ? (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth={stroke} strokeLinecap="round" strokeLinejoin="round">
-      {paths[name]}
-    </svg>
-  ) : null;
+export const Glyph = ({ name, size, color, stroke = 1.8 }: GlyphProps) => {
+  if (isHookIcon(name))
+    return (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth={stroke} strokeLinecap="round" strokeLinejoin="round">
+        {paths[name]}
+      </svg>
+    );
+  const brand = brandIcon(name);
+  if (brand)
+    return (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill={color}>
+        <path d={brand.path} />
+      </svg>
+    );
+  const Component = lucideComponent(name);
+  return Component ? <Component size={size} color={color} strokeWidth={stroke} /> : null;
+};
 
 export const HookIcon = ({ name, size }: { name?: string; size: number }) => {
-  if (!isHookIcon(name)) return null;
+  if (!name || !isKnownIcon(name)) return null;
   return (
     <div
       style={{
@@ -133,18 +145,7 @@ export const HookIcon = ({ name, size }: { name?: string; size: number }) => {
         justifyContent: "center",
       }}
     >
-      <svg
-        width={size * 0.58}
-        height={size * 0.58}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke={theme.colors.accent}
-        strokeWidth={1.6}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        {paths[name]}
-      </svg>
+      <Glyph name={name} size={size * 0.58} color={theme.colors.accent} stroke={1.6} />
     </div>
   );
 };

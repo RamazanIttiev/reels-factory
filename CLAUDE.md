@@ -58,6 +58,12 @@ See `episodes/_template/`. Visual and text are per language. Rules:
 - `TTS_PROVIDER` env picks the voice (default `mock` = silence, no keys needed).
 - Incident topics: attribute to the operator ("по данным отчёта компании"); hedge what is not confirmed.
 
+## Media scene (`type: "media"`)
+Use it for most scenes: it adds topical visuals and motion to the dark base. Fields in `visual.<lang>.json`:
+`title` (`*word*` = accent), `accent` (hex, own colour per scene), `stat {label,value}` (top right), `badge {icon,text}` (bottom, max 14 chars), `layers` (max 3 besides flyer), each with `at` in seconds from scene start:
+`card {icon,title,value,status,tone}`, `table {url,columns,rows,hit}` (2-3 rows), `page {url,headline,button,click}`, `code {code,mark}`, `flyer {icon}` (icon falls through the stage).
+Icons: names from `src/hookIcons.ts`. Text is per language (own visual file), no invented numbers. Time layers to the narration (about 2.5 words per second).
+
 ## Episode workflow
 Each episode is standalone; order comes from the scheduler (`config/experiment.json`).
 1. `npm run next -- --lang ru` prints one brief (topic, hook hypothesis, sources, tags, imbalance).

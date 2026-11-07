@@ -3,31 +3,117 @@
   "scenes": [
     {
       "id": "problem",
-      "type": "diagram",
-      "nodes": [
-        { "id": "browser", "label": "Браузер", "x": 0.16, "y": 0.5, "step": 1 },
-        { "id": "server", "label": "Сервер", "x": 0.84, "y": 0.5, "step": 2, "badge": { "text": "снова и снова", "step": 4, "tone": "bad" } }
-      ],
-      "edges": [
-        { "from": "browser", "to": "server", "step": 2, "label": "тот же файл", "tone": "bad" },
-        { "from": "server", "to": "browser", "step": 3, "label": "тот же ответ" }
+      "type": "media",
+      "title": "Лишний *поход* на сервер",
+      "accent": "#FF5C6C",
+      "stat": {
+        "label": "один и тот же файл",
+        "value": "снова и снова"
+      },
+      "badge": {
+        "icon": "server",
+        "text": "СЕРВЕР"
+      },
+      "layers": [
+        {
+          "kind": "card",
+          "at": 0.2,
+          "icon": "browser",
+          "title": "Страница просит файл",
+          "value": "style.css",
+          "status": "ЗАПРОС",
+          "tone": "neutral"
+        },
+        {
+          "kind": "table",
+          "at": 2.6,
+          "url": "site.example · Network",
+          "columns": [
+            "Файл",
+            "Откуда"
+          ],
+          "rows": [
+            [
+              "style.css",
+              "сервер"
+            ],
+            [
+              "style.css",
+              "сервер"
+            ]
+          ],
+          "hit": 1
+        },
+        {
+          "kind": "card",
+          "at": 7.0,
+          "icon": "server",
+          "title": "Сервер отвечает",
+          "value": "тем же самым",
+          "status": "СНОВА",
+          "tone": "bad"
+        }
       ]
     },
     {
       "id": "directives",
-      "type": "code",
-      "file": "response headers",
-      "provenance": "quoted",
-      "resultTone": "good",
-      "code": "Cache-Control: max-age=...\nCache-Control: no-cache\nCache-Control: no-store"
+      "type": "media",
+      "title": "Три директивы *Cache-Control*",
+      "accent": "#2FD5C0",
+      "stat": {
+        "label": "директивы",
+        "value": "три"
+      },
+      "badge": {
+        "icon": "clock",
+        "text": "КЭШ"
+      },
+      "layers": [
+        {
+          "kind": "card",
+          "at": 0.3,
+          "icon": "clock",
+          "title": "max-age",
+          "value": "срок жизни",
+          "status": "ВРЕМЯ",
+          "tone": "good"
+        },
+        {
+          "kind": "card",
+          "at": 4.2,
+          "icon": "search",
+          "title": "no-cache",
+          "value": "проверка",
+          "status": "СВЕРКА",
+          "tone": "neutral"
+        },
+        {
+          "kind": "card",
+          "at": 8.4,
+          "icon": "cross",
+          "title": "no-store",
+          "value": "не хранить",
+          "status": "ЗАПРЕТ",
+          "tone": "bad"
+        }
+      ]
     },
     {
       "id": "summary",
       "type": "checklist",
       "items": [
-        { "id": "age", "tag": "max-age" },
-        { "id": "check", "tag": "no-cache" },
-        { "id": "never", "tag": "no-store" }
+        {
+          "id": "age",
+          "tag": "max-age"
+        },
+        {
+          "id": "check",
+          "tag": "no-cache"
+        },
+        {
+          "id": "never",
+          "tag": "no-store"
+        }
       ]
     }
   ]

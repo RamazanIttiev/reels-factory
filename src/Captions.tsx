@@ -18,7 +18,7 @@ export const Captions = ({ words }: CaptionsProps) => {
   if (!active) return null;
 
   const label = displayText(active.text);
-  const fontSize = Math.min(MAX_FONT_SIZE, Math.floor(MAX_TEXT_WIDTH / (label.length * CHAR_WIDTH_EM)));
+  const fontSize = Math.min(MAX_FONT_SIZE, Math.floor(MAX_TEXT_WIDTH / (label.length * CHAR_WIDTH_EM))) - 20;
   const pop =spring({ frame: frame - active.from, fps, config: { damping: 10, stiffness: 200 } });
 
   return (
@@ -27,7 +27,7 @@ export const Captions = ({ words }: CaptionsProps) => {
         position: "absolute",
         left: theme.spacing.page,
         right: theme.spacing.page,
-        top: 1420,
+        top: 1470,
         display: "flex",
         justifyContent: "center",
       }}

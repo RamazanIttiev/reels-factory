@@ -240,8 +240,8 @@
    ],
    "sources_status": "unverified",
    "status": {
-    "ru": "rendered",
-    "en": "drafted"
+    "ru": "published",
+    "en": "published"
    },
    "fact_sheet": "facts/index-not-used.json",
    "scene_types": [
@@ -812,8 +812,8 @@
    ],
    "sources_status": "unverified",
    "status": {
-    "ru": "rendered",
-    "en": "drafted"
+    "ru": "published",
+    "en": "published"
    },
    "fact_sheet": "facts/critical-rendering-path.json",
    "scene_types": [
@@ -1010,8 +1010,8 @@
    ],
    "sources_status": "unverified",
    "status": {
-    "ru": "rendered",
-    "en": "drafted"
+    "ru": "published",
+    "en": "published"
    },
    "fact_sheet": "facts/csrf-samesite.json",
    "scene_types": [
@@ -1412,8 +1412,8 @@
    ],
    "sources_status": "unverified",
    "status": {
-    "ru": "rendered",
-    "en": "drafted"
+    "ru": "published",
+    "en": "published"
    },
    "fact_sheet": "facts/git-internals.json",
    "scene_types": [
@@ -1913,8 +1913,8 @@
    ],
    "sources_status": "unverified",
    "status": {
-    "ru": "rendered",
-    "en": "drafted"
+    "ru": "published",
+    "en": "published"
    },
    "fact_sheet": "facts/dns-leaks-doh-dot.json",
    "needs_legal_check": true,

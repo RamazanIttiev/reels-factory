@@ -3,35 +3,35 @@
     "slug": "critical-rendering-path",
     "category": "browser",
     "hook_type": "howto",
-    "state": "approved",
+    "state": "published",
     "added": "2026-11-06T17:03:54.372Z"
   },
   {
     "slug": "dns-leaks-doh-dot",
     "category": "vpn",
     "hook_type": "mistake",
-    "state": "approved",
+    "state": "published",
     "added": "2026-11-06T17:05:19.296Z"
   },
   {
     "slug": "git-internals",
     "category": "systems",
     "hook_type": "myth_bust",
-    "state": "approved",
+    "state": "published",
     "added": "2026-11-06T17:06:02.464Z"
   },
   {
     "slug": "index-not-used",
     "category": "databases",
     "hook_type": "question",
-    "state": "approved",
+    "state": "published",
     "added": "2026-11-06T17:06:44.161Z"
   },
   {
     "slug": "csrf-samesite",
     "category": "security",
     "hook_type": "mystery",
-    "state": "approved",
+    "state": "published",
     "added": "2026-11-06T17:06:46.592Z"
   }
 ]

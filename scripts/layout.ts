@@ -72,6 +72,13 @@ const checkScene = (scene: VisualScene, labels: Record<string, string>): string[
       ...checkBox({ label: `${tag} caption`, text: caption, width: PAGE_WIDTH, fontSize: 44, em: HEADING_EM, maxLines: 2 }),
     ];
   }
+  if (scene.type === "media") {
+    return [
+      ...(scene.title.length > 36 ? [`${tag}: title ${scene.title.length} chars, max 36`] : []),
+      ...(scene.layers.filter((layer) => layer.kind !== "flyer").length > 3 ? [`${tag}: more than 3 layers`] : []),
+      ...((scene.badge?.text.length ?? 0) > 14 ? [`${tag}: badge over 14 chars`] : []),
+    ];
+  }
   return [
     ...(scene.url.length > 42 ? [`${tag}: url ${scene.url.length} chars, max 42`] : []),
     ...(scene.input.length > 30 ? [`${tag}: input ${scene.input.length} chars, max 30`] : []),

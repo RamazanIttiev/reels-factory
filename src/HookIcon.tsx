@@ -86,7 +86,36 @@ const paths: Record<HookIconName, ReactNode> = {
       <path d="M21 21l-4.3-4.3" />
     </>
   ),
+  cookie: (
+    <>
+      <path d="M12 3a9 9 0 1 0 9 9 4 4 0 0 1-4-4 4 4 0 0 1-5-5z" />
+      <path d="M9 10h.01M12 15h.01M16 14h.01M8 15h.01" />
+    </>
+  ),
+  bank: (
+    <>
+      <path d="M3 10l9-6 9 6H3z" />
+      <path d="M5 10v8M9 10v8M15 10v8M19 10v8M3 20h18" />
+    </>
+  ),
+  user: (
+    <>
+      <circle cx="12" cy="8" r="4" />
+      <path d="M4 21c0-4 4-6 8-6s8 2 8 6" />
+    </>
+  ),
+  check: <path d="M4 12l5 5L20 6" />,
+  cross: <path d="M5 5l14 14M19 5L5 19" />,
 };
+
+type GlyphProps = { name: string; size: number; color: string; stroke?: number };
+
+export const Glyph = ({ name, size, color, stroke = 1.8 }: GlyphProps) =>
+  isHookIcon(name) ? (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth={stroke} strokeLinecap="round" strokeLinejoin="round">
+      {paths[name]}
+    </svg>
+  ) : null;
 
 export const HookIcon = ({ name, size }: { name?: string; size: number }) => {
   if (!isHookIcon(name)) return null;

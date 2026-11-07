@@ -18,6 +18,11 @@ export const HOOK_ICONS = [
   "wifi",
   "warning",
   "search",
+  "cookie",
+  "bank",
+  "user",
+  "check",
+  "cross",
 ] as const;
 
 export type HookIconName = (typeof HOOK_ICONS)[number];

@@ -3,32 +3,98 @@
   "scenes": [
     {
       "id": "problem",
-      "type": "diagram",
-      "nodes": [
-        { "id": "a", "label": "Вы", "x": 0.14, "y": 0.5, "step": 1 },
-        { "id": "b", "label": "Чужой сайт", "x": 0.5, "y": 0.5, "step": 2 },
-        { "id": "c", "label": "Банк", "x": 0.86, "y": 0.5, "step": 4, "badge": { "text": "ДУМАЕТ: ЭТО ВЫ", "step": 5, "tone": "bad" } }
-      ],
-      "edges": [
-        { "from": "a", "to": "b", "step": 2 },
-        { "from": "b", "to": "c", "step": 3, "tone": "bad", "label": "cookie" }
+      "type": "media",
+      "title": "Банк думает: *это вы*",
+      "accent": "#FF5C6C",
+      "stat": {
+        "label": "запрос в банк",
+        "value": "прошёл"
+      },
+      "badge": {
+        "icon": "globe",
+        "text": "ЧУЖОЙ САЙТ"
+      },
+      "layers": [
+        {
+          "kind": "card",
+          "at": 0.2,
+          "icon": "bank",
+          "title": "Вы вошли в банк",
+          "value": "bank.example",
+          "status": "ВХОД",
+          "tone": "neutral"
+        },
+        {
+          "kind": "page",
+          "at": 2.4,
+          "url": "free-prize.example",
+          "headline": "Вам приз!",
+          "button": "ЗАБРАТЬ",
+          "click": 5.0
+        },
+        {
+          "kind": "flyer",
+          "at": 6.0,
+          "icon": "cookie"
+        },
+        {
+          "kind": "card",
+          "at": 7.2,
+          "icon": "bank",
+          "title": "Запрос в банк",
+          "value": "с вашей cookie",
+          "status": "ПРОШЁЛ",
+          "tone": "bad"
+        }
       ]
     },
     {
       "id": "fix",
-      "type": "code",
-      "file": "response.http",
-      "provenance": "schematic",
-      "resultTone": "good",
-      "code": "Set-Cookie: session=abc;\n  SameSite=Strict"
+      "type": "media",
+      "title": "Атрибут *SameSite* у cookie",
+      "accent": "#C6F135",
+      "stat": {
+        "label": "чужие cookie",
+        "value": "не уходят"
+      },
+      "badge": {
+        "icon": "shield",
+        "text": "SAMESITE"
+      },
+      "layers": [
+        {
+          "kind": "code",
+          "at": 0.3,
+          "code": "Set-Cookie: session=abc;\n  SameSite=Strict",
+          "mark": "SameSite=Strict"
+        },
+        {
+          "kind": "card",
+          "at": 7.0,
+          "icon": "lock",
+          "title": "Запрос с чужого сайта",
+          "value": "без cookie",
+          "status": "БЛОК",
+          "tone": "good"
+        }
+      ]
     },
     {
       "id": "summary",
       "type": "checklist",
       "items": [
-        { "id": "site", "tag": "csrf" },
-        { "id": "cookie", "tag": "cookie" },
-        { "id": "samesite", "tag": "samesite" }
+        {
+          "id": "site",
+          "tag": "csrf"
+        },
+        {
+          "id": "cookie",
+          "tag": "cookie"
+        },
+        {
+          "id": "samesite",
+          "tag": "samesite"
+        }
       ]
     }
   ]

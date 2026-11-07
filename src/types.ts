@@ -43,7 +43,24 @@ export type BrowserVisual = {
   input: string;
 };
 
-export type VisualScene = DiagramVisual | CodeVisual | ChecklistVisual | BrowserVisual;
+export type MediaLayer =
+  | { kind: "table"; at: number; url: string; columns: string[]; rows: string[][]; hit?: number }
+  | { kind: "page"; at: number; url: string; headline: string; button: string; click: number }
+  | { kind: "code"; at: number; code: string; mark?: string }
+  | { kind: "card"; at: number; icon: string; title: string; value: string; status: string; tone: Tone }
+  | { kind: "flyer"; at: number; icon: string };
+
+export type MediaVisual = {
+  id: string;
+  type: "media";
+  title: string;
+  accent?: string;
+  stat?: { label: string; value: string };
+  badge?: { icon: string; text: string };
+  layers: MediaLayer[];
+};
+
+export type VisualScene = DiagramVisual | CodeVisual | ChecklistVisual | BrowserVisual | MediaVisual;
 
 export type Visual = { slug: string; scenes: VisualScene[] };
 

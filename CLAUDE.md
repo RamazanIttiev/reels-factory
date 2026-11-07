@@ -64,6 +64,8 @@ Use it for most scenes: it adds topical visuals and motion to the dark base. Fie
 `card {icon,title,value,status,tone}`, `table {url,columns,rows,hit}` (2-3 rows), `page {url,headline,button,click}`, `code {code,mark}`, `flyer {icon}` (icon falls through the stage).
 Icons: any of about 2000 generic icons by lucide name (`cookie`, `database`, `hourglass`) or technology logos as `brand:<slug>` (`brand:postgresql`, `brand:git`, `brand:nginx`). Find a name with `npm run icons -- <word>`; unknown names fail `layout`. Pick icons for the concept of the scene, a logo only when the narration names that technology. The same names work for the hook `icon`. Text is per language (own visual file), no invented numbers. Time layers to the narration (about 2.5 words per second).
 
+Hook (`lang.json` `hook`): `icon` plus `orbit` (3 related icons that circle the main one). The hook screen moves from frame 0 (ring pulses, orbiting icons, slow zoom). Retention data shows about half of viewers leave in the first second: no intro, no greeting, the first words state the point or the intrigue.
+
 ## Episode workflow
 Each episode is standalone; order comes from the scheduler (`config/experiment.json`).
 1. `npm run next -- --lang ru` prints one brief (topic, hook hypothesis, sources, tags, imbalance).

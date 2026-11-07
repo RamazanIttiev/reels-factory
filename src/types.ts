@@ -64,7 +64,7 @@ export type VisualScene = DiagramVisual | CodeVisual | ChecklistVisual | Browser
 
 export type Visual = { slug: string; scenes: VisualScene[] };
 
-export type HookText = { text: string; accent: string; claims: string[]; icon?: string };
+export type HookText = { text: string; accent: string; claims: string[]; icon?: string; orbit?: string[] };
 
 export type OutroText = { text: string; narration: string };
 

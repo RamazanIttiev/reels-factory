@@ -1,21 +1,11 @@
 {
-  "timezone": "Europe/Moscow",
+  "timezone": "UTC",
   "slots": [
-    "09:00",
-    "14:00",
-    "20:00"
+    "06:00",
+    "12:00",
+    "17:00"
   ],
-  "slot_window_minutes": 90,
+  "slot_window_minutes": 150,
   "low_queue_alert_below": 3,
-  "_note": "Cron may start late; a slot is usable for slot_window_minutes after its time. Missed slots are skipped, never caught up. max_posts_per_day comes from rules.json. languages.<lang> overrides timezone and slots for that language (en: UTC 13/17/23 = 9/13/19 US Eastern summer time).",
-  "languages": {
-    "en": {
-      "timezone": "UTC",
-      "slots": [
-        "13:00",
-        "17:00",
-        "23:00"
-      ]
-    }
-  }
+  "_note": "All times are UTC for every language. The publish workflow runs every 20 minutes; a slot is usable for slot_window_minutes after its time, so late or dropped cron runs still publish. Missed slots are skipped, never caught up. max_posts_per_day comes from rules.json."
 }

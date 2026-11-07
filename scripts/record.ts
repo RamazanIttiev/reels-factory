@@ -23,7 +23,8 @@ const audienceTz = (lang: string): string => {
   const raw: unknown = JSON.parse(readFileSync("config/schedule.json", "utf8"));
   const languages = isRecord(raw) && isRecord(raw.languages) ? raw.languages : {};
   const entry = languages[lang];
-  return isRecord(entry) && typeof entry.timezone === "string" ? entry.timezone : (process.env.AUDIENCE_TZ ?? "Europe/Moscow");
+  if (isRecord(entry) && typeof entry.timezone === "string") return entry.timezone;
+  return isRecord(raw) && typeof raw.timezone === "string" ? raw.timezone : "UTC";
 };
 const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 

@@ -40,7 +40,7 @@ const toMinutes = (slot: string): number => {
   return h * 60 + m;
 };
 
-const { values } = parseArgs({ options: { lang: { type: "string" }, "dry-run": { type: "boolean" }, now: { type: "string" } } });
+const { values } = parseArgs({ options: { lang: { type: "string" }, "dry-run": { type: "boolean" }, check: { type: "boolean" }, now: { type: "string" } } });
 const lang = values.lang ?? "ru";
 const dry = values["dry-run"] ?? false;
 const schedule = loadSchedule(lang);
@@ -68,6 +68,12 @@ if (todays.length >= maxPerDay()) {
 }
 if (todays.some((video) => video.post_slot === slotLabel)) {
   say(`slot ${slotLabel} already used today`);
+  process.exit(0);
+}
+
+if (values.check) {
+  say("slot is open");
+  console.log("SLOT_OPEN");
   process.exit(0);
 }
 

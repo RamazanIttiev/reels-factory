@@ -1,5 +1,6 @@
 import { interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import type { ResolvedScene } from "../episode";
+import { SPREAD } from "../rhythm";
 import { Frame, toneColor } from "../Frame";
 import type { SceneContext } from "../Frame";
 import { Sfx } from "../Sfx";
@@ -37,18 +38,18 @@ export const Code = ({ scene, context }: CodeProps) => {
   const lines = scene.code.split("\n");
   const enter = spring({ frame, fps, config: { damping: 14 } });
   const visibleLines = Math.floor(
-    interpolate(frame, [10, context.duration * 0.55], [0, lines.length], {
+    interpolate(frame, [10, context.duration * SPREAD * 0.8], [0, lines.length], {
       extrapolateLeft: "clamp",
       extrapolateRight: "clamp",
     }),
   );
-  const resultEnter = spring({ frame: frame - Math.floor(context.duration * 0.65), fps, config: { damping: 14 } });
+  const resultEnter = spring({ frame: frame - Math.floor(context.duration * SPREAD), fps, config: { damping: 14 } });
   const tone = toneColor(scene.resultTone);
 
   return (
     <Frame context={context}>
       <Sfx name="swish" at={0} />
-      <Sfx name="knock" at={context.duration * 0.65} />
+      <Sfx name="knock" at={context.duration * SPREAD} />
       <div
         style={{
           position: "absolute",

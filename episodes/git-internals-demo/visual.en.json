@@ -1,0 +1,407 @@
+{
+  "slug": "git-internals-demo",
+  "scenes": [
+    {
+      "id": "problem",
+      "type": "media",
+      "title": "A commit is a *snapshot*",
+      "accent": "#2FD5C0",
+      "badge": {
+        "icon": "git-commit-horizontal",
+        "text": "COMMIT"
+      },
+      "layers": [
+        {
+          "kind": "terminal",
+          "at": 0.3,
+          "until": 6.8,
+          "lines": [
+            {
+              "at": 0.5,
+              "text": "git cat-file -p HEAD"
+            },
+            {
+              "at": 2.0,
+              "text": "tree <hash>",
+              "out": true
+            },
+            {
+              "at": 3.0,
+              "text": "parent <hash>",
+              "out": true
+            },
+            {
+              "at": 4.0,
+              "text": "message ...",
+              "out": true
+            }
+          ]
+        },
+        {
+          "kind": "card",
+          "at": 5.2,
+          "until": 6.0,
+          "icon": "camera",
+          "title": "A commit holds",
+          "value": "a snapshot",
+          "status": "NO DIFF",
+          "tone": "good"
+        },
+        {
+          "kind": "flow",
+          "at": 7.0,
+          "until": 15.6,
+          "nodes": [
+            {
+              "id": "commit",
+              "at": 7.0,
+              "label": "commit",
+              "icon": "git-commit-horizontal"
+            },
+            {
+              "id": "tree",
+              "at": 8.1,
+              "label": "tree",
+              "icon": "folder-tree"
+            },
+            {
+              "id": "src",
+              "at": 9.3,
+              "label": "src/",
+              "icon": "folder"
+            },
+            {
+              "id": "readme",
+              "at": 10.5,
+              "label": "README",
+              "icon": "file"
+            },
+            {
+              "id": "app",
+              "at": 11.7,
+              "label": "app.js",
+              "icon": "file"
+            },
+            {
+              "id": "util",
+              "at": 12.8,
+              "label": "util.js",
+              "icon": "file"
+            }
+          ],
+          "edges": [
+            {
+              "from": "commit",
+              "to": "tree",
+              "at": 7.8
+            },
+            {
+              "from": "tree",
+              "to": "src",
+              "at": 9.0
+            },
+            {
+              "from": "tree",
+              "to": "readme",
+              "at": 10.2
+            },
+            {
+              "from": "tree",
+              "to": "app",
+              "at": 11.4
+            },
+            {
+              "from": "src",
+              "to": "util",
+              "at": 12.5
+            }
+          ],
+          "marks": [
+            {
+              "at": 13.6,
+              "ids": [
+                "tree",
+                "src"
+              ]
+            },
+            {
+              "at": 14.8,
+              "ids": [
+                "readme",
+                "app",
+                "util"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "checks",
+          "at": 15.6,
+          "title": "Each commit",
+          "items": [
+            {
+              "at": 16.4,
+              "text": "points to a full tree"
+            },
+            {
+              "at": 17.6,
+              "text": "keeps the whole project"
+            },
+            {
+              "at": 18.8,
+              "text": "not a list of changes"
+            },
+            {
+              "at": 20.0,
+              "text": "history = snapshots"
+            },
+            {
+              "at": 21.2,
+              "text": "simple key-value store"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fix",
+      "type": "media",
+      "title": "Where *deltas* live",
+      "accent": "#FFB020",
+      "badge": {
+        "icon": "package",
+        "text": "PACK FILES"
+      },
+      "layers": [
+        {
+          "kind": "meter",
+          "at": 0.3,
+          "until": 3.2,
+          "rows": [
+            {
+              "at": 0.6,
+              "label": "Full copy",
+              "fill": 0.9,
+              "value": "big",
+              "tone": "bad"
+            },
+            {
+              "at": 1.9,
+              "label": "Delta",
+              "fill": 0.3,
+              "value": "small",
+              "tone": "good"
+            }
+          ]
+        },
+        {
+          "kind": "flow",
+          "at": 3.2,
+          "until": 7.6,
+          "nodes": [
+            {
+              "id": "c",
+              "at": 3.4,
+              "label": "commit",
+              "icon": "git-commit-horizontal"
+            },
+            {
+              "id": "t",
+              "at": 4.6,
+              "label": "tree",
+              "icon": "folder-tree"
+            },
+            {
+              "id": "g",
+              "at": 5.8,
+              "label": "tag",
+              "icon": "tag"
+            },
+            {
+              "id": "b",
+              "at": 7.0,
+              "label": "blob",
+              "icon": "file"
+            }
+          ],
+          "edges": []
+        },
+        {
+          "kind": "flow",
+          "at": 7.6,
+          "until": 14.0,
+          "nodes": [
+            {
+              "id": "base",
+              "at": 7.8,
+              "label": "base object",
+              "icon": "box"
+            },
+            {
+              "id": "delta",
+              "at": 9.0,
+              "label": "delta",
+              "icon": "git-compare"
+            },
+            {
+              "id": "pack",
+              "at": 11.2,
+              "label": "pack file",
+              "icon": "package"
+            }
+          ],
+          "edges": [
+            {
+              "from": "delta",
+              "to": "base",
+              "at": 9.7
+            },
+            {
+              "from": "base",
+              "to": "pack",
+              "at": 11.9
+            },
+            {
+              "from": "delta",
+              "to": "pack",
+              "at": 12.5
+            }
+          ],
+          "marks": [
+            {
+              "at": 10.5,
+              "ids": [
+                "base"
+              ]
+            },
+            {
+              "at": 13.4,
+              "ids": [
+                "pack"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "checks",
+          "at": 14.0,
+          "title": "Deltas",
+          "items": [
+            {
+              "at": 14.4,
+              "text": "only inside pack files"
+            },
+            {
+              "at": 15.6,
+              "text": "only to save space"
+            },
+            {
+              "at": 16.6,
+              "text": "content is the same"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "summary",
+      "type": "media",
+      "title": "Three *objects*",
+      "accent": "#C6F135",
+      "layers": [
+        {
+          "kind": "flow",
+          "at": 0.2,
+          "nodes": [
+            {
+              "id": "commit",
+              "at": 0.4,
+              "label": "commit",
+              "icon": "git-commit-horizontal"
+            },
+            {
+              "id": "tree",
+              "at": 3.3,
+              "label": "tree",
+              "icon": "folder-tree"
+            },
+            {
+              "id": "blob",
+              "at": 5.3,
+              "label": "blob",
+              "icon": "file"
+            }
+          ],
+          "edges": [
+            {
+              "from": "commit",
+              "to": "tree",
+              "at": 3.0
+            },
+            {
+              "from": "tree",
+              "to": "blob",
+              "at": 5.0
+            }
+          ],
+          "marks": [
+            {
+              "at": 1.4,
+              "ids": [
+                "commit"
+              ]
+            },
+            {
+              "at": 2.2,
+              "ids": [
+                "commit"
+              ]
+            },
+            {
+              "at": 4.3,
+              "ids": [
+                "tree"
+              ]
+            },
+            {
+              "at": 6.5,
+              "ids": [
+                "blob"
+              ]
+            },
+            {
+              "at": 8.3,
+              "ids": [
+                "commit",
+                "tree",
+                "blob"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "checks",
+          "at": 0.2,
+          "items": [
+            {
+              "at": 1.2,
+              "text": "Commit: project snapshot"
+            },
+            {
+              "at": 3.6,
+              "text": "Tree: a folder"
+            },
+            {
+              "at": 5.6,
+              "text": "Blob: file content"
+            },
+            {
+              "at": 7.4,
+              "text": "Snapshots, not diffs"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

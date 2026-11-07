@@ -1,7 +1,7 @@
 import { isStatus, loadTaxonomy, loadTopics, publicEntries, LANGS } from "./topics";
 
 const MAX_HOOK_WORDS = 8;
-const SCENE_TYPES = ["diagram", "code", "checklist", "browser", "media"];
+const SCENE_TYPES = ["diagram", "code", "checklist", "browser", "media", "custom"];
 
 const words = (text: string): number => text.split(/\s+/).filter((word) => /[\p{L}\p{N}]/u.test(word)).length;
 
@@ -23,7 +23,7 @@ const problems = topics.flatMap((topic, index) => {
     ...(hookTypes.includes(topic.hook_type) ? [] : [`${tag}: hook_type "${topic.hook_type}" not in taxonomy`]),
     ...(attributes.visual.includes(topic.visual) ? [] : [`${tag}: visual "${topic.visual}" not in taxonomy`]),
     ...topic.scene_types.flatMap((type) => [
-      ...(SCENE_TYPES.includes(type) ? [] : [`${tag}: scene type "${type}" is not diagram|code|checklist|browser|media`]),
+      ...(SCENE_TYPES.includes(type) ? [] : [`${tag}: scene type "${type}" is not diagram|code|checklist|browser|media|custom`]),
       ...(topic.legacy || allowedScenes.includes(type) ? [] : [`${tag}: scene type "${type}" not allowed for visual "${topic.visual}"`]),
     ]),
     ...(words(topic.hook_ru) > MAX_HOOK_WORDS ? [`${tag}: hook_ru over ${MAX_HOOK_WORDS} words`] : []),

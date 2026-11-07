@@ -1,0 +1,47 @@
+{
+  "slug": "git-internals",
+  "topic_id": 57,
+  "created": "2026-11-06",
+  "claims": [
+    {
+      "id": "c1",
+      "text": "At the core of Git is a simple key-value data store",
+      "url": "https://git-scm.com/book/en/v2/Git-Internals-Git-Objects",
+      "tier": 1,
+      "quote": "It means that at the core of Git is a simple key-value data store.",
+      "accessed": "2026-11-06",
+      "source_date": "Thu, 05 Nov 2026 04:35:24 GMT",
+      "version": null
+    },
+    {
+      "id": "c2",
+      "text": "All content is stored as tree and blob objects",
+      "url": "https://git-scm.com/book/en/v2/Git-Internals-Git-Objects",
+      "tier": 1,
+      "quote": "All the content is stored as tree and blob objects, with trees corresponding to UNIX directory entries and blobs corresponding more or less to inodes or file contents.",
+      "accessed": "2026-11-06",
+      "source_date": "Thu, 05 Nov 2026 04:35:24 GMT",
+      "version": null
+    },
+    {
+      "id": "c3",
+      "text": "A commit specifies the top-level tree for the snapshot of the project",
+      "url": "https://git-scm.com/book/en/v2/Git-Internals-Git-Objects",
+      "tier": 1,
+      "quote": "it specifies the top-level tree for the snapshot of the project at that point",
+      "accessed": "2026-11-06",
+      "source_date": "Thu, 05 Nov 2026 04:35:24 GMT",
+      "version": null
+    },
+    {
+      "id": "c4",
+      "text": "To save space an object may be stored as a delta of a base object in a pack",
+      "url": "https://git-scm.com/docs/gitformat-pack",
+      "tier": 1,
+      "quote": "Conceptually there are only four object types: commit, tree, tag and blob. However to save space, an object could be stored as a \"delta\" of another \"base\" object.",
+      "accessed": "2026-11-06",
+      "source_date": "Thu, 05 Nov 2026 04:35:20 GMT",
+      "version": null
+    }
+  ]
+}

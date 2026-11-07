@@ -22,7 +22,8 @@
           "title": "Вы вошли в банк",
           "value": "bank.example",
           "status": "ВХОД",
-          "tone": "neutral"
+          "tone": "neutral",
+          "until": 3.6
         },
         {
           "kind": "page",
@@ -30,7 +31,8 @@
           "url": "free-prize.example",
           "headline": "Вам приз!",
           "button": "ЗАБРАТЬ",
-          "click": 5.0
+          "click": 5.0,
+          "until": 7.2
         },
         {
           "kind": "flyer",
@@ -45,6 +47,40 @@
           "value": "с вашей cookie",
           "status": "ПРОШЁЛ",
           "tone": "bad"
+        },
+        {
+          "kind": "bar",
+          "at": 1.4,
+          "text": "вы вошли — сессия есть",
+          "icon": "key",
+          "until": 2.4
+        },
+        {
+          "kind": "bar",
+          "at": 3.6,
+          "text": "чужой сайт шлёт запрос",
+          "icon": "send",
+          "until": 8.4
+        },
+        {
+          "kind": "bar",
+          "at": 8.4,
+          "text": "cookie уходят сами",
+          "icon": "cookie",
+          "until": 9.6
+        },
+        {
+          "kind": "bar",
+          "at": 9.6,
+          "text": "сервер думает: это вы",
+          "icon": "user-check",
+          "until": 10.5
+        },
+        {
+          "kind": "bar",
+          "at": 10.5,
+          "text": "запрос выполнен",
+          "icon": "check"
         }
       ]
     },
@@ -76,6 +112,40 @@
           "value": "без cookie",
           "status": "БЛОК",
           "tone": "good"
+        },
+        {
+          "kind": "bar",
+          "at": 1.6,
+          "text": "атрибут у cookie",
+          "icon": "cookie",
+          "until": 2.8
+        },
+        {
+          "kind": "bar",
+          "at": 2.8,
+          "text": "решает, когда слать cookie",
+          "icon": "settings",
+          "until": 4.2
+        },
+        {
+          "kind": "bar",
+          "at": 4.2,
+          "text": "запрос с другого сайта",
+          "icon": "globe",
+          "until": 5.6
+        },
+        {
+          "kind": "bar",
+          "at": 5.6,
+          "text": "Strict: вообще никогда",
+          "icon": "shield",
+          "until": 8.2
+        },
+        {
+          "kind": "bar",
+          "at": 8.2,
+          "text": "cookie не уходят",
+          "icon": "ban"
         }
       ]
     },

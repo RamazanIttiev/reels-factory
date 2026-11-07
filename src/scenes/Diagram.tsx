@@ -1,5 +1,6 @@
 import { useCurrentFrame } from "remotion";
 import type { ResolvedScene } from "../episode";
+import { SPREAD } from "../rhythm";
 import { Frame, toneColor } from "../Frame";
 import type { SceneContext } from "../Frame";
 import { Sfx } from "../Sfx";
@@ -60,7 +61,7 @@ const EdgeView = ({ edge, from, to, progress }: EdgeViewProps) => {
 
 export const Diagram = ({ scene, context }: DiagramProps) => {
   const frame = useCurrentFrame();
-  const stepFrames = (context.duration * 0.75 - INTRO_FRAMES) / lastStep(scene);
+  const stepFrames = (context.duration * SPREAD - INTRO_FRAMES) / lastStep(scene);
   const progressOf = (step: number): number =>
     clamp01((frame - (INTRO_FRAMES + (step - 1) * stepFrames)) / STEP_ANIMATION_FRAMES);
   const nodeById = new Map(scene.nodes.map((node) => [node.id, node]));

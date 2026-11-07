@@ -8,11 +8,15 @@ import { Glyph } from "../HookIcon";
 import { Sfx } from "../Sfx";
 import { theme } from "../theme";
 import type { MediaLayer, Tone } from "../types";
+import { Bar, Cards, Form, Hub, Phone, Rack } from "../stage/details";
+import { autoTimes, pulseAt } from "../rhythm";
+import { Checks, Flow, Meter, Terminal } from "../stage/rich";
+import { heightOf, poseAtFrame, WIDTH } from "../stage/layout";
 
 type MediaProps = { scene: Extract<ResolvedScene, { type: "media" }>; context: SceneContext };
 
 const FPS = 30;
-const STAGE = { top: 575, height: 670 };
+const STAGE = { top: 560, height: 710 };
 const WINDOW_INK = "#16202c";
 const DOTS = ["#FF5F57", "#FEBC2E", "#28C840"];
 
@@ -28,9 +32,7 @@ const useEnter = (at: number) => {
 };
 
 const Pulse = ({ children, accent }: { children: ReactNode; accent: string }) => {
-  const frame = useCurrentFrame();
-  const glow = 0.55 + 0.45 * Math.sin(frame / 5);
-  return <span style={{ color: accent, textShadow: `0 0 ${24 * glow}px ${accent}` }}>{children}</span>;
+  return <span style={{ color: accent, textShadow: `0 0 18px ${accent}` }}>{children}</span>;
 };
 
 const Chrome = ({ url }: { url: string }) => (
@@ -144,11 +146,27 @@ const FlyerLayer = ({ layer }: { layer: Extract<MediaLayer, { kind: "flyer" }> }
   );
 };
 
+const Leave = ({ until, children }: { until?: number; children: ReactNode }) => {
+  const frame = useCurrentFrame();
+  const out = until === undefined ? 0 : interpolate(frame, [Math.round(until * FPS), Math.round(until * FPS) + 9], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  return <div style={{ opacity: 1 - out, transform: `scale(${1 - 0.25 * out}) translateX(${out * 120}px)` }}>{children}</div>;
+};
+
 const renderLayer = (layer: MediaLayer, accent: string, index: number) => {
   if (layer.kind === "table") return <TableLayer key={index} layer={layer} accent={accent} />;
   if (layer.kind === "page") return <PageLayer key={index} layer={layer} />;
   if (layer.kind === "code") return <CodeLayer key={index} layer={layer} accent={accent} />;
   if (layer.kind === "card") return <CardLayer key={index} layer={layer} />;
+  if (layer.kind === "hub") return <Hub key={index} layer={layer} accent={accent} />;
+  if (layer.kind === "cards") return <Cards key={index} layer={layer} />;
+  if (layer.kind === "rack") return <Rack key={index} layer={layer} accent={accent} />;
+  if (layer.kind === "phone") return <Phone key={index} layer={layer} accent={accent} />;
+  if (layer.kind === "form") return <Form key={index} layer={layer} accent={accent} />;
+  if (layer.kind === "flow") return <Flow key={index} layer={layer} accent={accent} />;
+  if (layer.kind === "terminal") return <Terminal key={index} layer={layer} accent={accent} />;
+  if (layer.kind === "meter") return <Meter key={index} layer={layer} accent={accent} />;
+  if (layer.kind === "checks") return <Checks key={index} layer={layer} accent={accent} />;
+  if (layer.kind === "bar") return <Bar key={index} layer={layer} accent={accent} />;
   return <FlyerLayer key={index} layer={layer} />;
 };
 
@@ -158,8 +176,11 @@ export const Media = ({ scene, context }: MediaProps) => {
   const accent = scene.accent ?? theme.colors.hot;
   const rule = interpolate(frame, [0, 24], [0, 1], { extrapolateRight: "clamp" });
   const badge = spring({ frame: frame - 12, fps, config: { damping: 12, stiffness: 130 } });
-  const flow = scene.layers.filter((layer) => layer.kind !== "flyer");
+  const flowEntries = scene.layers.map((layer, index) => ({ layer, index })).filter(({ layer }) => layer.kind !== "flyer");
+  const pose = poseAtFrame(scene.layers, frame, STAGE.height);
   const flyers = scene.layers.filter((layer) => layer.kind === "flyer");
+  const reaction = pulseAt(frame / FPS, autoTimes(context.events ?? [], context.duration / FPS));
+  const newest = flowEntries.filter(({ layer }) => layer.at * FPS <= frame).reduce<number>((best, { layer, index }) => (best < 0 || layer.at >= (scene.layers[best]?.kind === "flyer" ? -1 : (scene.layers[best] as { at: number }).at) ? index : best), -1);
 
   return (
     <Frame context={context}>
@@ -180,8 +201,18 @@ export const Media = ({ scene, context }: MediaProps) => {
           <span key={index} style={{ color: part.accent ? accent : theme.colors.text }}>{part.text}</span>
         ))}
       </div>
-      <div style={{ position: "absolute", top: STAGE.top, left: 60, right: 60, height: STAGE.height }}>
-        <div style={{ display: "flex", flexDirection: "column", gap: 32, justifyContent: "space-between", height: "100%" }}>{flow.map((layer, index) => renderLayer(layer, accent, index))}</div>
+      <div style={{ position: "absolute", top: STAGE.top, left: (1080 - WIDTH) / 2, width: WIDTH, height: STAGE.height }}>
+        {pose && (
+          <div style={{ position: "absolute", left: 0, top: Math.round(pose.top), width: WIDTH, transform: `translateZ(0) scale(${Math.round(pose.scale * 1000) / 1000})`, transformOrigin: "top center", willChange: "transform" }}>
+            {flowEntries.map(({ layer, index }) =>
+              pose.ys[index] === undefined ? null : (
+                <div key={index} style={{ position: "absolute", left: 0, top: Math.round(pose.ys[index]), width: WIDTH, height: heightOf(layer), borderRadius: 30, boxShadow: index === newest && reaction > 0 ? `0 0 ${70 * reaction}px ${accent}` : "none" }}>
+                  <Leave until={"until" in layer ? layer.until : undefined}>{renderLayer(layer, accent, index)}</Leave>
+                </div>
+              ),
+            )}
+          </div>
+        )}
         {flyers.map((layer, index) => renderLayer(layer, accent, 100 + index))}
       </div>
       {scene.badge && (

@@ -1,5 +1,6 @@
 import { useCurrentFrame } from "remotion";
 import type { ResolvedScene } from "../episode";
+import { SPREAD } from "../rhythm";
 import { Frame } from "../Frame";
 import type { SceneContext } from "../Frame";
 import { Sfx } from "../Sfx";
@@ -20,7 +21,7 @@ const clamp01 = (value: number): number => Math.min(1, Math.max(0, value));
 export const Checklist = ({ scene, context }: ChecklistProps) => {
   const frame = useCurrentFrame();
   const rowStep = Math.min(MAX_ROW_STEP, Math.floor((ROW_BOTTOM_LIMIT - ROW_TOP) / scene.items.length));
-  const interval = (context.duration * 0.7 - INTRO_FRAMES) / scene.items.length;
+  const interval = (context.duration * SPREAD - INTRO_FRAMES) / scene.items.length;
   const startOf = (index: number): number => INTRO_FRAMES + index * interval;
 
   return (

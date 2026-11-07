@@ -16,42 +16,87 @@
       },
       "layers": [
         {
-          "kind": "card",
-          "at": 0.2,
-          "icon": "browser",
-          "title": "Страница просит файл",
-          "value": "style.css",
-          "status": "ЗАПРОС",
-          "tone": "neutral"
+          "kind": "cards",
+          "at": 0.3,
+          "items": [
+            {
+              "at": 0.3,
+              "title": "Страница",
+              "lines": [
+                "нужен файл"
+              ]
+            },
+            {
+              "at": 1.2,
+              "title": "style.css",
+              "lines": [
+                "GET /style.css"
+              ]
+            },
+            {
+              "at": 2.1,
+              "title": "Браузер",
+              "lines": [
+                "идёт на сервер"
+              ]
+            }
+          ],
+          "until": 7.2
         },
         {
-          "kind": "table",
-          "at": 2.6,
-          "url": "site.example · Network",
-          "columns": [
-            "Файл",
-            "Откуда"
-          ],
-          "rows": [
-            [
-              "style.css",
-              "сервер"
-            ],
-            [
-              "style.css",
-              "сервер"
-            ]
-          ],
-          "hit": 1
-        },
-        {
-          "kind": "card",
-          "at": 7.0,
+          "kind": "rack",
+          "at": 3.4,
+          "label": "Сервер",
           "icon": "server",
-          "title": "Сервер отвечает",
-          "value": "тем же самым",
-          "status": "СНОВА",
-          "tone": "bad"
+          "until": 7.8
+        },
+        {
+          "kind": "bar",
+          "at": 4.6,
+          "text": "ждём ответ",
+          "icon": "clock",
+          "until": 8.6
+        },
+        {
+          "kind": "bar",
+          "at": 6.0,
+          "text": "тот же ответ снова",
+          "icon": "repeat",
+          "until": 8.6
+        },
+        {
+          "kind": "bar",
+          "at": 8.6,
+          "text": "Cache-Control: можно повторно",
+          "icon": "shield-check",
+          "until": 9.6
+        },
+        {
+          "kind": "bar",
+          "at": 9.6,
+          "text": "ответ берём из кэша",
+          "icon": "database",
+          "until": 10.7
+        },
+        {
+          "kind": "bar",
+          "at": 10.7,
+          "text": "меньше задержка",
+          "icon": "zap",
+          "until": 11.9
+        },
+        {
+          "kind": "bar",
+          "at": 11.9,
+          "text": "меньше нагрузка на сеть",
+          "icon": "activity",
+          "until": 13.1
+        },
+        {
+          "kind": "bar",
+          "at": 13.1,
+          "text": "быстрее страница",
+          "icon": "gauge"
         }
       ]
     },
@@ -70,49 +115,123 @@
       },
       "layers": [
         {
-          "kind": "card",
-          "at": 0.3,
+          "kind": "hub",
+          "at": 0.2,
           "icon": "clock",
-          "title": "max-age",
-          "value": "срок жизни",
-          "status": "ВРЕМЯ",
-          "tone": "good"
+          "satellites": [
+            {
+              "at": 1.5,
+              "label": "max-age",
+              "icon": "timer"
+            },
+            {
+              "at": 5.0,
+              "label": "no-cache",
+              "icon": "refresh-cw"
+            },
+            {
+              "at": 8.6,
+              "label": "no-store",
+              "icon": "ban"
+            }
+          ]
         },
         {
-          "kind": "card",
-          "at": 4.2,
+          "kind": "bar",
+          "at": 2.4,
+          "text": "срок жизни ответа",
+          "icon": "hourglass",
+          "until": 3.7
+        },
+        {
+          "kind": "bar",
+          "at": 3.7,
+          "text": "пока свежий — сервер не нужен",
+          "icon": "check",
+          "until": 6.0
+        },
+        {
+          "kind": "bar",
+          "at": 6.0,
+          "text": "проверка перед использованием",
           "icon": "search",
-          "title": "no-cache",
-          "value": "проверка",
-          "status": "СВЕРКА",
-          "tone": "neutral"
+          "until": 7.2
         },
         {
-          "kind": "card",
-          "at": 8.4,
-          "icon": "cross",
-          "title": "no-store",
-          "value": "не хранить",
-          "status": "ЗАПРЕТ",
-          "tone": "bad"
+          "kind": "bar",
+          "at": 7.2,
+          "text": "спрашиваем сервер каждый раз",
+          "icon": "server",
+          "until": 9.6
+        },
+        {
+          "kind": "bar",
+          "at": 9.6,
+          "text": "ответ не сохраняется",
+          "icon": "ban"
         }
       ]
     },
     {
       "id": "summary",
-      "type": "checklist",
-      "items": [
+      "type": "media",
+      "title": "Три *слова*",
+      "accent": "#2FD5C0",
+      "layers": [
         {
-          "id": "age",
-          "tag": "max-age"
+          "kind": "bar",
+          "at": 0.4,
+          "text": "max-age — срок жизни",
+          "icon": "clock",
+          "until": 1.5
         },
         {
-          "id": "check",
-          "tag": "no-cache"
+          "kind": "bar",
+          "at": 1.5,
+          "text": "no-cache — проверка",
+          "icon": "refresh-cw",
+          "until": 2.6
         },
         {
-          "id": "never",
-          "tag": "no-store"
+          "kind": "bar",
+          "at": 2.6,
+          "text": "no-store — запрет",
+          "icon": "ban",
+          "until": 3.7
+        },
+        {
+          "kind": "bar",
+          "at": 3.7,
+          "text": "выбирай под данные",
+          "icon": "database",
+          "until": 4.8
+        },
+        {
+          "kind": "bar",
+          "at": 4.8,
+          "text": "статику — кэшировать",
+          "icon": "file",
+          "until": 6.0
+        },
+        {
+          "kind": "bar",
+          "at": 6.0,
+          "text": "личное — не хранить",
+          "icon": "lock",
+          "until": 7.2
+        },
+        {
+          "kind": "bar",
+          "at": 7.0,
+          "text": "так и решаем",
+          "icon": "check",
+          "until": 8.0
+        },
+        {
+          "kind": "bar",
+          "at": 8.0,
+          "text": "кэш — это выбор",
+          "icon": "check"
         }
       ]
     }

@@ -1,4 +1,7 @@
+import { eventTimes, poseAt } from "../src/stage/layout";
 import { isKnownIcon } from "../src/icons";
+import { FAIL_GAP, maxGap, sceneEvents } from "../src/rhythm";
+import { WORDS_PER_SECOND } from "../src/timeline";
 import { parseArgs } from "node:util";
 import { loadLang, loadVisual } from "./load-episode";
 import type { VisualScene } from "../src/types";
@@ -33,7 +36,24 @@ const checkBox = ({ label, text, width, fontSize, em, maxLines }: Box): string[]
   ];
 };
 
-const checkScene = (scene: VisualScene, labels: Record<string, string>): string[] => {
+const checkBeats = (scene: VisualScene): string[] => {
+  const tag = `scene ${scene.id}`;
+  return (scene.beats ?? []).flatMap((beat, index) => [
+    ...(isKnownIcon(beat.icon) ? [] : [`${tag}: beat ${index} unknown icon "${beat.icon}" (find one: npm run icons -- <word>)`]),
+    ...((beat.text?.length ?? 0) > 14 ? [`${tag}: beat ${index} text over 14 chars`] : []),
+  ]);
+};
+
+const checkRhythm = (scene: VisualScene, narration: string): string[] => {
+  const seconds = narration.split(/\s+/).filter(Boolean).length / WORDS_PER_SECOND;
+  const { gap, from, to } = maxGap(sceneEvents(scene, seconds), seconds);
+  const fix = scene.type === "media" ? `add an "at" (layer, satellite, item, message or field) at ~${(from + gap / 2).toFixed(1)}s` : `add a ${scene.type === "diagram" ? "node/edge step" : scene.type === "checklist" ? "checklist item" : "code line"} or switch the scene to "media"`;
+  return gap > FAIL_GAP ? [`scene ${scene.id}: nothing new for ${gap.toFixed(1)}s (${from.toFixed(1)}s to ${to.toFixed(1)}s of ${seconds.toFixed(1)}s), max ${FAIL_GAP}s: ${fix}`] : [];
+};
+
+const checkScene = (scene: VisualScene, labels: Record<string, string>, narration: string): string[] => [...checkBeats(scene), ...checkSceneBody(scene, labels), ...checkRhythm(scene, narration)];
+
+const checkSceneBody = (scene: VisualScene, labels: Record<string, string>): string[] => {
   const tag = `scene ${scene.id}`;
   const caption = labels.caption ?? "";
   if (scene.type === "code") {
@@ -73,12 +93,13 @@ const checkScene = (scene: VisualScene, labels: Record<string, string>): string[
       ...checkBox({ label: `${tag} caption`, text: caption, width: PAGE_WIDTH, fontSize: 44, em: HEADING_EM, maxLines: 2 }),
     ];
   }
+  if (scene.type === "custom") return [];
   if (scene.type === "media") {
     return [
       ...(scene.title.length > 36 ? [`${tag}: title ${scene.title.length} chars, max 36`] : []),
-      ...(scene.layers.filter((layer) => layer.kind !== "flyer").length > 3 ? [`${tag}: more than 3 layers`] : []),
+      ...(Math.min(...eventTimes(scene.layers).map((time) => poseAt(scene.layers, time + 0.001, 710).scale), 1) < 0.55 ? [`${tag}: too many items on screen at once (they shrink below 55%): remove some with "until"`] : []),
       ...((scene.badge?.text.length ?? 0) > 14 ? [`${tag}: badge over 14 chars`] : []),
-      ...[scene.badge?.icon, ...scene.layers.map((layer) => ("icon" in layer ? layer.icon : undefined))]
+      ...[scene.badge?.icon, ...scene.layers.flatMap((layer) => [("icon" in layer ? layer.icon : undefined), ...(layer.kind === "flow" ? layer.nodes.map((node) => node.icon) : [])])]
         .filter((icon): icon is string => icon !== undefined && !isKnownIcon(icon))
         .map((icon) => `${tag}: unknown icon "${icon}" (find one: npm run icons -- <word>)`),
     ];
@@ -96,7 +117,7 @@ export const layoutProblems = (slug: string, lang: string): string[] => {
     ...checkBox({ label: "hook", text: language.hook.text, width: PAGE_WIDTH, fontSize: 88, em: HEADING_EM, maxLines: 6 }),
     ...checkBox({ label: "outro", text: language.outro.text, width: PAGE_WIDTH, fontSize: 70, em: HEADING_EM, maxLines: 4 }),
     ...(language.hook.text.includes(language.hook.accent) ? [] : ["hook: accent word is not in the hook text"]),
-    ...visual.scenes.flatMap((scene) => checkScene(scene, language.scenes[scene.id]?.labels ?? {})),
+    ...visual.scenes.flatMap((scene) => checkScene(scene, language.scenes[scene.id]?.labels ?? {}, language.scenes[scene.id]?.narration ?? "")),
   ];
 };
 

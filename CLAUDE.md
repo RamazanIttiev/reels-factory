@@ -58,12 +58,26 @@ See `episodes/_template/`. Visual and text are per language. Rules:
 - `TTS_PROVIDER` env picks the voice (default `mock` = silence, no keys needed).
 - Incident topics: attribute to the operator ("по данным отчёта компании"); hedge what is not confirmed.
 
-## Media scene (`type: "media"`)
-Use it for most scenes: it adds topical visuals and motion to the dark base. Fields in `visual.<lang>.json`:
-`title` (`*word*` = accent), `accent` (hex, own colour per scene), `stat {label,value}` (top right), `badge {icon,text}` (bottom, max 14 chars), `layers` (max 3 besides flyer), each with `at` in seconds from scene start:
-`card {icon,title,value,status,tone}`, `table {url,columns,rows,hit}` (2-3 rows), `page {url,headline,button,click}`, `code {code,mark}`, `flyer {icon}` (icon falls through the stage).
-Icons: any of about 2000 generic icons by lucide name (`cookie`, `database`, `hourglass`) or technology logos as `brand:<slug>` (`brand:postgresql`, `brand:git`, `brand:nginx`). Find a name with `npm run icons -- <word>`; unknown names fail `layout`. Pick icons for the concept of the scene, a logo only when the narration names that technology. The same names work for the hook `icon`. Text is per language (own visual file), no invented numbers. Time layers to the narration (about 2.5 words per second).
-
+## Media scene (`type: "media"`): the picture is built up while the narrator speaks
+The title stays, and on every phrase a new on-topic object appears under it. Old objects stay and everything slides and shrinks to make room (the stage reflows by itself). Nothing leaves without a reason; use `until` (seconds) to remove an object. Fields in `visual.<lang>.json`:
+`title` (`*word*` = accent), `accent` (hex), `stat {label,value}`, `badge {icon,text}` (max 14 chars), `layers` in order of appearance, each with `at` in seconds from scene start (about 2.5 words per second; put `at` at the moment the matching word is spoken):
+- `hub {icon, satellites:[{at,label,icon}]}` big logo with labelled components flying out around it (up to 6)
+- `cards {items:[{at,title,lines}]}` a row of up to 3 small UI cards
+- `rack {label,icon}` server rack with blinking LEDs and fans
+- `phone {messages:[{at,from:"me"|"them",text}]}` phone with chat bubbles
+- `form {url,title,fields:[{at,label,value,secret?}],button,click}` dashboard form: values are typed, a cursor presses the button at `click`
+- `flow {nodes:[{id,at,label,icon,hot?}], edges:[{from,to,at}], marks?:[{at,ids}]}` mini diagram: nodes pop in, arrows draw on, a white packet runs along each arrow, `marks` highlight nodes with a ring (up to 6 nodes)
+- `terminal {lines:[{at,text,out?}]}` command typed character by character, `out:true` lines (output) slide in
+- `meter {rows:[{at,label,fill 0..1,value?,tone?}]}` bars that fill up, `checks {title?,items:[{at,text}]}` rows with a check mark that draws itself
+- `bar {text,icon}` coloured strip with a headline fact; use rarely, not as a chain of replacing strips: prefer flow, terminal, meter, checks
+- `table {url,columns,rows,hit}`, `page {url,headline,button,click}`, `code {code,mark}`, `card {icon,title,value,status,tone}`, `flyer {icon}`
+Plan 4-7 objects per scene, one per phrase; the stage shrinks them, and `layout` fails if they would drop below 55% size (then add `until`). Icons: about 2000 generic by lucide name or logos as `brand:<slug>`; find with `npm run icons -- <word>`; unknown names fail `layout`. Text is per language (own visual file), no invented numbers, short labels.
+When the library cannot show the topic: scene `{type:"custom", component:"<name>"}` with your own Remotion component in `src/custom/<name>.tsx`, registered in `src/custom/index.ts` (copy `src/custom/example.tsx`; wrap in `Frame`). Use it only for rare topics; everything else stays data.
+Rhythm rules (all scene types, `src/rhythm.ts`): an event (`at`, nested `at`, `until`, `click`, beat) at least every 1.2 s of the scene's speech (words / 2.5). `npm run layout` fails when nothing new happens for more than 1.5 s and says where to add an `at`. Chains of `bar` layers, each with `until` equal to the next `at`, are the cheap way to fill speech without shrinking the stage. If a gap still remains, `Frame` adds motion by itself (light sweep, glow on the newest object), never on text.
+Text is still after it appears: only an entrance animation (slam, fade, spring). No zoom, drift, sway or size pulse on text; continuous motion only for background, grid, particles, glow, orbit icons, LEDs. Stage reflow in media scenes is short (9 frames) and rounded to whole pixels.
+Optional `beats: [{at, icon, text?}]` on any scene adds pop-up stickers; prefer layers.
+Motion on every scene comes from `Frame` (drifting glow, scrolling grid, rising particles, flash and slide-in at scene start).
+Hook text: up to 6 words, intrigue, number or contradiction, one strong accent word; the words slam in one by one.
 Hook (`lang.json` `hook`): `icon` plus `orbit` (3 related icons that circle the main one). The hook screen moves from frame 0 (ring pulses, orbiting icons, slow zoom). Retention data shows about half of viewers leave in the first second: no intro, no greeting, the first words state the point or the intrigue.
 
 ## Episode workflow

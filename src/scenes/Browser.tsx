@@ -1,5 +1,6 @@
 import { interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import type { ResolvedScene } from "../episode";
+import { SPREAD } from "../rhythm";
 import { Frame } from "../Frame";
 import type { SceneContext } from "../Frame";
 import { Sfx } from "../Sfx";
@@ -15,7 +16,7 @@ export const Browser = ({ scene, context }: BrowserProps) => {
   const { fps } = useVideoConfig();
   const enter = spring({ frame, fps, config: { damping: 14 } });
   const typedLength = Math.floor(
-    interpolate(frame, [20, context.duration * 0.6], [0, scene.input.length], {
+    interpolate(frame, [20, context.duration * SPREAD], [0, scene.input.length], {
       extrapolateLeft: "clamp",
       extrapolateRight: "clamp",
     }),

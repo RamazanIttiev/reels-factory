@@ -44,10 +44,20 @@ export type BrowserVisual = {
 };
 
 export type MediaLayer =
-  | { kind: "table"; at: number; url: string; columns: string[]; rows: string[][]; hit?: number }
-  | { kind: "page"; at: number; url: string; headline: string; button: string; click: number }
-  | { kind: "code"; at: number; code: string; mark?: string }
-  | { kind: "card"; at: number; icon: string; title: string; value: string; status: string; tone: Tone }
+  | { kind: "table"; at: number; until?: number; url: string; columns: string[]; rows: string[][]; hit?: number }
+  | { kind: "page"; at: number; until?: number; url: string; headline: string; button: string; click: number }
+  | { kind: "code"; at: number; until?: number; code: string; mark?: string }
+  | { kind: "card"; at: number; until?: number; icon: string; title: string; value: string; status: string; tone: Tone }
+  | { kind: "hub"; at: number; until?: number; icon: string; satellites: { at: number; label: string; icon?: string }[] }
+  | { kind: "cards"; at: number; until?: number; items: { at: number; title: string; lines?: string[] }[] }
+  | { kind: "rack"; at: number; until?: number; label: string; icon?: string }
+  | { kind: "phone"; at: number; until?: number; messages: { at: number; from: "me" | "them"; text: string }[] }
+  | { kind: "form"; at: number; until?: number; url: string; title: string; fields: { at: number; label: string; value: string; secret?: boolean }[]; button: string; click: number }
+  | { kind: "flow"; at: number; until?: number; nodes: { id: string; at: number; label: string; icon: string; hot?: boolean }[]; edges: { from: string; to: string; at: number }[]; marks?: { at: number; ids: string[] }[] }
+  | { kind: "terminal"; at: number; until?: number; lines: { at: number; text: string; out?: boolean }[] }
+  | { kind: "meter"; at: number; until?: number; rows: { at: number; label: string; fill: number; value?: string; tone?: Tone }[] }
+  | { kind: "checks"; at: number; until?: number; title?: string; items: { at: number; text: string }[] }
+  | { kind: "bar"; at: number; until?: number; text: string; icon?: string }
   | { kind: "flyer"; at: number; icon: string };
 
 export type MediaVisual = {
@@ -60,7 +70,11 @@ export type MediaVisual = {
   layers: MediaLayer[];
 };
 
-export type VisualScene = DiagramVisual | CodeVisual | ChecklistVisual | BrowserVisual | MediaVisual;
+export type CustomVisual = { id: string; type: "custom"; component: string; props?: Record<string, unknown> };
+
+export type Beat = { at: number; icon: string; text?: string };
+
+export type VisualScene = (DiagramVisual | CodeVisual | ChecklistVisual | BrowserVisual | MediaVisual | CustomVisual) & { beats?: Beat[] };
 
 export type Visual = { slug: string; scenes: VisualScene[] };
 

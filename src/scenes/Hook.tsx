@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { Frame } from "../Frame";
 import type { SceneContext } from "../Frame";
@@ -21,6 +20,28 @@ const CHAR_WIDTH_EM = 0.92;
 const titleFont = (text: string): number => {
   const longest = Math.max(...text.split(/\s+/).map((word) => word.length));
   return Math.min(MAX_TITLE_FONT, Math.floor(TITLE_WIDTH / (longest * CHAR_WIDTH_EM)));
+};
+
+const WORD_STAGGER = 4;
+
+const Word = ({ text, index, accent }: { text: string; index: number; accent: boolean }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const land = spring({ frame: frame - index * WORD_STAGGER, fps, config: { damping: 9, stiffness: 260 } });
+  const glow = 1;
+  return (
+    <span
+      style={{
+        display: "inline-block",
+        color: accent ? theme.colors.hot : theme.colors.text,
+        opacity: index === 0 ? 1 : Math.min(1, land * 3),
+        transform: `scale(${1.7 - 0.7 * land}) translateY(${(1 - land) * -30}px)`,
+        textShadow: accent ? `0 0 ${20 + 30 * glow}px ${theme.colors.hot}` : "none",
+      }}
+    >
+      {text}
+    </span>
+  );
 };
 
 const Ring = ({ offset }: { offset: number }) => {
@@ -79,37 +100,38 @@ export const Hook = ({ hook, context }: HookProps) => {
   const tile = spring({ frame, fps, config: { damping: 11, stiffness: 170 } });
   const zoom = interpolate(frame, [0, context.duration], [1, 1.07], { extrapolateRight: "clamp" });
   const glow = 0.6 + 0.4 * Math.sin(frame / 6);
-  const parts = hook.text.split(hook.accent);
+  const words = hook.text.split(/\s+/).filter(Boolean);
+  const accentWords = hook.accent.split(/\s+/);
+  const isAccent = (word: string): boolean => accentWords.some((part) => word.includes(part));
   const orbit = hook.orbit ?? [];
   const fontSize = titleFont(hook.text);
 
   return (
     <Frame context={context}>
       <Sfx name="thud" at={0} />
-      <AbsoluteFill style={{ transform: `scale(${zoom})`, transformOrigin: `540px ${CENTER_Y}px` }}>
-        <div
+      <AbsoluteFill style={{ background: "#fff", opacity: interpolate(frame, [0, 6], [0.55, 0], { extrapolateRight: "clamp" }), pointerEvents: "none", zIndex: 5 }} />
+      <div
           style={{
             position: "absolute",
             top: 250,
             left: theme.spacing.page,
             right: theme.spacing.page,
+            display: "flex",
+            zIndex: 2,
+            flexWrap: "wrap",
+            columnGap: fontSize * 0.28,
             fontFamily: theme.fonts.heading,
             fontWeight: 900,
             fontSize,
             lineHeight: 1.1,
             textTransform: "uppercase",
-            color: theme.colors.text,
-            overflowWrap: "anywhere",
-            transform: `translateY(${(1 - Math.min(1, tile * 1.4)) * -50}px)`,
           }}
         >
-          {parts.map((part, index) => (
-            <Fragment key={index}>
-              {part}
-              {index < parts.length - 1 && <span style={{ color: theme.colors.hot }}>{hook.accent}</span>}
-            </Fragment>
+          {words.map((word, index) => (
+            <Word key={index} text={word} index={index} accent={isAccent(word)} />
           ))}
         </div>
+      <AbsoluteFill style={{ transform: `scale(${zoom})`, transformOrigin: `540px ${CENTER_Y}px` }}>
         <Ring offset={0} />
         <Ring offset={RING_PERIOD / 2} />
         {orbit.map((icon, index) => (

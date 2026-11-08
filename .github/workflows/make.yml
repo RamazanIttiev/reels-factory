@@ -55,6 +55,9 @@ jobs:
       - run: npm install -g @anthropic-ai/claude-code
       - name: Make episodes (gate passes means auto-approved)
         run: npm run batch -- --lang ru --count ${{ inputs.count || '3' }}
+      - name: Make English episodes
+        if: always()
+        run: npm run batch -- --lang en --count ${{ inputs.count || '3' }}
       - name: Save state
         if: always()
         run: |

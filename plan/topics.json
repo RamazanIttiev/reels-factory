@@ -1,3080 +1,2918 @@
 {
- "_note": "Standalone episodes: no shared storyline, any order. hook_* are hypotheses (max 8 spoken words), not facts. sources are references to locate and verify, never trusted without reading the primary text. Do not state numbers from hooks (e.g. 43-second) until verified in the fact sheet. Status is tracked per language: each language is produced, scheduled and measured separately. Fact sheets are shared between languages (facts do not depend on language); scripts and visuals are written natively per language.",
- "version": 1,
- "topics": [
-  {
-   "id": 1,
-   "slug": "facebook-bgp-outage",
-   "category": "postmortems",
-   "level": "mid+",
-   "kind": "incident",
-   "title_en": "Facebook's BGP outage",
-   "hook_en": "One command took Facebook off the internet.",
-   "hook_ru": "Одна команда убрала Facebook из интернета.",
-   "hook_type": "bold_claim",
-   "visual": "timeline",
-   "sources": [
-    "Meta Engineering: Update about the October 4th outage",
-    "RFC 4271 (BGP-4)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "published",
-    "en": "rendered"
-   },
-   "fact_sheet": "facts/facebook-bgp-outage.json",
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 2,
-   "slug": "cloudflare-regex-outage",
-   "category": "postmortems",
-   "level": "mid",
-   "kind": "incident",
-   "title_en": "Cloudflare's regex outage",
-   "hook_en": "One regex took Cloudflare down. Could yours?",
-   "hook_ru": "Одно регулярное выражение положило Cloudflare. А ваше?",
-   "hook_type": "question",
-   "visual": "code",
-   "sources": [
-    "Cloudflare blog: Details of the Cloudflare outage on July 2, 2019",
-    "OWASP: Regular expression Denial of Service (ReDoS)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "code"
-   ]
-  },
-  {
-   "id": 3,
-   "slug": "s3-typo-outage",
-   "category": "postmortems",
-   "level": "mid",
-   "kind": "incident",
-   "title_en": "AWS S3 outage from a mistyped command",
-   "hook_en": "One mistyped command took down S3.",
-   "hook_ru": "Одна опечатка в команде уронила S3.",
-   "hook_type": "bold_claim",
-   "visual": "timeline",
-   "sources": [
-    "AWS: Summary of the Amazon S3 Service Disruption in the Northern Virginia (US-EAST-1) Region"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 4,
-   "slug": "gitlab-db-deletion",
-   "category": "postmortems",
-   "level": "mid",
-   "kind": "incident",
-   "title_en": "GitLab deleted its production database",
-   "hook_en": "GitLab deleted its database. Backups didn't help.",
-   "hook_ru": "GitLab удалил боевую базу. Бэкапы не спасли.",
-   "hook_type": "story",
-   "visual": "timeline",
-   "sources": [
-    "GitLab: Postmortem of database outage of January 31"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 5,
-   "slug": "log4shell",
-   "category": "postmortems",
-   "level": "mid",
-   "kind": "incident",
-   "title_en": "Log4Shell",
-   "hook_en": "A log line could run an attacker's code.",
-   "hook_ru": "Строка в логе могла запустить код хакера.",
-   "hook_type": "mystery",
-   "visual": "code",
-   "sources": [
-    "Apache Log4j security page",
-    "NVD: CVE-2021-44228"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "code"
-   ]
-  },
-  {
-   "id": 6,
-   "slug": "heartbleed",
-   "category": "postmortems",
-   "level": "mid+",
-   "kind": "incident",
-   "title_en": "Heartbleed",
-   "hook_en": "How a missing length check leaked server memory.",
-   "hook_ru": "Как забытая проверка длины сливала память сервера.",
-   "hook_type": "mystery",
-   "visual": "diagram",
-   "sources": [
-    "OpenSSL security advisory (April 2014)",
-    "NVD: CVE-2014-0160",
-    "RFC 6520 (TLS Heartbeat)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 7,
-   "slug": "left-pad",
-   "category": "postmortems",
-   "level": "mid",
-   "kind": "incident",
-   "title_en": "The left-pad incident",
-   "hook_en": "One tiny npm package broke thousands of builds.",
-   "hook_ru": "Крошечный npm-пакет сломал тысячи сборок.",
-   "hook_type": "bold_claim",
-   "visual": "timeline",
-   "sources": [
-    "npm blog: kik, left-pad, and npm (2016)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 8,
-   "slug": "knight-capital",
-   "category": "postmortems",
-   "level": "mid+",
-   "kind": "incident",
-   "title_en": "Knight Capital",
-   "hook_en": "One server ran old code. A firm collapsed.",
-   "hook_ru": "Один сервер со старым кодом. Фирма рухнула.",
-   "hook_type": "story",
-   "visual": "timeline",
-   "sources": [
-    "SEC Order: In the Matter of Knight Capital Americas LLC (2013)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 9,
-   "slug": "github-2018-partition",
-   "category": "postmortems",
-   "level": "mid+",
-   "kind": "incident",
-   "title_en": "GitHub's 2018 outage",
-   "hook_en": "A 43-second blip hurt GitHub for a day.",
-   "hook_ru": "43 секунды сбоя, сутки проблем у GitHub.",
-   "hook_type": "number",
-   "visual": "timeline",
-   "sources": [
-    "GitHub Engineering: October 21 post-incident analysis"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 10,
-   "slug": "index-not-used",
-   "category": "databases",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Why your index isn't used",
-   "hook_en": "Your index exists. Postgres ignores it. Why?",
-   "hook_ru": "Индекс есть, а Postgres его игнорирует. Почему?",
-   "hook_type": "question",
-   "visual": "code",
-   "sources": [
-    "PostgreSQL docs: Indexes",
-    "PostgreSQL docs: Using EXPLAIN"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "published",
-    "en": "published"
-   },
-   "fact_sheet": "facts/index-not-used.json",
-   "scene_types": [
-    "code"
-   ]
-  },
-  {
-   "id": 11,
-   "slug": "alter-table-lock",
-   "category": "databases",
-   "level": "mid+",
-   "kind": "evergreen",
-   "title_en": "ALTER TABLE locks",
-   "hook_en": "One ALTER TABLE can freeze your whole app.",
-   "hook_ru": "Один ALTER TABLE может заморозить всё приложение.",
-   "hook_type": "bold_claim",
-   "visual": "timeline",
-   "sources": [
-    "PostgreSQL docs: ALTER TABLE",
-    "PostgreSQL docs: Explicit Locking"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 12,
-   "slug": "connection-pooling",
-   "category": "databases",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Connection pooling",
-   "hook_en": "More database connections can make you slower.",
-   "hook_ru": "Больше соединений с базой, а работает медленнее.",
-   "hook_type": "myth_bust",
-   "visual": "diagram",
-   "sources": [
-    "PostgreSQL docs: Connections and Authentication",
-    "PgBouncer docs"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 13,
-   "slug": "isolation-levels",
-   "category": "databases",
-   "level": "mid+",
-   "kind": "evergreen",
-   "title_en": "Isolation levels",
-   "hook_en": "Two correct transactions. One wrong result.",
-   "hook_ru": "Две верные транзакции. Один неверный результат.",
-   "hook_type": "mystery",
-   "visual": "timeline",
-   "sources": [
-    "PostgreSQL docs: Transaction Isolation"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 14,
-   "slug": "deadlocks",
-   "category": "databases",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Deadlocks",
-   "hook_en": "Two queries wait for each other. Forever.",
-   "hook_ru": "Два запроса ждут друг друга вечно.",
-   "hook_type": "question",
-   "visual": "timeline",
-   "sources": [
-    "PostgreSQL docs: Explicit Locking (Deadlocks)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 15,
-   "slug": "uuid-v7",
-   "category": "databases",
-   "level": "mid+",
-   "kind": "evergreen",
-   "title_en": "UUIDv7",
-   "hook_en": "Why random UUIDs can slow your database down.",
-   "hook_ru": "Почему случайные UUID могут тормозить вашу базу.",
-   "hook_type": "bold_claim",
-   "visual": "diagram",
-   "sources": [
-    "RFC 9562 (UUIDs)",
-    "PostgreSQL docs: Index types (B-tree)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 16,
-   "slug": "redis-eviction",
-   "category": "databases",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Redis eviction",
-   "hook_en": "Redis is full. What does it delete first?",
-   "hook_ru": "Redis заполнен. Что он удалит первым?",
-   "hook_type": "question",
-   "visual": "diagram",
-   "sources": [
-    "Redis docs: Key eviction"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 17,
-   "slug": "redis-persistence",
-   "category": "databases",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Redis persistence",
-   "hook_en": "Redis restarted. How much data did you lose?",
-   "hook_ru": "Redis перезапустился. Сколько данных потеряно?",
-   "hook_type": "question",
-   "visual": "diagram",
-   "sources": [
-    "Redis docs: Persistence"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 18,
-   "slug": "postgres-vacuum",
-   "category": "databases",
-   "level": "mid+",
-   "kind": "evergreen",
-   "title_en": "Postgres VACUUM and MVCC",
-   "hook_en": "Why Postgres never really deletes your rows.",
-   "hook_ru": "Почему Postgres не удаляет строки сразу.",
-   "hook_type": "mystery",
-   "visual": "diagram",
-   "sources": [
-    "PostgreSQL docs: Concurrency Control (MVCC)",
-    "PostgreSQL docs: Routine Vacuuming"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 19,
-   "slug": "write-ahead-log",
-   "category": "databases",
-   "level": "mid+",
-   "kind": "evergreen",
-   "title_en": "Write-ahead log",
-   "hook_en": "How a database survives a power cut.",
-   "hook_ru": "Как база данных переживает отключение питания.",
-   "hook_type": "question",
-   "visual": "timeline",
-   "sources": [
-    "PostgreSQL docs: Write-Ahead Logging",
-    "SQLite docs: Atomic Commit"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 20,
-   "slug": "explain-analyze",
-   "category": "databases",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "EXPLAIN ANALYZE",
-   "hook_en": "Read this query plan in 30 seconds.",
-   "hook_ru": "Прочитай план запроса за 30 секунд.",
-   "hook_type": "howto",
-   "visual": "code",
-   "sources": [
-    "PostgreSQL docs: Using EXPLAIN"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "code"
-   ]
-  },
-  {
-   "id": 21,
-   "slug": "url-journey",
-   "category": "networking",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "What happens when you type a URL",
-   "hook_en": "You type a URL. What happens next?",
-   "hook_ru": "Ты вводишь URL. Что происходит дальше?",
-   "hook_type": "howto",
-   "visual": "timeline",
-   "sources": [
-    "RFC 1034 (DNS)",
-    "RFC 9293 (TCP)",
-    "RFC 8446 (TLS 1.3)",
-    "RFC 9110 (HTTP semantics)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 22,
-   "slug": "http-caching",
-   "category": "networking",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "HTTP caching",
-   "hook_en": "Cache-Control: the header that saves your servers.",
-   "hook_ru": "Cache-Control: заголовок, который спасает серверы.",
-   "hook_type": "bold_claim",
-   "visual": "diagram",
-   "sources": [
-    "RFC 9111 (HTTP Caching)",
-    "RFC 5861 (stale-while-revalidate)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "rendered",
-    "en": "todo"
-   },
-   "fact_sheet": "facts/http-caching.json",
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 23,
-   "slug": "cors-preflight",
-   "category": "networking",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "CORS and preflight",
-   "hook_en": "That CORS error comes from your browser.",
-   "hook_ru": "CORS не ошибка сервера. Вас остановил браузер.",
-   "hook_type": "myth_bust",
-   "visual": "timeline",
-   "sources": [
-    "WHATWG Fetch Standard (CORS protocol)",
-    "MDN: CORS"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 24,
-   "slug": "redirect-codes",
-   "category": "networking",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "301 vs 302 vs 307 vs 308",
-   "hook_en": "Which redirect turns your POST into a GET?",
-   "hook_ru": "Какой редирект тихо превращает POST в GET?",
-   "hook_type": "question",
-   "visual": "diagram",
-   "sources": [
-    "RFC 9110, section 15.4 (Redirection 3xx)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 25,
-   "slug": "dns-ttl",
-   "category": "networking",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "DNS TTL",
-   "hook_en": "DNS \"propagation\" is a myth.",
-   "hook_ru": "«Распространения DNS» не существует. Вот что происходит.",
-   "hook_type": "myth_bust",
-   "visual": "timeline",
-   "sources": [
-    "RFC 1034",
-    "RFC 2181"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 26,
-   "slug": "http-versions",
-   "category": "networking",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "HTTP/1.1 vs HTTP/2 vs HTTP/3",
-   "hook_en": "HTTP/1.1, 2 and 3 in 30 seconds.",
-   "hook_ru": "HTTP/1.1, 2 и 3 за 30 секунд.",
-   "hook_type": "howto",
-   "visual": "diagram",
-   "sources": [
-    "RFC 9112",
-    "RFC 9113",
-    "RFC 9114",
-    "RFC 9000 (QUIC)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 27,
-   "slug": "realtime-options",
-   "category": "networking",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Polling vs SSE vs WebSocket",
-   "hook_en": "Polling, SSE, WebSocket: pick the right one.",
-   "hook_ru": "Polling, SSE, WebSocket: выбери подходящий.",
-   "hook_type": "mistake",
-   "visual": "diagram",
-   "sources": [
-    "RFC 6455 (WebSocket)",
-    "HTML Standard: Server-sent events"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 28,
-   "slug": "syn-flood",
-   "category": "networking",
-   "level": "mid+",
-   "kind": "evergreen",
-   "title_en": "SYN flood",
-   "hook_en": "How a handshake becomes an attack.",
-   "hook_ru": "Как рукопожатие превращается в атаку.",
-   "hook_type": "mystery",
-   "visual": "timeline",
-   "sources": [
-    "RFC 9293 (TCP)",
-    "RFC 4987 (TCP SYN Flooding Attacks and Common Mitigations)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 29,
-   "slug": "tls13-handshake",
-   "category": "networking",
-   "level": "mid+",
-   "kind": "evergreen",
-   "title_en": "TLS 1.3 handshake",
-   "hook_en": "TLS 1.3 handshake in one round trip.",
-   "hook_ru": "Как TLS 1.3 защищает соединение за один обмен.",
-   "hook_type": "howto",
-   "visual": "timeline",
-   "sources": [
-    "RFC 8446"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 30,
-   "slug": "nat-traversal-webrtc",
-   "category": "networking",
-   "level": "mid+",
-   "kind": "evergreen",
-   "title_en": "STUN, TURN and ICE",
-   "hook_en": "How a video call crosses your router.",
-   "hook_ru": "Как видеозвонок проходит через ваш роутер.",
-   "hook_type": "question",
-   "visual": "diagram",
-   "sources": [
-    "RFC 8489 (STUN)",
-    "RFC 8656 (TURN)",
-    "RFC 8445 (ICE)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 31,
-   "slug": "adaptive-streaming",
-   "category": "networking",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "HLS and adaptive streaming",
-   "hook_en": "How video adapts to your bad Wi-Fi.",
-   "hook_ru": "Как видео подстраивается под плохой Wi-Fi.",
-   "hook_type": "question",
-   "visual": "diagram",
-   "sources": [
-    "RFC 8216 (HTTP Live Streaming)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 32,
-   "slug": "anycast",
-   "category": "networking",
-   "level": "mid+",
-   "kind": "evergreen",
-   "title_en": "Anycast",
-   "hook_en": "One IP address, hundreds of servers. How?",
-   "hook_ru": "Один IP-адрес, сотни серверов. Как?",
-   "hook_type": "question",
-   "visual": "diagram",
-   "sources": [
-    "RFC 4786 (Operation of Anycast Services)",
-    "Cloudflare docs: Anycast"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 33,
-   "slug": "critical-rendering-path",
-   "category": "browser",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Critical rendering path",
-   "hook_en": "From HTML to pixels: what your browser does.",
-   "hook_ru": "От HTML до пикселей: что делает браузер.",
-   "hook_type": "howto",
-   "visual": "timeline",
-   "sources": [
-    "web.dev: Critical rendering path",
-    "HTML Standard"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "published",
-    "en": "published"
-   },
-   "fact_sheet": "facts/critical-rendering-path.json",
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 34,
-   "slug": "event-loop",
-   "category": "browser",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Event loop",
-   "hook_en": "Why setTimeout(0) isn't instant.",
-   "hook_ru": "Почему setTimeout(0) не мгновенный.",
-   "hook_type": "question",
-   "visual": "timeline",
-   "sources": [
-    "HTML Standard: Event loops",
-    "MDN: The event loop"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 35,
-   "slug": "defer-vs-async",
-   "category": "browser",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "defer vs async",
-   "hook_en": "defer vs async: what really blocks rendering.",
-   "hook_ru": "defer и async: что блокирует рендер.",
-   "hook_type": "howto",
-   "visual": "timeline",
-   "sources": [
-    "HTML Standard: The script element"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 36,
-   "slug": "layout-thrashing",
-   "category": "browser",
-   "level": "mid+",
-   "kind": "evergreen",
-   "title_en": "Layout thrashing",
-   "hook_en": "This innocent loop makes your page crawl.",
-   "hook_ru": "Этот безобидный цикл тормозит всю страницу.",
-   "hook_type": "mystery",
-   "visual": "code",
-   "sources": [
-    "web.dev: Avoid large, complex layouts and layout thrashing"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "code"
-   ]
-  },
-  {
-   "id": 37,
-   "slug": "v8-garbage-collection",
-   "category": "browser",
-   "level": "mid+",
-   "kind": "evergreen",
-   "title_en": "V8 garbage collection",
-   "hook_en": "Why your single-page app leaks memory.",
-   "hook_ru": "Почему ваше SPA течёт по памяти.",
-   "hook_type": "question",
-   "visual": "diagram",
-   "sources": [
-    "v8.dev: Trash talk (Orinoco garbage collector)",
-    "MDN: Memory management"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 38,
-   "slug": "core-web-vitals",
-   "category": "browser",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Core Web Vitals",
-   "hook_en": "LCP, CLS, INP: what they actually measure.",
-   "hook_ru": "LCP, CLS, INP: что они измеряют.",
-   "hook_type": "howto",
-   "visual": "diagram",
-   "sources": [
-    "web.dev: Web Vitals"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 39,
-   "slug": "service-workers",
-   "category": "browser",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Service workers",
-   "hook_en": "How a website works with no internet.",
-   "hook_ru": "Как сайт работает без интернета.",
-   "hook_type": "question",
-   "visual": "diagram",
-   "sources": [
-    "W3C Service Workers specification",
-    "MDN: Service Worker API"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 40,
-   "slug": "xss-csp",
-   "category": "security",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "XSS and CSP",
-   "hook_en": "How one comment field can hack every visitor.",
-   "hook_ru": "Как одно поле комментария может взломать всех посетителей.",
-   "hook_type": "bold_claim",
-   "visual": "browser",
-   "sources": [
-    "OWASP: XSS Prevention Cheat Sheet",
-    "W3C Content Security Policy",
-    "MDN: CSP"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "browser"
-   ]
-  },
-  {
-   "id": 41,
-   "slug": "csrf-samesite",
-   "category": "security",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "CSRF and SameSite",
-   "hook_en": "A site you never opened acted as you.",
-   "hook_ru": "Незнакомый сайт отправил запрос от вашего имени.",
-   "hook_type": "mystery",
-   "visual": "timeline",
-   "sources": [
-    "OWASP: CSRF Prevention Cheat Sheet",
-    "MDN: SameSite cookies"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "published",
-    "en": "published"
-   },
-   "fact_sheet": "facts/csrf-samesite.json",
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 42,
-   "slug": "sql-injection",
-   "category": "security",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "SQL injection",
-   "hook_en": "' OR 1=1 --  Why this string still breaks apps.",
-   "hook_ru": "' OR 1=1 --  почему эта строка ломает приложения.",
-   "hook_type": "mystery",
-   "visual": "browser",
-   "sources": [
-    "OWASP: SQL Injection Prevention Cheat Sheet"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "browser"
-   ]
-  },
-  {
-   "id": 43,
-   "slug": "jwt-pitfalls",
-   "category": "security",
-   "level": "mid+",
-   "kind": "evergreen",
-   "title_en": "JWT pitfalls",
-   "hook_en": "alg: none: the JWT bug that skips signatures.",
-   "hook_ru": "alg: none, баг JWT, который пропускает подпись.",
-   "hook_type": "mystery",
-   "visual": "code",
-   "sources": [
-    "RFC 7519 (JWT)",
-    "RFC 8725 (JWT Best Current Practices)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "code"
-   ]
-  },
-  {
-   "id": 44,
-   "slug": "session-vs-jwt",
-   "category": "security",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Sessions vs JWT",
-   "hook_en": "Sessions or JWT? The honest trade-off.",
-   "hook_ru": "Сессии или JWT? Честный компромисс.",
-   "hook_type": "question",
-   "visual": "split",
-   "sources": [
-    "OWASP: Session Management Cheat Sheet",
-    "RFC 7519 (JWT)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram",
-    "checklist"
-   ]
-  },
-  {
-   "id": 45,
-   "slug": "oauth-pkce",
-   "category": "security",
-   "level": "mid+",
-   "kind": "evergreen",
-   "title_en": "OAuth and PKCE",
-   "hook_en": "How \"Login with Google\" works, and gets stolen.",
-   "hook_ru": "«Войти через Google»: как работает и как крадут.",
-   "hook_type": "howto",
-   "visual": "timeline",
-   "sources": [
-    "RFC 6749 (OAuth 2.0)",
-    "RFC 7636 (PKCE)",
-    "OAuth 2.0 Security Best Current Practice (IETF)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 46,
-   "slug": "idor-access-control",
-   "category": "security",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Broken access control",
-   "hook_en": "One number in the URL leaks someone's data.",
-   "hook_ru": "Одна цифра в URL открывает чужие данные.",
-   "hook_type": "bold_claim",
-   "visual": "browser",
-   "sources": [
-    "OWASP Top 10: Broken Access Control",
-    "OWASP: IDOR Prevention Cheat Sheet"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "browser"
-   ]
-  },
-  {
-   "id": 47,
-   "slug": "hsts",
-   "category": "security",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "HSTS",
-   "hook_en": "Why redirecting HTTP to HTTPS isn't enough.",
-   "hook_ru": "Почему редиректа с HTTP на HTTPS недостаточно.",
-   "hook_type": "myth_bust",
-   "visual": "timeline",
-   "sources": [
-    "RFC 6797 (HSTS)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 48,
-   "slug": "hash-encrypt-encode",
-   "category": "security",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Hashing vs encryption vs encoding",
-   "hook_en": "Base64 is not encryption.",
-   "hook_ru": "Base64 не шифрование.",
-   "hook_type": "myth_bust",
-   "visual": "split",
-   "sources": [
-    "RFC 4648 (Base16, Base32, Base64)",
-    "NIST FIPS 180-4 (SHA)",
-    "NIST FIPS 197 (AES)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram",
-    "checklist"
-   ]
-  },
-  {
-   "id": 49,
-   "slug": "timing-attacks",
-   "category": "security",
-   "level": "mid+",
-   "kind": "evergreen",
-   "title_en": "Timing attacks",
-   "hook_en": "Why comparing secrets with == is dangerous.",
-   "hook_ru": "Почему сравнивать секреты через == опасно.",
-   "hook_type": "mystery",
-   "visual": "code",
-   "sources": [
-    "Python docs: hmac.compare_digest",
-    "OWASP: Cryptographic Storage Cheat Sheet"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "code"
-   ]
-  },
-  {
-   "id": 50,
-   "slug": "secrets-in-git",
-   "category": "security",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Secrets in git history",
-   "hook_en": "Deleted the API key? It's still in git.",
-   "hook_ru": "Вы удалили API-ключ. Он всё ещё в git.",
-   "hook_type": "mistake",
-   "visual": "terminal",
-   "sources": [
-    "GitHub docs: Removing sensitive data from a repository",
-    "GitHub docs: About secret scanning"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "code"
-   ]
-  },
-  {
-   "id": 51,
-   "slug": "dependency-confusion",
-   "category": "security",
-   "level": "mid+",
-   "kind": "incident",
-   "title_en": "Dependency confusion",
-   "hook_en": "How a fake package name entered big companies.",
-   "hook_ru": "Как поддельное имя пакета проникло в крупные компании.",
-   "hook_type": "story",
-   "visual": "diagram",
-   "sources": [
-    "Alex Birsan: Dependency Confusion (2021)",
-    "npm docs: Scopes"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 52,
-   "slug": "ssrf-metadata",
-   "category": "security",
-   "level": "mid+",
-   "kind": "evergreen",
-   "title_en": "SSRF and cloud metadata",
-   "hook_en": "How a URL fetcher can leak cloud credentials.",
-   "hook_ru": "Как загрузчик по URL может слить облачные ключи.",
-   "hook_type": "mystery",
-   "visual": "diagram",
-   "sources": [
-    "OWASP: SSRF Prevention Cheat Sheet",
-    "AWS docs: Instance metadata service (IMDSv2)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 53,
-   "slug": "passkeys",
-   "category": "security",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Passkeys",
-   "hook_en": "Why passkeys can't be phished.",
-   "hook_ru": "Почему passkeys нельзя украсть фишингом.",
-   "hook_type": "question",
-   "visual": "diagram",
-   "sources": [
-    "W3C Web Authentication (WebAuthn) specification",
-    "FIDO Alliance: Passkeys"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 54,
-   "slug": "password-hashing",
-   "category": "security",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Password hashing",
-   "hook_en": "bcrypt, scrypt, Argon2: what to use and why.",
-   "hook_ru": "bcrypt, scrypt, Argon2: что выбрать и почему.",
-   "hook_type": "howto",
-   "visual": "diagram",
-   "sources": [
-    "OWASP: Password Storage Cheat Sheet",
-    "RFC 9106 (Argon2)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 55,
-   "slug": "certificate-transparency",
-   "category": "security",
-   "level": "mid+",
-   "kind": "evergreen",
-   "title_en": "Certificate Transparency",
-   "hook_en": "How browsers catch fake certificates.",
-   "hook_ru": "Как браузеры ловят поддельные сертификаты.",
-   "hook_type": "question",
-   "visual": "diagram",
-   "sources": [
-    "RFC 6962 (Certificate Transparency)",
-    "RFC 9162 (Certificate Transparency Version 2.0)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 56,
-   "slug": "sqlite-internals",
-   "category": "systems",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "SQLite",
-   "hook_en": "A whole database in one file. How?",
-   "hook_ru": "Целая база данных в одном файле. Как?",
-   "hook_type": "question",
-   "visual": "diagram",
-   "sources": [
-    "SQLite docs: Database File Format",
-    "SQLite docs: Appropriate Uses For SQLite"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 57,
-   "slug": "git-internals",
-   "category": "systems",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Git internals",
-   "hook_en": "Git doesn't store diffs. Here's what it stores.",
-   "hook_ru": "Git не хранит диффы. Вот что он хранит.",
-   "hook_type": "myth_bust",
-   "visual": "diagram",
-   "sources": [
-    "Pro Git: Git Internals",
-    "Git docs: gitformat-pack"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "published",
-    "en": "published"
-   },
-   "fact_sheet": "facts/git-internals.json",
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 58,
-   "slug": "docker-layers",
-   "category": "systems",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Docker image layers",
-   "hook_en": "Why your Docker image is so big.",
-   "hook_ru": "Почему ваш Docker-образ такой огромный.",
-   "hook_type": "question",
-   "visual": "diagram",
-   "sources": [
-    "Docker docs: Image layers",
-    "OCI Image Format Specification"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 59,
-   "slug": "containers-namespaces",
-   "category": "systems",
-   "level": "mid+",
-   "kind": "evergreen",
-   "title_en": "Namespaces and cgroups",
-   "hook_en": "A container is just a process. Here's why.",
-   "hook_ru": "Контейнер это просто процесс. Вот в чём фокус.",
-   "hook_type": "bold_claim",
-   "visual": "diagram",
-   "sources": [
-    "Linux man-pages: namespaces(7)",
-    "Linux man-pages: cgroups(7)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 60,
-   "slug": "npm-lockfile",
-   "category": "systems",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "npm lockfile",
-   "hook_en": "What package-lock.json actually protects you from.",
-   "hook_ru": "От чего на самом деле защищает package-lock.json.",
-   "hook_type": "question",
-   "visual": "diagram",
-   "sources": [
-    "npm docs: package-lock.json",
-    "npm docs: semver"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 61,
-   "slug": "nginx-event-model",
-   "category": "systems",
-   "level": "mid+",
-   "kind": "evergreen",
-   "title_en": "Nginx event-driven model",
-   "hook_en": "How Nginx handles thousands of connections.",
-   "hook_ru": "Как Nginx держит тысячи соединений.",
-   "hook_type": "question",
-   "visual": "diagram",
-   "sources": [
-    "NGINX blog: Inside NGINX: How We Designed for Performance & Scale"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 62,
-   "slug": "kafka-log",
-   "category": "systems",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Kafka storage",
-   "hook_en": "Kafka is an append-only log. Why that's powerful.",
-   "hook_ru": "Kafka это просто журнал. Вот почему это мощно.",
-   "hook_type": "bold_claim",
-   "visual": "diagram",
-   "sources": [
-    "Apache Kafka docs: Design"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 63,
-   "slug": "email-spf-dkim-dmarc",
-   "category": "systems",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "SPF, DKIM, DMARC",
-   "hook_en": "Why your email lands in spam.",
-   "hook_ru": "Почему ваше письмо попадает в спам.",
-   "hook_type": "question",
-   "visual": "diagram",
-   "sources": [
-    "RFC 7208 (SPF)",
-    "RFC 6376 (DKIM)",
-    "RFC 7489 (DMARC)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 64,
-   "slug": "lets-encrypt-acme",
-   "category": "systems",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Let's Encrypt and ACME",
-   "hook_en": "How you get a free certificate in seconds.",
-   "hook_ru": "Как получить бесплатный сертификат за секунды.",
-   "hook_type": "howto",
-   "visual": "timeline",
-   "sources": [
-    "RFC 8555 (ACME)",
-    "Let's Encrypt docs: How It Works"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 65,
-   "slug": "floating-point",
-   "category": "systems",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Floating point",
-   "hook_en": "Why 0.1 + 0.2 is not 0.3.",
-   "hook_ru": "Почему 0.1 + 0.2 не равно 0.3.",
-   "hook_type": "question",
-   "visual": "code",
-   "sources": [
-    "Python docs: Floating-Point Arithmetic: Issues and Limitations",
-    "IEEE 754-2019"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "code"
-   ]
-  },
-  {
-   "id": 66,
-   "slug": "utf8-strings",
-   "category": "systems",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "UTF-8",
-   "hook_en": "Why 'é' breaks your string length.",
-   "hook_ru": "Почему «é» ломает длину строки.",
-   "hook_type": "question",
-   "visual": "code",
-   "sources": [
-    "RFC 3629 (UTF-8)",
-    "The Unicode Standard"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "code"
-   ]
-  },
-  {
-   "id": 67,
-   "slug": "dns-root-servers",
-   "category": "systems",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "DNS root servers",
-   "hook_en": "13 root server names, hundreds of machines.",
-   "hook_ru": "13 имён корневых серверов, сотни машин.",
-   "hook_type": "number",
-   "visual": "diagram",
-   "sources": [
-    "root-servers.org",
-    "RFC 7720 (DNS Root Name Service Protocol)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 68,
-   "slug": "bittorrent-dht",
-   "category": "systems",
-   "level": "mid+",
-   "kind": "evergreen",
-   "title_en": "BitTorrent DHT",
-   "hook_en": "How torrents find peers without a server.",
-   "hook_ru": "Как торренты находят пиров без сервера.",
-   "hook_type": "question",
-   "visual": "diagram",
-   "sources": [
-    "BitTorrent Enhancement Proposal 5 (DHT Protocol)",
-    "Kademlia paper (Maymounkov, Mazieres, 2002)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 69,
-   "slug": "tor-onion-routing",
-   "category": "systems",
-   "level": "mid+",
-   "kind": "evergreen",
-   "title_en": "Tor onion routing",
-   "hook_en": "How Tor hides you, layer by layer.",
-   "hook_ru": "Как Tor прячет вас слой за слоем.",
-   "hook_type": "howto",
-   "visual": "diagram",
-   "sources": [
-    "Tor: The Second-Generation Onion Router (2004)",
-    "Tor specifications"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 70,
-   "slug": "stripe-idempotency",
-   "category": "systems",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Idempotency keys",
-   "hook_en": "How Stripe avoids charging you twice.",
-   "hook_ru": "Как Stripe не списывает деньги дважды.",
-   "hook_type": "question",
-   "visual": "timeline",
-   "sources": [
-    "Stripe docs: Idempotent requests",
-    "IETF draft: The Idempotency-Key HTTP Header Field"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 71,
-   "slug": "uber-h3",
-   "category": "systems",
-   "level": "mid+",
-   "kind": "evergreen",
-   "title_en": "H3 hexagonal grid",
-   "hook_en": "Why Uber maps the world in hexagons.",
-   "hook_ru": "Почему Uber делит мир на шестиугольники.",
-   "hook_type": "question",
-   "visual": "diagram",
-   "sources": [
-    "H3 documentation (h3geo.org)",
-    "Uber Engineering blog: H3"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 72,
-   "slug": "discord-messages",
-   "category": "systems",
-   "level": "mid+",
-   "kind": "evergreen",
-   "title_en": "Discord message storage",
-   "hook_en": "How Discord stores trillions of messages.",
-   "hook_ru": "Как Discord хранит триллионы сообщений.",
-   "hook_type": "number",
-   "visual": "diagram",
-   "sources": [
-    "Discord Engineering blog: How Discord Stores Trillions of Messages"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 73,
-   "slug": "vpn-tunnel-basics",
-   "category": "vpn",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "How a VPN tunnel works",
-   "hook_en": "How a VPN tunnel actually works.",
-   "hook_ru": "Как на самом деле работает VPN-туннель.",
-   "hook_type": "howto",
-   "visual": "diagram",
-   "sources": [
-    "WireGuard whitepaper",
-    "RFC 4303 (IP Encapsulating Security Payload)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 74,
-   "slug": "wireguard-vs-openvpn-ipsec",
-   "category": "vpn",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "WireGuard vs OpenVPN vs IPsec",
-   "hook_en": "WireGuard vs OpenVPN vs IPsec: the real differences.",
-   "hook_ru": "WireGuard, OpenVPN и IPsec: реальные отличия.",
-   "hook_type": "howto",
-   "visual": "split",
-   "sources": [
-    "WireGuard whitepaper",
-    "OpenVPN documentation",
-    "RFC 4301 (IPsec architecture)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram",
-    "checklist"
-   ]
-  },
-  {
-   "id": 75,
-   "slug": "wireguard-handshake",
-   "category": "vpn",
-   "level": "mid+",
-   "kind": "evergreen",
-   "title_en": "WireGuard handshake",
-   "hook_en": "WireGuard's handshake in 40 seconds.",
-   "hook_ru": "Рукопожатие WireGuard за 40 секунд.",
-   "hook_type": "howto",
-   "visual": "timeline",
-   "sources": [
-    "WireGuard whitepaper",
-    "Noise Protocol Framework specification"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 76,
-   "slug": "vpn-mtu-mss",
-   "category": "vpn",
-   "level": "mid+",
-   "kind": "evergreen",
-   "title_en": "MTU and MSS",
-   "hook_en": "Why some sites hang behind a VPN.",
-   "hook_ru": "Почему за VPN зависают некоторые сайты.",
-   "hook_type": "mystery",
-   "visual": "diagram",
-   "sources": [
-    "RFC 1191 (Path MTU Discovery)",
-    "RFC 4821 (Packetization Layer Path MTU Discovery)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 77,
-   "slug": "dns-leaks-doh-dot",
-   "category": "vpn",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "DNS leaks, DoH and DoT",
-   "hook_en": "Your VPN is on. DNS may still leak.",
-   "hook_ru": "VPN включён, а DNS может утекать.",
-   "hook_type": "mistake",
-   "visual": "diagram",
-   "sources": [
-    "RFC 7626 (DNS Privacy Considerations)",
-    "RFC 8484 (DNS over HTTPS)",
-    "RFC 7858 (DNS over TLS)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "published",
-    "en": "published"
-   },
-   "fact_sheet": "facts/dns-leaks-doh-dot.json",
-   "needs_legal_check": true,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 78,
-   "slug": "webrtc-ipv6-leaks",
-   "category": "vpn",
-   "level": "mid+",
-   "kind": "evergreen",
-   "title_en": "WebRTC and IPv6 leaks",
-   "hook_en": "How WebRTC and IPv6 can bypass your tunnel.",
-   "hook_ru": "Как WebRTC и IPv6 могут обойти туннель.",
-   "hook_type": "mystery",
-   "visual": "diagram",
-   "sources": [
-    "RFC 8828 (WebRTC IP Address Handling Requirements)",
-    "RFC 8200 (IPv6)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 79,
-   "slug": "vpn-vs-proxy",
-   "category": "vpn",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "VPN vs proxy",
-   "hook_en": "VPN vs proxy: what each one really hides.",
-   "hook_ru": "VPN и прокси: что каждый скрывает.",
-   "hook_type": "howto",
-   "visual": "split",
-   "sources": [
-    "RFC 1928 (SOCKS5)",
-    "RFC 9110 (CONNECT method)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "needs_legal_check": true,
-   "scene_types": [
-    "diagram",
-    "checklist"
-   ]
-  },
-  {
-   "id": 80,
-   "slug": "nat-for-vpn",
-   "category": "vpn",
-   "level": "mid+",
-   "kind": "evergreen",
-   "title_en": "NAT behind a VPN server",
-   "hook_en": "How one IP serves a thousand VPN clients.",
-   "hook_ru": "Как один IP обслуживает тысячу VPN-клиентов.",
-   "hook_type": "question",
-   "visual": "diagram",
-   "sources": [
-    "RFC 3022 (Traditional IP Network Address Translator)",
-    "Linux netfilter documentation"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 81,
-   "slug": "dpi-vpn-detection",
-   "category": "vpn",
-   "level": "mid+",
-   "kind": "evergreen",
-   "title_en": "DPI and VPN detection",
-   "hook_en": "How censorship systems recognize VPN traffic.",
-   "hook_ru": "Как системы цензуры узнают VPN-трафик.",
-   "hook_type": "mystery",
-   "visual": "diagram",
-   "sources": [
-    "Academic measurement papers (USENIX Security, IMC, NDSS)",
-    "RFC 8446 (TLS 1.3)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "needs_legal_check": true,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 82,
-   "slug": "requirements-nfr",
-   "category": "system-design",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Functional vs non-functional requirements",
-   "hook_en": "\"Make it fast\" isn't a requirement.",
-   "hook_ru": "«Сделайте быстро» это не требование.",
-   "hook_type": "bold_claim",
-   "visual": "checklist",
-   "sources": [
-    "Google SRE Book: Service Level Objectives",
-    "AWS Well-Architected Framework: Reliability Pillar"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "checklist"
-   ]
-  },
-  {
-   "id": 83,
-   "slug": "sli-slo-sla-nines",
-   "category": "system-design",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "SLI, SLO, SLA and the nines",
-   "hook_en": "99.9% uptime still allows almost 9 hours down.",
-   "hook_ru": "99,9% аптайма это почти 9 часов простоя.",
-   "hook_type": "number",
-   "visual": "diagram",
-   "sources": [
-    "Google SRE Book: Service Level Objectives",
-    "Google SRE Workbook: Implementing SLOs"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "published",
-    "en": "todo"
-   },
-   "fact_sheet": "facts/sli-slo-sla-nines.json",
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 84,
-   "slug": "load-balancer-l4-l7",
-   "category": "system-design",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "L4 vs L7 load balancers",
-   "hook_en": "L4 or L7 balancer? One can't see URLs.",
-   "hook_ru": "L4 или L7 балансировщик? Один не видит URL.",
-   "hook_type": "question",
-   "visual": "diagram",
-   "sources": [
-    "AWS Elastic Load Balancing docs: Network vs Application Load Balancer",
-    "NGINX docs: HTTP Load Balancing"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 85,
-   "slug": "rate-limiting",
-   "category": "system-design",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Rate limiting and token bucket",
-   "hook_en": "How APIs decide you've sent too many requests.",
-   "hook_ru": "Как API понимает, что запросов слишком много?",
-   "hook_type": "question",
-   "visual": "diagram",
-   "sources": [
-    "Stripe blog: Scaling your API with rate limiters",
-    "Azure Architecture Center: Rate Limiting pattern",
-    "Cloudflare docs: Rate limiting rules"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 86,
-   "slug": "pagination-offset-cursor",
-   "category": "system-design",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Offset vs cursor pagination",
-   "hook_en": "Why page 10,000 of your API is slow.",
-   "hook_ru": "Почему 10 000-я страница API тормозит?",
-   "hook_type": "question",
-   "visual": "code",
-   "sources": [
-    "PostgreSQL docs: Queries, LIMIT and OFFSET",
-    "Stripe API docs: Pagination"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "code"
-   ]
-  },
-  {
-   "id": 87,
-   "slug": "caching-strategies",
-   "category": "system-design",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Cache-aside, write-through, write-behind",
-   "hook_en": "Cache-aside, write-through, write-behind: which can lose data?",
-   "hook_ru": "Cache-aside, write-through, write-behind: что теряет данные?",
-   "hook_type": "question",
-   "visual": "split",
-   "sources": [
-    "AWS Whitepaper: Database Caching Strategies Using Redis",
-    "Azure Architecture Center: Cache-Aside pattern"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram",
-    "checklist"
-   ]
-  },
-  {
-   "id": 88,
-   "slug": "cache-invalidation",
-   "category": "system-design",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Cache invalidation and staleness",
-   "hook_en": "Your cache serves stale data. For how long?",
-   "hook_ru": "Кэш отдаёт устаревшие данные. Как долго?",
-   "hook_type": "question",
-   "visual": "timeline",
-   "sources": [
-    "RFC 9111 (HTTP Caching)",
-    "AWS Whitepaper: Database Caching Strategies Using Redis"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 89,
-   "slug": "cdn-basics",
-   "category": "system-design",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "How a CDN works",
-   "hook_en": "How a CDN serves your site from nearby.",
-   "hook_ru": "Как CDN отдаёт сайт с ближайшего сервера.",
-   "hook_type": "howto",
-   "visual": "diagram",
-   "sources": [
-    "Cloudflare docs: Cache",
-    "AWS CloudFront Developer Guide",
-    "RFC 9111 (HTTP Caching)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 90,
-   "slug": "sharding-shard-key",
-   "category": "system-design",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Sharding and the shard key",
-   "hook_en": "Pick the wrong shard key, overload one server.",
-   "hook_ru": "Неверный ключ шардинга перегружает один сервер.",
-   "hook_type": "bold_claim",
-   "visual": "diagram",
-   "sources": [
-    "MongoDB docs: Shard Keys",
-    "Vitess documentation",
-    "Citus documentation"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 91,
-   "slug": "hot-partitions",
-   "category": "system-design",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Hot partitions and hot keys",
-   "hook_en": "One celebrity can melt one database shard.",
-   "hook_ru": "Одна знаменитость может перегрузить один шард.",
-   "hook_type": "mystery",
-   "visual": "diagram",
-   "sources": [
-    "Amazon DynamoDB Developer Guide: Designing partition keys to distribute your workload"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 92,
-   "slug": "consistent-hashing",
-   "category": "system-design",
-   "level": "mid+",
-   "kind": "evergreen",
-   "title_en": "Consistent hashing",
-   "hook_en": "Add a server. Only a few keys move.",
-   "hook_ru": "Добавили сервер, а переехала лишь часть ключей.",
-   "hook_type": "mystery",
-   "visual": "diagram",
-   "sources": [
-    "Karger et al., Consistent Hashing and Random Trees (STOC 1997)",
-    "Amazon Dynamo paper (SOSP 2007)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 93,
-   "slug": "replication-lag",
-   "category": "system-design",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Replication lag",
-   "hook_en": "Saved your profile. Reload shows the old one.",
-   "hook_ru": "Сохранил профиль. После обновления снова старый.",
-   "hook_type": "mystery",
-   "visual": "timeline",
-   "sources": [
-    "PostgreSQL docs: High Availability, Load Balancing, and Replication",
-    "Amazon RDS docs: Working with read replicas"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 94,
-   "slug": "eventual-consistency",
-   "category": "system-design",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Eventual consistency",
-   "hook_en": "Eventual consistency: saved doesn't mean visible.",
-   "hook_ru": "Eventual consistency: сохранено не значит видно.",
-   "hook_type": "mystery",
-   "visual": "timeline",
-   "sources": [
-    "Vogels, Eventually Consistent (ACM Queue 2008)",
-    "Amazon DynamoDB Developer Guide: Read consistency"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 95,
-   "slug": "quorum-rw",
-   "category": "system-design",
-   "level": "mid+",
-   "kind": "evergreen",
-   "title_en": "Quorum reads and writes",
-   "hook_en": "R + W > N: the formula behind distributed reads.",
-   "hook_ru": "R + W > N: формула согласованных чтений.",
-   "hook_type": "number",
-   "visual": "diagram",
-   "sources": [
-    "Amazon Dynamo paper (SOSP 2007)",
-    "Apache Cassandra docs: Dynamo and consistency levels"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 96,
-   "slug": "cap-theorem",
-   "category": "system-design",
-   "level": "mid+",
-   "kind": "evergreen",
-   "title_en": "CAP theorem",
-   "hook_en": "CAP theorem: why \"pick two\" misleads.",
-   "hook_ru": "CAP-теорема: почему «выбери два» вводит в заблуждение.",
-   "hook_type": "myth_bust",
-   "visual": "diagram",
-   "sources": [
-    "Gilbert and Lynch, Brewer's conjecture and the feasibility of consistent, available, partition-tolerant web services (2002)",
-    "Brewer, CAP Twelve Years Later (IEEE Computer, 2012)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 97,
-   "slug": "optimistic-locking",
-   "category": "system-design",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Optimistic vs pessimistic locking",
-   "hook_en": "Two users edit one record. Who wins?",
-   "hook_ru": "Двое правят одну запись. Кто победит?",
-   "hook_type": "question",
-   "visual": "code",
-   "sources": [
-    "PostgreSQL docs: Transaction Isolation",
-    "PostgreSQL docs: Explicit Locking"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "code"
-   ]
-  },
-  {
-   "id": 98,
-   "slug": "double-booking-seat",
-   "category": "system-design",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Preventing double booking",
-   "hook_en": "Two people bought the same seat. How?",
-   "hook_ru": "Двое купили одно и то же место. Как?",
-   "hook_type": "mystery",
-   "visual": "timeline",
-   "sources": [
-    "PostgreSQL docs: Explicit Locking (row-level locks, SKIP LOCKED)",
-    "PostgreSQL docs: Transaction Isolation"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 99,
-   "slug": "distributed-lock-fencing",
-   "category": "system-design",
-   "level": "mid+",
-   "kind": "evergreen",
-   "title_en": "Distributed locks and fencing tokens",
-   "hook_en": "Why a distributed lock needs a fencing token.",
-   "hook_ru": "Зачем распределённой блокировке fencing token?",
-   "hook_type": "question",
-   "visual": "timeline",
-   "sources": [
-    "Redis docs: Distributed Locks with Redis",
-    "Burrows, The Chubby lock service (OSDI 2006)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 100,
-   "slug": "retries-backoff-jitter",
-   "category": "system-design",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Retries, backoff and jitter",
-   "hook_en": "Retries can kill a struggling server. Jitter helps.",
-   "hook_ru": "Повторы могут добить сервер. Джиттер спасает.",
-   "hook_type": "bold_claim",
-   "visual": "timeline",
-   "sources": [
-    "AWS Builders' Library: Timeouts, retries and backoff with jitter",
-    "AWS Architecture Blog: Exponential Backoff And Jitter"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 101,
-   "slug": "circuit-breaker",
-   "category": "system-design",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Circuit breaker",
-   "hook_en": "When a service is down, stop calling it.",
-   "hook_ru": "Сервис упал? Хватит слать ему запросы.",
-   "hook_type": "howto",
-   "visual": "diagram",
-   "sources": [
-    "Azure Architecture Center: Circuit Breaker pattern"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 102,
-   "slug": "cascading-failure",
-   "category": "system-design",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Cascading failures",
-   "hook_en": "How one slow service takes down ten others.",
-   "hook_ru": "Как один медленный сервис роняет десять других.",
-   "hook_type": "mystery",
-   "visual": "diagram",
-   "sources": [
-    "Google SRE Book: Addressing Cascading Failures",
-    "AWS Builders' Library: Timeouts, retries and backoff with jitter"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 103,
-   "slug": "bulkhead-load-shedding",
-   "category": "system-design",
-   "level": "mid+",
-   "kind": "evergreen",
-   "title_en": "Bulkheads and load shedding",
-   "hook_en": "Bulkheads and load shedding: surviving overload.",
-   "hook_ru": "Bulkhead и load shedding: как пережить перегрузку.",
-   "hook_type": "howto",
-   "visual": "split",
-   "sources": [
-    "Azure Architecture Center: Bulkhead pattern",
-    "AWS Builders' Library: Using load shedding to avoid overload"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram",
-    "checklist"
-   ]
-  },
-  {
-   "id": 104,
-   "slug": "saga-pattern",
-   "category": "system-design",
-   "level": "mid+",
-   "kind": "evergreen",
-   "title_en": "Saga pattern",
-   "hook_en": "No distributed transactions? Use a saga.",
-   "hook_ru": "Нет распределённых транзакций? Нужна сага.",
-   "hook_type": "howto",
-   "visual": "timeline",
-   "sources": [
-    "Azure Architecture Center: Saga pattern",
-    "Garcia-Molina and Salem, Sagas (SIGMOD 1987)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 105,
-   "slug": "outbox-pattern",
-   "category": "system-design",
-   "level": "mid+",
-   "kind": "evergreen",
-   "title_en": "Transactional outbox",
-   "hook_en": "Update the DB and send an event, safely.",
-   "hook_ru": "Записать в базу и отправить событие. Надёжно?",
-   "hook_type": "mystery",
-   "visual": "timeline",
-   "sources": [
-    "AWS Prescriptive Guidance: Transactional outbox pattern"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 106,
-   "slug": "delivery-semantics",
-   "category": "system-design",
-   "level": "mid+",
-   "kind": "evergreen",
-   "title_en": "Queue delivery semantics",
-   "hook_en": "Exactly-once delivery: what queues really promise.",
-   "hook_ru": "Exactly-once: что на самом деле обещают очереди.",
-   "hook_type": "myth_bust",
-   "visual": "timeline",
-   "sources": [
-    "Apache Kafka docs: Message Delivery Semantics",
-    "Amazon SQS Developer Guide: Standard and FIFO queues"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 107,
-   "slug": "dead-letter-queue",
-   "category": "system-design",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Dead-letter queues",
-   "hook_en": "One poison message blocks your queue. Now what?",
-   "hook_ru": "Одно «ядовитое» сообщение блокирует очередь. Что делать?",
-   "hook_type": "mystery",
-   "visual": "diagram",
-   "sources": [
-    "Amazon SQS Developer Guide: Dead-letter queues",
-    "Azure Architecture Center: Queue-Based Load Leveling pattern"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 108,
-   "slug": "pubsub-vs-queue",
-   "category": "system-design",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Queue vs pub/sub",
-   "hook_en": "Queue or pub/sub? One consumer or many.",
-   "hook_ru": "Очередь или pub/sub? Один получатель или много.",
-   "hook_type": "question",
-   "visual": "diagram",
-   "sources": [
-    "Google Cloud Pub/Sub docs: Overview",
-    "Amazon SNS and SQS fanout documentation"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 109,
-   "slug": "competing-consumers",
-   "category": "system-design",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Background workers and competing consumers",
-   "hook_en": "How background workers share one queue.",
-   "hook_ru": "Как фоновые воркеры делят одну очередь.",
-   "hook_type": "howto",
-   "visual": "diagram",
-   "sources": [
-    "Azure Architecture Center: Competing Consumers pattern",
-    "Amazon SQS Developer Guide: Visibility timeout"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 110,
-   "slug": "health-probes",
-   "category": "system-design",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Liveness vs readiness probes",
-   "hook_en": "A wrong probe can restart healthy apps.",
-   "hook_ru": "Неверная liveness-проба может перезапускать здоровое приложение.",
-   "hook_type": "mistake",
-   "visual": "timeline",
-   "sources": [
-    "Kubernetes docs: Liveness, Readiness and Startup Probes",
-    "AWS ELB docs: Health checks for target groups"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 111,
-   "slug": "deploy-strategies",
-   "category": "system-design",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Blue-green vs canary deployments",
-   "hook_en": "Blue-green vs canary: deploying without downtime.",
-   "hook_ru": "Blue-green и canary: деплой без простоя.",
-   "hook_type": "howto",
-   "visual": "split",
-   "sources": [
-    "AWS Whitepaper: Blue/Green Deployments on AWS",
-    "Kubernetes docs: Deployments (rolling update)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram",
-    "checklist"
-   ]
-  },
-  {
-   "id": 112,
-   "slug": "presigned-upload",
-   "category": "system-design",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Presigned URLs and multipart upload",
-   "hook_en": "Upload huge files without touching your server.",
-   "hook_ru": "Загрузка огромных файлов без участия вашего сервера.",
-   "hook_type": "howto",
-   "visual": "timeline",
-   "sources": [
-    "Amazon S3 User Guide: Sharing objects with presigned URLs",
-    "Amazon S3 User Guide: Uploading and copying objects using multipart upload"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 113,
-   "slug": "inverted-index",
-   "category": "system-design",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Inverted index and search",
-   "hook_en": "How search finds words in millions of documents.",
-   "hook_ru": "Как поиск находит слово среди миллионов документов.",
-   "hook_type": "question",
-   "visual": "diagram",
-   "sources": [
-    "Elasticsearch Guide: Text analysis and indexing",
-    "Apache Lucene documentation: Index file formats"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 114,
-   "slug": "geo-search",
-   "category": "system-design",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Geosearch and geohash",
-   "hook_en": "Find the nearest point without scanning every row.",
-   "hook_ru": "Ближайшая точка без перебора всей таблицы.",
-   "hook_type": "howto",
-   "visual": "diagram",
-   "sources": [
-    "Redis docs: GEOSEARCH",
-    "Elasticsearch Guide: geo-distance query",
-    "PostGIS documentation"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 115,
-   "slug": "bloom-filter",
-   "category": "system-design",
-   "level": "mid+",
-   "kind": "evergreen",
-   "title_en": "Bloom filter",
-   "hook_en": "The data structure that says \"definitely not here\".",
-   "hook_ru": "Структура данных, которая говорит «точно нет».",
-   "hook_type": "mystery",
-   "visual": "diagram",
-   "sources": [
-    "Bloom, Space/time trade-offs in hash coding with allowable errors (CACM 1970)",
-    "Apache Cassandra docs: Bloom filters"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 116,
-   "slug": "unique-ids",
-   "category": "system-design",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Distributed unique IDs",
-   "hook_en": "How servers make unique IDs without talking.",
-   "hook_ru": "Как серверы создают уникальные ID, не общаясь.",
-   "hook_type": "question",
-   "visual": "diagram",
-   "sources": [
-    "RFC 9562 (UUIDs)",
-    "Discord Developer Docs: Snowflakes"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 117,
-   "slug": "clock-skew-lww",
-   "category": "system-design",
-   "level": "mid+",
-   "kind": "evergreen",
-   "title_en": "Clock skew and last-write-wins",
-   "hook_en": "Why last-write-wins can lose your data.",
-   "hook_ru": "Почему last-write-wins может терять ваши данные.",
-   "hook_type": "bold_claim",
-   "visual": "timeline",
-   "sources": [
-    "Apache Cassandra docs: write timestamps and conflict resolution",
-    "RFC 5905 (Network Time Protocol)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 118,
-   "slug": "push-notifications",
-   "category": "system-design",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Push notifications: APNs and FCM",
-   "hook_en": "How a push notification finds your phone.",
-   "hook_ru": "Как push-уведомление находит ваш телефон.",
-   "hook_type": "question",
-   "visual": "diagram",
-   "sources": [
-    "Apple Developer Documentation: Setting up a remote notification server (APNs)",
-    "Firebase docs: FCM architectural overview"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 119,
-   "slug": "webhook-reliability",
-   "category": "system-design",
-   "level": "mid",
-   "kind": "evergreen",
-   "title_en": "Reliable webhooks",
-   "hook_en": "Webhooks can arrive twice. Is your handler ready?",
-   "hook_ru": "Вебхуки могут прийти дважды. Обработчик готов?",
-   "hook_type": "mistake",
-   "visual": "timeline",
-   "sources": [
-    "Stripe docs: Webhooks (best practices)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 120,
-   "slug": "cqrs",
-   "category": "system-design",
-   "level": "mid+",
-   "kind": "evergreen",
-   "title_en": "CQRS",
-   "hook_en": "CQRS: split reads from writes.",
-   "hook_ru": "CQRS: разделяем чтение и запись.",
-   "hook_type": "howto",
-   "visual": "split",
-   "sources": [
-    "Azure Architecture Center: CQRS pattern"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram",
-    "checklist"
-   ]
-  },
-  {
-   "id": 121,
-   "slug": "littles-law",
-   "category": "system-design",
-   "level": "mid+",
-   "kind": "evergreen",
-   "title_en": "Little's Law",
-   "hook_en": "Little's Law: the formula behind every queue.",
-   "hook_ru": "Закон Литтла: формула любой очереди.",
-   "hook_type": "bold_claim",
-   "visual": "diagram",
-   "sources": [
-    "Little, A Proof for the Queuing Formula L = lambda W (Operations Research, 1961)"
-   ],
-   "sources_status": "unverified",
-   "status": {
-    "ru": "todo",
-    "en": "todo"
-   },
-   "fact_sheet": null,
-   "scene_types": [
-    "diagram"
-   ]
-  },
-  {
-   "id": 122,
-   "slug": "cache-stampede",
-   "title_en": "Cache stampede",
-   "hook_en": "Why does one cache key kill your database?",
-   "hook_ru": "Почему один ключ кэша убивает базу?",
-   "hook_type": "question",
-   "visual": "split",
-   "scene_types": [
-    "diagram",
-    "code",
-    "checklist"
-   ],
-   "status": {
-    "ru": "rendered",
-    "en": "todo"
-   },
-   "category": "system-design",
-   "level": "mid",
-   "kind": "evergreen",
-   "sources": [],
-   "sources_status": "legacy",
-   "fact_sheet": null,
-   "legacy": true
-  },
-  {
-   "id": 123,
-   "slug": "six-steps-system-design",
-   "title_en": "Six steps of system design",
-   "hook_en": "Blank whiteboard. Where do you start?",
-   "hook_ru": "Пустая доска на собеседовании. С чего начать?",
-   "hook_type": "question",
-   "visual": "split",
-   "scene_types": [
-    "diagram",
-    "checklist"
-   ],
-   "status": {
-    "ru": "rendered",
-    "en": "todo"
-   },
-   "category": "system-design",
-   "level": "mid",
-   "kind": "evergreen",
-   "sources": [],
-   "sources_status": "legacy",
-   "fact_sheet": null,
-   "legacy": true
-  }
- ]
+  "_note": "Standalone episodes: no shared storyline, any order. hook_* are hypotheses (max 8 spoken words), not facts. sources are references to locate and verify, never trusted without reading the primary text. Do not state numbers from hooks (e.g. 43-second) until verified in the fact sheet. Status is tracked per language: each language is produced, scheduled and measured separately. Fact sheets are shared between languages (facts do not depend on language); scripts and visuals are written natively per language.",
+  "version": 1,
+  "topics": [
+    {
+      "id": 1,
+      "slug": "facebook-bgp-outage",
+      "category": "postmortems",
+      "level": "mid+",
+      "kind": "incident",
+      "title_en": "Facebook's BGP outage",
+      "hook_en": "One command took Facebook off the internet.",
+      "hook_ru": "Одна команда убрала Facebook из интернета.",
+      "hook_type": "bold_claim",
+      "visual": "timeline",
+      "sources": [
+        "Meta Engineering: Update about the October 4th outage",
+        "RFC 4271 (BGP-4)"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "published",
+        "en": "rendered"
+      },
+      "fact_sheet": "facts/facebook-bgp-outage.json",
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 2,
+      "slug": "cloudflare-regex-outage",
+      "category": "postmortems",
+      "level": "mid",
+      "kind": "incident",
+      "title_en": "Cloudflare's regex outage",
+      "hook_en": "One regex took Cloudflare down. Could yours?",
+      "hook_ru": "Одно регулярное выражение положило Cloudflare. А ваше?",
+      "hook_type": "question",
+      "visual": "code",
+      "sources": [
+        "Cloudflare blog: Details of the Cloudflare outage on July 2, 2019",
+        "OWASP: Regular expression Denial of Service (ReDoS)"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "code"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 3,
+      "slug": "s3-typo-outage",
+      "category": "postmortems",
+      "level": "mid",
+      "kind": "incident",
+      "title_en": "AWS S3 outage from a mistyped command",
+      "hook_en": "One mistyped command took down S3.",
+      "hook_ru": "Одна опечатка в команде уронила S3.",
+      "hook_type": "bold_claim",
+      "visual": "timeline",
+      "sources": [
+        "AWS: Summary of the Amazon S3 Service Disruption in the Northern Virginia (US-EAST-1) Region"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 4,
+      "slug": "gitlab-db-deletion",
+      "category": "postmortems",
+      "level": "mid",
+      "kind": "incident",
+      "title_en": "GitLab deleted its production database",
+      "hook_en": "GitLab deleted its database. Backups didn't help.",
+      "hook_ru": "GitLab удалил боевую базу. Бэкапы не спасли.",
+      "hook_type": "story",
+      "visual": "timeline",
+      "sources": [
+        "GitLab: Postmortem of database outage of January 31"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 5,
+      "slug": "log4shell",
+      "category": "postmortems",
+      "level": "mid",
+      "kind": "incident",
+      "title_en": "Log4Shell",
+      "hook_en": "A log line could run an attacker's code.",
+      "hook_ru": "Строка в логе могла запустить код хакера.",
+      "hook_type": "mystery",
+      "visual": "code",
+      "sources": [
+        "Apache Log4j security page",
+        "NVD: CVE-2021-44228"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "code"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 6,
+      "slug": "heartbleed",
+      "category": "postmortems",
+      "level": "mid+",
+      "kind": "incident",
+      "title_en": "Heartbleed",
+      "hook_en": "How a missing length check leaked server memory.",
+      "hook_ru": "Как забытая проверка длины сливала память сервера.",
+      "hook_type": "mystery",
+      "visual": "diagram",
+      "sources": [
+        "OpenSSL security advisory (April 2014)",
+        "NVD: CVE-2014-0160",
+        "RFC 6520 (TLS Heartbeat)"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 7,
+      "slug": "left-pad",
+      "category": "postmortems",
+      "level": "mid",
+      "kind": "incident",
+      "title_en": "The left-pad incident",
+      "hook_en": "One tiny npm package broke thousands of builds.",
+      "hook_ru": "Крошечный npm-пакет сломал тысячи сборок.",
+      "hook_type": "bold_claim",
+      "visual": "timeline",
+      "sources": [
+        "npm blog: kik, left-pad, and npm (2016)"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 8,
+      "slug": "knight-capital",
+      "category": "postmortems",
+      "level": "mid+",
+      "kind": "incident",
+      "title_en": "Knight Capital",
+      "hook_en": "One server ran old code. A firm collapsed.",
+      "hook_ru": "Один сервер со старым кодом. Фирма рухнула.",
+      "hook_type": "story",
+      "visual": "timeline",
+      "sources": [
+        "SEC Order: In the Matter of Knight Capital Americas LLC (2013)"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 9,
+      "slug": "github-2018-partition",
+      "category": "postmortems",
+      "level": "mid+",
+      "kind": "incident",
+      "title_en": "GitHub's 2018 outage",
+      "hook_en": "A 43-second blip hurt GitHub for a day.",
+      "hook_ru": "43 секунды сбоя, сутки проблем у GitHub.",
+      "hook_type": "number",
+      "visual": "timeline",
+      "sources": [
+        "GitHub Engineering: October 21 post-incident analysis"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 10,
+      "slug": "index-not-used",
+      "category": "databases",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "Why your index isn't used",
+      "hook_en": "Your index exists. Postgres ignores it. Why?",
+      "hook_ru": "Индекс есть, а Postgres его игнорирует. Почему?",
+      "hook_type": "question",
+      "visual": "code",
+      "sources": [
+        "PostgreSQL docs: Indexes",
+        "PostgreSQL docs: Using EXPLAIN"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "published",
+        "en": "published"
+      },
+      "fact_sheet": "facts/index-not-used.json",
+      "scene_types": [
+        "code"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 11,
+      "slug": "alter-table-lock",
+      "category": "databases",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "ALTER TABLE locks",
+      "hook_en": "One ALTER TABLE can freeze your whole app.",
+      "hook_ru": "Один ALTER TABLE может заморозить всё приложение.",
+      "hook_type": "bold_claim",
+      "visual": "timeline",
+      "sources": [
+        "PostgreSQL docs: ALTER TABLE",
+        "PostgreSQL docs: Explicit Locking"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 12,
+      "slug": "connection-pooling",
+      "category": "databases",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "Connection pooling",
+      "hook_en": "More database connections can make you slower.",
+      "hook_ru": "Больше соединений с базой, а работает медленнее.",
+      "hook_type": "myth_bust",
+      "visual": "diagram",
+      "sources": [
+        "PostgreSQL docs: Connections and Authentication",
+        "PgBouncer docs"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 13,
+      "slug": "isolation-levels",
+      "category": "databases",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "Isolation levels",
+      "hook_en": "Two correct transactions. One wrong result.",
+      "hook_ru": "Две верные транзакции. Один неверный результат.",
+      "hook_type": "mystery",
+      "visual": "timeline",
+      "sources": [
+        "PostgreSQL docs: Transaction Isolation"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 14,
+      "slug": "deadlocks",
+      "category": "databases",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "Deadlocks",
+      "hook_en": "Two queries wait for each other. Forever.",
+      "hook_ru": "Два запроса ждут друг друга вечно.",
+      "hook_type": "question",
+      "visual": "timeline",
+      "sources": [
+        "PostgreSQL docs: Explicit Locking (Deadlocks)"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 15,
+      "slug": "uuid-v7",
+      "category": "databases",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "UUIDv7",
+      "hook_en": "Why random UUIDs can slow your database down.",
+      "hook_ru": "Почему случайные UUID могут тормозить вашу базу.",
+      "hook_type": "bold_claim",
+      "visual": "diagram",
+      "sources": [
+        "RFC 9562 (UUIDs)",
+        "PostgreSQL docs: Index types (B-tree)"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 16,
+      "slug": "redis-eviction",
+      "category": "databases",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "Redis eviction",
+      "hook_en": "Redis is full. What does it delete first?",
+      "hook_ru": "Redis заполнен. Что он удалит первым?",
+      "hook_type": "question",
+      "visual": "diagram",
+      "sources": [
+        "Redis docs: Key eviction"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 17,
+      "slug": "redis-persistence",
+      "category": "databases",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "Redis persistence",
+      "hook_en": "Redis restarted. How much data did you lose?",
+      "hook_ru": "Redis перезапустился. Сколько данных потеряно?",
+      "hook_type": "question",
+      "visual": "diagram",
+      "sources": [
+        "Redis docs: Persistence"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 18,
+      "slug": "postgres-vacuum",
+      "category": "databases",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "Postgres VACUUM and MVCC",
+      "hook_en": "Why Postgres never really deletes your rows.",
+      "hook_ru": "Почему Postgres не удаляет строки сразу.",
+      "hook_type": "mystery",
+      "visual": "diagram",
+      "sources": [
+        "PostgreSQL docs: Concurrency Control (MVCC)",
+        "PostgreSQL docs: Routine Vacuuming"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 19,
+      "slug": "write-ahead-log",
+      "category": "databases",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "Write-ahead log",
+      "hook_en": "How a database survives a power cut.",
+      "hook_ru": "Как база данных переживает отключение питания.",
+      "hook_type": "question",
+      "visual": "timeline",
+      "sources": [
+        "PostgreSQL docs: Write-Ahead Logging",
+        "SQLite docs: Atomic Commit"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 21,
+      "slug": "url-journey",
+      "category": "networking",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "What happens when you type a URL",
+      "hook_en": "You type a URL. What happens next?",
+      "hook_ru": "Ты вводишь URL. Что происходит дальше?",
+      "hook_type": "howto",
+      "visual": "timeline",
+      "sources": [
+        "RFC 1034 (DNS)",
+        "RFC 9293 (TCP)",
+        "RFC 8446 (TLS 1.3)",
+        "RFC 9110 (HTTP semantics)"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 22,
+      "slug": "http-caching",
+      "category": "networking",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "HTTP caching",
+      "hook_en": "Cache-Control: the header that saves your servers.",
+      "hook_ru": "Cache-Control: заголовок, который спасает серверы.",
+      "hook_type": "bold_claim",
+      "visual": "diagram",
+      "sources": [
+        "RFC 9111 (HTTP Caching)",
+        "RFC 5861 (stale-while-revalidate)"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "rendered",
+        "en": "todo"
+      },
+      "fact_sheet": "facts/http-caching.json",
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 23,
+      "slug": "cors-preflight",
+      "category": "networking",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "CORS and preflight",
+      "hook_en": "That CORS error comes from your browser.",
+      "hook_ru": "CORS не ошибка сервера. Вас остановил браузер.",
+      "hook_type": "myth_bust",
+      "visual": "timeline",
+      "sources": [
+        "WHATWG Fetch Standard (CORS protocol)",
+        "MDN: CORS"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 25,
+      "slug": "dns-ttl",
+      "category": "networking",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "DNS TTL",
+      "hook_en": "DNS \"propagation\" is a myth.",
+      "hook_ru": "«Распространения DNS» не существует. Вот что происходит.",
+      "hook_type": "myth_bust",
+      "visual": "timeline",
+      "sources": [
+        "RFC 1034",
+        "RFC 2181"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 28,
+      "slug": "syn-flood",
+      "category": "networking",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "SYN flood",
+      "hook_en": "How a handshake becomes an attack.",
+      "hook_ru": "Как рукопожатие превращается в атаку.",
+      "hook_type": "mystery",
+      "visual": "timeline",
+      "sources": [
+        "RFC 9293 (TCP)",
+        "RFC 4987 (TCP SYN Flooding Attacks and Common Mitigations)"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 30,
+      "slug": "nat-traversal-webrtc",
+      "category": "networking",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "STUN, TURN and ICE",
+      "hook_en": "How a video call crosses your router.",
+      "hook_ru": "Как видеозвонок проходит через ваш роутер.",
+      "hook_type": "question",
+      "visual": "diagram",
+      "sources": [
+        "RFC 8489 (STUN)",
+        "RFC 8656 (TURN)",
+        "RFC 8445 (ICE)"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 32,
+      "slug": "anycast",
+      "category": "networking",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "Anycast",
+      "hook_en": "One IP address, hundreds of servers. How?",
+      "hook_ru": "Один IP-адрес, сотни серверов. Как?",
+      "hook_type": "question",
+      "visual": "diagram",
+      "sources": [
+        "RFC 4786 (Operation of Anycast Services)",
+        "Cloudflare docs: Anycast"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 33,
+      "slug": "critical-rendering-path",
+      "category": "browser",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "Critical rendering path",
+      "hook_en": "From HTML to pixels: what your browser does.",
+      "hook_ru": "От HTML до пикселей: что делает браузер.",
+      "hook_type": "howto",
+      "visual": "timeline",
+      "sources": [
+        "web.dev: Critical rendering path",
+        "HTML Standard"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "published",
+        "en": "published"
+      },
+      "fact_sheet": "facts/critical-rendering-path.json",
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 34,
+      "slug": "event-loop",
+      "category": "browser",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "Event loop",
+      "hook_en": "Why setTimeout(0) isn't instant.",
+      "hook_ru": "Почему setTimeout(0) не мгновенный.",
+      "hook_type": "question",
+      "visual": "timeline",
+      "sources": [
+        "HTML Standard: Event loops",
+        "MDN: The event loop"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 36,
+      "slug": "layout-thrashing",
+      "category": "browser",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "Layout thrashing",
+      "hook_en": "This innocent loop makes your page crawl.",
+      "hook_ru": "Этот безобидный цикл тормозит всю страницу.",
+      "hook_type": "mystery",
+      "visual": "code",
+      "sources": [
+        "web.dev: Avoid large, complex layouts and layout thrashing"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "code"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 37,
+      "slug": "v8-garbage-collection",
+      "category": "browser",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "V8 garbage collection",
+      "hook_en": "Why your single-page app leaks memory.",
+      "hook_ru": "Почему ваше SPA течёт по памяти.",
+      "hook_type": "question",
+      "visual": "diagram",
+      "sources": [
+        "v8.dev: Trash talk (Orinoco garbage collector)",
+        "MDN: Memory management"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 40,
+      "slug": "xss-csp",
+      "category": "security",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "XSS and CSP",
+      "hook_en": "How one comment field can hack every visitor.",
+      "hook_ru": "Как одно поле комментария может взломать всех посетителей.",
+      "hook_type": "bold_claim",
+      "visual": "browser",
+      "sources": [
+        "OWASP: XSS Prevention Cheat Sheet",
+        "W3C Content Security Policy",
+        "MDN: CSP"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "browser"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 41,
+      "slug": "csrf-samesite",
+      "category": "security",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "CSRF and SameSite",
+      "hook_en": "A site you never opened acted as you.",
+      "hook_ru": "Незнакомый сайт отправил запрос от вашего имени.",
+      "hook_type": "mystery",
+      "visual": "timeline",
+      "sources": [
+        "OWASP: CSRF Prevention Cheat Sheet",
+        "MDN: SameSite cookies"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "published",
+        "en": "published"
+      },
+      "fact_sheet": "facts/csrf-samesite.json",
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 42,
+      "slug": "sql-injection",
+      "category": "security",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "SQL injection",
+      "hook_en": "' OR 1=1 --  Why this string still breaks apps.",
+      "hook_ru": "' OR 1=1 --  почему эта строка ломает приложения.",
+      "hook_type": "mystery",
+      "visual": "browser",
+      "sources": [
+        "OWASP: SQL Injection Prevention Cheat Sheet"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "browser"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 43,
+      "slug": "jwt-pitfalls",
+      "category": "security",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "JWT pitfalls",
+      "hook_en": "alg: none: the JWT bug that skips signatures.",
+      "hook_ru": "alg: none, баг JWT, который пропускает подпись.",
+      "hook_type": "mystery",
+      "visual": "code",
+      "sources": [
+        "RFC 7519 (JWT)",
+        "RFC 8725 (JWT Best Current Practices)"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "code"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 45,
+      "slug": "oauth-pkce",
+      "category": "security",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "OAuth and PKCE",
+      "hook_en": "How \"Login with Google\" works, and gets stolen.",
+      "hook_ru": "«Войти через Google»: как работает и как крадут.",
+      "hook_type": "howto",
+      "visual": "timeline",
+      "sources": [
+        "RFC 6749 (OAuth 2.0)",
+        "RFC 7636 (PKCE)",
+        "OAuth 2.0 Security Best Current Practice (IETF)"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 46,
+      "slug": "idor-access-control",
+      "category": "security",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "Broken access control",
+      "hook_en": "One number in the URL leaks someone's data.",
+      "hook_ru": "Одна цифра в URL открывает чужие данные.",
+      "hook_type": "bold_claim",
+      "visual": "browser",
+      "sources": [
+        "OWASP Top 10: Broken Access Control",
+        "OWASP: IDOR Prevention Cheat Sheet"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "browser"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 48,
+      "slug": "hash-encrypt-encode",
+      "category": "security",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "Hashing vs encryption vs encoding",
+      "hook_en": "Base64 is not encryption.",
+      "hook_ru": "Base64 не шифрование.",
+      "hook_type": "myth_bust",
+      "visual": "split",
+      "sources": [
+        "RFC 4648 (Base16, Base32, Base64)",
+        "NIST FIPS 180-4 (SHA)",
+        "NIST FIPS 197 (AES)"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram",
+        "checklist"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 49,
+      "slug": "timing-attacks",
+      "category": "security",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "Timing attacks",
+      "hook_en": "Why comparing secrets with == is dangerous.",
+      "hook_ru": "Почему сравнивать секреты через == опасно.",
+      "hook_type": "mystery",
+      "visual": "code",
+      "sources": [
+        "Python docs: hmac.compare_digest",
+        "OWASP: Cryptographic Storage Cheat Sheet"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "code"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 50,
+      "slug": "secrets-in-git",
+      "category": "security",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "Secrets in git history",
+      "hook_en": "Deleted the API key? It's still in git.",
+      "hook_ru": "Вы удалили API-ключ. Он всё ещё в git.",
+      "hook_type": "mistake",
+      "visual": "terminal",
+      "sources": [
+        "GitHub docs: Removing sensitive data from a repository",
+        "GitHub docs: About secret scanning"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "code"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 51,
+      "slug": "dependency-confusion",
+      "category": "security",
+      "level": "mid+",
+      "kind": "incident",
+      "title_en": "Dependency confusion",
+      "hook_en": "How a fake package name entered big companies.",
+      "hook_ru": "Как поддельное имя пакета проникло в крупные компании.",
+      "hook_type": "story",
+      "visual": "diagram",
+      "sources": [
+        "Alex Birsan: Dependency Confusion (2021)",
+        "npm docs: Scopes"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 52,
+      "slug": "ssrf-metadata",
+      "category": "security",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "SSRF and cloud metadata",
+      "hook_en": "How a URL fetcher can leak cloud credentials.",
+      "hook_ru": "Как загрузчик по URL может слить облачные ключи.",
+      "hook_type": "mystery",
+      "visual": "diagram",
+      "sources": [
+        "OWASP: SSRF Prevention Cheat Sheet",
+        "AWS docs: Instance metadata service (IMDSv2)"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 53,
+      "slug": "passkeys",
+      "category": "security",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "Passkeys",
+      "hook_en": "Why passkeys can't be phished.",
+      "hook_ru": "Почему passkeys нельзя украсть фишингом.",
+      "hook_type": "question",
+      "visual": "diagram",
+      "sources": [
+        "W3C Web Authentication (WebAuthn) specification",
+        "FIDO Alliance: Passkeys"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 56,
+      "slug": "sqlite-internals",
+      "category": "systems",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "SQLite",
+      "hook_en": "A whole database in one file. How?",
+      "hook_ru": "Целая база данных в одном файле. Как?",
+      "hook_type": "question",
+      "visual": "diagram",
+      "sources": [
+        "SQLite docs: Database File Format",
+        "SQLite docs: Appropriate Uses For SQLite"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 57,
+      "slug": "git-internals",
+      "category": "systems",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "Git internals",
+      "hook_en": "Git doesn't store diffs. Here's what it stores.",
+      "hook_ru": "Git не хранит диффы. Вот что он хранит.",
+      "hook_type": "myth_bust",
+      "visual": "diagram",
+      "sources": [
+        "Pro Git: Git Internals",
+        "Git docs: gitformat-pack"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "published",
+        "en": "published"
+      },
+      "fact_sheet": "facts/git-internals.json",
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 58,
+      "slug": "docker-layers",
+      "category": "systems",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "Docker image layers",
+      "hook_en": "Why your Docker image is so big.",
+      "hook_ru": "Почему ваш Docker-образ такой огромный.",
+      "hook_type": "question",
+      "visual": "diagram",
+      "sources": [
+        "Docker docs: Image layers",
+        "OCI Image Format Specification"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 59,
+      "slug": "containers-namespaces",
+      "category": "systems",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "Namespaces and cgroups",
+      "hook_en": "A container is just a process. Here's why.",
+      "hook_ru": "Контейнер это просто процесс. Вот в чём фокус.",
+      "hook_type": "bold_claim",
+      "visual": "diagram",
+      "sources": [
+        "Linux man-pages: namespaces(7)",
+        "Linux man-pages: cgroups(7)"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 60,
+      "slug": "npm-lockfile",
+      "category": "systems",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "npm lockfile",
+      "hook_en": "What package-lock.json actually protects you from.",
+      "hook_ru": "От чего на самом деле защищает package-lock.json.",
+      "hook_type": "question",
+      "visual": "diagram",
+      "sources": [
+        "npm docs: package-lock.json",
+        "npm docs: semver"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 62,
+      "slug": "kafka-log",
+      "category": "systems",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "Kafka storage",
+      "hook_en": "Kafka is an append-only log. Why that's powerful.",
+      "hook_ru": "Kafka это просто журнал. Вот почему это мощно.",
+      "hook_type": "bold_claim",
+      "visual": "diagram",
+      "sources": [
+        "Apache Kafka docs: Design"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 63,
+      "slug": "email-spf-dkim-dmarc",
+      "category": "systems",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "SPF, DKIM, DMARC",
+      "hook_en": "Why your email lands in spam.",
+      "hook_ru": "Почему ваше письмо попадает в спам.",
+      "hook_type": "question",
+      "visual": "diagram",
+      "sources": [
+        "RFC 7208 (SPF)",
+        "RFC 6376 (DKIM)",
+        "RFC 7489 (DMARC)"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 65,
+      "slug": "floating-point",
+      "category": "systems",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "Floating point",
+      "hook_en": "Why 0.1 + 0.2 is not 0.3.",
+      "hook_ru": "Почему 0.1 + 0.2 не равно 0.3.",
+      "hook_type": "question",
+      "visual": "code",
+      "sources": [
+        "Python docs: Floating-Point Arithmetic: Issues and Limitations",
+        "IEEE 754-2019"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "code"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 66,
+      "slug": "utf8-strings",
+      "category": "systems",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "UTF-8",
+      "hook_en": "Why 'é' breaks your string length.",
+      "hook_ru": "Почему «é» ломает длину строки.",
+      "hook_type": "question",
+      "visual": "code",
+      "sources": [
+        "RFC 3629 (UTF-8)",
+        "The Unicode Standard"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "code"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 67,
+      "slug": "dns-root-servers",
+      "category": "systems",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "DNS root servers",
+      "hook_en": "13 root server names, hundreds of machines.",
+      "hook_ru": "13 имён корневых серверов, сотни машин.",
+      "hook_type": "number",
+      "visual": "diagram",
+      "sources": [
+        "root-servers.org",
+        "RFC 7720 (DNS Root Name Service Protocol)"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 68,
+      "slug": "bittorrent-dht",
+      "category": "systems",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "BitTorrent DHT",
+      "hook_en": "How torrents find peers without a server.",
+      "hook_ru": "Как торренты находят пиров без сервера.",
+      "hook_type": "question",
+      "visual": "diagram",
+      "sources": [
+        "BitTorrent Enhancement Proposal 5 (DHT Protocol)",
+        "Kademlia paper (Maymounkov, Mazieres, 2002)"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 69,
+      "slug": "tor-onion-routing",
+      "category": "systems",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "Tor onion routing",
+      "hook_en": "How Tor hides you, layer by layer.",
+      "hook_ru": "Как Tor прячет вас слой за слоем.",
+      "hook_type": "howto",
+      "visual": "diagram",
+      "sources": [
+        "Tor: The Second-Generation Onion Router (2004)",
+        "Tor specifications"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 70,
+      "slug": "stripe-idempotency",
+      "category": "systems",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "Idempotency keys",
+      "hook_en": "How Stripe avoids charging you twice.",
+      "hook_ru": "Как Stripe не списывает деньги дважды.",
+      "hook_type": "question",
+      "visual": "timeline",
+      "sources": [
+        "Stripe docs: Idempotent requests",
+        "IETF draft: The Idempotency-Key HTTP Header Field"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 71,
+      "slug": "uber-h3",
+      "category": "systems",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "H3 hexagonal grid",
+      "hook_en": "Why Uber maps the world in hexagons.",
+      "hook_ru": "Почему Uber делит мир на шестиугольники.",
+      "hook_type": "question",
+      "visual": "diagram",
+      "sources": [
+        "H3 documentation (h3geo.org)",
+        "Uber Engineering blog: H3"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 72,
+      "slug": "discord-messages",
+      "category": "systems",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "Discord message storage",
+      "hook_en": "How Discord stores trillions of messages.",
+      "hook_ru": "Как Discord хранит триллионы сообщений.",
+      "hook_type": "number",
+      "visual": "diagram",
+      "sources": [
+        "Discord Engineering blog: How Discord Stores Trillions of Messages"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 75,
+      "slug": "wireguard-handshake",
+      "category": "vpn",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "WireGuard handshake",
+      "hook_en": "WireGuard's handshake in 40 seconds.",
+      "hook_ru": "Рукопожатие WireGuard за 40 секунд.",
+      "hook_type": "howto",
+      "visual": "timeline",
+      "sources": [
+        "WireGuard whitepaper",
+        "Noise Protocol Framework specification"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 76,
+      "slug": "vpn-mtu-mss",
+      "category": "vpn",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "MTU and MSS",
+      "hook_en": "Why some sites hang behind a VPN.",
+      "hook_ru": "Почему за VPN зависают некоторые сайты.",
+      "hook_type": "mystery",
+      "visual": "diagram",
+      "sources": [
+        "RFC 1191 (Path MTU Discovery)",
+        "RFC 4821 (Packetization Layer Path MTU Discovery)"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 77,
+      "slug": "dns-leaks-doh-dot",
+      "category": "vpn",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "DNS leaks, DoH and DoT",
+      "hook_en": "Your VPN is on. DNS may still leak.",
+      "hook_ru": "VPN включён, а DNS может утекать.",
+      "hook_type": "mistake",
+      "visual": "diagram",
+      "sources": [
+        "RFC 7626 (DNS Privacy Considerations)",
+        "RFC 8484 (DNS over HTTPS)",
+        "RFC 7858 (DNS over TLS)"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "published",
+        "en": "published"
+      },
+      "fact_sheet": "facts/dns-leaks-doh-dot.json",
+      "needs_legal_check": true,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 78,
+      "slug": "webrtc-ipv6-leaks",
+      "category": "vpn",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "WebRTC and IPv6 leaks",
+      "hook_en": "How WebRTC and IPv6 can bypass your tunnel.",
+      "hook_ru": "Как WebRTC и IPv6 могут обойти туннель.",
+      "hook_type": "mystery",
+      "visual": "diagram",
+      "sources": [
+        "RFC 8828 (WebRTC IP Address Handling Requirements)",
+        "RFC 8200 (IPv6)"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 80,
+      "slug": "nat-for-vpn",
+      "category": "vpn",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "NAT behind a VPN server",
+      "hook_en": "How one IP serves a thousand VPN clients.",
+      "hook_ru": "Как один IP обслуживает тысячу VPN-клиентов.",
+      "hook_type": "question",
+      "visual": "diagram",
+      "sources": [
+        "RFC 3022 (Traditional IP Network Address Translator)",
+        "Linux netfilter documentation"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 81,
+      "slug": "dpi-vpn-detection",
+      "category": "vpn",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "DPI and VPN detection",
+      "hook_en": "How censorship systems recognize VPN traffic.",
+      "hook_ru": "Как системы цензуры узнают VPN-трафик.",
+      "hook_type": "mystery",
+      "visual": "diagram",
+      "sources": [
+        "Academic measurement papers (USENIX Security, IMC, NDSS)",
+        "RFC 8446 (TLS 1.3)"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "needs_legal_check": true,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 83,
+      "slug": "sli-slo-sla-nines",
+      "category": "system-design",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "SLI, SLO, SLA and the nines",
+      "hook_en": "99.9% uptime still allows almost 9 hours down.",
+      "hook_ru": "99,9% аптайма это почти 9 часов простоя.",
+      "hook_type": "number",
+      "visual": "diagram",
+      "sources": [
+        "Google SRE Book: Service Level Objectives",
+        "Google SRE Workbook: Implementing SLOs"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "published",
+        "en": "todo"
+      },
+      "fact_sheet": "facts/sli-slo-sla-nines.json",
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 85,
+      "slug": "rate-limiting",
+      "category": "system-design",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "Rate limiting and token bucket",
+      "hook_en": "How APIs decide you've sent too many requests.",
+      "hook_ru": "Как API понимает, что запросов слишком много?",
+      "hook_type": "question",
+      "visual": "diagram",
+      "sources": [
+        "Stripe blog: Scaling your API with rate limiters",
+        "Azure Architecture Center: Rate Limiting pattern",
+        "Cloudflare docs: Rate limiting rules"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 86,
+      "slug": "pagination-offset-cursor",
+      "category": "system-design",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "Offset vs cursor pagination",
+      "hook_en": "Why page 10,000 of your API is slow.",
+      "hook_ru": "Почему 10 000-я страница API тормозит?",
+      "hook_type": "question",
+      "visual": "code",
+      "sources": [
+        "PostgreSQL docs: Queries, LIMIT and OFFSET",
+        "Stripe API docs: Pagination"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "code"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 88,
+      "slug": "cache-invalidation",
+      "category": "system-design",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "Cache invalidation and staleness",
+      "hook_en": "Your cache serves stale data. For how long?",
+      "hook_ru": "Кэш отдаёт устаревшие данные. Как долго?",
+      "hook_type": "question",
+      "visual": "timeline",
+      "sources": [
+        "RFC 9111 (HTTP Caching)",
+        "AWS Whitepaper: Database Caching Strategies Using Redis"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 90,
+      "slug": "sharding-shard-key",
+      "category": "system-design",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "Sharding and the shard key",
+      "hook_en": "Pick the wrong shard key, overload one server.",
+      "hook_ru": "Неверный ключ шардинга перегружает один сервер.",
+      "hook_type": "bold_claim",
+      "visual": "diagram",
+      "sources": [
+        "MongoDB docs: Shard Keys",
+        "Vitess documentation",
+        "Citus documentation"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 91,
+      "slug": "hot-partitions",
+      "category": "system-design",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "Hot partitions and hot keys",
+      "hook_en": "One celebrity can melt one database shard.",
+      "hook_ru": "Одна знаменитость может перегрузить один шард.",
+      "hook_type": "mystery",
+      "visual": "diagram",
+      "sources": [
+        "Amazon DynamoDB Developer Guide: Designing partition keys to distribute your workload"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 92,
+      "slug": "consistent-hashing",
+      "category": "system-design",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "Consistent hashing",
+      "hook_en": "Add a server. Only a few keys move.",
+      "hook_ru": "Добавили сервер, а переехала лишь часть ключей.",
+      "hook_type": "mystery",
+      "visual": "diagram",
+      "sources": [
+        "Karger et al., Consistent Hashing and Random Trees (STOC 1997)",
+        "Amazon Dynamo paper (SOSP 2007)"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 93,
+      "slug": "replication-lag",
+      "category": "system-design",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "Replication lag",
+      "hook_en": "Saved your profile. Reload shows the old one.",
+      "hook_ru": "Сохранил профиль. После обновления снова старый.",
+      "hook_type": "mystery",
+      "visual": "timeline",
+      "sources": [
+        "PostgreSQL docs: High Availability, Load Balancing, and Replication",
+        "Amazon RDS docs: Working with read replicas"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 94,
+      "slug": "eventual-consistency",
+      "category": "system-design",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "Eventual consistency",
+      "hook_en": "Eventual consistency: saved doesn't mean visible.",
+      "hook_ru": "Eventual consistency: сохранено не значит видно.",
+      "hook_type": "mystery",
+      "visual": "timeline",
+      "sources": [
+        "Vogels, Eventually Consistent (ACM Queue 2008)",
+        "Amazon DynamoDB Developer Guide: Read consistency"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 95,
+      "slug": "quorum-rw",
+      "category": "system-design",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "Quorum reads and writes",
+      "hook_en": "R + W > N: the formula behind distributed reads.",
+      "hook_ru": "R + W > N: формула согласованных чтений.",
+      "hook_type": "number",
+      "visual": "diagram",
+      "sources": [
+        "Amazon Dynamo paper (SOSP 2007)",
+        "Apache Cassandra docs: Dynamo and consistency levels"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 97,
+      "slug": "optimistic-locking",
+      "category": "system-design",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "Optimistic vs pessimistic locking",
+      "hook_en": "Two users edit one record. Who wins?",
+      "hook_ru": "Двое правят одну запись. Кто победит?",
+      "hook_type": "question",
+      "visual": "code",
+      "sources": [
+        "PostgreSQL docs: Transaction Isolation",
+        "PostgreSQL docs: Explicit Locking"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "code"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 98,
+      "slug": "double-booking-seat",
+      "category": "system-design",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "Preventing double booking",
+      "hook_en": "Two people bought the same seat. How?",
+      "hook_ru": "Двое купили одно и то же место. Как?",
+      "hook_type": "mystery",
+      "visual": "timeline",
+      "sources": [
+        "PostgreSQL docs: Explicit Locking (row-level locks, SKIP LOCKED)",
+        "PostgreSQL docs: Transaction Isolation"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 99,
+      "slug": "distributed-lock-fencing",
+      "category": "system-design",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "Distributed locks and fencing tokens",
+      "hook_en": "Why a distributed lock needs a fencing token.",
+      "hook_ru": "Зачем распределённой блокировке fencing token?",
+      "hook_type": "question",
+      "visual": "timeline",
+      "sources": [
+        "Redis docs: Distributed Locks with Redis",
+        "Burrows, The Chubby lock service (OSDI 2006)"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 100,
+      "slug": "retries-backoff-jitter",
+      "category": "system-design",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "Retries, backoff and jitter",
+      "hook_en": "Retries can kill a struggling server. Jitter helps.",
+      "hook_ru": "Повторы могут добить сервер. Джиттер спасает.",
+      "hook_type": "bold_claim",
+      "visual": "timeline",
+      "sources": [
+        "AWS Builders' Library: Timeouts, retries and backoff with jitter",
+        "AWS Architecture Blog: Exponential Backoff And Jitter"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 101,
+      "slug": "circuit-breaker",
+      "category": "system-design",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "Circuit breaker",
+      "hook_en": "When a service is down, stop calling it.",
+      "hook_ru": "Сервис упал? Хватит слать ему запросы.",
+      "hook_type": "howto",
+      "visual": "diagram",
+      "sources": [
+        "Azure Architecture Center: Circuit Breaker pattern"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 102,
+      "slug": "cascading-failure",
+      "category": "system-design",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "Cascading failures",
+      "hook_en": "How one slow service takes down ten others.",
+      "hook_ru": "Как один медленный сервис роняет десять других.",
+      "hook_type": "mystery",
+      "visual": "diagram",
+      "sources": [
+        "Google SRE Book: Addressing Cascading Failures",
+        "AWS Builders' Library: Timeouts, retries and backoff with jitter"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 103,
+      "slug": "bulkhead-load-shedding",
+      "category": "system-design",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "Bulkheads and load shedding",
+      "hook_en": "Bulkheads and load shedding: surviving overload.",
+      "hook_ru": "Bulkhead и load shedding: как пережить перегрузку.",
+      "hook_type": "howto",
+      "visual": "split",
+      "sources": [
+        "Azure Architecture Center: Bulkhead pattern",
+        "AWS Builders' Library: Using load shedding to avoid overload"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram",
+        "checklist"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 104,
+      "slug": "saga-pattern",
+      "category": "system-design",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "Saga pattern",
+      "hook_en": "No distributed transactions? Use a saga.",
+      "hook_ru": "Нет распределённых транзакций? Нужна сага.",
+      "hook_type": "howto",
+      "visual": "timeline",
+      "sources": [
+        "Azure Architecture Center: Saga pattern",
+        "Garcia-Molina and Salem, Sagas (SIGMOD 1987)"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 105,
+      "slug": "outbox-pattern",
+      "category": "system-design",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "Transactional outbox",
+      "hook_en": "Update the DB and send an event, safely.",
+      "hook_ru": "Записать в базу и отправить событие. Надёжно?",
+      "hook_type": "mystery",
+      "visual": "timeline",
+      "sources": [
+        "AWS Prescriptive Guidance: Transactional outbox pattern"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 106,
+      "slug": "delivery-semantics",
+      "category": "system-design",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "Queue delivery semantics",
+      "hook_en": "Exactly-once delivery: what queues really promise.",
+      "hook_ru": "Exactly-once: что на самом деле обещают очереди.",
+      "hook_type": "myth_bust",
+      "visual": "timeline",
+      "sources": [
+        "Apache Kafka docs: Message Delivery Semantics",
+        "Amazon SQS Developer Guide: Standard and FIFO queues"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 107,
+      "slug": "dead-letter-queue",
+      "category": "system-design",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "Dead-letter queues",
+      "hook_en": "One poison message blocks your queue. Now what?",
+      "hook_ru": "Одно «ядовитое» сообщение блокирует очередь. Что делать?",
+      "hook_type": "mystery",
+      "visual": "diagram",
+      "sources": [
+        "Amazon SQS Developer Guide: Dead-letter queues",
+        "Azure Architecture Center: Queue-Based Load Leveling pattern"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 113,
+      "slug": "inverted-index",
+      "category": "system-design",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "Inverted index and search",
+      "hook_en": "How search finds words in millions of documents.",
+      "hook_ru": "Как поиск находит слово среди миллионов документов.",
+      "hook_type": "question",
+      "visual": "diagram",
+      "sources": [
+        "Elasticsearch Guide: Text analysis and indexing",
+        "Apache Lucene documentation: Index file formats"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 2
+    },
+    {
+      "id": 115,
+      "slug": "bloom-filter",
+      "category": "system-design",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "Bloom filter",
+      "hook_en": "The data structure that says \"definitely not here\".",
+      "hook_ru": "Структура данных, которая говорит «точно нет».",
+      "hook_type": "mystery",
+      "visual": "diagram",
+      "sources": [
+        "Bloom, Space/time trade-offs in hash coding with allowable errors (CACM 1970)",
+        "Apache Cassandra docs: Bloom filters"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 117,
+      "slug": "clock-skew-lww",
+      "category": "system-design",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "Clock skew and last-write-wins",
+      "hook_en": "Why last-write-wins can lose your data.",
+      "hook_ru": "Почему last-write-wins может терять ваши данные.",
+      "hook_type": "bold_claim",
+      "visual": "timeline",
+      "sources": [
+        "Apache Cassandra docs: write timestamps and conflict resolution",
+        "RFC 5905 (Network Time Protocol)"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 119,
+      "slug": "webhook-reliability",
+      "category": "system-design",
+      "level": "mid",
+      "kind": "evergreen",
+      "title_en": "Reliable webhooks",
+      "hook_en": "Webhooks can arrive twice. Is your handler ready?",
+      "hook_ru": "Вебхуки могут прийти дважды. Обработчик готов?",
+      "hook_type": "mistake",
+      "visual": "timeline",
+      "sources": [
+        "Stripe docs: Webhooks (best practices)"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 122,
+      "slug": "cache-stampede",
+      "title_en": "Cache stampede",
+      "hook_en": "Why does one cache key kill your database?",
+      "hook_ru": "Почему один ключ кэша убивает базу?",
+      "hook_type": "question",
+      "visual": "split",
+      "scene_types": [
+        "diagram",
+        "code",
+        "checklist"
+      ],
+      "status": {
+        "ru": "rendered",
+        "en": "todo"
+      },
+      "category": "system-design",
+      "level": "mid",
+      "kind": "evergreen",
+      "sources": [],
+      "sources_status": "legacy",
+      "fact_sheet": null,
+      "legacy": true,
+      "priority": 2
+    },
+    {
+      "id": 123,
+      "slug": "six-steps-system-design",
+      "title_en": "Six steps of system design",
+      "hook_en": "Blank whiteboard. Where do you start?",
+      "hook_ru": "Пустая доска на собеседовании. С чего начать?",
+      "hook_type": "question",
+      "visual": "split",
+      "scene_types": [
+        "diagram",
+        "checklist"
+      ],
+      "status": {
+        "ru": "rendered",
+        "en": "todo"
+      },
+      "category": "system-design",
+      "level": "mid",
+      "kind": "evergreen",
+      "sources": [],
+      "sources_status": "legacy",
+      "fact_sheet": null,
+      "legacy": true,
+      "priority": 2
+    },
+    {
+      "id": 124,
+      "slug": "whatsapp-erlang",
+      "category": "systems",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "WhatsApp on a tiny engineering team",
+      "hook_en": "Tiny team. Billions of WhatsApp users.",
+      "hook_ru": "Горстка инженеров. Миллиарды пользователей WhatsApp.",
+      "hook_type": "bold_claim",
+      "visual": "diagram",
+      "sources": [
+        "Rick Reed: That's Billion with a B, Scaling to the next level at WhatsApp"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 125,
+      "slug": "netflix-open-connect",
+      "category": "systems",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "Netflix servers inside ISPs",
+      "hook_en": "Netflix puts its servers inside your ISP.",
+      "hook_ru": "Netflix ставит свои серверы прямо у твоего провайдера.",
+      "hook_type": "bold_claim",
+      "visual": "diagram",
+      "sources": [
+        "Netflix Open Connect overview"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 126,
+      "slug": "youtube-vitess",
+      "category": "systems",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "How YouTube scaled MySQL",
+      "hook_en": "How YouTube made MySQL scale.",
+      "hook_ru": "Как YouTube заставил MySQL выдержать весь мир.",
+      "hook_type": "question",
+      "visual": "diagram",
+      "sources": [
+        "Vitess documentation: Overview and history"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 127,
+      "slug": "instagram-sharded-ids",
+      "category": "systems",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "Instagram sortable IDs",
+      "hook_en": "Instagram IDs hide a timestamp.",
+      "hook_ru": "В ID каждого фото в Instagram спрятано время.",
+      "hook_type": "mystery",
+      "visual": "diagram",
+      "sources": [
+        "Instagram Engineering: Sharding & IDs at Instagram"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 128,
+      "slug": "twitter-timeline-fanout",
+      "category": "systems",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "Twitter timeline fan-out",
+      "hook_en": "Why celebrity tweets break the timeline.",
+      "hook_ru": "Почему твиты знаменитостей ломают ленту.",
+      "hook_type": "question",
+      "visual": "diagram",
+      "sources": [
+        "Raffi Krikorian: Timelines at Scale"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 129,
+      "slug": "figma-multiplayer",
+      "category": "systems",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "Figma multiplayer editing",
+      "hook_en": "How Figma edits one canvas together.",
+      "hook_ru": "Как Figma даёт править одно полотно вдвоём.",
+      "hook_type": "question",
+      "visual": "diagram",
+      "sources": [
+        "Figma blog: How Figma's multiplayer technology works"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 130,
+      "slug": "notion-postgres-sharding",
+      "category": "systems",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "Notion sharding Postgres",
+      "hook_en": "Notion split Postgres without downtime.",
+      "hook_ru": "Как Notion разрезал Postgres без остановки.",
+      "hook_type": "story",
+      "visual": "diagram",
+      "sources": [
+        "Notion Engineering: Herding elephants, lessons learned from sharding Postgres at Notion"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 131,
+      "slug": "dropbox-magic-pocket",
+      "category": "systems",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "Dropbox leaves the cloud",
+      "hook_en": "Dropbox left AWS for its own disks.",
+      "hook_ru": "Dropbox ушёл из AWS на свои диски. Зачем?",
+      "hook_type": "story",
+      "visual": "diagram",
+      "sources": [
+        "Dropbox Tech Blog: Scaling to exabytes and beyond"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 132,
+      "slug": "amazon-dynamo-cart",
+      "category": "systems",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "Amazon Dynamo shopping cart",
+      "hook_en": "The cart that never loses your items.",
+      "hook_ru": "Корзина Amazon, которая не теряет товары.",
+      "hook_type": "mystery",
+      "visual": "diagram",
+      "sources": [
+        "DeCandia et al.: Dynamo, Amazon's Highly Available Key-value Store"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 133,
+      "slug": "spanner-truetime",
+      "category": "systems",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "Google Spanner TrueTime",
+      "hook_en": "Google built atomic clocks for a database.",
+      "hook_ru": "Google поставил атомные часы ради базы данных.",
+      "hook_type": "bold_claim",
+      "visual": "diagram",
+      "sources": [
+        "Corbett et al.: Spanner, Google's Globally-Distributed Database"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 134,
+      "slug": "crowdstrike-channel-file-291",
+      "category": "postmortems",
+      "level": "mid+",
+      "kind": "incident",
+      "title_en": "CrowdStrike global crash",
+      "hook_en": "One config file crashed airports worldwide.",
+      "hook_ru": "Один файл конфигурации остановил аэропорты.",
+      "hook_type": "story",
+      "visual": "diagram",
+      "sources": [
+        "CrowdStrike: Channel File 291 Incident Root Cause Analysis"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 135,
+      "slug": "fastly-2021-outage",
+      "category": "postmortems",
+      "level": "mid+",
+      "kind": "incident",
+      "title_en": "Fastly CDN outage",
+      "hook_en": "One customer setting took down a CDN.",
+      "hook_ru": "Настройка одного клиента уронила CDN.",
+      "hook_type": "story",
+      "visual": "diagram",
+      "sources": [
+        "Fastly: Summary of June 8 outage"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 136,
+      "slug": "roblox-consul-outage",
+      "category": "postmortems",
+      "level": "mid+",
+      "kind": "incident",
+      "title_en": "Roblox long outage",
+      "hook_en": "Roblox was down for days. Here is why.",
+      "hook_ru": "Roblox лежал несколько дней. Из-за чего?",
+      "hook_type": "mystery",
+      "visual": "diagram",
+      "sources": [
+        "Roblox: Return to Service in 73 Hours"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 137,
+      "slug": "slack-2022-cache",
+      "category": "postmortems",
+      "level": "mid+",
+      "kind": "incident",
+      "title_en": "Slack incident Feb 22 2022",
+      "hook_en": "Slack lost data because of a cache.",
+      "hook_ru": "Кэш стал причиной сбоя в Slack.",
+      "hook_type": "mystery",
+      "visual": "diagram",
+      "sources": [
+        "Slack Engineering: Slack's Incident on 2-22-22"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 138,
+      "slug": "aws-dynamodb-dns-outage",
+      "category": "postmortems",
+      "level": "mid+",
+      "kind": "incident",
+      "title_en": "AWS DynamoDB DNS outage",
+      "hook_en": "One empty DNS record broke half the internet.",
+      "hook_ru": "Пустая DNS-запись положила пол-интернета.",
+      "hook_type": "bold_claim",
+      "visual": "diagram",
+      "sources": [
+        "AWS: Summary of the Amazon DynamoDB Service Disruption in the Northern Virginia (US-EAST-1) Region"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 139,
+      "slug": "cloudflare-bot-file-outage",
+      "category": "postmortems",
+      "level": "mid+",
+      "kind": "incident",
+      "title_en": "Cloudflare bot file outage",
+      "hook_en": "A file that doubled in size broke Cloudflare.",
+      "hook_ru": "Файл вырос вдвое и положил Cloudflare.",
+      "hook_type": "story",
+      "visual": "diagram",
+      "sources": [
+        "Cloudflare blog: Cloudflare outage on November 18, 2025"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 140,
+      "slug": "xz-backdoor",
+      "category": "security",
+      "level": "mid+",
+      "kind": "incident",
+      "title_en": "The xz backdoor",
+      "hook_en": "One maintainer nearly backdoored every SSH server.",
+      "hook_ru": "Бэкдор в SSH почти попал в каждый сервер.",
+      "hook_type": "story",
+      "visual": "diagram",
+      "sources": [
+        "Openwall oss-security: backdoor in upstream xz/liblzma leading to ssh server compromise"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 141,
+      "slug": "solarwinds-sunburst",
+      "category": "security",
+      "level": "mid+",
+      "kind": "incident",
+      "title_en": "SolarWinds supply chain attack",
+      "hook_en": "Hackers poisoned the update that everyone trusted.",
+      "hook_ru": "Взломали обновление, которому все доверяли.",
+      "hook_type": "story",
+      "visual": "diagram",
+      "sources": [
+        "CISA: Emergency Directive 21-01"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 142,
+      "slug": "equifax-struts",
+      "category": "security",
+      "level": "mid+",
+      "kind": "incident",
+      "title_en": "Equifax unpatched Struts",
+      "hook_en": "One missed patch, a breach of millions.",
+      "hook_ru": "Один пропущенный патч. Утечка данных миллионов.",
+      "hook_type": "mistake",
+      "visual": "diagram",
+      "sources": [
+        "US House Oversight: The Equifax Data Breach"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 143,
+      "slug": "spectre-meltdown",
+      "category": "security",
+      "level": "mid+",
+      "kind": "evergreen",
+      "title_en": "Spectre and Meltdown",
+      "hook_en": "Your CPU leaks secrets by guessing.",
+      "hook_ru": "Процессор выдаёт секреты, пока угадывает код.",
+      "hook_type": "mystery",
+      "visual": "diagram",
+      "sources": [
+        "Google Project Zero: Reading privileged memory with a side-channel"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 144,
+      "slug": "cloudbleed",
+      "category": "security",
+      "level": "mid+",
+      "kind": "incident",
+      "title_en": "Cloudbleed",
+      "hook_en": "Cloudflare leaked other people's data into pages.",
+      "hook_ru": "Cloudflare подмешивал чужие данные в страницы.",
+      "hook_type": "story",
+      "visual": "diagram",
+      "sources": [
+        "Cloudflare blog: Incident report on memory leak caused by Cloudflare parser bug"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 145,
+      "slug": "shai-hulud-npm-worm",
+      "category": "security",
+      "level": "mid+",
+      "kind": "incident",
+      "title_en": "npm worm Shai-Hulud",
+      "hook_en": "An npm package that spreads by itself.",
+      "hook_ru": "Пакет в npm, который заражает другие пакеты.",
+      "hook_type": "bold_claim",
+      "visual": "diagram",
+      "sources": [
+        "CISA: Widespread supply chain compromise impacting npm ecosystem"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    },
+    {
+      "id": 146,
+      "slug": "shellshock",
+      "category": "security",
+      "level": "mid+",
+      "kind": "incident",
+      "title_en": "Shellshock",
+      "hook_en": "One bash bug opened millions of servers.",
+      "hook_ru": "Одна строка в bash открывала серверы.",
+      "hook_type": "bold_claim",
+      "visual": "diagram",
+      "sources": [
+        "NIST NVD: CVE-2014-6271"
+      ],
+      "sources_status": "unverified",
+      "status": {
+        "ru": "todo",
+        "en": "todo"
+      },
+      "fact_sheet": null,
+      "scene_types": [
+        "diagram"
+      ],
+      "priority": 3
+    }
+  ]
 }

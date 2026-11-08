@@ -26,6 +26,7 @@ export type Topic = {
   sources_status: string;
   status: Record<TopicLang, Status>;
   fact_sheet: string | null;
+  priority?: number;
   scene_types: string[];
   needs_legal_check?: boolean;
   legacy?: boolean;

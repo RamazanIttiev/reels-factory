@@ -15,7 +15,7 @@ const problems = topics.flatMap((topic, index) => {
   const tag = `#${topic.id} ${topic.slug}`;
   const allowedScenes = publicEntries(visualMap).find(([key]) => key === topic.visual)?.[1] ?? [];
   return [
-    ...(topic.id === index + 1 ? [] : [`${tag}: id is not sequential (expected ${index + 1})`]),
+    ...(topics.filter((other) => other.id === topic.id).length === 1 ? [] : [`${tag}: duplicate id`]),
     ...((slugCounts.get(topic.slug) ?? 0) > 1 ? [`${tag}: duplicate slug`] : []),
     ...(attributes.category.includes(topic.category) ? [] : [`${tag}: category "${topic.category}" not in taxonomy`]),
     ...(attributes.level.includes(topic.level) ? [] : [`${tag}: level "${topic.level}" not in taxonomy`]),

@@ -42,6 +42,7 @@ const balanced = (topics: Topic[]): Topic[] =>
   [...topics].sort(
     (a, b) =>
       (categoryCounts.get(a.category) ?? 0) - (categoryCounts.get(b.category) ?? 0) ||
+      (b.priority ?? 2) - (a.priority ?? 2) ||
       (hookCounts.get(a.hook_type) ?? 0) - (hookCounts.get(b.hook_type) ?? 0) ||
       a.id - b.id,
   );

@@ -1,0 +1,77 @@
+{
+  "slug": "sli-slo-sla-nines",
+  "topic_id": 83,
+  "created": "2026-11-08",
+  "claims": [
+    {
+      "id": "c1",
+      "text": "SLI — количественная мера уровня сервиса",
+      "url": "https://sre.google/sre-book/service-level-objectives/",
+      "tier": 1,
+      "quote": "a carefully defined quantitative measure of some aspect of the level of service that is provided",
+      "accessed": "2026-11-08",
+      "source_date": "Thu, 08 Oct 2026 04:48:00 GMT",
+      "version": null
+    },
+    {
+      "id": "c2",
+      "text": "SLO — целевое значение SLI",
+      "url": "https://sre.google/sre-book/service-level-objectives/",
+      "tier": 1,
+      "quote": "a target value or range of values for a service level that is measured by an SLI",
+      "accessed": "2026-11-08",
+      "source_date": "Thu, 08 Oct 2026 04:48:00 GMT",
+      "version": null
+    },
+    {
+      "id": "c3",
+      "text": "SLA — договор с последствиями за нарушение SLO",
+      "url": "https://sre.google/sre-book/service-level-objectives/",
+      "tier": 1,
+      "quote": "an explicit or implicit contract with your users that includes consequences of meeting (or missing) the SLOs they contain",
+      "accessed": "2026-11-08",
+      "source_date": "Thu, 08 Oct 2026 04:48:00 GMT",
+      "version": null
+    },
+    {
+      "id": "c4",
+      "text": "99,999% — пять девяток",
+      "url": "https://sre.google/sre-book/service-level-objectives/",
+      "tier": 1,
+      "quote": "availabilities of 99% and 99.999% can be referred to as",
+      "accessed": "2026-11-08",
+      "source_date": "Thu, 08 Oct 2026 04:48:00 GMT",
+      "version": null
+    },
+    {
+      "id": "c5",
+      "text": "99,9% допускает 8,76 часа простоя в год",
+      "url": "https://sre.google/sre-book/availability-table/",
+      "tier": 1,
+      "quote": "Assuming no planned downtime, Table 1-1 indicates how much downtime is permitted to reach a given availability level.",
+      "accessed": "2026-11-08",
+      "source_date": "Thu, 08 Oct 2026 04:48:00 GMT",
+      "version": null
+    },
+    {
+      "id": "c6",
+      "text": "99,9% допускает 8,76 часа простоя в год",
+      "url": "https://sre.google/sre-book/availability-table/",
+      "tier": 1,
+      "quote": "99.9% 8.76 hours",
+      "accessed": "2026-11-08",
+      "source_date": "Thu, 08 Oct 2026 04:48:00 GMT",
+      "version": null
+    },
+    {
+      "id": "c7",
+      "text": "SLA отличается от SLO наличием последствий",
+      "url": "https://sre.google/sre-book/service-level-objectives/",
+      "tier": 1,
+      "quote": "An easy way to tell the difference between an SLO and an SLA is to ask",
+      "accessed": "2026-11-08",
+      "source_date": "Thu, 08 Oct 2026 04:48:00 GMT",
+      "version": null
+    }
+  ]
+}

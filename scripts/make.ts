@@ -1,5 +1,5 @@
 import { spawnSync } from "node:child_process";
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { parseArgs } from "node:util";
 import { paceOf } from "./check-words";
 import { upsert } from "./queue";
@@ -78,10 +78,23 @@ if (!preview.ok) stop(`preview failed:\n${preview.output.split("\n").slice(-10).
 const frames = run(["frames", "--", target, "--lang", lang, "--count", "3"]);
 if (!frames.ok) stop(`frames failed:\n${frames.output.split("\n").slice(-10).join("\n")}`);
 
+const isRecord = (value: unknown): value is Record<string, unknown> => typeof value === "object" && value !== null;
+
+const needsHuman = (): boolean => {
+  const rules: unknown = JSON.parse(readFileSync("config/rules.json", "utf8"));
+  const publishing = isRecord(rules) && isRecord(rules.publishing) ? rules.publishing : {};
+  const tags = Array.isArray(publishing.always_require_human_approval_tags) ? publishing.always_require_human_approval_tags.map(String) : [];
+  const topics: unknown = JSON.parse(readFileSync("plan/topics.json", "utf8"));
+  const raw = isRecord(topics) && Array.isArray(topics.topics) ? topics.topics.find((topic) => isRecord(topic) && topic.slug === target) : undefined;
+  const flagged = isRecord(raw) && tags.some((tag) => raw[tag] === true);
+  return publishing.mode !== "auto" || flagged;
+};
+
 const readyTopic = findTopic(loadTopics(), target);
-if (readyTopic) upsert(lang, { slug: target, category: readyTopic.category, hook_type: readyTopic.hook_type, state: "awaiting_approval" });
+const autoApproved = !needsHuman();
+if (readyTopic) upsert(lang, { slug: target, category: readyTopic.category, hook_type: readyTopic.hook_type, state: autoApproved ? "approved" : "awaiting_approval", ...(autoApproved ? { note: "auto-approved: gate passed" } : {}) });
 if (readyTopic) {
   await pushQueue(lang);
   await pushReviewAssets(lang, target);
 }
-console.log(`READY for approval: ${target}\n${frames.output}\nApprove: npm run approve -- ${target} (then npm run render:approved)`);
+console.log(`${autoApproved ? "AUTO-APPROVED" : "READY for approval"}: ${target}\n${frames.output}\nApprove: npm run approve -- ${target} (then npm run render:approved)`);

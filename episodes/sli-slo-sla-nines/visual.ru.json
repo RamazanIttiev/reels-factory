@@ -1,0 +1,306 @@
+{
+  "slug": "sli-slo-sla-nines",
+  "scenes": [
+    {
+      "id": "terms",
+      "type": "media",
+      "title": "*SLI*, SLO, SLA",
+      "accent": "#2FD5C0",
+      "stat": {
+        "label": "терминов",
+        "value": "три"
+      },
+      "badge": {
+        "icon": "gauge",
+        "text": "НАДЁЖНОСТЬ"
+      },
+      "layers": [
+        {
+          "kind": "flow",
+          "at": 0.3,
+          "nodes": [
+            {
+              "id": "sli",
+              "at": 0.3,
+              "label": "SLI",
+              "icon": "activity"
+            },
+            {
+              "id": "slo",
+              "at": 4.0,
+              "label": "SLO",
+              "icon": "target"
+            },
+            {
+              "id": "sla",
+              "at": 6.8,
+              "label": "SLA",
+              "icon": "file-text",
+              "hot": true
+            }
+          ],
+          "edges": [
+            {
+              "from": "sli",
+              "to": "slo",
+              "at": 4.6
+            },
+            {
+              "from": "slo",
+              "to": "sla",
+              "at": 7.4
+            }
+          ],
+          "marks": [
+            {
+              "at": 5.7,
+              "ids": [
+                "slo"
+              ]
+            },
+            {
+              "at": 8.6,
+              "ids": [
+                "sla"
+              ]
+            },
+            {
+              "at": 11.0,
+              "ids": [
+                "slo"
+              ]
+            },
+            {
+              "at": 11.8,
+              "ids": [
+                "sla"
+              ]
+            },
+            {
+              "at": 13.6,
+              "ids": [
+                "sla"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "meter",
+          "at": 1.6,
+          "rows": [
+            {
+              "at": 1.6,
+              "label": "успешные запросы",
+              "fill": 0.97,
+              "value": "доля"
+            },
+            {
+              "at": 2.9,
+              "label": "время ответа",
+              "fill": 0.7,
+              "value": "быстро"
+            }
+          ],
+          "until": 9.6
+        },
+        {
+          "kind": "bar",
+          "at": 9.6,
+          "text": "нет последствий — SLO",
+          "icon": "circle-x",
+          "until": 11.0
+        },
+        {
+          "kind": "bar",
+          "at": 11.0,
+          "text": "есть последствия — SLA",
+          "icon": "scale",
+          "until": 12.7
+        },
+        {
+          "kind": "bar",
+          "at": 12.7,
+          "text": "разница — в последствиях",
+          "icon": "shield-check"
+        }
+      ]
+    },
+    {
+      "id": "nines",
+      "type": "media",
+      "title": "Сколько стоят *девятки*",
+      "accent": "#FF5C6C",
+      "stat": {
+        "label": "простой за год",
+        "value": "около 9 часов"
+      },
+      "badge": {
+        "icon": "clock",
+        "text": "99,9%"
+      },
+      "layers": [
+        {
+          "kind": "bar",
+          "at": 0.3,
+          "text": "считаем девятки",
+          "icon": "calculator",
+          "until": 1.8
+        },
+        {
+          "kind": "bar",
+          "at": 1.8,
+          "text": "процент → часы простоя",
+          "icon": "percent",
+          "until": 3.0
+        },
+        {
+          "kind": "meter",
+          "at": 3.0,
+          "rows": [
+            {
+              "at": 3.0,
+              "label": "99,9%",
+              "fill": 0.1,
+              "value": "около 9 часов",
+              "tone": "good"
+            },
+            {
+              "at": 8.0,
+              "label": "99%",
+              "fill": 0.42,
+              "value": "почти 4 дня",
+              "tone": "bad"
+            }
+          ]
+        },
+        {
+          "kind": "bar",
+          "at": 4.2,
+          "text": "около девяти часов в год",
+          "icon": "calendar",
+          "until": 5.7
+        },
+        {
+          "kind": "bar",
+          "at": 5.7,
+          "text": "простой за год",
+          "icon": "clock",
+          "until": 7.0
+        },
+        {
+          "kind": "bar",
+          "at": 7.0,
+          "text": "а если 99%?",
+          "icon": "triangle-exclamation-point",
+          "until": 8.0
+        },
+        {
+          "kind": "bar",
+          "at": 9.4,
+          "text": "почти четыре дня",
+          "icon": "calendar-x",
+          "until": 10.2
+        },
+        {
+          "kind": "bar",
+          "at": 10.2,
+          "text": "ещё дороже",
+          "icon": "trending-up",
+          "until": 11.0
+        },
+        {
+          "kind": "bar",
+          "at": 11.0,
+          "text": "каждая девятка дороже",
+          "icon": "trending-up",
+          "until": 12.0
+        },
+        {
+          "kind": "bar",
+          "at": 12.0,
+          "text": "выбирай осознанно",
+          "icon": "check"
+        }
+      ]
+    },
+    {
+      "id": "choose",
+      "type": "media",
+      "title": "Как *выбрать*",
+      "accent": "#2FD5C0",
+      "stat": {
+        "label": "шага",
+        "value": "три"
+      },
+      "badge": {
+        "icon": "check",
+        "text": "ВЫБОР"
+      },
+      "layers": [
+        {
+          "kind": "checks",
+          "at": 0.3,
+          "items": [
+            {
+              "at": 0.3,
+              "text": "SLI — как видит пользователь"
+            },
+            {
+              "at": 1.6,
+              "text": "не график сервера"
+            },
+            {
+              "at": 2.9,
+              "text": "SLO — ниже идеала"
+            },
+            {
+              "at": 4.2,
+              "text": "сто процентов недостижимы"
+            }
+          ]
+        },
+        {
+          "kind": "bar",
+          "at": 5.6,
+          "text": "SLA — только то, за что отвечаешь",
+          "icon": "file-text",
+          "until": 7.0
+        },
+        {
+          "kind": "bar",
+          "at": 7.0,
+          "text": "обещай честно",
+          "icon": "handshake",
+          "until": 8.4
+        },
+        {
+          "kind": "bar",
+          "at": 8.4,
+          "text": "SLI → SLO → SLA",
+          "icon": "arrow-right",
+          "until": 9.8
+        },
+        {
+          "kind": "bar",
+          "at": 9.8,
+          "text": "сначала измерь",
+          "icon": "ruler",
+          "until": 11.2
+        },
+        {
+          "kind": "bar",
+          "at": 11.2,
+          "text": "измерь, поставь цель, пообещай",
+          "icon": "check",
+          "until": 12.0
+        },
+        {
+          "kind": "bar",
+          "at": 12.0,
+          "text": "SLI → SLO → SLA",
+          "icon": "arrow-right"
+        }
+      ]
+    }
+  ]
+}

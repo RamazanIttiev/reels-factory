@@ -2067,10 +2067,10 @@
    ],
    "sources_status": "unverified",
    "status": {
-    "ru": "todo",
+    "ru": "published",
     "en": "todo"
    },
-   "fact_sheet": null,
+   "fact_sheet": "facts/sli-slo-sla-nines.json",
    "scene_types": [
     "diagram"
    ]

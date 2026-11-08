@@ -1,8 +1,9 @@
 {
   "agent_may_edit": false,
+  "_owner_change_2026-11-08": "publishing.mode set to auto by the owner: videos that pass verify/check/layout are approved without a human. Topics flagged needs_legal_check still wait for approval.",
   "_note": "Hard rules. The learning loop may edit state/lessons.md but can NEVER override anything here. Make this file read-only (chmod 444) and review changes to it only by hand.",
   "publishing": {
-    "mode": "manual_approval",
+    "mode": "auto",
     "auto_publish_after_approved_videos": 20,
     "max_posts_per_day": 3,
     "ai_label_required": true,

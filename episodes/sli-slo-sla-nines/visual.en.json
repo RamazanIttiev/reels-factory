@@ -1,0 +1,306 @@
+{
+  "slug": "sli-slo-sla-nines",
+  "scenes": [
+    {
+      "id": "terms",
+      "type": "media",
+      "title": "*SLI*, SLO, SLA",
+      "accent": "#2FD5C0",
+      "stat": {
+        "label": "terms",
+        "value": "three"
+      },
+      "badge": {
+        "icon": "gauge",
+        "text": "RELIABILITY"
+      },
+      "layers": [
+        {
+          "kind": "flow",
+          "at": 0.3,
+          "nodes": [
+            {
+              "id": "sli",
+              "at": 0.3,
+              "label": "SLI",
+              "icon": "activity"
+            },
+            {
+              "id": "slo",
+              "at": 4.4,
+              "label": "SLO",
+              "icon": "target"
+            },
+            {
+              "id": "sla",
+              "at": 7.5,
+              "label": "SLA",
+              "icon": "file-text",
+              "hot": true
+            }
+          ],
+          "edges": [
+            {
+              "from": "sli",
+              "to": "slo",
+              "at": 5.1
+            },
+            {
+              "from": "slo",
+              "to": "sla",
+              "at": 8.1
+            }
+          ],
+          "marks": [
+            {
+              "at": 6.3,
+              "ids": [
+                "slo"
+              ]
+            },
+            {
+              "at": 9.5,
+              "ids": [
+                "sla"
+              ]
+            },
+            {
+              "at": 12.1,
+              "ids": [
+                "slo"
+              ]
+            },
+            {
+              "at": 13,
+              "ids": [
+                "sla"
+              ]
+            },
+            {
+              "at": 15,
+              "ids": [
+                "sla"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "meter",
+          "at": 1.8,
+          "rows": [
+            {
+              "at": 1.8,
+              "label": "successful requests",
+              "fill": 0.97,
+              "value": "share"
+            },
+            {
+              "at": 3.2,
+              "label": "response time",
+              "fill": 0.7,
+              "value": "fast"
+            }
+          ],
+          "until": 10.6
+        },
+        {
+          "kind": "bar",
+          "at": 10.6,
+          "text": "no consequences — SLO",
+          "icon": "circle-x",
+          "until": 12.1
+        },
+        {
+          "kind": "bar",
+          "at": 12.1,
+          "text": "consequences — SLA",
+          "icon": "scale",
+          "until": 14
+        },
+        {
+          "kind": "bar",
+          "at": 14,
+          "text": "the difference: consequences",
+          "icon": "shield-check"
+        }
+      ]
+    },
+    {
+      "id": "nines",
+      "type": "media",
+      "title": "What the *nines* cost",
+      "accent": "#FF5C6C",
+      "stat": {
+        "label": "downtime a year",
+        "value": "about 9 hours"
+      },
+      "badge": {
+        "icon": "clock",
+        "text": "99,9%"
+      },
+      "layers": [
+        {
+          "kind": "bar",
+          "at": 0.4,
+          "text": "counting nines",
+          "icon": "calculator",
+          "until": 2.3
+        },
+        {
+          "kind": "bar",
+          "at": 2.3,
+          "text": "percent → hours down",
+          "icon": "percent",
+          "until": 3.9
+        },
+        {
+          "kind": "meter",
+          "at": 3.9,
+          "rows": [
+            {
+              "at": 3.9,
+              "label": "99,9%",
+              "fill": 0.1,
+              "value": "about 9 hours",
+              "tone": "good"
+            },
+            {
+              "at": 10.4,
+              "label": "99%",
+              "fill": 0.42,
+              "value": "almost 4 days",
+              "tone": "bad"
+            }
+          ]
+        },
+        {
+          "kind": "bar",
+          "at": 5.5,
+          "text": "about nine hours a year",
+          "icon": "calendar",
+          "until": 7.4
+        },
+        {
+          "kind": "bar",
+          "at": 7.4,
+          "text": "downtime a year",
+          "icon": "clock",
+          "until": 9.1
+        },
+        {
+          "kind": "bar",
+          "at": 9.1,
+          "text": "what about 99%?",
+          "icon": "triangle-exclamation-point",
+          "until": 10.4
+        },
+        {
+          "kind": "bar",
+          "at": 12.2,
+          "text": "almost four days",
+          "icon": "calendar-x",
+          "until": 13.3
+        },
+        {
+          "kind": "bar",
+          "at": 13.3,
+          "text": "even costlier",
+          "icon": "trending-up",
+          "until": 14.3
+        },
+        {
+          "kind": "bar",
+          "at": 14.3,
+          "text": "each nine costs more",
+          "icon": "trending-up",
+          "until": 15.6
+        },
+        {
+          "kind": "bar",
+          "at": 15.6,
+          "text": "choose on purpose",
+          "icon": "check"
+        }
+      ]
+    },
+    {
+      "id": "choose",
+      "type": "media",
+      "title": "How to *choose*",
+      "accent": "#2FD5C0",
+      "stat": {
+        "label": "steps",
+        "value": "three"
+      },
+      "badge": {
+        "icon": "check",
+        "text": "CHOICE"
+      },
+      "layers": [
+        {
+          "kind": "checks",
+          "at": 0.4,
+          "items": [
+            {
+              "at": 0.4,
+              "text": "SLI — what users see"
+            },
+            {
+              "at": 1.9,
+              "text": "not server graphs"
+            },
+            {
+              "at": 3.5,
+              "text": "SLO — below perfect"
+            },
+            {
+              "at": 5,
+              "text": "perfect is unreachable"
+            }
+          ]
+        },
+        {
+          "kind": "bar",
+          "at": 6.7,
+          "text": "SLA — only what you own",
+          "icon": "file-text",
+          "until": 8.4
+        },
+        {
+          "kind": "bar",
+          "at": 8.4,
+          "text": "promise honestly",
+          "icon": "handshake",
+          "until": 10.1
+        },
+        {
+          "kind": "bar",
+          "at": 10.1,
+          "text": "SLI → SLO → SLA",
+          "icon": "arrow-right",
+          "until": 11.8
+        },
+        {
+          "kind": "bar",
+          "at": 11.8,
+          "text": "measure first",
+          "icon": "ruler",
+          "until": 13.4
+        },
+        {
+          "kind": "bar",
+          "at": 13.4,
+          "text": "measure, aim, promise",
+          "icon": "check",
+          "until": 14.4
+        },
+        {
+          "kind": "bar",
+          "at": 14.4,
+          "text": "SLI → SLO → SLA",
+          "icon": "arrow-right"
+        }
+      ]
+    }
+  ]
+}

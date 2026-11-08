@@ -126,6 +126,15 @@ if (final.published) {
   setState(lang, next.slug, "published");
   await pushQueue(lang);
   await sendAlert(lang, `published ${next.slug} in slot ${slotLabel}`);
+  if (process.env.YOUTUBE_ENABLED === "true") {
+    const youtube = run(["publish:yt", "--", next.slug, "--lang", lang]);
+    await sendAlert(
+      lang,
+      youtube.ok
+        ? `youtube: uploaded ${next.slug}`
+        : `youtube failed for ${next.slug}: ${youtube.output.trim().split("\n").slice(-3).join(" | ")}`,
+    );
+  }
   process.exit(0);
 }
 setState(lang, next.slug, "failed", "publish failed twice");

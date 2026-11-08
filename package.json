@@ -11,6 +11,8 @@
     "render": "tsx scripts/render.ts",
     "publish": "tsx scripts/publish.ts",
     "publish:dry": "tsx scripts/publish.ts --dry-run",
+    "publish:yt": "tsx scripts/publish-youtube.ts",
+    "yt:auth": "tsx scripts/yt-auth.ts",
     "check": "tsx scripts/check-words.ts",
     "layout": "tsx scripts/layout.ts",
     "facts": "tsx scripts/facts.ts",

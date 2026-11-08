@@ -1,0 +1,10 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Authorization callback - scalelab reels</title>
+<style>body{font:16px/1.6 system-ui,sans-serif;max-width:720px;margin:40px auto;padding:0 16px;color:#222}code{word-break:break-all;background:#eee;padding:2px 6px;border-radius:4px}</style></head>
+<body><h1>Authorization callback</h1>
+<p id="out">Waiting for authorization response.</p>
+<script>
+var p=new URLSearchParams(location.search);
+var o=document.getElementById("out");
+if(p.get("code")){o.innerHTML="Authorization code (copy it into the terminal; it is not sent anywhere):<br><code></code>";o.querySelector("code").textContent=p.get("code");}
+else if(p.get("error")){o.textContent="Error: "+p.get("error")+" "+(p.get("error_description")||"");}
+</script></body></html>

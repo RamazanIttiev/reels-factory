@@ -11,6 +11,7 @@ export const PLAYBACK_SPEED = 1.15;
 
 const TAIL_FRAMES = 15;
 const MIN_SEGMENT_FRAMES = 60;
+const HOOK_MIN_FRAMES = 30;
 const LAST_WORD_MIN_FRAMES = 6;
 
 export type WordSpan = { startSec: number; endSec: number };
@@ -32,6 +33,7 @@ export type Segment = {
   step: number;
   words: TimedWord[];
   audio?: string;
+  audioStartFrom?: number;
   content: SegmentContent;
 };
 
@@ -88,6 +90,7 @@ const spokenSegment = (
   audio: AudioInfo | undefined,
   step: number,
   content: SegmentContent,
+  options: { trimLead?: boolean; tailFrames?: number } = {},
 ): Segment => {
   const tokens = narrationTokens(narration);
   const audioSec = audio?.durationSec ?? tokens.length / WORDS_PER_SECOND;
@@ -96,14 +99,17 @@ const spokenSegment = (
     startSec: span.startSec / PLAYBACK_SPEED,
     endSec: span.endSec / PLAYBACK_SPEED,
   }));
-  const durationSec = audioSec / PLAYBACK_SPEED;
+  const leadSec = options.trimLead ? (audio?.spans?.[0]?.startSec ?? 0) : 0;
+  const durationSec = (audioSec - leadSec) / PLAYBACK_SPEED;
+  const tailFrames = options.tailFrames ?? TAIL_FRAMES;
   return {
     id,
     step,
     content,
     audio: audio?.file,
+    audioStartFrom: leadSec > 0 ? Math.round(leadSec * FPS) : undefined,
     words: toWords(tokens, spans),
-    duration: Math.max(MIN_SEGMENT_FRAMES, Math.round(durationSec * FPS) + TAIL_FRAMES),
+    duration: Math.max(options.trimLead ? HOOK_MIN_FRAMES : MIN_SEGMENT_FRAMES, Math.round(durationSec * FPS) + tailFrames),
   };
 };
 
@@ -113,7 +119,10 @@ export const buildTimeline = (episode: Episode, audio: Record<string, AudioInfo>
   avatar: seriesFor(episode.lang).avatar,
   segments: [
     {
-      ...spokenSegment("hook", episode.hook.text, audio.hook, 0, { kind: "hook", hook: episode.hook }),
+      ...spokenSegment("hook", episode.hook.text, audio.hook, 0, { kind: "hook", hook: episode.hook }, {
+        trimLead: true,
+        tailFrames: 0,
+      }),
       words: [],
     },
     ...episode.scenes.map((scene, index) =>

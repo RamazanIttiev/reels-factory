@@ -1,6 +1,7 @@
 import { narrations, spokenWordCount } from "../src/episode";
 import { existsSync, readFileSync } from "node:fs";
 import { listLangs, loadEpisode } from "./load-episode";
+import { profanityCount, profanityWarning } from "./profanity";
 import { isRecord } from "./state";
 
 type Pace = { min: number; max: number; secondsPerWord: number };
@@ -53,5 +54,9 @@ if (isMain) {
   listLangs(slug).filter((lang) => !only || lang === only).forEach((lang) => {
     const count = wordCount(slug, lang);
     console.log(wordWarning(lang, count) ?? `ok   ${lang}: ${count} words (~${estimatedSeconds(count, lang)}s)`);
+    if (lang === "ru") {
+      const profane = narrations(loadEpisode(slug, lang)).reduce((sum, { text }) => sum + profanityCount(text), 0);
+      console.log(profanityWarning(profane, estimatedSeconds(count, lang)) ?? `ok   ru: ${profane} profane words`);
+    }
   });
 }

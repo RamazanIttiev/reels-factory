@@ -1,0 +1,712 @@
+{
+ "slug": "gitlab-db-deletion",
+ "scenes": [
+  {
+   "id": "oops",
+   "type": "custom",
+   "component": "sketch",
+   "props": {
+    "items": [
+     {
+      "kind": "text",
+      "at": 0.1,
+      "x": 540,
+      "y": 330,
+      "text": "Чиним реплику",
+      "color": "ink",
+      "size": 92
+     },
+     {
+      "kind": "scribble",
+      "at": 0.7,
+      "x": 290,
+      "y": 362,
+      "w": 500,
+      "style": "wave",
+      "color": "orange"
+     },
+     {
+      "kind": "doodle",
+      "name": "window",
+      "at": 0.9,
+      "x": 250,
+      "y": 620,
+      "size": 220,
+      "color": "blue"
+     },
+     {
+      "kind": "text",
+      "at": 1.2,
+      "x": 250,
+      "y": 790,
+      "text": "терминал",
+      "color": "blue",
+      "size": 64
+     },
+     {
+      "kind": "doodle",
+      "name": "clock",
+      "at": 2.0,
+      "x": 540,
+      "y": 470,
+      "size": 130,
+      "color": "orange"
+     },
+     {
+      "kind": "text",
+      "at": 2.3,
+      "x": 540,
+      "y": 590,
+      "text": "висит",
+      "color": "orange",
+      "size": 56
+     },
+     {
+      "kind": "doodle",
+      "name": "server",
+      "at": 3.0,
+      "x": 850,
+      "y": 560,
+      "size": 190,
+      "color": "green"
+     },
+     {
+      "kind": "text",
+      "at": 3.2,
+      "x": 850,
+      "y": 700,
+      "text": "запасной",
+      "color": "green",
+      "size": 64
+     },
+     {
+      "kind": "arrow",
+      "at": 3.6,
+      "from": [
+       350,
+       650
+      ],
+      "to": [
+       730,
+       610
+      ],
+      "color": "red",
+      "curve": 0,
+      "packet": true
+     },
+     {
+      "kind": "text",
+      "at": 4.0,
+      "x": 540,
+      "y": 720,
+      "text": "стереть всё",
+      "color": "red",
+      "size": 52
+     },
+     {
+      "kind": "doodle",
+      "name": "server",
+      "at": 6.0,
+      "x": 850,
+      "y": 1050,
+      "size": 250,
+      "color": "purple"
+     },
+     {
+      "kind": "text",
+      "at": 6.2,
+      "x": 850,
+      "y": 1230,
+      "text": "основной",
+      "color": "purple",
+      "size": 64
+     },
+     {
+      "kind": "arrow",
+      "at": 6.6,
+      "from": [
+       390,
+       800
+      ],
+      "to": [
+       730,
+       1010
+      ],
+      "color": "red",
+      "curve": 120,
+      "packet": true
+     },
+     {
+      "kind": "circle",
+      "at": 7.0,
+      "x": 850,
+      "y": 1050,
+      "rx": 190,
+      "ry": 150,
+      "color": "red"
+     },
+     {
+      "kind": "text",
+      "at": 7.7,
+      "x": 300,
+      "y": 1260,
+      "text": "БЛЯДЬ",
+      "color": "red",
+      "size": 120
+     },
+     {
+      "kind": "doodle",
+      "name": "bolt",
+      "at": 8.0,
+      "x": 580,
+      "y": 1290,
+      "size": 110,
+      "color": "yellow"
+     },
+     {
+      "kind": "text",
+      "at": 8.8,
+      "x": 330,
+      "y": 1400,
+      "text": "−300 ГБ",
+      "color": "red",
+      "size": 100
+     },
+     {
+      "kind": "doodle",
+      "name": "cross",
+      "at": 9.4,
+      "x": 850,
+      "y": 1050,
+      "size": 160,
+      "color": "red"
+     },
+     {
+      "kind": "doodle",
+      "name": "star",
+      "at": 10.0,
+      "x": 120,
+      "y": 900,
+      "size": 70,
+      "color": "yellow"
+     },
+     {
+      "kind": "doodle",
+      "name": "star",
+      "at": 10.5,
+      "x": 610,
+      "y": 900,
+      "size": 55,
+      "color": "orange"
+     },
+     {
+      "kind": "doodle",
+      "name": "spark",
+      "at": 10.9,
+      "x": 960,
+      "y": 860,
+      "size": 70,
+      "color": "teal"
+     }
+    ]
+   }
+  },
+  {
+   "id": "backups",
+   "type": "custom",
+   "component": "sketch",
+   "props": {
+    "items": [
+     {
+      "kind": "text",
+      "at": 0.1,
+      "x": 540,
+      "y": 330,
+      "text": "Где бэкапы?",
+      "color": "ink",
+      "size": 92
+     },
+     {
+      "kind": "scribble",
+      "at": 0.6,
+      "x": 310,
+      "y": 362,
+      "w": 460,
+      "style": "wave",
+      "color": "orange"
+     },
+     {
+      "kind": "doodle",
+      "name": "disk",
+      "at": 0.8,
+      "x": 250,
+      "y": 640,
+      "size": 220,
+      "color": "purple",
+      "until": 8.9
+     },
+     {
+      "kind": "text",
+      "at": 1.1,
+      "x": 250,
+      "y": 810,
+      "text": "бэкапы",
+      "color": "purple",
+      "size": 64,
+      "until": 8.9
+     },
+     {
+      "kind": "doodle",
+      "name": "check",
+      "at": 1.5,
+      "x": 420,
+      "y": 540,
+      "size": 90,
+      "color": "green",
+      "until": 3.9
+     },
+     {
+      "kind": "doodle",
+      "name": "cloud",
+      "at": 2.2,
+      "x": 840,
+      "y": 640,
+      "size": 230,
+      "color": "blue",
+      "until": 8.9
+     },
+     {
+      "kind": "text",
+      "at": 2.4,
+      "x": 840,
+      "y": 810,
+      "text": "S3",
+      "color": "blue",
+      "size": 64,
+      "until": 8.9
+     },
+     {
+      "kind": "arrow",
+      "at": 2.6,
+      "from": [
+       350,
+       640
+      ],
+      "to": [
+       720,
+       640
+      ],
+      "color": "teal",
+      "curve": -40,
+      "packet": true,
+      "until": 8.9
+     },
+     {
+      "kind": "text",
+      "at": 2.9,
+      "x": 540,
+      "y": 540,
+      "text": "где?",
+      "color": "teal",
+      "size": 56,
+      "until": 8.9
+     },
+     {
+      "kind": "text",
+      "at": 4.7,
+      "x": 840,
+      "y": 900,
+      "text": "пусто",
+      "color": "red",
+      "size": 60,
+      "until": 8.9
+     },
+     {
+      "kind": "doodle",
+      "name": "cross",
+      "at": 4.8,
+      "x": 840,
+      "y": 640,
+      "size": 140,
+      "color": "red",
+      "until": 8.9
+     },
+     {
+      "kind": "text",
+      "at": 5.3,
+      "x": 250,
+      "y": 1000,
+      "text": "pg_dump",
+      "color": "blue",
+      "size": 56
+     },
+     {
+      "kind": "text",
+      "at": 5.8,
+      "x": 250,
+      "y": 1120,
+      "text": "9.2",
+      "color": "red",
+      "size": 110
+     },
+     {
+      "kind": "text",
+      "at": 6.4,
+      "x": 540,
+      "y": 1120,
+      "text": "≠",
+      "color": "ink",
+      "size": 110
+     },
+     {
+      "kind": "text",
+      "at": 6.8,
+      "x": 830,
+      "y": 1000,
+      "text": "база",
+      "color": "green",
+      "size": 56
+     },
+     {
+      "kind": "text",
+      "at": 7.0,
+      "x": 830,
+      "y": 1120,
+      "text": "9.6",
+      "color": "green",
+      "size": 110
+     },
+     {
+      "kind": "doodle",
+      "name": "bolt",
+      "at": 8.2,
+      "x": 540,
+      "y": 1270,
+      "size": 100,
+      "color": "red"
+     },
+     {
+      "kind": "text",
+      "at": 8.4,
+      "x": 540,
+      "y": 1400,
+      "text": "бэкап падал",
+      "color": "red",
+      "size": 56
+     },
+     {
+      "kind": "box",
+      "at": 9.2,
+      "x": 110,
+      "y": 520,
+      "w": 280,
+      "h": 110,
+      "label": "письмо",
+      "color": "ink",
+      "size": 56
+     },
+     {
+      "kind": "arrow",
+      "at": 9.5,
+      "from": [
+       400,
+       575
+      ],
+      "to": [
+       690,
+       575
+      ],
+      "color": "red",
+      "curve": 0,
+      "packet": true
+     },
+     {
+      "kind": "box",
+      "at": 9.8,
+      "x": 700,
+      "y": 520,
+      "w": 270,
+      "h": 110,
+      "label": "DMARC",
+      "color": "red",
+      "size": 56
+     },
+     {
+      "kind": "doodle",
+      "name": "cross",
+      "at": 10.0,
+      "x": 545,
+      "y": 575,
+      "size": 110,
+      "color": "red"
+     },
+     {
+      "kind": "text",
+      "at": 10.3,
+      "x": 540,
+      "y": 720,
+      "text": "не включили",
+      "color": "red",
+      "size": 52
+     },
+     {
+      "kind": "text",
+      "at": 11.2,
+      "x": 540,
+      "y": 900,
+      "text": "охуенно",
+      "color": "green",
+      "size": 100
+     },
+     {
+      "kind": "doodle",
+      "name": "spark",
+      "at": 11.7,
+      "x": 900,
+      "y": 860,
+      "size": 80,
+      "color": "yellow"
+     },
+     {
+      "kind": "doodle",
+      "name": "star",
+      "at": 12.1,
+      "x": 160,
+      "y": 860,
+      "size": 70,
+      "color": "orange"
+     }
+    ]
+   }
+  },
+  {
+   "id": "lesson",
+   "type": "custom",
+   "component": "sketch",
+   "props": {
+    "items": [
+     {
+      "kind": "text",
+      "at": 0.1,
+      "x": 540,
+      "y": 330,
+      "text": "Итого",
+      "color": "ink",
+      "size": 92
+     },
+     {
+      "kind": "scribble",
+      "at": 0.6,
+      "x": 380,
+      "y": 362,
+      "w": 320,
+      "style": "wave",
+      "color": "orange"
+     },
+     {
+      "kind": "marker",
+      "at": 2.0,
+      "x": 110,
+      "y": 470,
+      "w": 240,
+      "h": 80,
+      "color": "yellow"
+     },
+     {
+      "kind": "text",
+      "at": 2.2,
+      "x": 230,
+      "y": 550,
+      "text": "5 000",
+      "color": "red",
+      "size": 110
+     },
+     {
+      "kind": "text",
+      "at": 2.5,
+      "x": 230,
+      "y": 640,
+      "text": "проектов",
+      "color": "ink",
+      "size": 52
+     },
+     {
+      "kind": "marker",
+      "at": 4.0,
+      "x": 420,
+      "y": 470,
+      "w": 240,
+      "h": 80,
+      "color": "yellow"
+     },
+     {
+      "kind": "text",
+      "at": 4.2,
+      "x": 540,
+      "y": 550,
+      "text": "5 000",
+      "color": "red",
+      "size": 110
+     },
+     {
+      "kind": "text",
+      "at": 4.5,
+      "x": 540,
+      "y": 640,
+      "text": "комментариев",
+      "color": "ink",
+      "size": 52
+     },
+     {
+      "kind": "marker",
+      "at": 5.8,
+      "x": 730,
+      "y": 470,
+      "w": 240,
+      "h": 80,
+      "color": "yellow"
+     },
+     {
+      "kind": "text",
+      "at": 6.0,
+      "x": 850,
+      "y": 550,
+      "text": "700",
+      "color": "red",
+      "size": 110
+     },
+     {
+      "kind": "text",
+      "at": 6.3,
+      "x": 850,
+      "y": 640,
+      "text": "аккаунтов",
+      "color": "ink",
+      "size": 52
+     },
+     {
+      "kind": "doodle",
+      "name": "disk",
+      "at": 7.4,
+      "x": 240,
+      "y": 940,
+      "size": 200,
+      "color": "purple"
+     },
+     {
+      "kind": "text",
+      "at": 7.7,
+      "x": 240,
+      "y": 1090,
+      "text": "снимки",
+      "color": "purple",
+      "size": 64
+     },
+     {
+      "kind": "text",
+      "at": 8.2,
+      "x": 700,
+      "y": 980,
+      "text": "для баз",
+      "color": "red",
+      "size": 56
+     },
+     {
+      "kind": "text",
+      "at": 8.6,
+      "x": 700,
+      "y": 1050,
+      "text": "не включили",
+      "color": "red",
+      "size": 56
+     },
+     {
+      "kind": "doodle",
+      "name": "cross",
+      "at": 8.9,
+      "x": 240,
+      "y": 940,
+      "size": 130,
+      "color": "red"
+     },
+     {
+      "kind": "box",
+      "at": 9.9,
+      "x": 130,
+      "y": 1200,
+      "w": 300,
+      "h": 110,
+      "label": "бэкап",
+      "color": "ink",
+      "size": 56
+     },
+     {
+      "kind": "text",
+      "at": 10.8,
+      "x": 540,
+      "y": 1275,
+      "text": "≠",
+      "color": "ink",
+      "size": 110
+     },
+     {
+      "kind": "box",
+      "at": 11.3,
+      "x": 650,
+      "y": 1200,
+      "w": 300,
+      "h": 110,
+      "label": "надежда",
+      "color": "red",
+      "size": 56
+     },
+     {
+      "kind": "marker",
+      "at": 13.0,
+      "x": 150,
+      "y": 1355,
+      "w": 760,
+      "h": 80,
+      "color": "yellow"
+     },
+     {
+      "kind": "text",
+      "at": 13.2,
+      "x": 540,
+      "y": 1415,
+      "text": "Проверяй восстановление",
+      "color": "teal",
+      "size": 66
+     },
+     {
+      "kind": "doodle",
+      "name": "star",
+      "at": 14.2,
+      "x": 130,
+      "y": 1000,
+      "size": 70,
+      "color": "yellow"
+     },
+     {
+      "kind": "doodle",
+      "name": "spark",
+      "at": 14.6,
+      "x": 960,
+      "y": 860,
+      "size": 70,
+      "color": "teal"
+     },
+     {
+      "kind": "doodle",
+      "name": "check",
+      "at": 15.0,
+      "x": 900,
+      "y": 1420,
+      "size": 80,
+      "color": "green"
+     }
+    ]
+   }
+  }
+ ]
+}

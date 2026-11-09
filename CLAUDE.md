@@ -107,6 +107,8 @@ Check the last used pattern in `state/ru/videos.jsonl`/recent episodes and pick 
 - Verify technical facts via the fact gate; round numbers honestly ("около"), never invent precision.
 - No "always" / "never" / "all" / "best" without grounds; prefer "обычно", "чаще всего".
 - All explanations and examples are written from scratch; do not retell other courses or articles.
+- Russian narration uses мат for emphasis, humor and attention: 8-12 profane words per minute of reel (`npm run check -- <slug>` counts roots, WARN outside the range). Put one in the hook if it fits, then punchlines and the "here it breaks" moment, 1-2 per scene in clusters, none inside fact quotes, terms and numbers. Aim it at the situation, the bug, the system or the narrator, never at people or groups, no slurs. Facts and claims stay exact. English has none. Risk (owner's call): Instagram/YouTube may limit reach of profane Shorts and reels.
+- Voice: `VOICE_ID_RU` / `VOICE_ID_EN` in `.env` override `voiceId` from `<lang>.json` (`scripts/load-episode.ts`); the JSON value is only a fallback. New voice means new audio cache hash, so TTS is regenerated once.
 - Security topics: vulnerable pattern plus fix, textbook payloads only. VPN topics: mechanisms only, no evasion instructions.
 
 ## Languages

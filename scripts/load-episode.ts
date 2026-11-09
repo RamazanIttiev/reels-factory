@@ -2,6 +2,7 @@ import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { resolveEpisode } from "../src/episode";
 import type { Episode } from "../src/episode";
 import { isLang, isVisual } from "../src/types";
+import { loadEnv } from "./env";
 import type { Lang, Visual } from "../src/types";
 
 const episodeDir = (slug: string): string => `episodes/${slug}`;
@@ -21,7 +22,8 @@ export const loadLang = (slug: string, lang: string): Lang => {
   if (!existsSync(path)) throw new Error(`Missing ${path}`);
   const parsed = readJson(path);
   if (!isLang(parsed)) throw new Error(`Invalid ${path}`);
-  return parsed;
+  loadEnv();
+  return { ...parsed, voiceId: process.env[`VOICE_ID_${lang.toUpperCase()}`] || parsed.voiceId };
 };
 
 export const loadEpisode = (slug: string, lang: string): Episode =>

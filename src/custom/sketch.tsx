@@ -254,7 +254,7 @@ const hookItems = (hook: HookText): SketchItem[] => {
   const words = hook.text.split(/\s+/).filter(Boolean);
   const accents = hook.accent.split(/\s+/);
   const isAccent = (word: string) => accents.some((part) => word.includes(part));
-  const size = Math.max(...words.map((w) => w.length)) > 8 ? 130 : 165;
+  const size = words.length > 5 ? 120 : Math.max(...words.map((w) => w.length)) > 8 ? 130 : 165;
   const line = size + 10;
   const top = 760 - ((words.length - 1) * line) / 2;
   const accentAt = words.findIndex(isAccent);

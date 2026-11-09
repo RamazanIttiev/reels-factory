@@ -1,0 +1,87 @@
+{
+  "slug": "gitlab-db-deletion",
+  "topic_id": 4,
+  "created": "2026-11-09",
+  "claims": [
+    {
+      "id": "c1",
+      "text": "GitLab (по его отчёту): 31 января 2017 сбой из-за случайного удаления данных на основном сервере БД",
+      "url": "https://about.gitlab.com/blog/postmortem-of-database-outage-of-january-31/",
+      "tier": 1,
+      "quote": "The outage was caused by an accidental removal of data from our primary database server.",
+      "accessed": "2026-11-09",
+      "source_date": "2017-02-10",
+      "version": null
+    },
+    {
+      "id": "c2",
+      "text": "Инженер стёр каталог БД на основном сервере вместо вторичного, успели удалить около 300 ГБ",
+      "url": "https://about.gitlab.com/blog/postmortem-of-database-outage-of-january-31/",
+      "tier": 1,
+      "quote": "The engineer terminated the process a second or two after noticing their mistake, but at this point around 300 GB of data had already been removed.",
+      "accessed": "2026-11-09",
+      "source_date": "2017-02-10",
+      "version": null
+    },
+    {
+      "id": "c3",
+      "text": "Потеряны данные примерно по 5000 проектов, 5000 комментариям и 700 новым аккаунтам",
+      "url": "https://about.gitlab.com/blog/postmortem-of-database-outage-of-january-31/",
+      "tier": 1,
+      "quote": "Our best estimate is that it affected roughly 5,000 projects, 5,000 comments and 700 new user accounts.",
+      "accessed": "2026-11-09",
+      "source_date": "2017-02-10",
+      "version": null
+    },
+    {
+      "id": "c4",
+      "text": "Бакет S3 с pg_dump бэкапами оказался пустым",
+      "url": "https://about.gitlab.com/blog/postmortem-of-database-outage-of-january-31/",
+      "tier": 1,
+      "quote": "The S3 bucket was empty, and there was no recent backup to be found anywhere.",
+      "accessed": "2026-11-09",
+      "source_date": "2017-02-10",
+      "version": null
+    },
+    {
+      "id": "c5",
+      "text": "Бэкап падал: pg_dump 9.2 против PostgreSQL 9.6",
+      "url": "https://about.gitlab.com/blog/postmortem-of-database-outage-of-january-31/",
+      "tier": 1,
+      "quote": "the backup procedure was using pg_dump 9.2, while our database is running PostgreSQL 9.6",
+      "accessed": "2026-11-09",
+      "source_date": "2017-02-10",
+      "version": null
+    },
+    {
+      "id": "c6",
+      "text": "Письма об ошибках cron отклонялись, о сбое бэкапов не знали",
+      "url": "https://about.gitlab.com/blog/postmortem-of-database-outage-of-january-31/",
+      "tier": 1,
+      "quote": "Unfortunately DMARC was not enabled for the cronjob emails, resulting in them being rejected by the receiver.",
+      "accessed": "2026-11-09",
+      "source_date": "2017-02-10",
+      "version": null
+    },
+    {
+      "id": "c7",
+      "text": "Снимки Azure не были включены для серверов БД",
+      "url": "https://about.gitlab.com/blog/postmortem-of-database-outage-of-january-31/",
+      "tier": 1,
+      "quote": "While enabled for the NFS servers, these snapshots were not enabled for any of the database servers",
+      "accessed": "2026-11-09",
+      "source_date": "2017-02-10",
+      "version": null
+    },
+    {
+      "id": "c8",
+      "text": "Отчёт GitLab: сервис GitLab.com пережил крупный сбой",
+      "url": "https://about.gitlab.com/blog/postmortem-of-database-outage-of-january-31/",
+      "tier": 1,
+      "quote": "we experienced a major service outage for one of our products, the online service GitLab.com.",
+      "accessed": "2026-11-09",
+      "source_date": "2017-02-10",
+      "version": null
+    }
+  ]
+}

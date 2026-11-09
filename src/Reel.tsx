@@ -8,15 +8,16 @@ import { Code } from "./scenes/Code";
 import { Diagram } from "./scenes/Diagram";
 import { Media } from "./scenes/Media";
 import { customScenes } from "./custom";
+import { SketchCaptions, SketchHook, SketchOutro } from "./custom/sketch";
 import { Hook } from "./scenes/Hook";
 import { Outro } from "./scenes/Outro";
 import { FPS, hookEvents, sceneEvents } from "./rhythm";
 import { PLAYBACK_SPEED } from "./timeline";
 import type { ReelProps, Segment } from "./timeline";
 
-const renderContent = ({ content }: Segment, context: SceneContext) => {
-  if (content.kind === "hook") return <Hook hook={content.hook} context={context} />;
-  if (content.kind === "outro") return <Outro outro={content.outro} context={context} />;
+const renderContent = ({ content }: Segment, context: SceneContext, sketchy: boolean) => {
+  if (content.kind === "hook") return sketchy ? <SketchHook hook={content.hook} context={context} /> : <Hook hook={content.hook} context={context} />;
+  if (content.kind === "outro") return sketchy ? <SketchOutro outro={content.outro} context={context} /> : <Outro outro={content.outro} context={context} />;
   const { scene } = content;
   if (scene.type === "browser") return <Browser scene={scene} context={context} />;
   if (scene.type === "code") return <Code scene={scene} context={context} />;
@@ -37,7 +38,11 @@ const eventsOf = ({ content, duration }: Segment): number[] => {
   return sceneEvents(content.scene, seconds);
 };
 
+const isSketchy = ({ content }: Segment): boolean =>
+  content.kind === "scene" && content.scene.type === "custom" && content.scene.component === "sketch";
+
 export const Reel = (props: ReelProps) => {
+  const sketchy = props.segments.some(isSketchy);
   const starts = props.segments.reduce<number[]>(
     (acc, segment, index) => [...acc, index === 0 ? 0 : acc[index - 1] + props.segments[index - 1].duration],
     [],
@@ -56,10 +61,10 @@ export const Reel = (props: ReelProps) => {
         };
         return (
           <Sequence key={segment.id} from={starts[index]} durationInFrames={segment.duration}>
-            {renderContent(segment, context)}
+            {renderContent(segment, context, sketchy)}
             {segment.content.kind === "scene" && segment.content.scene.beats && <Beats beats={segment.content.scene.beats} />}
-            <Captions words={segment.words} />
-            {segment.audio && <Audio src={staticFile(`audio/${segment.audio}`)} playbackRate={PLAYBACK_SPEED} />}
+            {sketchy ? <SketchCaptions words={segment.words} /> : <Captions words={segment.words} />}
+            {segment.audio && <Audio src={staticFile(`audio/${segment.audio}`)} playbackRate={PLAYBACK_SPEED} startFrom={segment.audioStartFrom} />}
           </Sequence>
         );
       })}

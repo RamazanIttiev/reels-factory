@@ -1,0 +1,64 @@
+{
+  "slug": "sketch-demo",
+  "scenes": [
+    {
+      "id": "path", "type": "custom", "component": "sketch",
+      "props": { "items": [
+        { "kind": "text", "at": 0.1, "x": 540, "y": 330, "text": "Что делает браузер", "size": 92 },
+        { "kind": "scribble", "at": 0.8, "x": 250, "y": 362, "w": 580, "style": "wave", "color": "orange" },
+        { "kind": "doodle", "name": "window", "at": 0.4, "x": 250, "y": 570, "size": 230, "color": "blue" },
+        { "kind": "text", "at": 0.9, "x": 250, "y": 740, "text": "браузер", "color": "blue" },
+        { "kind": "doodle", "name": "cloud", "at": 1.5, "x": 840, "y": 570, "size": 230, "color": "purple" },
+        { "kind": "text", "at": 1.9, "x": 840, "y": 740, "text": "DNS", "color": "purple" },
+        { "kind": "arrow", "at": 1.7, "from": [380, 540], "to": [700, 540], "curve": -40, "color": "orange", "packet": true },
+        { "kind": "text", "at": 2.1, "x": 540, "y": 470, "text": "где сайт?", "size": 56, "color": "orange" },
+        { "kind": "doodle", "name": "spark", "at": 2.6, "x": 960, "y": 450, "size": 80, "color": "yellow" },
+        { "kind": "scribble", "at": 2.9, "x": 780, "y": 775, "w": 120, "style": "zigzag", "color": "purple" },
+        { "kind": "arrow", "at": 3.2, "from": [700, 630], "to": [380, 630], "curve": -40, "color": "teal", "packet": true },
+        { "kind": "text", "at": 3.5, "x": 540, "y": 720, "text": "вот адрес", "size": 56, "color": "teal" },
+        { "kind": "arrow", "at": 4.2, "from": [250, 790], "to": [740, 1030], "curve": 150, "color": "orange", "packet": true },
+        { "kind": "doodle", "name": "server", "at": 4.5, "x": 840, "y": 1090, "size": 230, "color": "green" },
+        { "kind": "text", "at": 4.7, "x": 840, "y": 1260, "text": "сервер", "color": "green" },
+        { "kind": "text", "at": 4.9, "x": 330, "y": 1110, "text": "дай страницу", "size": 56, "color": "orange", "align": "left" },
+        { "kind": "doodle", "name": "bolt", "at": 5.2, "x": 650, "y": 940, "size": 110, "color": "yellow" },
+        { "kind": "scribble", "at": 5.5, "x": 740, "y": 1305, "w": 200, "style": "zigzag", "color": "green" },
+        { "kind": "arrow", "at": 5.8, "from": [700, 1150], "to": [380, 1210], "curve": -60, "color": "teal", "packet": true },
+        { "kind": "doodle", "name": "window", "at": 6.3, "x": 250, "y": 1250, "size": 200, "color": "blue" },
+        { "kind": "marker", "at": 6.5, "x": 130, "y": 1345, "w": 240, "h": 70, "color": "yellow" },
+        { "kind": "text", "at": 6.7, "x": 250, "y": 1400, "text": "страница", "color": "ink" },
+        { "kind": "circle", "at": 7.0, "x": 250, "y": 1250, "rx": 170, "ry": 120, "color": "green" },
+        { "kind": "doodle", "name": "check", "at": 7.3, "x": 470, "y": 1330, "size": 90, "color": "green" },
+        { "kind": "doodle", "name": "star", "at": 7.7, "x": 120, "y": 1010, "size": 70, "color": "yellow" },
+        { "kind": "doodle", "name": "star", "at": 8.0, "x": 520, "y": 1380, "size": 55, "color": "orange" },
+        { "kind": "doodle", "name": "spark", "at": 8.3, "x": 940, "y": 880, "size": 70, "color": "teal" }
+      ] }
+    },
+    {
+      "id": "cache", "type": "custom", "component": "sketch",
+      "props": { "items": [
+        { "kind": "text", "at": 0.1, "x": 540, "y": 330, "text": "Второй заход", "size": 92 },
+        { "kind": "scribble", "at": 0.7, "x": 300, "y": 362, "w": 480, "style": "underline", "color": "orange" },
+        { "kind": "doodle", "name": "window", "at": 0.4, "x": 250, "y": 600, "size": 230, "color": "blue" },
+        { "kind": "text", "at": 0.8, "x": 250, "y": 770, "text": "браузер", "color": "blue" },
+        { "kind": "doodle", "name": "server", "at": 1.0, "x": 850, "y": 600, "size": 230, "color": "green" },
+        { "kind": "text", "at": 1.3, "x": 850, "y": 770, "text": "сервер", "color": "green" },
+        { "kind": "arrow", "at": 1.5, "from": [380, 600], "to": [730, 600], "color": "red", "packet": true },
+        { "kind": "doodle", "name": "cross", "at": 2.4, "x": 555, "y": 600, "size": 150, "color": "red" },
+        { "kind": "text", "at": 2.7, "x": 555, "y": 530, "text": "не нужен", "size": 56, "color": "red" },
+        { "kind": "doodle", "name": "disk", "at": 3.0, "x": 250, "y": 1060, "size": 230, "color": "purple" },
+        { "kind": "text", "at": 3.3, "x": 250, "y": 1230, "text": "кэш", "color": "purple" },
+        { "kind": "arrow", "at": 3.5, "from": [250, 800], "to": [250, 940], "curve": 40, "color": "teal", "packet": true },
+        { "kind": "text", "at": 3.8, "x": 340, "y": 880, "text": "копия", "size": 56, "color": "teal", "align": "left" },
+        { "kind": "doodle", "name": "bolt", "at": 4.3, "x": 470, "y": 1060, "size": 120, "color": "yellow" },
+        { "kind": "arrow", "at": 4.7, "from": [400, 1090], "to": [680, 1090], "curve": 50, "color": "teal", "packet": true },
+        { "kind": "doodle", "name": "clock", "at": 5.0, "x": 840, "y": 1060, "size": 230, "color": "orange" },
+        { "kind": "marker", "at": 5.3, "x": 745, "y": 1210, "w": 190, "h": 70, "color": "yellow" },
+        { "kind": "text", "at": 5.5, "x": 840, "y": 1265, "text": "быстро", "color": "ink" },
+        { "kind": "doodle", "name": "check", "at": 5.9, "x": 960, "y": 930, "size": 90, "color": "green" },
+        { "kind": "doodle", "name": "star", "at": 6.3, "x": 560, "y": 1300, "size": 70, "color": "yellow" },
+        { "kind": "doodle", "name": "spark", "at": 6.6, "x": 130, "y": 880, "size": 70, "color": "teal" },
+        { "kind": "doodle", "name": "star", "at": 6.9, "x": 560, "y": 880, "size": 55, "color": "orange" }
+      ] }
+    }
+  ]
+}
